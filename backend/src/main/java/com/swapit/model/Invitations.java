@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 @Entity
 @Data
-public class Invitatons implements Serializable {
+public class Invitations implements Serializable {
 
     @Id
     @GeneratedValue

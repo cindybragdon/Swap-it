@@ -1,14 +1,14 @@
 import React from 'react';
 
-function Home() {
+const Features = () => {
   return (
     <div className='hero'>
         <div className='container'>
-            <h1>Page Home</h1>
+            <h1>Page Features</h1>
             <p> Lorem ipsum dolor sit amet.</p>
         </div>
     </div>
   );
-}
+};
 
-export default Home;
+export default Features;

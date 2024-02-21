@@ -1,14 +1,14 @@
 import React from 'react';
 
-function Home() {
+const NotFound = () => {
   return (
     <div className='hero'>
         <div className='container'>
-            <h1>Page Home</h1>
+            <h1>Page Not Found</h1>
             <p> Lorem ipsum dolor sit amet.</p>
         </div>
     </div>
   );
-}
+};
 
-export default Home;
+export default NotFound;
