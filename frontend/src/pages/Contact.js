@@ -2,7 +2,7 @@ import React from 'react';
 
 const Contact = () => {
 
-
+//Ceci est un test
 
   function handleSubmit() {
    
