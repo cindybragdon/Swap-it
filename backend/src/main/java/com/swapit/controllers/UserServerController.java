@@ -25,8 +25,8 @@ public class UserServerController {
 
     //Vefify if the email / password exists for account connection or forgot pwd (select)
     @GetMapping("/getByEmailPass")
-    public User getUserByEmailAndPassword(@RequestParam String email, @RequestParam  String password) {
-        return userRepository.findUserByUserEmail(email, password);
+    public User getUserByEmailAndPassword(@RequestParam String email) {
+        return userRepository.findUserByUserEmail(email);
     }
 
     // pas ok
