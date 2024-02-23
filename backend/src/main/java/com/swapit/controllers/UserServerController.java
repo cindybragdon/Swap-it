@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin("http://localhost:5555")
+@CrossOrigin("http://localhost:5555/")
 @RequestMapping("/api")
+
 public class UserServerController {
 
     @Autowired
@@ -22,39 +23,39 @@ public class UserServerController {
         return userRepository.findAll();
     }
 
-
-    //Vefify if the email / password exists for account connection or forgot pwd (select)
-    @GetMapping("/getByEmailPass")
-    public User getUserByEmailAndPassword(@RequestParam String email) {
+    //Find User by email
+    @GetMapping("/getUserByEmail")
+    public User getUserByEmail(@RequestParam String email) {
         return userRepository.findUserByUserEmail(email);
     }
 
-    // pas ok
-    /*
-    @GetMapping("/getIdByEmail")
-    public User getIdByEmail(@RequestParam String userEmail) {
-        return userRepository.findBy(userEmail);
-    }
-    */
-     /*
-
-    //Create account (insert)
-    //Placer le commentaire ci apres dans serviceUser
-    /**public User createUser(User user) {
-        return userRepository.save(user);}
-    */
+    //Create user
     @PostMapping("/createUser")
     public User createUser(@RequestBody User user) {
         return userRepository.save(user);
     }
 
+
     //Update user account (update)
-    /*
     @PutMapping("/updateUser")
-    public User updateUser(@RequestBody User user) {
-        return userRepository.
+    public User updateUser(@RequestBody User userUpdated, String userEmail) {
+        User user = userRepository.findUserByUserEmail(userEmail);
+        user.setUserFirstName(userUpdated.getUserFirstName());
+        user.setUserLastName(userUpdated.getUserLastName());
+        user.setUserEmail(userUpdated.getUserEmail());
+        user.setUserPhone(userUpdated.getUserPhone());
+        return userRepository.save(user);
     }
-    */
+
+    @PutMapping("/updateUserById")
+    public User updateUserById(@RequestBody User userUpdated, int idUser) {
+        User user = userRepository.findUserByIdUser(idUser);
+        user.setUserFirstName(userUpdated.getUserFirstName());
+        user.setUserLastName(userUpdated.getUserLastName());
+        user.setUserEmail(userUpdated.getUserEmail());
+        user.setUserPhone(userUpdated.getUserPhone());
+        return userRepository.save(user);
+    }
 
 
 }
