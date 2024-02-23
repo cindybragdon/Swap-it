@@ -11,10 +11,13 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     public List<User> findAll();
 
+    public Boolean existsByUserEmail(User user);
 
-    public User findUserByUserEmail(String Email);
+    public User findUserByUserEmail(String userEmail);
 
     public User findUserByIdUser(int idUser);
+
+
 
 
 }

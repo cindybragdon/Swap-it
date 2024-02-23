@@ -26,16 +26,27 @@ public class UserServerController {
     //Find User by email
     @GetMapping("/getUserByEmail")
     public User getUserByEmail(@RequestParam String email) {
+
         return userRepository.findUserByUserEmail(email);
     }
 
     //Create user
     @PostMapping("/createUser")
-    public User createUser(@RequestBody User user) {
-        return userRepository.save(user);
+    public String createUser(@RequestBody User userToCreate) {
+        User user = userRepository.findUserByUserEmail(userToCreate.getUserEmail());
+        String messageExists = "L'utilisateur existe deja";
+        String messageUserCreated = "Votre compte a été créé!";
+        if(userRepository.existsByUserEmail(user)) {
+            return messageExists;
+        }else{
+            userRepository.save(user);
+            return messageUserCreated;
+        }
     }
 
 
+    //Est-ce qu'on garde le update user by id (qui n'est pas donné dans le body) ou par email??
+    //Choisir entre les deux prochaines methodes.
     //Update user account (update)
     @PutMapping("/updateUser")
     public User updateUser(@RequestBody User userUpdated, String userEmail) {
