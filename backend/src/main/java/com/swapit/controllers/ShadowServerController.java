@@ -27,18 +27,32 @@ public class ShadowServerController {
 
     //New account
     @PostMapping("/newUserPwd")
-    public Shadow newUserPwd(@RequestBody Shadow newShadow, @RequestParam int idUser) {
-        Shadow shadow = shadowRepository.findByIdUser(idUser);
-        shadow.setUserPassword(shadow.getUserPassword());
-            return shadowRepository.save(shadow);
+    public String newUserPwd(@RequestBody Shadow newShadow, @RequestParam int idUser) {
+        String messagePwdCreated = "ACK-201";
+        try{
+            Shadow shadow = shadowRepository.findByIdUser(idUser);
+            shadow.setUserPassword(shadow.getUserPassword());
+            shadowRepository.save(shadow);
+            return messagePwdCreated = "ACK-200";
+        }catch (Exception e){
+            return messagePwdCreated + e.getMessage();
+        }
     }
 
     //Update Password
     @PutMapping("/updatePwdById")
-    public Shadow updatePwdById(@RequestBody Shadow shadowUpdated, @RequestParam int idUser) {
-        Shadow shadow = shadowRepository.findByIdUser(idUser);
-        shadow.setUserPassword(shadowUpdated.getUserPassword());
-        return shadowRepository.save(shadow);
+    public String updatePwdById(@RequestBody Shadow shadowUpdated, @RequestParam int idUser) {
+        String messagePwdUpdated = "ACK-211";
+        try{
+            Shadow shadow = shadowRepository.findByIdUser(idUser);
+            shadow.setUserPassword(shadowUpdated.getUserPassword());
+            shadowRepository.save(shadow);
+            messagePwdUpdated = "ACK-210";
+            return messagePwdUpdated;
+        }catch (Exception e){
+            return messagePwdUpdated + e.getMessage();
+        }
+
     }
 
 

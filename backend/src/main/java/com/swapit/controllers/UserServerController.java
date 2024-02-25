@@ -39,43 +39,42 @@ public class UserServerController {
     }
 
     //Create user
+    //To create a user, please call in javascript in order :
+    //  /createUser ==>  /getIdByEmail  ==>  /newUserPwd
     @PostMapping("/createUser")
     public String createUser(@RequestBody User userToCreate) {
-        User user = userRepository.findUserByUserEmail(userToCreate.getUserEmail());
-        String messageExists = "L'utilisateur existe deja, connectez-vous!";
-        String messageUserCreated = "Votre compte a été créé!";
-        if(userRepository.existsByUserEmail(user)) {
-            return messageExists;
-        }else{
-            userRepository.save(userToCreate);
-            return messageUserCreated;
-        }
-    }
+        boolean userExists = userRepository.existsByUserEmail(userToCreate);
+        String messageCreate = "ACK-101";
 
-    //Create user
-    @PostMapping("/createUser")
-    public ResponseEntity<String> createUser2(@RequestBody User userToCreate) {
-            boolean userExists = userRepository.existsByUserEmail(userToCreate);
-            if (userExists) {
-                return ResponseEntity.ok("L'utilisateur existe deja, connectez-vous!");
-            } else {
+        if (userExists) {
+            messageCreate = "ACK-102";
+        } else {
+            try{
                 userRepository.save(userToCreate);
-                return ResponseEntity.ok("Votre compte a été créé!");
-                // ResponseStatus(HttpStatus.CREATED, "Votre compte a été créé!");
-                //throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
+                messageCreate = "ACK-100";
+            } catch(Exception e){
+                return messageCreate + e.getMessage();
             }
         }
-
+        return messageCreate;
+    }
 
     //Update user account (update)
     @PutMapping("/updateUserById")
-    public User updateUserById(@RequestBody User userUpdated, @RequestParam int idUser) {
-        User user = userRepository.findUserByIdUser(idUser);
-        user.setUserFirstName(userUpdated.getUserFirstName());
-        user.setUserLastName(userUpdated.getUserLastName());
-        user.setUserEmail(userUpdated.getUserEmail());
-        user.setUserPhone(userUpdated.getUserPhone());
-        return userRepository.save(user);
+    public String updateUserById(@RequestBody User userUpdated, @RequestParam int idUser) {
+        String messageUpdate = "ACK-111";
+        try {
+            User user = userRepository.findUserByIdUser(idUser);
+            user.setUserFirstName(userUpdated.getUserFirstName());
+            user.setUserLastName(userUpdated.getUserLastName());
+            user.setUserEmail(userUpdated.getUserEmail());
+            user.setUserPhone(userUpdated.getUserPhone());
+            userRepository.save(user);
+            messageUpdate = "ACK-110";
+            return messageUpdate;
+        } catch (Exception e) {
+            return messageUpdate + e.getMessage();
+        }
     }
 
 
