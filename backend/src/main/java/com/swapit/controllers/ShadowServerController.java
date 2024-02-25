@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
 
 
 @RestController
@@ -23,6 +24,23 @@ public class ShadowServerController {
 
     @Autowired
     private UserRepository userRepository;
+
+    //New account
+    @PostMapping("/newUserPwd")
+    public Shadow newUserPwd(@RequestBody Shadow newShadow, @RequestParam int idUser) {
+        Shadow shadow = shadowRepository.findByIdUser(idUser);
+        shadow.setUserPassword(shadow.getUserPassword());
+            return shadowRepository.save(shadow);
+    }
+
+    //Update Password
+    @PutMapping("/updatePwdById")
+    public Shadow updatePwdById(@RequestBody Shadow shadowUpdated, @RequestParam int idUser) {
+        Shadow shadow = shadowRepository.findByIdUser(idUser);
+        shadow.setUserPassword(shadowUpdated.getUserPassword());
+        return shadowRepository.save(shadow);
+    }
+
 
 
 
