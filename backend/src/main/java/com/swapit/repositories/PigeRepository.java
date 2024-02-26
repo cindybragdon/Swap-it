@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface PigeRepository extends JpaRepository<Pige, Integer> {
 
-    public Pige findPigeBy(Integer idPige);
+    public Pige findPigeByIdPige(Integer idPige);
 
 
 

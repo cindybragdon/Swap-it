@@ -20,6 +20,6 @@ public class Shadow implements Serializable {
     private String userPasswordHash;
 
     @OneToOne
-    private User idUser;
+    private User user;
 
 }

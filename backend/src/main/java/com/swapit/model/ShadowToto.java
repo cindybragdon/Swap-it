@@ -20,5 +20,5 @@ public class ShadowToto implements Serializable {
     private String totoPasswordHash;
 
     @OneToOne
-    private Toto idToto;
+    private Toto toto;
 }
