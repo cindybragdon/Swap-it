@@ -2,32 +2,44 @@ import React, {useState} from 'react';
 import {useForm} from 'react-hook-form';
 import http from "../http/http";
 
+//Problème de CSS
+
 const CreationPiges = () => {
 
     const {register, handleSubmit, formState: {errors}, reset} = useForm();
+
+    //Ajout useState, pas terminé
+    const [nomPige, setNomPige] = useState('');
+    const [pigeDescription, setPigeDescription] = useState('');
+    const [pigAmmount, setPigeAmmount] = useState(0);
+    const [pigeEndDate, setPigeEndDate] = useState('');
+    const [pigeType, setPigeType] = useState('');
+    const [pigeTimeStamp, setPigeTimeStamp] = useState('');
 
     const [serverResponse, setServerResponse] = useState(null); // [0] = email, [1] = password, [2] = serverResponse
 
 
     const testPige = {
-        pigeName : "pigeName",
-        pigeType : "Normal",
+        idPige: 6,
+        pigeName: nomPige,
+        pigeType: "Normal",
         pigeDescription: "description"
 
     }
 
     const pigesPost = async () => {
-        try{
-            const response = await http.postForm(`/createPige`, testPige)
+        try {
+            const response = await http.post(`/createPige`, testPige)
                 .then(response => {
                     console.log(response.data);
                 })
             setServerResponse(response.data);
-            console.log(response)
+            console.log(serverResponse)
         } catch (error) {
             console.error(error);
         } finally {
-            "Pige créé"
+            setNomPige('');
+            alert('Pige créée');
         }
     }
 
@@ -38,11 +50,13 @@ const CreationPiges = () => {
     }
 
     return (
-        <div className="hero oui">
+
+        <div className="hero">
             <form className='container' onSubmit={handleSubmit(onSubmit)}>
+                <h1 className="texte-title">Salut</h1>
                 <div className="mb-3">
                     <label className="form-label">Nom de la pige</label>
-                    <input type="text" className="form-control" placeholder="name@example.com"/>
+                    <input type="text" value={nomPige} className="form-control" placeholder="name@example.com"/>
                 </div>
 
                 <div className="mb-3">
@@ -86,7 +100,6 @@ const CreationPiges = () => {
                     <label className="form-label">Date de pige</label>
                     <input type="date" className="form-control" placeholder=""/>
                 </div>
-
 
 
                 <button type="submit" className="btn btn-primary">Submit</button>
