@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
+import http from "../http/http";
 
 const Login = () => {
 
     const { register, handleSubmit, formState: { errors}, reset } = useForm();
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [serverResponse, setServerResponse] = useState(null); // [0] = email, [1] = password, [2] = serverResponse
+
 
     const msgErrors = {
         email : {
@@ -18,25 +23,23 @@ const Login = () => {
 
     }
     const onSubmit = (data) => {
-        console.log(data);
+        setEmail(data.email);
+        setPassword(data.password);
+        loginUser();
+        //console.log(data);
         reset();
     }
 
     //useState Bug
-    /*
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [serverResponse, setServerResponse] = useState(null); // [0] = email, [1] = password, [2] = serverResponse
-*/
+
+
     //Manque a envoyé les données avec Axios, ne fonctionne pas.
-/*
+
     const loginUser = async () => {
         try{
-            const response = await axios.post('http://localhost:9281/api/login', {
-                userEmail : email,
-                userPassword : password
-        });
+            const response = await http.get(`/login?userEmail=${email}&userPassword=${password}`);
             setServerResponse(response.data);
+            console.log(response)
         } catch (error) {
             console.error(error);
         } finally {
@@ -44,7 +47,7 @@ const Login = () => {
             setPassword('');
         }
     }
-*/
+
     return (
         <>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -71,10 +74,10 @@ const Login = () => {
                 <div className="form-group row">
                     <div className="col-sm-10">
                         <button type="submit" className="btn btn-primary">Sign in</button>
-
                     </div>
                 </div>
             </form>
+            {serverResponse && <p>{serverResponse}</p>}
         </>
     );
 };
