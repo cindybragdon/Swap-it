@@ -30,7 +30,7 @@ public class ShadowServerController {
     public String newUserPwd(@RequestBody Shadow newShadow, @RequestParam int idUser) {
         String messagePwdCreated = "ACK-201";
         try{
-            Shadow shadow = shadowRepository.findByIdUser(idUser);
+            Shadow shadow = shadowRepository.findByUser_IdUser(idUser);
             shadow.setUserPassword(newShadow.getUserPassword());
             shadowRepository.save(newShadow);
             return messagePwdCreated = "ACK-200";
@@ -44,7 +44,7 @@ public class ShadowServerController {
     public String updatePwdById(@RequestBody Shadow shadowUpdated, @RequestParam int idUser) {
         String messagePwdUpdated = "ACK-211";
         try{
-            Shadow shadow = shadowRepository.findByIdUser(idUser);
+            Shadow shadow = shadowRepository.findByUser_IdUser(idUser);
             shadow.setUserPassword(shadowUpdated.getUserPassword());
             shadowRepository.save(shadow);
             messagePwdUpdated = "ACK-210";

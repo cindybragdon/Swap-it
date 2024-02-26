@@ -17,10 +17,10 @@ public class UserPige implements Serializable {
     private int idUserPige;
 
     @ManyToOne
-    private Pige idPige;
+    private Pige pige;
 
     @ManyToOne
-    private User idUser;
+    private User user;
 
     private String userPigePseudo;
 

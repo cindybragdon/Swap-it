@@ -17,9 +17,9 @@ public class UserPigeWithUserPicked implements Serializable {
     private int idUserPigeWithUserPigePicked;
 
     @OneToOne
-    private UserPige idUserPigeWhoPickedTheOtherUserPige;
+    private UserPige userPigeWhoPickedTheOtherUserPige;
 
     @OneToOne
-    private UserPige idUserPigeWhoIsPickedByTheUserPige;
+    private UserPige userPigeWhoIsPickedByTheUserPige;
 
 }

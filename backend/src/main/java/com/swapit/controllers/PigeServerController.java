@@ -45,7 +45,8 @@ public class PigeServerController {
     public String updatePige(@RequestBody Pige pigeUpdated, @RequestParam int idPige){
         String messagePigeUpdated = "ACK-311";
         try{
-            Pige pige = pigeRepository.findPigeBy(idPige);
+
+            Pige pige = pigeRepository.findPigeByIdPige(idPige);
             pige.setPigeName(pigeUpdated.getPigeName());
             pige.setPigeType(pigeUpdated.getPigeType());
             pige.setPigeDescription(pigeUpdated.getPigeDescription());
