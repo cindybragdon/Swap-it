@@ -19,6 +19,7 @@ CREATE USER
 ACK-100 : User Created
 ACK-101 : User Not Created
 ACK-102 : User Already Exists, Please Login Using The Same Credentials
+ACK-103 : User Do Not Exists
 
 UPDATE USER
 ACK-110 : User Updated
