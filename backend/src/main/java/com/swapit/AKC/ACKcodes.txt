@@ -1,0 +1,43 @@
+
+Here is the meaning of the return codes for Controllers methods.
+
+Return codes are identified by ACK - XXX.
+Each Controller starts with a different number:
+
+UserServerController : 1XX
+ShadowServerController : 2XX
+PigeServerController : 3XX
+InvitationsServerController : 4XX
+ShadowTotoServerController : 5XX
+TotoServerController : 6XX
+UserPigeServerController : 7XX
+UserPigeWithUserPickedServerController : 8XX
+WishedItemServerController : 9XX
+
+===> UserServerController <=== :
+CREATE USER
+ACK-100 : User Created
+ACK-101 : User Not Created
+ACK-102 : User Already Exists, Please Login Using The Same Credentials
+
+UPDATE USER
+ACK-110 : User Updated
+ACK-111 : User Not Updated
+
+===> ShadowServerController <=== :
+NEW USER PASSWORD
+ACK-200 : Password Inserted
+ACK-201 : Password Not Inserted
+
+UPDATE PASSWORD
+ACK-210 : Password Updated
+ACK-211 : Password Not Updated
+
+===> PigeServerController <=== :
+NEW PIGE
+ACK-300 : Pige Created
+ACK-301 : Pige Not Created
+
+UPDATED PIGE
+ACK-310 : Pige Updated
+ACK-311 : Pige Not Updated

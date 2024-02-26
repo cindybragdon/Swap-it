@@ -1,0 +1,69 @@
+package com.swapit.controllers;
+
+import com.swapit.model.Pige;
+import com.swapit.repositories.PigeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+
+@RestController
+@CrossOrigin("http://localhost:5555/")
+@RequestMapping("/api")
+
+
+public class PigeServerController {
+
+    @Autowired
+    private PigeRepository pigeRepository;
+
+
+    //Create new Pige
+    @PostMapping("/createPige")
+    public String createPige(@RequestBody Pige pigeToCreate) {
+    String messagePigeCreate = "ACK-301";
+    try{
+        pigeRepository.save(pigeToCreate);
+        return messagePigeCreate = "ACK-300";
+    }catch (Exception e){
+        return messagePigeCreate + e.getMessage();
+    }
+    }
+
+    //Get les infos pour courriel dans Java (nom pige, pige description, nom admin, date pige,url et QrCode)
+
+    /**
+    //One pige by idUser and idPige
+    @GetMapping("/getOnePige")
+    public Pige getOnePige(@RequestParam int idPige){
+        return pigeRepository.findPigeBy(idPige);
+    }
+    */
+
+    //Update pige
+    // If admin is updated, change toggle to isNotAdmin
+    @PutMapping("/updatePige")
+    public String updatePige(@RequestBody Pige pigeUpdated, @RequestParam int idPige){
+        String messagePigeUpdated = "ACK-311";
+        try{
+            Pige pige = pigeRepository.findPigeBy(idPige);
+            pige.setPigeName(pigeUpdated.getPigeName());
+            pige.setPigeType(pigeUpdated.getPigeType());
+            pige.setPigeDescription(pigeUpdated.getPigeDescription());
+            pige.setPigeEndDate(pigeUpdated.getPigeEndDate());
+            pige.setPigeSuggestedMoneyAmount(pigeUpdated.getPigeSuggestedMoneyAmount());
+            pige.setPigeImage(pigeUpdated.getPigeImage());
+            pige.setUserAdmin(pigeUpdated.getUserAdmin());
+            pigeRepository.save(pige);
+            messagePigeUpdated = "ACK-310";
+            return messagePigeUpdated;
+        }catch (Exception e) {
+            return messagePigeUpdated + e.getMessage();
+        }
+
+    }
+
+
+
+
+
+}

@@ -1,6 +1,7 @@
 package com.swapit.repositories;
 
 import com.swapit.model.User;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,12 +12,12 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     public List<User> findAll();
 
-    public User findUserByUserEmail (String userEmail);
+    public Boolean existsByUserEmail(User user);
 
-    //public User createUser(@RequestBody User user);
+    public User findUserByUserEmail(String userEmail);
 
-    // public User findByEmail(@RequestParam String email);
-    //public User updateUser(@RequestBody User user);
+    public User findUserByIdUser(int idUser);
+
 
 
 }

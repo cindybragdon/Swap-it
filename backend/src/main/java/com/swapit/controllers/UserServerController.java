@@ -3,13 +3,15 @@ package com.swapit.controllers;
 import com.swapit.model.User;
 import com.swapit.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@CrossOrigin("http://localhost:5555")
+@CrossOrigin("http://localhost:5555/")
 @RequestMapping("/api")
+
 public class UserServerController {
 
     @Autowired
@@ -22,39 +24,58 @@ public class UserServerController {
         return userRepository.findAll();
     }
 
+    //Find Id user by email
+    //Find about all from a user by its id
+    @GetMapping("/getIdByEmail")
+    public Integer getIdByEmail(@RequestBody String userEmail) {
+        User user =userRepository.findUserByUserEmail(userEmail);
+        return user.getIdUser();
+    }
 
-    //Vefify if the email / password exists for account connection or forgot pwd (select)
-    @GetMapping("/getByEmailPass")
-    public User getUserByEmailAndPassword(@RequestParam String email) {
+    //Find User by email
+    @GetMapping("/getUserByEmail")
+    public User getUserByEmail(@RequestParam String email) {
         return userRepository.findUserByUserEmail(email);
     }
 
-    // pas ok
-    /*
-    @GetMapping("/getIdByEmail")
-    public User getIdByEmail(@RequestParam String userEmail) {
-        return userRepository.findBy(userEmail);
-    }
-    */
-     /*
-
-    //Create account (insert)
-    //Placer le commentaire ci apres dans serviceUser
-    /**public User createUser(User user) {
-        return userRepository.save(user);}
-    */
+    //Create user
+    //To create a user, please call in javascript in order :
+    //  /createUser ==>  /getIdByEmail  ==>  /newUserPwd
     @PostMapping("/createUser")
-    public User createUser(@RequestBody User user) {
-        return userRepository.save(user);
+    public String createUser(@RequestBody User userToCreate) {
+        boolean userExists = userRepository.existsByUserEmail(userToCreate);
+        String messageCreate = "ACK-101";
+
+        if (userExists) {
+            messageCreate = "ACK-102";
+        } else {
+            try{
+                userRepository.save(userToCreate);
+                messageCreate = "ACK-100";
+            } catch(Exception e){
+                return messageCreate + e.getMessage();
+            }
+        }
+        return messageCreate;
     }
 
     //Update user account (update)
-    /*
-    @PutMapping("/updateUser")
-    public User updateUser(@RequestBody User user) {
-        return userRepository.
+    @PutMapping("/updateUserById")
+    public String updateUserById(@RequestBody User userUpdated, @RequestParam int idUser) {
+        String messageUpdate = "ACK-111";
+        try {
+            User user = userRepository.findUserByIdUser(idUser);
+            user.setUserFirstName(userUpdated.getUserFirstName());
+            user.setUserLastName(userUpdated.getUserLastName());
+            user.setUserEmail(userUpdated.getUserEmail());
+            user.setUserPhone(userUpdated.getUserPhone());
+            userRepository.save(user);
+            messageUpdate = "ACK-110";
+            return messageUpdate;
+        } catch (Exception e) {
+            return messageUpdate + e.getMessage();
+        }
     }
-    */
 
 
 }

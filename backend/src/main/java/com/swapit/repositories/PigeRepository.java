@@ -6,7 +6,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface PigeRepository extends JpaRepository<Pige, Integer> {
-    //allo
+
+    public Pige findPigeBy(Integer idPige);
+
+
 
 
 }
