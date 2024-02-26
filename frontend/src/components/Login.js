@@ -37,7 +37,7 @@ const Login = () => {
 
     const loginUser = async () => {
         try{
-            const response = await http.get(`/login?userEmail=${email}&userPassword=${password}`);
+            const response = await http.get(`/getUserByEmail?email=${email}&userPassword=${password}`);
             setServerResponse(response.data);
             console.log(response)
         } catch (error) {

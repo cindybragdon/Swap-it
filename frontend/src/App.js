@@ -8,6 +8,8 @@ import Contact from './pages/Contact';
 import FAQ from './pages/FAQ';
 import NotFound from './pages/NotFound';
 import Features from './pages/Features';
+import Piges from "./pages/Piges";
+import CreationPiges from "./components/CreationPiges";
 
 
 function App() {
@@ -21,7 +23,10 @@ function App() {
             <Route path='/contact' element={<Contact />} />
             <Route path='/faq' element={<FAQ />} />
             <Route path='/features' element={<Features />} />
+            <Route path='/piges' element={<Piges />}/>
             <Route path='*' element={<NotFound />} />
+              <Route path='/piges/creation-piges' element={<CreationPiges />} />
+
           </Routes>
         </div>
         <Footer />
