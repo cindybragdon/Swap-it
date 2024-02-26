@@ -1,6 +1,7 @@
 package com.swapit.controllers;
 
 import com.swapit.model.User;
+import com.swapit.model.UserPige;
 import com.swapit.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -26,11 +27,13 @@ public class UserServerController {
 
     //Find Id user by email
     //Find about all from a user by its id
-    @GetMapping("/getIdByEmail")
-    public Integer getIdByEmail(@RequestBody String userEmail) {
+    @GetMapping("/getIdByEmail/{userEmail}")
+    public Integer getIdByEmail(@PathVariable String userEmail) {
         User user =userRepository.findUserByUserEmail(userEmail);
         return user.getIdUser();
     }
+
+
 
     //Find User by email
     @GetMapping("/getUserByEmail")
