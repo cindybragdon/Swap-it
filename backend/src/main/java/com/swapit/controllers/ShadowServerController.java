@@ -23,8 +23,8 @@ public class ShadowServerController {
     @Autowired
     private ShadowRepository shadowRepository;
 
-    @PostMapping("/createPige")
-    public String createPige(@RequestBody Shadow shadowToCreate) {
+    @PostMapping("/createShadow")
+    public String createShadow(@RequestBody Shadow shadowToCreate) {
         String messagePigeCreate = "ACK-301";
         try{
             shadowRepository.save(shadowToCreate);

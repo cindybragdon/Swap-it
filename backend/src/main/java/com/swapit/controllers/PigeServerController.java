@@ -1,9 +1,12 @@
 package com.swapit.controllers;
 
 import com.swapit.model.Pige;
+import com.swapit.model.User;
 import com.swapit.repositories.PigeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -30,9 +33,6 @@ public class PigeServerController {
     }
 
     //Get les infos pour courriel dans Java (nom pige, pige description, nom admin, date pige,url et QrCode)
-
-
-
     //Update pige
     // If admin is updated, change toggle to isNotAdmin
     @PutMapping("/updatePige")
@@ -55,7 +55,10 @@ public class PigeServerController {
             return messagePigeUpdated + e.getMessage();
         }
 
+
+
     }
+
 
 
 
