@@ -1,5 +1,5 @@
 import React from 'react';
-import Login from "../component2/Login";
+import Login from "../components/Login";
 // ceci est ma maison
 function Home() {
   return (

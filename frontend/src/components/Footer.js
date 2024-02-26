@@ -1,6 +1,6 @@
 import React from 'react';
 
-//test
+// Dans change  language, je voudrais faire un dropdown avec les langues disponibles, mais cela ne fonctionne pas.
 const Footer = () => {
     return (
         <footer className="card text-center">
@@ -8,16 +8,7 @@ const Footer = () => {
                 © 2024 Swap-it, All rights reserved
             </div>
             <div className="card-body">
-                <div className="dropdown">
-                    <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown button
-                    </button>
-                    <ul className="dropdown-menu">
-                        <li><a className="dropdown-item" href="#">Action</a></li>
-                        <li><a className="dropdown-item" href="#">Another action</a></li>
-                        <li><a className="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </div>
+                <h5 className="card-text">Change language</h5>
                 <div className="row">
                     <div className="">
                         <div className="card">
