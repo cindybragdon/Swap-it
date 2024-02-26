@@ -6,3 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface TotoRepository extends JpaRepository<Toto, Integer> {
 
     //allo
+
+}
