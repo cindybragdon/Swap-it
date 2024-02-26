@@ -31,8 +31,8 @@ public class ShadowServerController {
         String messagePwdCreated = "ACK-201";
         try{
             Shadow shadow = shadowRepository.findByIdUser(idUser);
-            shadow.setUserPassword(shadow.getUserPassword());
-            shadowRepository.save(shadow);
+            shadow.setUserPassword(newShadow.getUserPassword());
+            shadowRepository.save(newShadow);
             return messagePwdCreated = "ACK-200";
         }catch (Exception e){
             return messagePwdCreated + e.getMessage();
