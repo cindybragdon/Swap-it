@@ -20,24 +20,18 @@ public class PigeServerController {
     //Create new Pige
     @PostMapping("/createPige")
     public String createPige(@RequestBody Pige pigeToCreate) {
-    String messagePigeCreate = "ACK-301";
-    try{
-        pigeRepository.save(pigeToCreate);
-        return messagePigeCreate = "ACK-300";
-    }catch (Exception e){
-        return messagePigeCreate + e.getMessage();
-    }
+        String messagePigeCreate = "ACK-301";
+        try{
+            pigeRepository.save(pigeToCreate);
+            return messagePigeCreate = "ACK-300";
+        }catch (Exception e){
+            return messagePigeCreate + e.getMessage();
+        }
     }
 
     //Get les infos pour courriel dans Java (nom pige, pige description, nom admin, date pige,url et QrCode)
 
-    /**
-    //One pige by idUser and idPige
-    @GetMapping("/getOnePige")
-    public Pige getOnePige(@RequestParam int idPige){
-        return pigeRepository.findPigeBy(idPige);
-    }
-    */
+
 
     //Update pige
     // If admin is updated, change toggle to isNotAdmin

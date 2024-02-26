@@ -1,5 +1,6 @@
 package com.swapit.controllers;
 
+import com.swapit.model.Pige;
 import com.swapit.model.Shadow;
 import com.swapit.model.User;
 import com.swapit.repositories.ShadowRepository;
@@ -22,20 +23,14 @@ public class ShadowServerController {
     @Autowired
     private ShadowRepository shadowRepository;
 
-    @Autowired
-    private UserRepository userRepository;
-
-    //New account
-    @PostMapping("/newUserPwd")
-    public String newUserPwd(@RequestBody Shadow newShadow, @RequestParam int idUser) {
-        String messagePwdCreated = "ACK-201";
+    @PostMapping("/createPige")
+    public String createPige(@RequestBody Shadow shadowToCreate) {
+        String messagePigeCreate = "ACK-301";
         try{
-            Shadow shadow = shadowRepository.findByUser_IdUser(idUser);
-            shadow.setUserPassword(newShadow.getUserPassword());
-            shadowRepository.save(newShadow);
-            return messagePwdCreated = "ACK-200";
+            shadowRepository.save(shadowToCreate);
+            return messagePigeCreate = "ACK-300";
         }catch (Exception e){
-            return messagePwdCreated + e.getMessage();
+            return messagePigeCreate + e.getMessage();
         }
     }
 
