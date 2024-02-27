@@ -30,8 +30,6 @@ const Login = () => {
         reset();
     }
 
-    //useState Bug
-
 
     //Manque a envoyé les données avec Axios, ne fonctionne pas.
 
