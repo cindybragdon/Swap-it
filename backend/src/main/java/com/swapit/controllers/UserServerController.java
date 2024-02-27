@@ -23,6 +23,7 @@ public class UserServerController {
     //To create a user, please call in javascript in order :
     //  /createUser ==>  /getIdByEmail  ==>  /newUserPwd
     @PostMapping("/createUser")
+    //public String createUser(@PathVariable....
     public String createUser(@RequestBody User userToCreate) {
         boolean userExists = userRepository.existsByUserEmail(userToCreate);
         String messageCreate = "ACK-101";
@@ -59,10 +60,11 @@ public class UserServerController {
     }
 
 
+
     //Find User by email
-    @GetMapping("/getUserByEmail")
-    public User getUserByEmail(@RequestParam String email) {
-        return userRepository.findUserByUserEmail(email);
+    @GetMapping("/getUserByEmail/{userEmail}")
+    public User getUserByEmail(@PathVariable String userEmail) {
+        return userRepository.findUserByUserEmail(userEmail);
     }
 
 
