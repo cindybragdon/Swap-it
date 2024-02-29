@@ -62,7 +62,7 @@ public class WishedItemServiceController {
         String messageDeleteItem = "ACK-921";
         boolean wishedItemExists = wishedItemRepository.existsById(idWishedItem);
         if (wishedItemExists) {
-            wishedItemRepository.delete(idWishedItem);
+            wishedItemRepository.deleteByIdWishedItem(idWishedItem);
             messageDeleteItem = "ACK-920";
         }else {
            return messageDeleteItem = "ACK-922";

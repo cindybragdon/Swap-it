@@ -59,14 +59,19 @@ public class PigeServerController {
     @DeleteMapping("{idPide}")
     public String deletePige(@PathVariable int idPige) {
         String messageDeletePige = "ACK-321";
-        boolean pigeExists = pigeRepository.existsById(idPige);
-        if (pigeExists) {
-            pigeRepository.delete(idPige);
-            messageDeletePige = "ACK-320";
-        }else {
-            return messageDeletePige = "ACK-322";
+        try {
+            boolean pigeExists = pigeRepository.existsById(idPige);
+            if (pigeExists) {
+                pigeRepository.deleteByIdPige(idPige);
+                messageDeletePige = "ACK-320";
+            }else {
+                messageDeletePige = "ACK-322";
+            }
+            return messageDeletePige;
+        } catch (Exception e) {
+            return messageDeletePige + e.getMessage();
         }
-        return messageDeletePige;
+
     }
 
 

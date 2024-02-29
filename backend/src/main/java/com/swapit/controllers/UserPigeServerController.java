@@ -22,11 +22,22 @@ public class UserPigeServerController {
     //Get all the piges from one user
     @GetMapping("/getListUserPigeFromIdUser")
     public List<UserPige> getListUserPigeFromIdUser(int idUser){
-        return userPigeRepository.findAllByUser_IdUser(idUser);
+        try {
+            return userPigeRepository.findAllByUser_IdUser(idUser);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+
     }
 
     @GetMapping("/getInfoUserPigeByIdUserAndIdPige")
     public UserPige getInfoUserPigeByIdUserAndIdPige(int idUser, int idPige){
-        return userPigeRepository.findByUser_IdUserAndPige_IdPige(idUser, idPige);
+        try{
+            return userPigeRepository.findByUser_IdUserAndPige_IdPige(idUser, idPige);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
 }

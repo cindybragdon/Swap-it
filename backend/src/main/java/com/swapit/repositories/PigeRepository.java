@@ -10,6 +10,6 @@ public interface PigeRepository extends JpaRepository<Pige, Integer> {
     public Pige findPigeByIdPige(Integer idPige);
 
 
-    public void delete(int idPige);
+    public void deleteByIdPige(int idPige);
 
 }
