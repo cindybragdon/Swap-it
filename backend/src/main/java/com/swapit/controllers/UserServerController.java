@@ -59,11 +59,18 @@ public class UserServerController {
     }
 
 
-    //Find User by email
+    //Get all data of user by id
+    @GetMapping("/getUserById")
+    public User getUserById(@RequestParam int idUser) {
+        return userRepository.findUserByIdUser(idUser);
+    }
+
+    //Get all data of user by email
     @GetMapping("/getUserByEmail")
     public User getUserByEmail(@RequestParam String email) {
         return userRepository.findUserByUserEmail(email);
     }
+
 
 
 

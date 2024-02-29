@@ -54,9 +54,10 @@ public class PigeServerController {
         }catch (Exception e) {
             return messagePigeUpdated + e.getMessage();
         }
-
-
-
+    }
+    @GetMapping("/getDataOnePigeById")
+    public Pige getDataOnePigeById(int idPige){
+        return pigeRepository.findPigeByIdPige(idPige);
     }
 
 
