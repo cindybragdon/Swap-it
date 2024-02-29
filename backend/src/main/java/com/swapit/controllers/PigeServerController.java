@@ -6,6 +6,9 @@ import com.swapit.repositories.PigeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 
@@ -24,7 +27,11 @@ public class PigeServerController {
     @PostMapping("/createPige")
     public String createPige(@RequestBody Pige pigeToCreate) {
         String messagePigeCreate = "ACK-301";
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String currentDateTime = dateFormat.format(date);
         try {
+            pigeToCreate.setPigeTimestampCreation(Timestamp.valueOf(currentDateTime));
             pigeRepository.save(pigeToCreate);
             return messagePigeCreate = "ACK-300";
         } catch (Exception e) {

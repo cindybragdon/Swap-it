@@ -28,8 +28,9 @@ const CreationPiges = () => {
         pigeAmount: pigeAmount,
         pigeEndDate: pigeEndDate,
         pigeState: "CREATED"
-
     }
+
+
 
 
 
@@ -58,6 +59,7 @@ const CreationPiges = () => {
 
 
     const onSubmit = (data) => {
+
         pigesPost();
         console.log(data);
         reset();
@@ -103,9 +105,8 @@ const CreationPiges = () => {
 
                 <div className="mb-3">
                     <label className="form-label">Date de fin de la pige</label>
-                    <input type="date" className="form-control" value={pigeEndDate} onChange={e => setPigeEndDate(e.target.value) } required/>
+                    <input type="date" className="form-control" value={pigeEndDate} onChange={e => setPigeEndDate(e.target.value)} required/>
                 </div>
-
 
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
