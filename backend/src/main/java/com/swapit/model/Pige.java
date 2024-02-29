@@ -1,10 +1,7 @@
 package com.swapit.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.Data;
 
 
@@ -17,7 +14,7 @@ import java.sql.Timestamp;
 public class Pige implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int idPige;
 
     private String pigeName;

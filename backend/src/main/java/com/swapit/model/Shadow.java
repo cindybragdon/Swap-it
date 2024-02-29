@@ -1,9 +1,6 @@
 package com.swapit.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -13,7 +10,7 @@ import java.io.Serializable;
 public class Shadow implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int idShadow;
 
     private String userPassword;

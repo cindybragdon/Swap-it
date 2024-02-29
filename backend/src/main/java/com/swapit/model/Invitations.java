@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class Invitations implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int idInvitation;
     
     @ManyToOne
