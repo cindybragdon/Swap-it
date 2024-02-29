@@ -17,8 +17,8 @@ public class WishedItemServiceController {
     @Autowired
     private WishedItemRepository wishedItemRepository;
 
-    @GetMapping("/getOneItem/{idWishedItem}")
-    public WishedItem getOneWishedItem(@PathVariable int idWishedItem) throws Exception {
+    @GetMapping("/getOneItem")
+    public WishedItem getOneWishedItem(@RequestParam int idWishedItem) throws Exception {
         try {
             return wishedItemRepository.findByIdWishedItem(idWishedItem);
         } catch (Exception e) {
@@ -60,8 +60,8 @@ public class WishedItemServiceController {
         }
     }
 
-    @DeleteMapping("{idWishedItem}")
-    public String deleteWishedItem(@PathVariable int idWishedItem) throws Exception {
+    @DeleteMapping("/deleteWishedItem")
+    public String deleteWishedItem(@RequestParam int idWishedItem) throws Exception {
         String messageDeleteItem = "ACK-921";
         try {
             boolean wishedItemExists = wishedItemRepository.existsById(idWishedItem);

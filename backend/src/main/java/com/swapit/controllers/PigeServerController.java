@@ -57,8 +57,8 @@ public class PigeServerController {
         }
     }
 
-    @DeleteMapping("{idPide}")
-    public String deletePige(@PathVariable int idPige) throws Exception {
+    @DeleteMapping("/deletePige")
+    public String deletePige(@RequestParam int idPige) throws Exception {
         String messageDeletePige = "ACK-321";
         try {
             boolean pigeExists = pigeRepository.existsById(idPige);

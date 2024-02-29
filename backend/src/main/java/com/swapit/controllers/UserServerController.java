@@ -18,7 +18,6 @@ public class UserServerController {
 
     //Create user
     @PostMapping("/createUser")
-    //public String createUser(@PathVariable....
     public String createUser(@RequestBody User userToCreate) throws Exception {
 
         String messageCreate = "ACK-101";
@@ -61,8 +60,8 @@ public class UserServerController {
 
 
     //Find User by email
-    @GetMapping("/getUserByEmail/{userEmail}")
-    public User getUserByEmail(@PathVariable String userEmail) throws Exception {
+    @GetMapping("/getUserByEmail")
+    public User getUserByEmail(@RequestParam String userEmail) throws Exception {
         try {
             return userRepository.findUserByUserEmail(userEmail);
 
