@@ -14,9 +14,9 @@ public class Conjoint {
     private int idConjoint;
 
     @OneToOne
-    private User firstConjoint;
+    private UserPige firstConjoint;
 
     @OneToOne
-    private User secondConjoint;
+    private UserPige secondConjoint;
 
 }

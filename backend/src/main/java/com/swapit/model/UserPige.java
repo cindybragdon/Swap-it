@@ -26,5 +26,4 @@ public class UserPige implements Serializable {
 
     private byte[] userPigeImage;
 
-
 }
