@@ -15,7 +15,7 @@ public class UserServerController {
     @Autowired
     private UserRepository userRepository;
 
-    //Allo
+
     //Create user
     @PostMapping("/createUser")
     //public String createUser(@PathVariable....

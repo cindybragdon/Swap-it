@@ -35,7 +35,7 @@ public class PigeServerController {
     //Get les infos pour courriel dans Java (nom pige, pige description, nom admin, date pige,url et QrCode)
     //Update pige
     // If admin is updated, change toggle to isNotAdmin
-    //Allo
+
     @PutMapping("/updatePige")
     public String updatePige(@RequestBody Pige pigeUpdated, @RequestParam int idPige) {
         String messagePigeUpdated = "ACK-311";
