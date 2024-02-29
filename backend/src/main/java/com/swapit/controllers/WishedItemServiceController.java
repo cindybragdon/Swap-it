@@ -18,18 +18,18 @@ public class WishedItemServiceController {
     private WishedItemRepository wishedItemRepository;
 
     @GetMapping("/getOneItem/{idWishedItem}")
-    public WishedItem getOneWishedItem(@PathVariable int idWishedItem) {
-        boolean wishedItemExists = wishedItemRepository.existsById(idWishedItem);
-        if (wishedItemExists) {
+    public WishedItem getOneWishedItem(@PathVariable int idWishedItem) throws Exception {
+        try {
             return wishedItemRepository.findByIdWishedItem(idWishedItem);
-        }else{
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
             return null;
         }
     }
 
     //Create a wished item in a list
     @PostMapping("/createWishedItem")
-    public String createWishedItem(@RequestBody WishedItem wishedItemToCreate, @RequestParam int idUserPige) {
+    public String createWishedItem(@RequestBody WishedItem wishedItemToCreate, @RequestParam int idUserPige) throws Exception {
         String messageWishItemCreated = "ACK-901";
         try {
             wishedItemRepository.save(wishedItemToCreate);
@@ -41,35 +41,42 @@ public class WishedItemServiceController {
     }
 
     @PutMapping("/updateWishedItem")
-    public String updateWishedItem(@RequestBody WishedItem wishedItemToUpdate, @RequestParam int idUserPige, int idWishedItem) {
+    public String updateWishedItem(@RequestBody WishedItem wishedItemToUpdate, @RequestParam int idUserPige, int idWishedItem) throws Exception {
         String messageWishedItemUpdated = "ACK-911";
-        boolean wishedItemExists = wishedItemRepository.existsById(idWishedItem);
-        if (wishedItemExists) {
-            WishedItem wishedItem = wishedItemRepository.findByIdWishedItem(idWishedItem);
-            wishedItem.setWishedItemName(wishedItemToUpdate.getWishedItemName());
-            wishedItem.setWishedItemDescription(wishedItemToUpdate.getWishedItemDescription());
-            wishedItem.setWishedItemUrl(wishedItemToUpdate.getWishedItemUrl());
-            wishedItem.setWishedItemImage(wishedItemToUpdate.getWishedItemImage());
-            wishedItemRepository.save(wishedItem);
-            return messageWishedItemUpdated = "ACK-910";
-        } else {
+        try {
+            boolean wishedItemExists = wishedItemRepository.existsById(idWishedItem);
+            if (wishedItemExists) {
+                WishedItem wishedItem = wishedItemRepository.findByIdWishedItem(idWishedItem);
+                wishedItem.setWishedItemName(wishedItemToUpdate.getWishedItemName());
+                wishedItem.setWishedItemDescription(wishedItemToUpdate.getWishedItemDescription());
+                wishedItem.setWishedItemUrl(wishedItemToUpdate.getWishedItemUrl());
+                wishedItem.setWishedItemImage(wishedItemToUpdate.getWishedItemImage());
+                wishedItemRepository.save(wishedItem);
+                messageWishedItemUpdated = "ACK-910";
+            }
             return messageWishedItemUpdated;
+        } catch (Exception e) {
+            return messageWishedItemUpdated + e.getMessage();
         }
     }
 
     @DeleteMapping("{idWishedItem}")
-    public String deleteWishedItem(@PathVariable int idWishedItem) {
+    public String deleteWishedItem(@PathVariable int idWishedItem) throws Exception {
         String messageDeleteItem = "ACK-921";
-        boolean wishedItemExists = wishedItemRepository.existsById(idWishedItem);
-        if (wishedItemExists) {
-            wishedItemRepository.deleteByIdWishedItem(idWishedItem);
-            messageDeleteItem = "ACK-920";
-        }else {
-           return messageDeleteItem = "ACK-922";
+        try {
+            boolean wishedItemExists = wishedItemRepository.existsById(idWishedItem);
+            if (wishedItemExists) {
+                wishedItemRepository.deleteByIdWishedItem(idWishedItem);
+                messageDeleteItem = "ACK-920";
+            } else {
+                messageDeleteItem = "ACK-922";
+            }
+            return messageDeleteItem;
+        } catch (Exception e) {
+            return messageDeleteItem + e.getMessage();
         }
-        return messageDeleteItem;
     }
 
 
-    }
+}
 

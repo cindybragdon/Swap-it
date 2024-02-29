@@ -24,10 +24,10 @@ public class PigeServerController {
     @PostMapping("/createPige")
     public String createPige(@RequestBody Pige pigeToCreate) {
         String messagePigeCreate = "ACK-301";
-        try{
+        try {
             pigeRepository.save(pigeToCreate);
             return messagePigeCreate = "ACK-300";
-        }catch (Exception e){
+        } catch (Exception e) {
             return messagePigeCreate + e.getMessage();
         }
     }
@@ -36,9 +36,9 @@ public class PigeServerController {
     //Update pige
     // If admin is updated, change toggle to isNotAdmin
     @PutMapping("/updatePige")
-    public String updatePige(@RequestBody Pige pigeUpdated, @RequestParam int idPige){
+    public String updatePige(@RequestBody Pige pigeUpdated, @RequestParam int idPige) {
         String messagePigeUpdated = "ACK-311";
-        try{
+        try {
 
             Pige pige = pigeRepository.findPigeByIdPige(idPige);
             pige.setPigeName(pigeUpdated.getPigeName());
@@ -51,20 +51,20 @@ public class PigeServerController {
             pigeRepository.save(pige);
             messagePigeUpdated = "ACK-310";
             return messagePigeUpdated;
-        }catch (Exception e) {
+        } catch (Exception e) {
             return messagePigeUpdated + e.getMessage();
         }
     }
 
     @DeleteMapping("{idPide}")
-    public String deletePige(@PathVariable int idPige) {
+    public String deletePige(@PathVariable int idPige) throws Exception {
         String messageDeletePige = "ACK-321";
         try {
             boolean pigeExists = pigeRepository.existsById(idPige);
             if (pigeExists) {
                 pigeRepository.deleteByIdPige(idPige);
                 messageDeletePige = "ACK-320";
-            }else {
+            } else {
                 messageDeletePige = "ACK-322";
             }
             return messageDeletePige;
@@ -73,10 +73,6 @@ public class PigeServerController {
         }
 
     }
-
-
-
-
 
 
 }

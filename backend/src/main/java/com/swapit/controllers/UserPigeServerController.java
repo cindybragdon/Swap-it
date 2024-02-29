@@ -21,7 +21,7 @@ public class UserPigeServerController {
 
     //Get all the piges from one user
     @GetMapping("/getListUserPigeFromIdUser")
-    public List<UserPige> getListUserPigeFromIdUser(int idUser){
+    public List<UserPige> getListUserPigeFromIdUser(int idUser) throws Exception {
         try {
             return userPigeRepository.findAllByUser_IdUser(idUser);
         } catch (Exception e) {
@@ -32,8 +32,8 @@ public class UserPigeServerController {
     }
 
     @GetMapping("/getInfoUserPigeByIdUserAndIdPige")
-    public UserPige getInfoUserPigeByIdUserAndIdPige(int idUser, int idPige){
-        try{
+    public UserPige getInfoUserPigeByIdUserAndIdPige(int idUser, int idPige) throws Exception {
+        try {
             return userPigeRepository.findByUser_IdUserAndPige_IdPige(idUser, idPige);
         } catch (Exception e) {
             System.out.println(e.getMessage());

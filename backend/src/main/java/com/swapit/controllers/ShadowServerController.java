@@ -24,38 +24,33 @@ public class ShadowServerController {
     private ShadowRepository shadowRepository;
 
     @PostMapping("/createShadow")
-    public String createShadow(@RequestBody Shadow shadowToCreate) {
+    public String createShadow(@RequestBody Shadow shadowToCreate) throws Exception {
         String messagePigeCreate = "ACK-301";
-        try{
+        try {
             shadowRepository.save(shadowToCreate);
             return messagePigeCreate = "ACK-300";
-        }catch (Exception e){
+        } catch (Exception e) {
             return messagePigeCreate + e.getMessage();
         }
     }
 
     //Update Password
     @PutMapping("/updatePwdById")
-    public String updatePwdById(@RequestBody Shadow shadowUpdated, @RequestParam int idUser) {
+    public String updatePwdById(@RequestBody Shadow shadowUpdated, @RequestParam int idUser) throws Exception {
         String messagePwdUpdated = "ACK-211";
-        try{
+        try {
             Shadow shadow = shadowRepository.findByUser_IdUser(idUser);
             shadow.setUserPassword(shadowUpdated.getUserPassword());
             shadowRepository.save(shadow);
             messagePwdUpdated = "ACK-210";
             return messagePwdUpdated;
-        }catch (Exception e){
+        } catch (Exception e) {
             return messagePwdUpdated + e.getMessage();
         }
 
     }
 
     //Ici, il faut coder le login
-
-
-
-
-
 
 
 }

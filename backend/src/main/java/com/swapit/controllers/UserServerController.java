@@ -19,50 +19,58 @@ public class UserServerController {
     //Create user
     @PostMapping("/createUser")
     //public String createUser(@PathVariable....
-    public String createUser(@RequestBody User userToCreate) {
-        boolean userExists = userRepository.existsByUserEmail(userToCreate);
-        String messageCreate = "ACK-101";
+    public String createUser(@RequestBody User userToCreate) throws Exception {
 
-        if (userExists) {
-            messageCreate = "ACK-102";
-        } else {
-            try{
+        String messageCreate = "ACK-101";
+        try {
+            boolean userExists = userRepository.existsByUserEmail(userToCreate);
+            if (userExists) {
+                messageCreate = "ACK-102";
+            } else {
                 userRepository.save(userToCreate);
                 messageCreate = "ACK-100";
-            } catch(Exception e){
-                return messageCreate + e.getMessage();
             }
+            return messageCreate;
+        } catch (Exception e) {
+            return messageCreate + e.getMessage();
         }
-        return messageCreate;
     }
 
     //Update user account (update)
     @PutMapping("/updateUserById")
-    public String updateUserById(@RequestBody User userUpdated, @RequestParam int idUser) {
-        boolean userExists = userRepository.existsByUserEmail(userUpdated);
+    public String updateUserById(@RequestBody User userUpdated, @RequestParam int idUser) throws Exception {
         String messageUpdate = "ACK-111";
-        if (userExists) {
-            User user = userRepository.findUserByIdUser(idUser);
-            user.setUserFirstName(userUpdated.getUserFirstName());
-            user.setUserLastName(userUpdated.getUserLastName());
-            user.setUserEmail(userUpdated.getUserEmail());
-            user.setUserPhone(userUpdated.getUserPhone());
-            userRepository.save(user);
-            messageUpdate = "ACK-110";
-            return messageUpdate;
+        try {
+            boolean userExists = userRepository.existsByUserEmail(userUpdated);
+
+            if (userExists) {
+                User user = userRepository.findUserByIdUser(idUser);
+                user.setUserFirstName(userUpdated.getUserFirstName());
+                user.setUserLastName(userUpdated.getUserLastName());
+                user.setUserEmail(userUpdated.getUserEmail());
+                user.setUserPhone(userUpdated.getUserPhone());
+                userRepository.save(user);
+                messageUpdate = "ACK-110";
+            }
+
+        } catch (Exception e) {
+            return messageUpdate + e.getMessage();
         }
         return messageUpdate;
     }
 
 
-
     //Find User by email
     @GetMapping("/getUserByEmail/{userEmail}")
-    public User getUserByEmail(@PathVariable String userEmail) {
-        return userRepository.findUserByUserEmail(userEmail);
+    public User getUserByEmail(@PathVariable String userEmail) throws Exception {
+        try {
+            return userRepository.findUserByUserEmail(userEmail);
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
-
-
 
 
 }
