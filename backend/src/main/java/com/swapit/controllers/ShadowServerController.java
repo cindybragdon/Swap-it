@@ -33,7 +33,7 @@ public class ShadowServerController {
             return messagePigeCreate + e.getMessage();
         }
     }
-
+    //Allo
     //Update Password
     @PutMapping("/updatePwdById")
     public String updatePwdById(@RequestBody Shadow shadowUpdated, @RequestParam int idUser) throws Exception {

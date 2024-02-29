@@ -30,7 +30,7 @@ public class UserPigeServerController {
         }
 
     }
-
+    //Allo
     @GetMapping("/getInfoUserPigeByIdUserAndIdPige")
     public UserPige getInfoUserPigeByIdUserAndIdPige(int idUser, int idPige) throws Exception {
         try {

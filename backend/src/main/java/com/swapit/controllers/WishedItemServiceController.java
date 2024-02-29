@@ -16,7 +16,7 @@ public class WishedItemServiceController {
 
     @Autowired
     private WishedItemRepository wishedItemRepository;
-
+    //Allo
     @GetMapping("/getOneItem/{idWishedItem}")
     public WishedItem getOneWishedItem(@PathVariable int idWishedItem) throws Exception {
         try {
