@@ -42,3 +42,25 @@ ACK-301 : Pige Not Created
 UPDATED PIGE
 ACK-310 : Pige Updated
 ACK-311 : Pige Not Updated
+
+DELETE PIGE
+ACK-320 : Pige Deleted
+ACK-321 : Pige Not Deleted
+ACK-322 : Pige Do Not Exists
+
+
+
+
+===> WishedItemServerController <=== :
+NEW ITEM
+ACK-900 : Item Created
+ACK-901 : Item Not Created
+
+UPDATED ITEM
+ACK-910 : Item Updated
+ACK-911 : Item Not Updated
+
+DELETED ITEM
+ACK-920 : Item Deleted
+ACK-921 : Item Not Deleted
+ACK-922 : Item Does Not Exists

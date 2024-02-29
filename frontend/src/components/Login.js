@@ -30,14 +30,12 @@ const Login = () => {
         reset();
     }
 
-    //useState Bug
-
 
     //Manque a envoyé les données avec Axios, ne fonctionne pas.
 
     const loginUser = async () => {
         try{
-            const response = await http.get(`/getUserByEmail?email=${email}&userPassword=${password}`);
+            const response = await http.get(`/getUserByEmail?email=${email}&password=${password}`);
             setServerResponse(response.data);
             console.log(response)
         } catch (error) {

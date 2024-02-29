@@ -55,9 +55,18 @@ public class PigeServerController {
             return messagePigeUpdated + e.getMessage();
         }
     }
-    @GetMapping("/getDataOnePigeById")
-    public Pige getDataOnePigeById(int idPige){
-        return pigeRepository.findPigeByIdPige(idPige);
+
+    @DeleteMapping("{idPide}")
+    public String deletePige(@PathVariable int idPige) {
+        String messageDeletePige = "ACK-321";
+        boolean pigeExists = pigeRepository.existsById(idPige);
+        if (pigeExists) {
+            pigeRepository.delete(idPige);
+            messageDeletePige = "ACK-320";
+        }else {
+            return messageDeletePige = "ACK-322";
+        }
+        return messageDeletePige;
     }
 
 

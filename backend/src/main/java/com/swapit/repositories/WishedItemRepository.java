@@ -8,8 +8,12 @@ import java.util.List;
 
 public interface WishedItemRepository extends JpaRepository<WishedItem, Integer> {
 
-    //Montre tout les éléments d'un UserPige spécifique (donc la liste d'un UserPige)
     public List<WishedItem> findAllByIdUserPige(UserPige userPige);
 
     public WishedItem findByIdUserPigeAndIdWishedItem(UserPige userPige, WishedItem wishedItem);
+
+    public WishedItem findByIdWishedItem(Integer idWishedItem);
+
+    public void delete(int idWishedItem);
+
 }
