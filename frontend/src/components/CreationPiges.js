@@ -53,7 +53,7 @@ const CreationPiges = () => {
             setPigeType('');
             setPigeAmount(0);
             setPigeEndDate('');
-            alert('Pige créée');
+            alert('Pige créée' + pigeEndDate);
         }
     }
 

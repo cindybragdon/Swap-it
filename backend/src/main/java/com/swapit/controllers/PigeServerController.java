@@ -30,6 +30,7 @@ public class PigeServerController {
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String currentDateTime = dateFormat.format(date);
+        //System.out.println(pigeToCreate.getPigeEndDate());
         try {
             pigeToCreate.setPigeTimestampCreation(Timestamp.valueOf(currentDateTime));
             pigeRepository.save(pigeToCreate);
