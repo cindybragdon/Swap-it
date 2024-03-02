@@ -8,6 +8,7 @@ import lombok.Data;
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 @Data
@@ -29,6 +30,6 @@ public class Pige implements Serializable {
     private byte[] qrCodeImage;
     private String pigeState;
 
-    @OneToOne
+    @ManyToOne
     private User userAdmin;
 }
