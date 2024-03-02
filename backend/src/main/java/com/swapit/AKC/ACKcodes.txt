@@ -13,6 +13,7 @@ TotoServerController : 6XX
 UserPigeServerController : 7XX
 UserPigeWithUserPickedServerController : 8XX
 WishedItemServerController : 9XX
+ConjointServerController : 0XX
 
 ===> UserServerController <=== :
 CREATE USER
@@ -48,7 +49,10 @@ ACK-320 : Pige Deleted
 ACK-321 : Pige Not Deleted
 ACK-322 : Pige Do Not Exists
 
-
+===> InvitationServerController <=== :
+NEW INVITATION
+ACK-400 : Invitation Created
+ACK-401 : Invitation Not Created
 
 
 ===> WishedItemServerController <=== :
@@ -64,3 +68,17 @@ DELETED ITEM
 ACK-920 : Item Deleted
 ACK-921 : Item Not Deleted
 ACK-922 : Item Does Not Exists
+
+===> ConjointServerController <=== :
+NEW CONJOINT
+ACK-000 : Conjoint Created
+ACK-001 : Conjoint Not Created
+
+UPDATED CONJOINT
+ACK-010 : Conjoint Updated
+ACK-011 : Conjoint Not Updated
+
+DELETED CONJOINT
+ACK-020 : Conjoint Deleted
+ACK-021 : Conjoint Not Deleted
+ACK-022 : Conjoint Does Not Exists

@@ -6,8 +6,9 @@ import lombok.Data;
 
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Data
@@ -22,7 +23,7 @@ public class Pige implements Serializable {
     private String pigeDescription;
     private String pigeUrl;
     private Timestamp pigeTimestampCreation;
-    private Date pigeEndDate;
+    private LocalDate pigeEndDate;
     private int pigeSuggestedMoneyAmount;
     private byte[] pigeImage;
     private String qrCodeUrl;

@@ -26,11 +26,12 @@ public class PigeServerController {
     //Create new Pige
     @PostMapping("/createPige")
     public String createPige(@RequestBody Pige pigeToCreate) {
+        System.out.println(pigeToCreate.getPigeEndDate());
         String messagePigeCreate = "ACK-301";
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String currentDateTime = dateFormat.format(date);
-        //System.out.println(pigeToCreate.getPigeEndDate());
+
         try {
             pigeToCreate.setPigeTimestampCreation(Timestamp.valueOf(currentDateTime));
             pigeRepository.save(pigeToCreate);

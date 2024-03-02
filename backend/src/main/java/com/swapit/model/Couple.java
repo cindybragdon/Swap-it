@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Conjoint {
+public class Couple {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idConjoint;

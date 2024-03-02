@@ -59,7 +59,7 @@ const CreationPiges = () => {
 
 
     const onSubmit = (data) => {
-
+        console.log(pigeEndDate)
         pigesPost();
         console.log(data);
         reset();
