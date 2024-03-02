@@ -8,5 +8,5 @@ public interface InvitationsRepository extends JpaRepository<Invitations, Intege
     //exemple :
     public void findByIdInvitation(int idInvitation);
 
-    public Integer findByIdPige(int idpige);
+    public int findByPige_IdPige(int idpige);
 }

@@ -69,14 +69,14 @@ ACK-920 : Item Deleted
 ACK-921 : Item Not Deleted
 ACK-922 : Item Does Not Exists
 
-===> ConjointServerController <=== :
-NEW CONJOINT
-ACK-000 : Conjoint Created
-ACK-001 : Conjoint Not Created
+===> CoupleServerController <=== :
+NEW COUPLE
+ACK-000 : Couple Created
+ACK-001 : Couple  Not Created
 
 UPDATED CONJOINT
-ACK-010 : Conjoint Updated
-ACK-011 : Conjoint Not Updated
+ACK-010 : Couple  Updated
+ACK-011 : Couple  Not Updated
 
 DELETED CONJOINT
 ACK-020 : Conjoint Deleted

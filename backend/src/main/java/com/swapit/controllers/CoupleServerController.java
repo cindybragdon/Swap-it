@@ -18,8 +18,8 @@ public class CoupleServerController {
     private CoupleRepository coupleRepository;
 
 
-    @PostMapping("/createConjointByUser")
-    public String createConjointByUser(@RequestBody UserPige firstUserPigeConjoint, @RequestBody UserPige secondUserPigeConjoint ) throws Exception {
+    @PostMapping("/createCoupleByUser")
+    public String createCoupleByUser(@RequestBody UserPige firstUserPigeConjoint, @RequestBody UserPige secondUserPigeConjoint ) throws Exception {
         String messageCreate = "ACK-001";
         Couple newConjoint1 = new Couple();
         newConjoint1.setFirstConjoint(firstUserPigeConjoint);
@@ -35,6 +35,20 @@ public class CoupleServerController {
         }
     }
 
+    @PutMapping("/updateCoupleByUser")
+    public String updateCoupleByUser (@RequestBody UserPige firstUserPigeConjoint, @RequestBody UserPige secondUserPigeConjoint, @RequestParam int idCouple, @RequestBody Couple coupleUpdated ) throws Exception {
+        String messageUpdate = "ACK-011";
+        try{
+        Couple couple = coupleRepository.findByIdCouple(idCouple);
+        couple.setFirstConjoint(coupleUpdated.getFirstConjoint());
+        couple.setSecondConjoint(coupleUpdated.getSecondConjoint());
+        coupleRepository.save(couple);
+        messageUpdate = "ACK-010";
+        return messageUpdate;
+        } catch (Exception e){
+            return messageUpdate + e.getMessage();
+        }
+    }
 
 
 
