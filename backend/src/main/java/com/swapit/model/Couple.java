@@ -8,7 +8,7 @@ import lombok.Data;
 public class Couple {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idConjoint;
+    private int idCouple;
 
     @OneToOne
     private UserPige firstConjoint;

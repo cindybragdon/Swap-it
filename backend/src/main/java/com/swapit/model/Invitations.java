@@ -14,7 +14,7 @@ public class Invitations implements Serializable {
     private int idInvitation;
     
     @ManyToOne
-    private Pige idPige;
+    private Pige pige;
 
     private String emailWantedUser;
 }

@@ -23,19 +23,38 @@ public class PigeServerController {
     private PigeRepository pigeRepository;
 
 
-    //Create new Pige
+    //Create new Pige (Verified and tested)
     @PostMapping("/createPige")
     public String createPige(@RequestBody Pige pigeToCreate) {
-        System.out.println(pigeToCreate.getPigeEndDate());
         String messagePigeCreate = "ACK-301";
-        Date date = new Date();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String currentDateTime = dateFormat.format(date);
 
         try {
-            pigeToCreate.setPigeTimestampCreation(Timestamp.valueOf(currentDateTime));
-            pigeRepository.save(pigeToCreate);
-            return messagePigeCreate = "ACK-300";
+            if ((pigeToCreate.getPigeName() != null)
+                    && (pigeToCreate.getPigeType() != null)
+                    && (pigeToCreate.getPigeState() != null)
+                    && (pigeToCreate.getPigeUrl() != null)
+                    && (pigeToCreate.getPigeEndDate() != null)
+                    && (pigeToCreate.getPigeType().equals("THEMED")
+                        || pigeToCreate.getPigeType().equals("TARGETED")
+                        || pigeToCreate.getPigeType().equals("NORMAL")
+                        || pigeToCreate.getPigeType().equals("GIFTLIST"))
+                    && (pigeToCreate.getPigeState().equals("CREATED")
+                        || pigeToCreate.getPigeState().equals("AVIS LANCEE")
+                        || pigeToCreate.getPigeState().equals("STARTED")
+                        || pigeToCreate.getPigeState().equals("ENDED")
+                    )) {
+
+
+                Date date = new Date();
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                String currentDateTime = dateFormat.format(date);
+                pigeToCreate.setPigeTimestampCreation(Timestamp.valueOf(currentDateTime));
+
+                pigeRepository.save(pigeToCreate);
+                messagePigeCreate = "ACK-300";
+            }
+
+            return messagePigeCreate;
         } catch (Exception e) {
             return messagePigeCreate + e.getMessage();
         }
@@ -49,17 +68,25 @@ public class PigeServerController {
     public String updatePige(@RequestBody Pige pigeUpdated, @RequestParam int idPige) {
         String messagePigeUpdated = "ACK-311";
         try {
+            if (pigeUpdated.getPigeName() != null
+            && pigeUpdated.getPigeType() != null
+            && pigeUpdated.getPigeEndDate() != null
+            && (pigeUpdated.getPigeType().equals("THEMED")
+            || pigeUpdated.getPigeType().equals("TARGETED")
+            || pigeUpdated.getPigeType().equals("NORMAL")
+            || pigeUpdated.getPigeType().equals("GIFTLIST"))) {
 
-            Pige pige = pigeRepository.findPigeByIdPige(idPige);
-            pige.setPigeName(pigeUpdated.getPigeName());
-            pige.setPigeType(pigeUpdated.getPigeType());
-            pige.setPigeDescription(pigeUpdated.getPigeDescription());
-            pige.setPigeEndDate(pigeUpdated.getPigeEndDate());
-            pige.setPigeSuggestedMoneyAmount(pigeUpdated.getPigeSuggestedMoneyAmount());
-            pige.setPigeImage(pigeUpdated.getPigeImage());
-            pige.setUserAdmin(pigeUpdated.getUserAdmin());
-            pigeRepository.save(pige);
-            messagePigeUpdated = "ACK-310";
+                Pige pige = pigeRepository.findPigeByIdPige(idPige);
+                pige.setPigeName(pigeUpdated.getPigeName());
+                pige.setPigeType(pigeUpdated.getPigeType());
+                pige.setPigeDescription(pigeUpdated.getPigeDescription());
+                pige.setPigeEndDate(pigeUpdated.getPigeEndDate());
+                pige.setPigeSuggestedMoneyAmount(pigeUpdated.getPigeSuggestedMoneyAmount());
+                pige.setPigeImage(pigeUpdated.getPigeImage());
+                pige.setUserAdmin(pigeUpdated.getUserAdmin());
+                pigeRepository.save(pige);
+                messagePigeUpdated = "ACK-310";
+            }
             return messagePigeUpdated;
         } catch (Exception e) {
             return messagePigeUpdated + e.getMessage();
