@@ -26,6 +26,7 @@ UPDATE USER
 ACK-110 : User Updated
 ACK-111 : User Not Updated
 
+
 ===> ShadowServerController <=== :
 NEW USER PASSWORD
 ACK-200 : Password Inserted
@@ -34,6 +35,7 @@ ACK-201 : Password Not Inserted
 UPDATE PASSWORD
 ACK-210 : Password Updated
 ACK-211 : Password Not Updated
+
 
 ===> PigeServerController <=== :
 NEW PIGE
@@ -49,10 +51,63 @@ ACK-320 : Pige Deleted
 ACK-321 : Pige Not Deleted
 ACK-322 : Pige Do Not Exists
 
+
 ===> InvitationServerController <=== :
 NEW INVITATION
 ACK-400 : Invitation Created
 ACK-401 : Invitation Not Created
+
+
+===> ShadowTotoServerController <=== :
+NEW SHADOWTOTO
+ACK-500 : Toto Created
+ACK-501 : Toto Not Created
+
+UPDATE SHADOWTOTO
+ACK-510 : Toto Updated
+ACK-511 : Toto Not Updated
+
+DELETE SHADOWTOTO
+ACK-520 : Toto Created
+ACK-521 : Toto Not Created
+
+
+===> TotoServerController <=== :
+NEW TOTO
+ACK-600 : Toto Created
+ACK-601 : Toto Not Created
+
+UPDATE TOTO
+ACK-610 : Toto Updated
+ACK-611 : Toto Not Updated
+
+DELETE TOTO
+ACK-620 : Toto Created
+ACK-621 : Toto Not Created
+
+
+===> UserPigeServerController <=== :
+CREATE USERPIGE
+ACK-700 : UserPige Created
+ACK-701 : UserPige Not Created
+ACK-702 : UserPige Already Exists, Please Login Using The Same Credentials
+ACK-303 : UserPige Do Not Exists
+
+UPDATE USERPIGE
+ACK-710 : UserPige Updated
+ACK-711 : UserPige Not Updated
+
+
+===> UserPigeWithUserPickedServerController <=== :
+CREATE USERPIGEWHITUSERPICKED
+ACK-800 : UserPige Created
+ACK-801 : UserPige Not Created
+ACK-802 : UserPige Already Exists, Please Login Using The Same Credentials
+ACK-803 : UserPige Do Not Exists
+
+UPDATE USERPIGEWHITUSERPICKED
+ACK-810 : UserPige Updated
+ACK-811 : UserPige Not Updated
 
 
 ===> WishedItemServerController <=== :
@@ -69,16 +124,17 @@ ACK-920 : Item Deleted
 ACK-921 : Item Not Deleted
 ACK-922 : Item Does Not Exists
 
+
 ===> CoupleServerController <=== :
 NEW COUPLE
 ACK-000 : Couple Created
 ACK-001 : Couple  Not Created
 
-UPDATED CONJOINT
+UPDATED COUPLE
 ACK-010 : Couple  Updated
 ACK-011 : Couple  Not Updated
 
-DELETED CONJOINT
+DELETED COUPLE
 ACK-020 : Conjoint Deleted
 ACK-021 : Conjoint Not Deleted
 ACK-022 : Conjoint Does Not Exists
