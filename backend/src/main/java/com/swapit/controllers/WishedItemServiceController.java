@@ -29,7 +29,7 @@ public class WishedItemServiceController {
 
     //Create a wished item in a list
     @PostMapping("/createWishedItem")
-    public String createWishedItem(@RequestBody WishedItem wishedItemToCreate, @RequestParam int idUserPige) throws Exception {
+    public String createWishedItem(@RequestBody WishedItem wishedItemToCreate) throws Exception {
         String messageWishItemCreated = "ACK-901";
         try {
             wishedItemRepository.save(wishedItemToCreate);
@@ -41,7 +41,7 @@ public class WishedItemServiceController {
     }
 
     @PutMapping("/updateWishedItem")
-    public String updateWishedItem(@RequestBody WishedItem wishedItemToUpdate, @RequestParam int idUserPige, int idWishedItem) throws Exception {
+    public String updateWishedItem(@RequestBody WishedItem wishedItemToUpdate, @RequestParam int idWishedItem) throws Exception {
         String messageWishedItemUpdated = "ACK-911";
         try {
             boolean wishedItemExists = wishedItemRepository.existsById(idWishedItem);

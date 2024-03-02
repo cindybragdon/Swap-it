@@ -24,14 +24,14 @@ public class InvitationServerController {
 
     //Creates an invitation to be sended by email
     @PostMapping("/createInvitation")
-    public String createInvitation( @RequestParam int idPige, @RequestBody String emailWantedUser, @RequestParam String pigeUrl) throws Exception{
+    public String createInvitation(@RequestBody Invitations invitationsToCreate) throws Exception{
         String messageInvitation = "ACK-401";
         try{
-            Invitations invitation = new Invitations();
-            invitation.setEmailWantedUser(emailWantedUser);
-            invitation.setPige(pigeRepository.findPigeByIdPige(idPige));
-            invitationsRepository.save(invitation);
-            messageInvitation = "ACK-400";
+            if (invitationsToCreate.getPige() != null
+            && invitationsToCreate.getEmailWantedUser() != null) {
+                invitationsRepository.save(invitationsToCreate);
+                messageInvitation = "ACK-400";
+            }
         }catch (Exception e){
             return messageInvitation + e.getMessage();
         }

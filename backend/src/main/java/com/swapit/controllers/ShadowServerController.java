@@ -27,8 +27,12 @@ public class ShadowServerController {
     public String createShadow(@RequestBody Shadow shadowToCreate) throws Exception {
         String messagePigeCreate = "ACK-301";
         try {
-            shadowRepository.save(shadowToCreate);
-            return messagePigeCreate = "ACK-300";
+            if (shadowToCreate.getUserPassword() != null
+            && shadowToCreate.getUser() != null) {
+                shadowRepository.save(shadowToCreate);
+                messagePigeCreate = "ACK-300";
+            }
+            return messagePigeCreate;
         } catch (Exception e) {
             return messagePigeCreate + e.getMessage();
         }
@@ -39,10 +43,12 @@ public class ShadowServerController {
     public String updatePwdById(@RequestBody Shadow shadowUpdated, @RequestParam int idUser) throws Exception {
         String messagePwdUpdated = "ACK-211";
         try {
-            Shadow shadow = shadowRepository.findByUser_IdUser(idUser);
-            shadow.setUserPassword(shadowUpdated.getUserPassword());
-            shadowRepository.save(shadow);
-            messagePwdUpdated = "ACK-210";
+            if (shadowUpdated.getUserPassword() != null && shadowUpdated.getUser() != null) {
+                Shadow shadow = shadowRepository.findByUser_IdUser(idUser);
+                shadow.setUserPassword(shadowUpdated.getUserPassword());
+                shadowRepository.save(shadow);
+                messagePwdUpdated = "ACK-210";
+            }
             return messagePwdUpdated;
         } catch (Exception e) {
             return messagePwdUpdated + e.getMessage();
