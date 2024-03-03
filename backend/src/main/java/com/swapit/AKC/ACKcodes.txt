@@ -76,6 +76,7 @@ ACK-521 : Toto Not Created
 NEW TOTO
 ACK-600 : Toto Created
 ACK-601 : Toto Not Created
+ACK-602 : Toto Already Exists
 
 UPDATE TOTO
 ACK-610 : Toto Updated

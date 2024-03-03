@@ -1,9 +1,6 @@
 package com.swapit.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -18,4 +15,7 @@ public class Toto implements Serializable {
 
     private String totoUsername;
     private String totoEmail;
+
+    @OneToOne
+    private Toto toto;
 }

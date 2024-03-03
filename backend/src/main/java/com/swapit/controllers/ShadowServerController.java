@@ -25,16 +25,16 @@ public class ShadowServerController {
 
     @PostMapping("/createShadow")
     public String createShadow(@RequestBody Shadow shadowToCreate) throws Exception {
-        String messagePigeCreate = "ACK-301";
+        String messagePwdCreate = "ACK-301";
         try {
             if (shadowToCreate.getUserPassword() != null
             && shadowToCreate.getUser() != null) {
                 shadowRepository.save(shadowToCreate);
-                messagePigeCreate = "ACK-300";
+                messagePwdCreate = "ACK-300";
             }
-            return messagePigeCreate;
+            return messagePwdCreate;
         } catch (Exception e) {
-            return messagePigeCreate + e.getMessage();
+            return messagePwdCreate + e.getMessage();
         }
     }
 
