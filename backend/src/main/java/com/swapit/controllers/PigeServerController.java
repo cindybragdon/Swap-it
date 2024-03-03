@@ -74,7 +74,12 @@ public class PigeServerController {
             && (pigeUpdated.getPigeType().equals("THEMED")
             || pigeUpdated.getPigeType().equals("TARGETED")
             || pigeUpdated.getPigeType().equals("NORMAL")
-            || pigeUpdated.getPigeType().equals("GIFTLIST"))) {
+            || pigeUpdated.getPigeType().equals("GIFTLIST")
+            )&& (pigeUpdated.getPigeState().equals("CREATED")
+                    || pigeUpdated.getPigeState().equals("AVIS LANCEE")
+                    || pigeUpdated.getPigeState().equals("STARTED")
+                    || pigeUpdated.getPigeState().equals("ENDED")
+            )) {
 
                 Pige pige = pigeRepository.findPigeByIdPige(idPige);
                 pige.setPigeName(pigeUpdated.getPigeName());

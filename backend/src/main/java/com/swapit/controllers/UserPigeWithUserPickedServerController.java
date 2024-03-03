@@ -19,8 +19,11 @@ public class UserPigeWithUserPickedServerController {
     public String createInvitation(@RequestBody UserPigeWithUserPicked userPigeWithUserPickedToCreate) throws Exception{
         String messageCreate = "ACK-101";
         try {
-            userPigeWithUserPickedRepository.save(userPigeWithUserPickedToCreate);
-            messageCreate = "ACK-100";
+            if (userPigeWithUserPickedToCreate.getUserPigeWhoPickedTheOtherUserPige() != null
+            && userPigeWithUserPickedToCreate.getUserPigeWhoIsPickedByTheUserPige() != null) {
+                userPigeWithUserPickedRepository.save(userPigeWithUserPickedToCreate);
+                messageCreate = "ACK-100";
+            }
             return messageCreate;
         } catch (Exception e) {
             return messageCreate + e.getMessage();
