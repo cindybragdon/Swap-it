@@ -1,12 +1,16 @@
 import React, {useState} from 'react';
 import {useForm} from 'react-hook-form';
+import {useNavigate} from "react-router-dom";
 import http from "../http/http";
+
 
 //Problème de CSS
 
 const CreationPiges = () => {
 
-    const {register, handleSubmit, formState: {errors}, reset} = useForm();
+    const {handleSubmit, reset} = useForm();
+
+    const navigate = useNavigate();
 
     //Ajout useState, pas terminé
     //UPDATE : useState terminé
@@ -16,10 +20,11 @@ const CreationPiges = () => {
     const [pigeEndDate, setPigeEndDate] = useState('');
     const [pigeType, setPigeType] = useState('');
 
-    const [serverResponse, setServerResponse] = useState(null); // [0] = email, [1] = password, [2] = serverResponse
+   // const [serverResponse, setServerResponse] = useState(null); // [0] = email, [1] = password, [2] = serverResponse
 
 
     //Problème avec le id de la pige, pour le moment on  doit le set nous même, mais normalement on veut qu'il s'incrémente automatiquement
+    //UPDATE: Le problème du id est pas régler. On doit le set nous même pour le moment
     const formsPige = {
         idPige: 3,
         pigeName: nomPige,
@@ -40,8 +45,8 @@ const CreationPiges = () => {
             const response = await http.post(`/createPige`, formsPige)
                 .then(response => {
                     console.log(response.data);
-                    if (response){
-                        setServerResponse(response.data);
+                    if (response.statusText === "ACK-301") {
+                        throw new Error("Erreur lors de la création de la pige");
                     }
                 })
 
@@ -53,14 +58,14 @@ const CreationPiges = () => {
             setPigeType('');
             setPigeAmount(0);
             setPigeEndDate('');
-            alert('Pige créée' + pigeEndDate);
+            alert('Pige créée' + pigeEndDate + "" + pigeAmount);
+            navigate('/piges')
         }
     }
 
 
     const onSubmit = (data) => {
-        console.log(pigeEndDate)
-        pigesPost();
+        pigesPost().then(r => console.log(r));
         console.log(data);
         reset();
     }
@@ -68,7 +73,7 @@ const CreationPiges = () => {
     return (
 
         <div className="hero oui">
-            <form className='container' onSubmit={handleSubmit(onSubmit)}>
+            <form className='container' method="post" onSubmit={handleSubmit(onSubmit)}>
                 <h1 className="texte-title">Salut</h1>
                 <br/><br/>
                 <div className="mb-3">
@@ -89,7 +94,7 @@ const CreationPiges = () => {
                         <label className="form-check-label">Normal</label>
                     </div>
                     <div className="form-check">
-                        <input className="form-check-input" name="pigeType" type="radio" value={pigeType} onChange={e => setPigeType("Thématique")} id="condition2"/>
+                        <input className="form-check-input" name="pigeType" type="radio" value={pigeType} onChange={e => setPigeType("THEMED")} id="condition2"/>
                         <label className="form-check-label">Thématique</label>
                     </div>
                     <div className="form-check">
@@ -100,7 +105,7 @@ const CreationPiges = () => {
 
                 <div className="mb-3">
                     <label className="form-label">Montant de la pige</label>
-                    <input type="number" min="0" value={pigeAmount} onChange={e => setPigeAmount(Number(e.target.value))} className="form-control" placeholder="Montant de la pige"/>
+                    <input type="number" min="0" value={pigeAmount !== 0 ? pigeAmount : ''} onChange={e => setPigeAmount(Number(e.target.value))} className="form-control" placeholder="Montant de la pige"/>
                 </div>
 
                 <div className="mb-3">
@@ -115,22 +120,3 @@ const CreationPiges = () => {
 }
 
 export default CreationPiges
-
-
-/**
- * <div className="mb-3">
- *                     <label className="form-label">Conditions de pige</label>
- *                     <div className="form-check">
- *                         <input className="form-check-input" type="checkbox" value="" id="condition1"/>
- *                         <label className="form-check-label">Guess who</label>
- *                     </div>
- *                     <div className="form-check">
- *                         <input className="form-check-input" type="checkbox" value="" id="condition2"/>
- *                         <label className="form-check-label">Voleur de cadeaux</label>
- *                     </div>
- *                     <div className="form-check">
- *                         <input className="form-check-input" type="checkbox" value="" id="condition3"/>
- *                         <label className="form-check-label">Réattribution en cas de départ</label>
- *                     </div>
- *                 </div>
- */

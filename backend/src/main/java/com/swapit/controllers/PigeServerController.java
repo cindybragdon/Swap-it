@@ -24,6 +24,8 @@ public class PigeServerController {
 
 
     //Create new Pige (Verified and tested)
+
+    //Revoir ici avec Olivier, car doit changer des trucs, sinon front end bug.
     @PostMapping("/createPige")
     public String createPige(@RequestBody Pige pigeToCreate) {
         String messagePigeCreate = "ACK-301";
@@ -32,7 +34,7 @@ public class PigeServerController {
             if ((pigeToCreate.getPigeName() != null)
                     && (pigeToCreate.getPigeType() != null)
                     && (pigeToCreate.getPigeState() != null)
-                    && (pigeToCreate.getPigeUrl() != null)
+                    //&& (pigeToCreate.getPigeUrl() != null)
                     && (pigeToCreate.getPigeEndDate() != null)
                     && (pigeToCreate.getPigeType().equals("THEMED")
                         || pigeToCreate.getPigeType().equals("TARGETED")
