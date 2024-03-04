@@ -17,8 +17,8 @@ public class UserPigeServerController {
     private UserPigeRepository userPigeRepository;
 
     //Get all the piges from one user
-    @GetMapping("/getListUserPigeFromIdUser")
-    public List<UserPige> getListUserPigeFromIdUser(@RequestParam int idUser) throws Exception {
+    @GetMapping("/getListUserPigeFromIdUser/{idUser}")
+    public List<UserPige> getListUserPigeFromIdUser(@PathVariable int idUser) throws Exception {
         try {
             return userPigeRepository.findAllByUser_IdUser(idUser);
         } catch (Exception e) {

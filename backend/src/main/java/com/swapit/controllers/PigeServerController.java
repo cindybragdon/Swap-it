@@ -26,6 +26,7 @@ public class PigeServerController {
     //Create new Pige (Verified and tested)
 
     //Revoir ici avec Olivier, car doit changer des trucs, sinon front end bug.
+    //Faut mettre le userAdminId, mais cela ne fonctionne pas.
     @PostMapping("/createPige")
     public String createPige(@RequestBody Pige pigeToCreate) {
         String messagePigeCreate = "ACK-301";
@@ -51,7 +52,6 @@ public class PigeServerController {
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 String currentDateTime = dateFormat.format(date);
                 pigeToCreate.setPigeTimestampCreation(Timestamp.valueOf(currentDateTime));
-
                 pigeRepository.save(pigeToCreate);
                 messagePigeCreate = "ACK-300";
             }

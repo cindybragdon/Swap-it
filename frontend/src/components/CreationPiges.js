@@ -20,25 +20,22 @@ const CreationPiges = () => {
     const [pigeEndDate, setPigeEndDate] = useState('');
     const [pigeType, setPigeType] = useState('');
 
+
+
    // const [serverResponse, setServerResponse] = useState(null); // [0] = email, [1] = password, [2] = serverResponse
 
 
     //Problème avec le id de la pige, pour le moment on  doit le set nous même, mais normalement on veut qu'il s'incrémente automatiquement
     //UPDATE: Le problème du id est pas régler. On doit le set nous même pour le moment
     const formsPige = {
-        idPige: 3,
         pigeName: nomPige,
         pigeType: pigeType,
         pigeDescription: pigeDescription,
         pigeAmount: pigeAmount,
         pigeEndDate: pigeEndDate,
-        pigeState: "CREATED"
+        pigeState: "CREATED",
+        userAdminIdUser : 1
     }
-
-
-
-
-
 
     const pigesPost = async () => {
         try {
@@ -49,7 +46,6 @@ const CreationPiges = () => {
                         throw new Error("Erreur lors de la création de la pige");
                     }
                 })
-
         } catch (error) {
             console.error(error);
         } finally {
@@ -58,7 +54,7 @@ const CreationPiges = () => {
             setPigeType('');
             setPigeAmount(0);
             setPigeEndDate('');
-            alert('Pige créée' + pigeEndDate + "" + pigeAmount);
+            alert('Pige créée');
             navigate('/piges')
         }
     }
