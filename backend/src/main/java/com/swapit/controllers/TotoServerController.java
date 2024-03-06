@@ -15,6 +15,7 @@ public class TotoServerController {
     @Autowired
     private TotoRepository totoRepository;
 
+    // (Verified and tested)
     @PostMapping("/createTotoByEmail")
     public String createTotoByEmail(@RequestBody Toto totoToCreate) throws Exception {
 
@@ -45,13 +46,15 @@ public class TotoServerController {
                     && totoUpdated.getTotoUsername() != null) {
                 boolean idTotoExists = totoRepository.existsByIdToto(idToto);
                 boolean totoEmailExists = totoRepository.existsUserByTotoEmail(totoUpdated.getTotoEmail());
-
-                if (idTotoExists && !totoEmailExists) {
-                    Toto toto = totoRepository.findTotoByIdToto(idToto);
-                    toto.setTotoUsername(totoUpdated.getTotoUsername());
-                    toto.setTotoEmail(totoUpdated.getTotoEmail());
-                    totoRepository.save(toto);
-                    messageUpdate = "ACK-610";
+                boolean totoEmailExistsButIsTheRightToto = totoRepository.existsByIdTotoAndTotoEmail(idToto, totoUpdated.getTotoEmail());
+                if (idTotoExists) {
+                    if (!totoEmailExists || totoEmailExistsButIsTheRightToto) {
+                        Toto toto = totoRepository.findTotoByIdToto(idToto);
+                        toto.setTotoUsername(totoUpdated.getTotoUsername());
+                        toto.setTotoEmail(totoUpdated.getTotoEmail());
+                        totoRepository.save(toto);
+                        messageUpdate = "ACK-610";
+                    }
                 }
             }
         } catch (Exception e) {

@@ -10,6 +10,8 @@ public interface TotoRepository extends JpaRepository<Toto, Integer> {
 
     public Boolean existsByIdToto(int idToto);
 
+    public Boolean existsByIdTotoAndTotoEmail(int idToto, String totoEmail);
+
     public Toto findTotoByTotoEmail(String totoEmail);
 
     public Toto findTotoByIdToto(int idToto);

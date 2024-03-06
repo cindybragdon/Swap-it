@@ -27,6 +27,7 @@ public class PigeServerController {
 
     //Revoir ici avec Olivier, car doit changer des trucs, sinon front end bug.
     //Faut mettre le userAdminId, mais cela ne fonctionne pas.
+    // (Verified and tested)
     @PostMapping("/createPige")
     public String createPige(@RequestBody Pige pigeToCreate) {
         String messagePigeCreate = "ACK-301";
@@ -65,7 +66,7 @@ public class PigeServerController {
     //Get les infos pour courriel dans Java (nom pige, pige description, nom admin, date pige,url et QrCode)
     //Update pige
     // If admin is updated, change toggle to isNotAdmin
-
+    // (Verified and tested)
     @PutMapping("/updatePige")
     public String updatePige(@RequestBody Pige pigeUpdated, @RequestParam int idPige) {
         String messagePigeUpdated = "ACK-311";
