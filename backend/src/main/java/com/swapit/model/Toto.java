@@ -16,6 +16,4 @@ public class Toto implements Serializable {
     private String totoUsername;
     private String totoEmail;
 
-    @OneToOne
-    private Toto toto;
 }

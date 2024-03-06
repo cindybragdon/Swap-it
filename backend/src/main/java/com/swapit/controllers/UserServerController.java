@@ -49,16 +49,19 @@ public class UserServerController {
                     && userUpdated.getUserLastName() != null) {
                 boolean userIdExists = userRepository.existsUserByIdUser(idUser);
                 boolean userEmailExists = userRepository.existsUserByUserEmail(userUpdated.getUserEmail());
+                boolean userEmailExistsButIsTheRightUser = userRepository.existsUserByIdUserAndUserEmail(idUser, userUpdated.getUserEmail());
 
-                if (userIdExists && !userEmailExists) {
-                    User user = userRepository.findUserByIdUser(idUser);
-                    user.setUserFirstName(userUpdated.getUserFirstName());
-                    user.setUserLastName(userUpdated.getUserLastName());
-                    user.setUserEmail(userUpdated.getUserEmail());
-                    user.setUserPhone(userUpdated.getUserPhone());
-                    user.setUserImage(userUpdated.getUserImage());
-                    userRepository.save(user);
-                    messageUpdate = "ACK-110";
+                if (userIdExists) {
+                    if (!userEmailExists || userEmailExistsButIsTheRightUser) {
+                        User user = userRepository.findUserByIdUser(idUser);
+                        user.setUserFirstName(userUpdated.getUserFirstName());
+                        user.setUserLastName(userUpdated.getUserLastName());
+                        user.setUserEmail(userUpdated.getUserEmail());
+                        user.setUserPhone(userUpdated.getUserPhone());
+                        user.setUserImage(userUpdated.getUserImage());
+                        userRepository.save(user);
+                        messageUpdate = "ACK-110";
+                    }
                 }
             }
         } catch (Exception e) {
