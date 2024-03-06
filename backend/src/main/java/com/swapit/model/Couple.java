@@ -7,6 +7,7 @@ import java.io.Serializable;
 
 @Entity
 @Data
+@Table(name = "conjoint")
 public class Couple implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
