@@ -13,7 +13,7 @@ public class UserPige implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idUserPige;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Pige pige;
 
     @ManyToOne

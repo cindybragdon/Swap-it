@@ -1,5 +1,6 @@
 package com.swapit.controllers;
 
+import com.swapit.model.Invitations;
 import com.swapit.model.Pige;
 import com.swapit.model.UserPige;
 import com.swapit.repositories.UserPigeRepository;
@@ -16,6 +17,19 @@ public class UserPigeServerController {
     @Autowired
     private UserPigeRepository userPigeRepository;
 
+
+    @PostMapping("/createUserPige")
+    public String createUserPige(@RequestBody UserPige userPigeToCreate) throws Exception{
+        String messageInvitation = "ACK-401";
+        try{
+                userPigeRepository.save(userPigeToCreate);
+                messageInvitation = "ACK-400";
+        }catch (Exception e){
+            return messageInvitation + e.getMessage();
+        }
+        return messageInvitation;
+
+    }
     //Get all the piges from one user
     @GetMapping("/getListUserPigeFromIdUser/{idUser}")
     public List<UserPige> getListUserPigeFromIdUser(@PathVariable int idUser) throws Exception {
@@ -29,7 +43,7 @@ public class UserPigeServerController {
     }
 
     @GetMapping("/getInfoUserPigeByIdUserAndIdPige")
-    public UserPige getInfoUserPigeByIdUserAndIdPige(@RequestParam int idUser,@RequestParam int idPige) throws Exception {
+    public UserPige getInfoUserPigeByIdUserAndIdPige(int idUser, int idPige) throws Exception {
         try {
             return userPigeRepository.findByUser_IdUserAndPige_IdPige(idUser, idPige);
         } catch (Exception e) {
