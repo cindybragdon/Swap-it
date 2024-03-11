@@ -16,7 +16,7 @@ const CreationPiges = () => {
     //UPDATE : useState terminé
     const [nomPige, setNomPige] = useState('');
     const [pigeDescription, setPigeDescription] = useState('');
-    const [pigeAmount, setPigeAmount] = useState(0);
+    const [pigeAmount, setPigeAmount] = useState('');
     const [pigeEndDate, setPigeEndDate] = useState('');
     const [pigeType, setPigeType] = useState('');
 
@@ -31,7 +31,7 @@ const CreationPiges = () => {
         pigeName: nomPige,
         pigeType: pigeType,
         pigeDescription: pigeDescription,
-        pigeAmount: pigeAmount,
+        pigeSuggestedMoneyAmount: Number(pigeAmount),
         pigeEndDate: pigeEndDate,
         pigeState: "CREATED",
         userAdminIdUser : 1
@@ -52,7 +52,7 @@ const CreationPiges = () => {
             setNomPige('');
             setPigeDescription('');
             setPigeType('');
-            setPigeAmount(0);
+            setPigeAmount('');
             setPigeEndDate('');
             alert('Pige créée');
             navigate('/piges')
@@ -86,22 +86,26 @@ const CreationPiges = () => {
                 <div className="mb-3">
                     <label className="form-label">Type de pige</label>
                     <div className="form-check">
-                        <input className="form-check-input" name="pigeType" type="radio" value={pigeType} onChange={e => setPigeType("Normal")} id="condition1" required/>
-                        <label className="form-check-label">Normal</label>
+                        <input className="form-check-input" name="pigeType" type="radio" value={pigeType} onChange={e => setPigeType("NORMAL")} id="condition1" required/>
+                        <label className="form-check-label">Normal List</label>
                     </div>
                     <div className="form-check">
                         <input className="form-check-input" name="pigeType" type="radio" value={pigeType} onChange={e => setPigeType("THEMED")} id="condition2"/>
-                        <label className="form-check-label">Thématique</label>
+                        <label className="form-check-label">Theme List</label>
                     </div>
                     <div className="form-check">
-                        <input className="form-check-input" name="pigeType" type="radio" value={pigeType} onChange={e => setPigeType("Liste commune")} id="condition3"/>
-                        <label className="form-check-label">Liste commune</label>
+                        <input className="form-check-input" name="pigeType" type="radio" value={pigeType} onChange={e => setPigeType("TARGETED")} id="condition3"/>
+                        <label className="form-check-label">Target List</label>
+                    </div>
+                    <div className="form-check">
+                        <input className="form-check-input" name="pigeType" type="radio" value={pigeType} onChange={e => setPigeType("GIFTLIST")} id="condition4"/>
+                        <label className="form-check-label">Gift List</label>
                     </div>
                 </div>
 
                 <div className="mb-3">
                     <label className="form-label">Montant de la pige</label>
-                    <input type="number" min="0" value={pigeAmount !== 0 ? pigeAmount : ''} onChange={e => setPigeAmount(Number(e.target.value))} className="form-control" placeholder="Montant de la pige"/>
+                    <input type="number" min="0" value={pigeAmount} onChange={e => setPigeAmount(e.target.value)} className="form-control" placeholder="Montant de la pige"/>
                 </div>
 
                 <div className="mb-3">
@@ -115,4 +119,4 @@ const CreationPiges = () => {
     )
 }
 
-export default CreationPiges
+export default CreationPiges;
