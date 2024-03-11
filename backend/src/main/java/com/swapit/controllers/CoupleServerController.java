@@ -20,7 +20,7 @@ public class  CoupleServerController {
     private CoupleRepository coupleRepository;
 
 
-    @PostMapping("/createCoupleByUser")
+    @PostMapping("/createCouple")
     public String createCoupleByUser(@RequestBody Couple coupleToCreate) throws Exception {
         String messageCreate = "ACK-001";
         try {
@@ -36,7 +36,7 @@ public class  CoupleServerController {
         }
     }
 
-    @PutMapping("/updateCoupleByUser")
+    @PutMapping("/updateCoupleByIdCouple")
     public String updateCoupleByUser (@RequestParam int idCouple, @RequestBody Couple coupleUpdated) throws Exception {
         String messageUpdate = "ACK-011";
         try{

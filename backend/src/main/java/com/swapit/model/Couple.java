@@ -13,10 +13,10 @@ public class Couple implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idCouple;
 
-    @OneToOne
+    @ManyToOne
     private UserPige firstConjoint;
 
-    @OneToOne
+    @ManyToOne
     private UserPige secondConjoint;
 
 }

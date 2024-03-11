@@ -18,6 +18,7 @@ public class ShadowTotoServerController {
     @Autowired
     private ShadowTotoRepository shadowTotoRepository;
 
+    // (Verified and tested)
     @PostMapping("/createShadowToto")
     public String createShadowToto(@RequestBody ShadowToto shadowTotoToCreate) throws Exception {
         String messageShadowCreated = "ACK-501";
@@ -35,11 +36,11 @@ public class ShadowTotoServerController {
 
     //Update Password
     @PutMapping("/updateTotoPwdById")
-    public String updateTotoPwdById(@RequestBody ShadowToto shadowTotoUpdated, @RequestParam int idShadowToto) throws Exception {
+    public String updateTotoPwdById(@RequestBody ShadowToto shadowTotoUpdated) throws Exception {
         String messagePwdUpdated = "ACK-511";
         try {
             if (shadowTotoUpdated.getTotoPassword() != null && shadowTotoUpdated.getToto() != null) {
-                ShadowToto shadowToto = shadowTotoRepository.findByIdShadowToto((idShadowToto));
+                ShadowToto shadowToto = shadowTotoRepository.findByIdShadowToto((shadowTotoUpdated.getToto().getIdToto()));
                 shadowToto.setTotoPassword(shadowTotoUpdated.getTotoPassword());
                 shadowTotoRepository.save(shadowToto);
                 messagePwdUpdated = "ACK-510";

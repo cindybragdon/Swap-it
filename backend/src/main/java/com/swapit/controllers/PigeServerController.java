@@ -28,7 +28,8 @@ public class PigeServerController {
     //Revoir ici avec Olivier, car doit changer des trucs, sinon front end bug.
     //Faut mettre le userAdminId, mais cela ne fonctionne pas.
     // (Verified and tested)
-    @PostMapping("/createPige")
+    //@PostMapping("/createPige")
+    /*
     public String createPige(@RequestBody Pige pigeToCreate) {
         String messagePigeCreate = "ACK-301";
 
@@ -36,7 +37,6 @@ public class PigeServerController {
             if ((pigeToCreate.getPigeName() != null)
                     && (pigeToCreate.getPigeType() != null)
                     && (pigeToCreate.getPigeState() != null)
-                    //&& (pigeToCreate.getPigeUrl() != null)
                     && (pigeToCreate.getPigeEndDate() != null)
                     && (pigeToCreate.getPigeType().equals("THEMED")
                         || pigeToCreate.getPigeType().equals("TARGETED")
@@ -62,6 +62,8 @@ public class PigeServerController {
             return messagePigeCreate + e.getMessage();
         }
     }
+    */
+
 
     //Get les infos pour courriel dans Java (nom pige, pige description, nom admin, date pige,url et QrCode)
     //Update pige
@@ -71,36 +73,40 @@ public class PigeServerController {
     public String updatePige(@RequestBody Pige pigeUpdated, @RequestParam int idPige) {
         String messagePigeUpdated = "ACK-311";
         try {
-            if (pigeUpdated.getPigeName() != null
-            && pigeUpdated.getPigeType() != null
-            && pigeUpdated.getPigeEndDate() != null
-            && (pigeUpdated.getPigeType().equals("THEMED")
-            || pigeUpdated.getPigeType().equals("TARGETED")
-            || pigeUpdated.getPigeType().equals("NORMAL")
-            || pigeUpdated.getPigeType().equals("GIFTLIST")
-            )&& (pigeUpdated.getPigeState().equals("CREATED")
-                    || pigeUpdated.getPigeState().equals("AVIS LANCEE")
-                    || pigeUpdated.getPigeState().equals("STARTED")
-                    || pigeUpdated.getPigeState().equals("ENDED")
-            )) {
+            if (pigeRepository.existsById(idPige)) {
+                if (pigeUpdated.getPigeName() != null
+                        && pigeUpdated.getPigeType() != null
+                        && pigeUpdated.getPigeEndDate() != null
+                        && (pigeUpdated.getPigeType().equals("THEMED")
+                        || pigeUpdated.getPigeType().equals("TARGETED")
+                        || pigeUpdated.getPigeType().equals("NORMAL")
+                        || pigeUpdated.getPigeType().equals("GIFTLIST")
+                )&& (pigeUpdated.getPigeState().equals("CREATED")
+                        || pigeUpdated.getPigeState().equals("AVIS LANCEE")
+                        || pigeUpdated.getPigeState().equals("STARTED")
+                        || pigeUpdated.getPigeState().equals("ENDED")
+                )) {
 
-                Pige pige = pigeRepository.findPigeByIdPige(idPige);
-                pige.setPigeName(pigeUpdated.getPigeName());
-                pige.setPigeType(pigeUpdated.getPigeType());
-                pige.setPigeDescription(pigeUpdated.getPigeDescription());
-                pige.setPigeEndDate(pigeUpdated.getPigeEndDate());
-                pige.setPigeSuggestedMoneyAmount(pigeUpdated.getPigeSuggestedMoneyAmount());
-                pige.setPigeImage(pigeUpdated.getPigeImage());
-                pige.setUserAdmin(pigeUpdated.getUserAdmin());
-                pigeRepository.save(pige);
-                messagePigeUpdated = "ACK-310";
+                    Pige pige = pigeRepository.findPigeByIdPige(idPige);
+                    pige.setPigeName(pigeUpdated.getPigeName());
+                    pige.setPigeType(pigeUpdated.getPigeType());
+                    pige.setPigeDescription(pigeUpdated.getPigeDescription());
+                    pige.setPigeEndDate(pigeUpdated.getPigeEndDate());
+                    pige.setPigeSuggestedMoneyAmount(pigeUpdated.getPigeSuggestedMoneyAmount());
+                    pige.setPigeImage(pigeUpdated.getPigeImage());
+                    pige.setUserAdmin(pigeUpdated.getUserAdmin());
+                    pigeRepository.save(pige);
+                    messagePigeUpdated = "ACK-310";
+                }
             }
+
             return messagePigeUpdated;
         } catch (Exception e) {
             return messagePigeUpdated + e.getMessage();
         }
     }
 
+    /*
     @DeleteMapping("/deletePige")
     public String deletePige(@RequestParam int idPige) throws Exception {
         String messageDeletePige = "ACK-321";
@@ -118,6 +124,8 @@ public class PigeServerController {
         }
 
     }
+
+     */
 
 
 }
