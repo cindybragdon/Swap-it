@@ -20,9 +20,9 @@ public class InvitationServerController {
     @Autowired
     private InvitationsRepository invitationsRepository;
 
-    private PigeRepository pigeRepository;
 
     //Creates an invitation to be sended by email
+    // (Verified and tested)
     @PostMapping("/createInvitation")
     public String createInvitation(@RequestBody Invitations invitationsToCreate) throws Exception{
         String messageInvitation = "ACK-401";

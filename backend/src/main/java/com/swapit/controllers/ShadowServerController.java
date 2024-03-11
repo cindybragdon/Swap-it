@@ -23,6 +23,7 @@ public class ShadowServerController {
     @Autowired
     private ShadowRepository shadowRepository;
 
+    // (Verified and tested)
     @PostMapping("/createShadow")
     public String createShadow(@RequestBody Shadow shadowToCreate) throws Exception {
         String messagePwdCreate = "ACK-301";
@@ -39,12 +40,13 @@ public class ShadowServerController {
     }
 
     //Update Password
+    // (Verified and tested)
     @PutMapping("/updatePwdById")
-    public String updatePwdById(@RequestBody Shadow shadowUpdated, @RequestParam int idUser) throws Exception {
+    public String updatePwdById(@RequestBody Shadow shadowUpdated) throws Exception {
         String messagePwdUpdated = "ACK-211";
         try {
             if (shadowUpdated.getUserPassword() != null && shadowUpdated.getUser() != null) {
-                Shadow shadow = shadowRepository.findByUser_IdUser(idUser);
+                Shadow shadow = shadowRepository.findByUser_IdUser(shadowUpdated.getUser().getIdUser());
                 shadow.setUserPassword(shadowUpdated.getUserPassword());
                 shadowRepository.save(shadow);
                 messagePwdUpdated = "ACK-210";
