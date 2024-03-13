@@ -11,6 +11,7 @@ import Features from './pages/Features';
 import Piges from "./pages/Piges";
 import CreationPiges from "./components/CreationPiges";
 import MyPige from "./pages/MyPige";
+import ForgotPwd from "./pages/ForgotPwd";
 
 
 function App() {
@@ -28,6 +29,8 @@ function App() {
             <Route path='*' element={<NotFound />} />
             <Route path='/piges/creation-piges' element={<CreationPiges />} />
             <Route path='/piges/myPige' element={<MyPige />}/>
+              <Route path='/forgotPwd' element={<ForgotPwd />}/>
+
 
           </Routes>
         </div>
