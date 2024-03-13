@@ -5,7 +5,7 @@ import ImageCles from "../images/24506e66-0f0e-4633-8d9c-af3d8cacf4e9.webp"
 
 
 // Atteindre cette page au http://localhost:5555/forgotpwd
-// Atteindre cette page au http://localhost:5555/forgotpwd
+
 
 
 const ForgotPwd = () => {
