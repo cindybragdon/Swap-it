@@ -52,21 +52,17 @@ public class UserPigeServerController {
             if (userPigeToCreate.getUser() != null
                     && (userPigeToCreate.getPige().getPigeName() != null)
                     && (userPigeToCreate.getPige().getPigeType() != null)
-                    && (userPigeToCreate.getPige().getPigeState() != null)
                     && (userPigeToCreate.getPige().getPigeEndDate() != null)
                     && (userPigeToCreate.getPige().getPigeType().equals("THEMED")
                     || userPigeToCreate.getPige().getPigeType().equals("TARGETED")
                     || userPigeToCreate.getPige().getPigeType().equals("NORMAL")
-                    || userPigeToCreate.getPige().getPigeType().equals("GIFTLIST"))
-                    && (userPigeToCreate.getPige().getPigeState().equals("CREATED")
-                    || userPigeToCreate.getPige().getPigeState().equals("AVIS LANCEE")
-                    || userPigeToCreate.getPige().getPigeState().equals("STARTED")
-                    || userPigeToCreate.getPige().getPigeState().equals("ENDED")
+                    || userPigeToCreate.getPige().getPigeType().equals("GIFTLIST")
             )) {
-                userPigeToCreate.getPige().setUserAdmin(userPigeToCreate.getUser());
                 Date date = new Date();
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 String currentDateTime = dateFormat.format(date);
+                userPigeToCreate.getPige().setUserAdmin(userPigeToCreate.getUser());
+                userPigeToCreate.getPige().setPigeState("CREATED");
                 userPigeToCreate.getPige().setPigeTimestampCreation(Timestamp.valueOf(currentDateTime));
                 pigeRepository.save(userPigeToCreate.getPige());
                 userPigeRepository.save(userPigeToCreate);

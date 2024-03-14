@@ -13,8 +13,8 @@ public class WishedItem implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idWishedItem;
 
-    @OneToOne
-    private UserPige idUserPige;
+    @ManyToOne
+    private UserPige userPige;
 
     private String wishedItemName;
     private String wishedItemDescription;
