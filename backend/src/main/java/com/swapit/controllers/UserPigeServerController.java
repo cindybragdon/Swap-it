@@ -30,8 +30,10 @@ public class UserPigeServerController {
         String messageInvitation = "ACK-401";
         try{
             if (userPigeToCreate.getUser() != null && userPigeToCreate.getPige() != null) {
-                userPigeRepository.save(userPigeToCreate);
-                messageInvitation = "ACK-400";
+                if (!userPigeRepository.existsUserPigeByUser_IdUserAndPige_IdPige(userPigeToCreate.getUser().getIdUser(), userPigeToCreate.getPige().getIdPige())) {
+                    userPigeRepository.save(userPigeToCreate);
+                    messageInvitation = "ACK-400";
+                }
             }
         }catch (Exception e){
             return messageInvitation + e.getMessage();
@@ -46,6 +48,7 @@ public class UserPigeServerController {
         String messageInvitation = "ACK-401";
 
         try{
+
             if (userPigeToCreate.getUser() != null
                     && (userPigeToCreate.getPige().getPigeName() != null)
                     && (userPigeToCreate.getPige().getPigeType() != null)
@@ -69,6 +72,7 @@ public class UserPigeServerController {
                 userPigeRepository.save(userPigeToCreate);
                 messageInvitation = "ACK-400";
             }
+
         }catch (Exception e){
             return messageInvitation + e.getMessage();
         }

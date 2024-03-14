@@ -19,4 +19,6 @@ public interface UserPigeRepository extends JpaRepository<UserPige, Integer> {
 
     public boolean existsUserPigeByUser_IdUserAndPige_IdPige(int idUser, int idPige);
 
+    public UserPige findByIdUserPige(int idUserPige);
+
 }
