@@ -30,8 +30,10 @@ public class UserPigeServerController {
         String messageInvitation = "ACK-401";
         try{
             if (userPigeToCreate.getUser() != null && userPigeToCreate.getPige() != null) {
-                userPigeRepository.save(userPigeToCreate);
-                messageInvitation = "ACK-400";
+                if (!userPigeRepository.existsUserPigeByUser_IdUserAndPige_IdPige(userPigeToCreate.getUser().getIdUser(), userPigeToCreate.getPige().getIdPige())) {
+                    userPigeRepository.save(userPigeToCreate);
+                    messageInvitation = "ACK-400";
+                }
             }
         }catch (Exception e){
             return messageInvitation + e.getMessage();
@@ -46,29 +48,27 @@ public class UserPigeServerController {
         String messageInvitation = "ACK-401";
 
         try{
+
             if (userPigeToCreate.getUser() != null
                     && (userPigeToCreate.getPige().getPigeName() != null)
                     && (userPigeToCreate.getPige().getPigeType() != null)
-                    && (userPigeToCreate.getPige().getPigeState() != null)
                     && (userPigeToCreate.getPige().getPigeEndDate() != null)
                     && (userPigeToCreate.getPige().getPigeType().equals("THEMED")
                     || userPigeToCreate.getPige().getPigeType().equals("TARGETED")
                     || userPigeToCreate.getPige().getPigeType().equals("NORMAL")
-                    || userPigeToCreate.getPige().getPigeType().equals("GIFTLIST"))
-                    && (userPigeToCreate.getPige().getPigeState().equals("CREATED")
-                    || userPigeToCreate.getPige().getPigeState().equals("AVIS LANCEE")
-                    || userPigeToCreate.getPige().getPigeState().equals("STARTED")
-                    || userPigeToCreate.getPige().getPigeState().equals("ENDED")
+                    || userPigeToCreate.getPige().getPigeType().equals("GIFTLIST")
             )) {
-                userPigeToCreate.getPige().setUserAdmin(userPigeToCreate.getUser());
                 Date date = new Date();
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 String currentDateTime = dateFormat.format(date);
+                userPigeToCreate.getPige().setUserAdmin(userPigeToCreate.getUser());
+                userPigeToCreate.getPige().setPigeState("CREATED");
                 userPigeToCreate.getPige().setPigeTimestampCreation(Timestamp.valueOf(currentDateTime));
                 pigeRepository.save(userPigeToCreate.getPige());
                 userPigeRepository.save(userPigeToCreate);
                 messageInvitation = "ACK-400";
             }
+
         }catch (Exception e){
             return messageInvitation + e.getMessage();
         }

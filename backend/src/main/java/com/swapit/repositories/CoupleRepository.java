@@ -16,4 +16,10 @@ public Couple findByIdCouple(Integer idCouple);
 
 public List<Couple> findCouplesByFirstConjoint_Pige_IdPige(int idPigeToFindAllCouple);
 
+
+public boolean existsByFirstConjoint(UserPige firstConjoint);
+public boolean existsBySecondConjoint(UserPige secondConjoint);
+
+
+
 }

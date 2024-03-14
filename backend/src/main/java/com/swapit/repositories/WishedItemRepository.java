@@ -8,9 +8,8 @@ import java.util.List;
 
 public interface WishedItemRepository extends JpaRepository<WishedItem, Integer> {
 
-    public List<WishedItem> findAllByIdUserPige(UserPige userPige);
+    public List<WishedItem> findAllByUserPige_IdUserPige(int idUserPige);
 
-    public WishedItem findByIdUserPigeAndIdWishedItem(UserPige userPige, WishedItem wishedItem);
 
     public WishedItem findByIdWishedItem(Integer idWishedItem);
 

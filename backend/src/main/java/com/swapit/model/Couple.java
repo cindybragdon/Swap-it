@@ -7,16 +7,15 @@ import java.io.Serializable;
 
 @Entity
 @Data
-@Table(name = "conjoint")
 public class Couple implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idCouple;
 
-    @ManyToOne
+    @OneToOne
     private UserPige firstConjoint;
 
-    @ManyToOne
+    @OneToOne
     private UserPige secondConjoint;
 
 }

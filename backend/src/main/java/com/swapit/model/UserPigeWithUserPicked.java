@@ -13,10 +13,10 @@ public class UserPigeWithUserPicked implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idUserPigeWithUserPigePicked;
 
-    @ManyToOne
+    @OneToOne
     private UserPige userPigeWhoPickedTheOtherUserPige;
 
-    @ManyToOne
+    @OneToOne
     private UserPige userPigeWhoIsPickedByTheUserPige;
 
 }
