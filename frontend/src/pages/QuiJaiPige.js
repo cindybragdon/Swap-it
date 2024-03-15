@@ -33,7 +33,8 @@ const QuiJaiPige = () => {
                         <div id="collapseTwo" className={`collapse ${openItemId === 1 ? 'show' : ''}`} aria-labelledby="headingTwo"
                              data-parent="#accordion">
                             <div className="card-body">
-                                {personnePigee}
+                                //{personnePigee}
+                                Snoop Dogg
                             </div>
                         </div>
                     </div>
