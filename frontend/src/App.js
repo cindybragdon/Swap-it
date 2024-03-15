@@ -12,6 +12,7 @@ import Piges from "./pages/Piges";
 import CreationPiges from "./components/CreationPiges";
 import MyPige from "./pages/MyPige";
 import ForgotPwd from "./pages/ForgotPwd";
+import QuiJaiPige from "./pages/QuiJaiPige";
 
 
 function App() {
@@ -30,6 +31,8 @@ function App() {
             <Route path='/piges/creation-piges' element={<CreationPiges />} />
             <Route path='/piges/myPige' element={<MyPige />}/>
               <Route path='/forgotPwd' element={<ForgotPwd />}/>
+              <Route path='/pige/picked' element={<QuiJaiPige />}/>
+
 
 
           </Routes>
