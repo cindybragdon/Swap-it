@@ -4,10 +4,8 @@ const QuiJaiPige = () => {
 
     const [openItemId, setOpenItemId] = useState(null);
 
-    // Je ne crois pas que c'est un useState qu'il faut ici.... à suivre voir ligne 38
+    // Je ne crois pas que c'est un useState qu'il faut ici.... à suivre voir ligne 36
     const [personnePigee, setPersonnePigee] = useState("");
-
-
 
 
     return (
