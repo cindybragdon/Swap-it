@@ -1,0 +1,15 @@
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.form-control.my-3 {
+    padding-right: 30px; /* Make space for the icon */
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+}
