@@ -14,6 +14,7 @@ import MyPige from "./pages/MyPige";
 import ForgotPwd from "./pages/ForgotPwd";
 import QuiJaiPige from "./pages/QuiJaiPige";
 import CreateAccount from "./pages/CreateAccount";
+import UpdateAccount from "./pages/UpdateAccount";
 
 
 function App() {
@@ -34,6 +35,8 @@ function App() {
                     <Route path='/forgotPwd' element={<ForgotPwd/>}/>
                     <Route path='/pige/picked' element={<QuiJaiPige/>}/>
                     <Route path='/create-account' element={<CreateAccount/>}/>
+                    <Route path='/myaccount/updateaccount' element={<UpdateAccount/>}/>
+
 
 
                 </Routes>

@@ -87,7 +87,7 @@ return (
             <div className="card-header h5 text-white bg-info">Créer un compte Swap-it!</div>
             <div className="card-body px-5">
                 <p className="card-text py-2">
-                    Vos information ici
+                    Vos informations ici
                 </p>
                 <div className="form-outline">
                     <input type="nom" id="typeNom" className="form-control my-3"
