@@ -2,13 +2,7 @@ import React from 'react';
 import ImageAccount from "../images/account.jpg";
 
 const MyAccount = () => {
-    // Assuming `user` is defined somewhere in your code and has methods to get the user's information.
-    // If not, you'll need to define it or modify this part accordingly.
-    const user = {
-        getPrenom: () => 'SampleFirstName',
-        getNom: () => 'SampleLastName',
-        getEmail: () => 'sample@email.com'
-    };
+
 
     return (
         <div className="hero oui">
