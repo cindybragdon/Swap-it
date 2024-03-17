@@ -23,7 +23,7 @@ const MyAccount = () => {
                         </div>
 
                         <div className="button-container gap-2 d-md-flex justify-content-md-start">
-                            <a href='/UpdateAccount'>
+                            <a href='/myaccount/updateaccount'>
                                 <button type="submit" className="btn btn-info w-30">Modifier mon compte</button>
                             </a>
                             <a href='/piges'>
