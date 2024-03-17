@@ -16,6 +16,8 @@ import QuiJaiPige from "./pages/QuiJaiPige";
 import CreateAccount from "./pages/CreateAccount";
 import UpdateAccount from "./pages/UpdateAccount";
 import MyAccount from "./pages/MyAccount";
+import MyWishList from "./pages/MyWishList";
+import AddWish from "./pages/AddWish";
 
 
 function App() {
@@ -38,6 +40,9 @@ function App() {
                     <Route path='/create-account' element={<CreateAccount/>}/>
                     <Route path='/myaccount/updateaccount' element={<UpdateAccount/>}/>
                     <Route path='/myaccount' element={<MyAccount/>}/>
+                    <Route path='/pige/myWishList' element={<MyWishList/>}/>
+                    <Route path='/pige/myWishList/addWish' element={<AddWish/>}/>
+
 
 
 

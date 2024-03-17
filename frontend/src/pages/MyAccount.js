@@ -4,7 +4,8 @@ import ImageAccount from "../images/account.jpg";
 const MyAccount = () => {
 
 
-    return (<div className="hero oui">
+    return (
+        <div className="hero oui">
             <div className="container mt-4 mb-4 p-3 d-flex justify-content-center">
                 <div className="card p-4">
                     <div className="image d-flex flex-column justify-content-center align-items-center">
