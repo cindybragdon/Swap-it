@@ -5,6 +5,7 @@ import http from "../http/http";
 
 
 //IMAGE A AJOUTER
+//Arranger le input URL
 
 const AddWish = () => {
 
@@ -91,8 +92,17 @@ const AddWish = () => {
                                       {...register("wishedItemDescription", {required: msgErrors.wishedItemDescription.requis})}></textarea>
                             {msgErrors.message && msgErrors.wishedItemDescription.message}
                         </div>
+                        <div className="mb-3">
+                            <label htmlFor="exampleFormControlInput1" className="form-label">URL</label>
+                            <input type="nom" id="typeNom" className="form-control my-3"
+                                   placeholder={"URL"}
+                                   {...register("wishedItemName",
+                                       )}/>
+                            {msgErrors.wishedItemName && msgErrors.wishedItemName.message}
+                        </div>
                         <div>
-                            <input type="file" className="form-control" id="exampleFormControlInput1" placeholder="photo"/>
+                            <input type="file" className="form-control" id="exampleFormControlInput1"
+                                   placeholder="photo"/>
                         </div>
                         <br/>
                         <button type="submit" className="btn btn-primary">Submit</button>
