@@ -7,7 +7,7 @@ import ImageCadeau from '../images/gift.png';
 import {useNavigate} from "react-router-dom";
 import '../MyWishList.css';
 
-//Les cartes passent sous la navbar et sur le footer.
+//Les cartes passent sous la navbar et sur le footer dès quil y en a plus de 4
 // CETTE PAGE CONTIENT DES DONNEES HARDCODEES QUI DOIVENT ETRE REMPLACEES
 // Il doit y avoir autant de carte que de suggestions, PLUS une carte qui permet dajouter une suggestion supplementaire
 // L'usager ne doit voir que les suggestions qu'il aura placé LUI-MÊME
