@@ -26,7 +26,7 @@ const MyWishList = () => {
         <div className='hero '>
             <div className="container">
                 <p> getUserName, voici votre liste de suggestions de cadeaux pour la pige getPigeName </p>
-                <div className="row row-cols-1 row-cols-md-3 g-4">
+                <div className="row row-cols-1 row-cols-md-4 g-4">
                     <div className="col">
                         <div className="card h-500">
                             <img src={ImageSouliers} className="card-img-top " alt="..." height="300" width="100"/>
@@ -35,7 +35,7 @@ const MyWishList = () => {
                                 <p className="card-text">J'aimerais avoir ces souliers grandeur 7.5 Mais je crois que ça
                                     dépasse le budjet de la pige.</p>
                                 <a href="https://www.nike.com/ca/fr/u/custom-nike-blazer-mid-77-by-you-10001251/1709858248900"
-                                   className="stretched-link new-tab" target='_blank'>Voir cet item en ligne</a>
+                                   className="stretched-link new-tab " target='_blank'>Voir cet item en ligne</a>
 
                             </div>
                         </div>
