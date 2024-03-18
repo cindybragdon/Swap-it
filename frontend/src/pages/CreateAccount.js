@@ -8,18 +8,38 @@ const CreateAccount = () => {
 
 
     /*
-    * Faire le name dans les input,
-    * après rajouter le errors.message voir l'exemple du input de name.
-    * Faire Link et non a href.
-     */
-    const {register, handleSubmit, formState: {errors}, reset} = useForm();
+    * @KarolannMauger
+    * @Date : 2024-03-18
+    * @Revision1 :
+    * Faire le name dans les input.
+    * Ajoutr les errors message pour chaque input. Voir exemple du input nom.
+    * Changement du a href vers un Link. Le a href toujours en commentaire pour voir la diff
+    * Dupplicatino de la function voir et caché password. Elle est présente dans le update, je l'ai laissé.
+    * Suppression des useState et utilisation de watch, vient du react-hook-form.
+    * Problème avec le create user dans le controller, manque le password. Ignorer pour le moment.
+    * Modification du onSubmit. Fonctionne maintenant.
+    * Correction du post Axios. Fonctionne maintenant.
+    * Changement des types pour text, email or password pour les input. Cela ne doit pas être le nom de l'élément. Déjà corrigé.
+    *
+    * Les choses que j'ai modifié sont soit en commentaire ou supprimé, pour le bien du code.
+    * Quelques console.log ne sont pas obligatoire.
+    * En somme, la création de compte fonctionne, sans le stockage du password.
+     * */
+    const {register, watch,  handleSubmit, formState: {errors}, reset} = useForm();
 
-    const [nom, setNom] = useState('');
+    const nom = watch("nom", "");
+
+    const prenom = watch("prenom", "");
+    const telephone= watch("telephone", "");
+    const courriel = watch("courriel", "");
+    const motPasse = watch("motPasse", "");
+
+    /*const [nom, setNom] = useState('');
     const [prenom, setPrenom] = useState('');
     const [telephone, setTelephone] = useState('');
     const [courriel, setCourriel] = useState('');
     const [motPasse, setMotPasse] = useState('');
-
+*/
 
     const [serverResponse, setServerResponse] = useState(null); // [0] = email, [1] = password, [2] = serverResponse
 
@@ -46,6 +66,13 @@ const CreateAccount = () => {
         }
     }
 
+    const formsCreateAccount = {
+        userFirstName: prenom,
+        userLastName: nom,
+        userEmail: courriel,
+        userPhone: telephone
+    }
+
     const togglePasswordVisibility = () => {
         const passwordInput = document.getElementById('typeMotPasse');
         const toggleIcon = document.getElementById('togglePassword');
@@ -60,29 +87,27 @@ const CreateAccount = () => {
 
 
     const onSubmit = (data) => {
-
-        setNom(data.nom);
-        setPrenom(data.prenom);
-        setTelephone(data.telephone);
-        setCourriel(data.courriel);
-        setMotPasse(data.motPasse);
-        //createAcc(); // ??
-        //console.log(data);
+        createAcc().then(r => console.log(r))
+        console.log(data)
         reset();
     }
 
 
-//commentaire de Karolann => Manque a envoyé les données avec Axios, ne fonctionne pas. Doit attendre Réda
 
     const createAcc = async () => {
         try {
-            const response = await http.post(`/api/createUserByEmail`);
-            setServerResponse(response.data);
-            console.log(response)
+            const response = await http.post(`/createUserByEmail`, formsCreateAccount)
+            .then(response => {
+                console.log(response.data);
+                if(response.statusText === "ACK-101"){
+                    throw new Error("Erreur lors de la création du compte");
+                }
+            })
         } catch (error) {
             console.error(error);
         } finally {
-            setCourriel('');
+            console.log("Création de compte réussi");
+
         }
 
     }
@@ -97,7 +122,7 @@ const CreateAccount = () => {
                     </p>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-outline ">
-                            <input name="nom" type="nom" id="typeNom" className="form-control my-3"
+                            <input type="text" id="typeNom" className="form-control my-3"
                                    placeholder={"Votre nom"}
                                    {...register("nom",
                                        {
@@ -106,7 +131,7 @@ const CreateAccount = () => {
                             {errors.nom && errors.nom.message}
                         </div>
                         <div className="form-outline">
-                            <input type="prenom" id="typePrenom" className="form-control my-3"
+                            <input type="text" id="typePrenom" className="form-control my-3"
                                    placeholder={"Votre prenom"}
                                    {...register("prenom",
                                        {
@@ -114,7 +139,7 @@ const CreateAccount = () => {
                                        })}/>
                         </div>
                         <div className="form-outline">
-                            <input type="telephone" id="typeTelephone" className="form-control my-3"
+                            <input type="text" id="typeTelephone" className="form-control my-3"
                                    placeholder={"Votre telephone"}
                                    {...register("telephone",
                                        {
@@ -125,7 +150,7 @@ const CreateAccount = () => {
                             {errors.telephone && errors.telephone.type === "pattern"}
                         </div>
                         <div className="form-outline">
-                            <input type="courriel" id="typeEmail" className="form-control my-3"
+                            <input type="email" id="typeEmail" className="form-control my-3"
                                    placeholder={"Votre courriel"}
                                    {...register("courriel",
                                        {
