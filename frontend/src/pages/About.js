@@ -1,7 +1,6 @@
 import React from 'react';
 import ImageScrumShine from "../images/ScrumShine3.jpg";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faGithub, faLinkedinIn} from '@fortawesome/free-brands-svg-icons';
+import ReseauxSociaux from "../components/ReseauxSociaux";
 
 
 const About = () => {
@@ -31,42 +30,9 @@ const About = () => {
 
                             <p>Voici une brève introduction de notre équipe ScrumShine:</p>
                             <div className="row">
-                                <div className="col">
-                                    Olivier Poirier
-                                    <br/>
-                                    <a href="https://github.com/olivierpoirier" target="_blank"
-                                       rel="noopener noreferrer">
-                                        <FontAwesomeIcon icon={faGithub} size="2x" style={{color: 'black'}}/>
-                                    </a>
-                                    <a href="https://github.com/olivierpoirier" target="_blank"
-                                       rel="noopener noreferrer">
-                                        <FontAwesomeIcon icon={faLinkedinIn} size="2x" style={{color: 'navy'}}/>
-                                    </a>
-                                </div>
-                                <div className="col">
-                                    Cindy Bragdon
-                                    <br/>
-                                    <a href="https://github.com/cindybragdon" target="_blank"
-                                       rel="noopener noreferrer">
-                                        <FontAwesomeIcon icon={faGithub} size="2x" style={{color: 'black'}}/>
-                                    </a>
-                                    <a href="https://www.linkedin.com/in/cindy-bragdon-873a8822a/" target="_blank"
-                                       rel="noopener noreferrer">
-                                        <FontAwesomeIcon icon={faLinkedinIn} size="2x" style={{color: 'navy'}}/>
-                                    </a>
-                                </div>
-                                <div className="col">
-                                    Karolann Mauger
-                                    <br/>
-                                    <a href="https://github.com/KarolannMauger" target="_blank"
-                                       rel="noopener noreferrer">
-                                        <FontAwesomeIcon icon={faGithub} size="2x" style={{color: 'black'}}/>
-                                    </a>
-                                    <a href="https://www.linkedin.com/in/karolann-mauger-777a082a4/" target="_blank"
-                                       rel="noopener noreferrer">
-                                        <FontAwesomeIcon icon={faLinkedinIn} size="2x" style={{color: 'navy'}}/>
-                                    </a>
-                                </div>
+                                <ReseauxSociaux userName='Olivier Poirier' gitHubUsername='olivierpoirier' linkedinUsername='olivier-poirier-66a3782bb' />
+                                <ReseauxSociaux userName='Cindy Bragdon' gitHubUsername='cindybragdon' linkedinUsername='cindy-bragdon-873a8822a' />
+                                <ReseauxSociaux userName='Karolann Mauger' gitHubUsername='KarolannMauger' linkedinUsername='karolann-mauger-777a082a4' />
                             </div>
 
                         </div>

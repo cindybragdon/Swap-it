@@ -23,7 +23,7 @@ const MyWishList = () => {
     }
 
     return (
-        <div className='hero '>
+        <div className='hero oui'>
             <div className="container">
                 <p> getUserName, voici votre liste de suggestions de cadeaux pour la pige getPigeName </p>
                 <div className="row row-cols-1 row-cols-md-4 g-4">
