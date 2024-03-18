@@ -27,19 +27,23 @@ const CreationPiges = () => {
 
     //Problème avec le id de la pige, pour le moment on  doit le set nous même, mais normalement on veut qu'il s'incrémente automatiquement
     //UPDATE: Le problème du id est pas régler. On doit le set nous même pour le moment
-    const formsPige = {
-        pigeName: nomPige,
-        pigeType: pigeType,
-        pigeDescription: pigeDescription,
-        pigeSuggestedMoneyAmount: Number(pigeAmount),
-        pigeEndDate: pigeEndDate,
-        pigeState: "CREATED",
-        userAdminIdUser : 1
+    const formsUserWithPige = {
+        user:{
+            idUser: 1
+        },
+        pige:{
+            pigeName: nomPige,
+            pigeType: pigeType,
+            pigeDescription: pigeDescription,
+            pigeSuggestedMoneyAmount: Number(pigeAmount),
+            pigeEndDate: pigeEndDate
+        }
     }
 
     const pigesPost = async () => {
+
         try {
-            const response = await http.post(`/createPige`, formsPige)
+            const response = await http.post(`/createUserPigeWithPige`, formsUserWithPige)
                 .then(response => {
                     console.log(response.data);
                     if (response.statusText === "ACK-301") {

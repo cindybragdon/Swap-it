@@ -10,10 +10,12 @@ function Piges() {
     const [pigesT, setPiges] = useState([]);
     const [idUser, setUserId] = useState(1);
 
+    const [selectedPige, setSelectedPige] = useState(null);
+
 
 
     useEffect(() => {
-        fetch(`http://localhost:9281/api/getListUserPigeFromIdUser/${idUser}`)
+        fetch(`http://localhost:9281/api/getListUserPigeFromIdUser?idUser=${idUser}`)
             .then(response => response.json())
             .then(data => setPiges(data))
             .catch(error => console.error(error))
@@ -25,6 +27,12 @@ function Piges() {
         navigate('/piges/creation-piges');
         alert('Button clicked');
         console.log('Button clicked')
+    }
+
+    const handlePigeClick = (pige) => {
+        setSelectedPige(pige);
+        navigate('/piges/myPige', {state: {selectedPige: pige} });
+        console.log(pige);
     }
     return (
         <div className='hero oui'>
@@ -39,7 +47,7 @@ function Piges() {
                 </div>
 
                 {pigesT.map(pige => (
-                    <div className="col">
+                    <div className="col" onClick={() => handlePigeClick(pige)}>
                         <div className="card">
                                 <div className="card-body">
                                     <h5 className="card-title">{pige.pige.pigeName}</h5>
