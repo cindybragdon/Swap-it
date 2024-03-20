@@ -1,19 +1,10 @@
 import React from 'react';
 import ImageScrumShine from "../images/ScrumShine3.jpg";
-//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faGithub, faLinkedinIn} from '@fortawesome/free-brands-svg-icons';
+import ReseauxSociaux from "../components/ReseauxSociaux";
 
 
 const About = () => {
 
-    /*
-    * @KarolannMauger
-    * @Revision1 :
-    * Doit retrouver la bonne version dans GitHub pour les props,
-    * Faire les Links et non les a href.
-    * Changer le fontawesome avec le bootstrap. Si on trouve la version avec les props,
-    * le fontawesome est enlevé et la version bootstrap est mise.
-     */
 
     return (
         <div className='hero oui'>
@@ -41,48 +32,18 @@ const About = () => {
 
                             <p>Voici une brève introduction de notre équipe ScrumShine:</p>
                             <div className="row">
-                                <div className="col">
-                                    Olivier Poirier
                                     <br/>
-                                    <a href="https://github.com/olivierpoirier" target="_blank"
-                                       rel="noopener noreferrer">
-
-                                    </a>
-                                    <a href="https://github.com/olivierpoirier" target="_blank"
-                                       rel="noopener noreferrer">
-
-                                    </a>
-                                </div>
-                                <div className="col">
-                                    Cindy Bragdon
+                                    <ReseauxSociaux userName='Olivier Poirier' gitHubUsername='olivierpoirier' linkedinUsername='olivier-poirier-66a3782bb' />
                                     <br/>
-                                    <a href="https://github.com/cindybragdon" target="_blank"
-                                       rel="noopener noreferrer">
-
-                                    </a>
-                                    <a href="https://www.linkedin.com/in/cindy-bragdon-873a8822a/" target="_blank"
-                                       rel="noopener noreferrer">
-
-                                    </a>
-                                </div>
-                                <div className="col">
-                                    Karolann Mauger
+                                    <ReseauxSociaux userName='Cindy Bragdon' gitHubUsername='cindybragdon' linkedinUsername='cindy-bragdon-873a8822a' />
                                     <br/>
-                                    <a href="https://github.com/KarolannMauger" target="_blank"
-                                       rel="noopener noreferrer">
-
-                                    </a>
-                                    <a href="https://www.linkedin.com/in/karolann-mauger-777a082a4/" target="_blank"
-                                       rel="noopener noreferrer">
-
-                                    </a>
+                                    <ReseauxSociaux userName='Karolann Mauger' gitHubUsername='KarolannMauger' linkedinUsername='karolann-mauger-777a082a4' />
                                 </div>
                             </div>
 
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
     );
 };
