@@ -1,4 +1,3 @@
-
 import React, {useState} from 'react';
 import {useForm} from "react-hook-form";
 import http from "../http/http";
@@ -10,14 +9,42 @@ const CreateAccount = () => {
 
 // Problème avec le create user dans le controller, manque le password. Ignorer pour le moment.
 
+    /*
+    * @KarolannMauger
+    * @Date : 2024-03-18
+    * @Revision1 :
+    * Faire le name dans les input.
+    * Ajoutr les errors message pour chaque input. Voir exemple du input nom.
+    * Changement du a href vers un Link. Le a href toujours en commentaire pour voir la diff
+    * Dupplicatino de la function voir et caché password. Elle est présente dans le update, je l'ai laissé.
+    * Suppression des useState et utilisation de watch, vient du react-hook-form.
+    * Problème avec le create user dans le controller, manque le password. Ignorer pour le moment.
+    * Modification du onSubmit. Fonctionne maintenant.
+    * Correction du post Axios. Fonctionne maintenant.
+    * Changement des types pour text, email or password pour les input. Cela ne doit pas être le nom de l'élément. Déjà corrigé.
+    *
+    * Les choses que j'ai modifié sont soit en commentaire ou supprimé, pour le bien du code.
+    * Quelques console.log ne sont pas obligatoire.
+    * En somme, la création de compte fonctionne, sans le stockage du password.
+    *
+    * Pourquoi ceci à été supprimé et les watch aussi.
+     * */
 
-    const {register, handleSubmit, formState: {errors}, reset} = useForm();
+    const {register, watch, handleSubmit, formState: {errors}, reset} = useForm();
 
+    /*
     const [nom, setNom] = useState('');
     const [prenom, setPrenom] = useState('');
     const [telephone, setTelephone] = useState('');
     const [courriel, setCourriel] = useState('');
     const [motPasse, setMotPasse] = useState('');
+    */
+    const nom = watch("nom", "");
+
+    const prenom = watch("prenom", "");
+    const telephone = watch("telephone", "");
+    const courriel = watch("courriel", "");
+    const motPasse = watch("motPasse", "");
 
 
     const [serverResponse, setServerResponse] = useState(null); // [0] = email, [1] = password, [2] = serverResponse
@@ -50,17 +77,17 @@ const CreateAccount = () => {
         userLastName: nom,
         userEmail: courriel,
         userPhone: telephone,
-        userMotPasse : motPasse
+        userMotPasse: motPasse
     }
 
     const onSubmit = (data) => {
-        setNom(data.nom);
-        setPrenom(data.prenom);
-        setTelephone(data.telephone);
-        setCourriel(data.courriel);
-        setMotPasse(data.motPasse);
-        createAcc(); // ??
-        //console.log(data);
+        //setNom(data.nom);
+        //setPrenom(data.prenom);
+        //setTelephone(data.telephone);
+        //setCourriel(data.courriel);
+        //setMotPasse(data.motPasse);
+        createAcc().then(r => console.log(r));
+        console.log(data);
         reset();
     }
 
@@ -70,7 +97,7 @@ const CreateAccount = () => {
             const response = await http.post(`/createUserByEmail`, formsCreateAccount)
                 .then(response => {
                     console.log(response.data);
-                    if(response.statusText === "ACK-101"){
+                    if (response.statusText === "ACK-101") {
                         throw new Error("Erreur lors de la création du compte");
                     }
                 })
@@ -126,7 +153,10 @@ const CreateAccount = () => {
                                    {...register("telephone",
                                        {
                                            required: msgErrors.telephone.requis,
-                                           pattern: {value: /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/, message: msgErrors.telephone.format}
+                                           pattern: {
+                                               value: /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/,
+                                               message: msgErrors.telephone.format
+                                           }
                                        })}/>
                             {errors.telephone && errors.telephone.message}
                             {errors.telephone && errors.telephone.type && errors.telephone.type === "pattern"}
