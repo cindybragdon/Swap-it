@@ -8,6 +8,7 @@ import {Link} from "react-router-dom";
 const CreateAccount = () => {
 
 // Problème avec le create user dans le controller, manque le password. Ignorer pour le moment.
+    //Pour le password voir exemple span dans le label Password.
 
     /*
     * @KarolannMauger
@@ -177,7 +178,7 @@ const CreateAccount = () => {
 
                         </div>
                         <div className="text-start">
-                            <label>Mot de Passe : Doit contenir une minuscule, une majuscule et 8 caractères</label>
+                            <label>Mot de Passe : <span id="toto">Doit contenir une minuscule, </span> <span id="tata">une majuscule </span> <span id="titi">et 8 caractères</span></label>
                         </div>
                         <div className="form-outline">
                             <p className="password-container">
