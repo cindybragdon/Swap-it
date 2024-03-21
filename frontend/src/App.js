@@ -40,7 +40,7 @@ function App() {
                     <Route path='/create-account' element={<CreateAccount/>}/>
                     <Route path='/myaccount/updateaccount' element={<UpdateAccount/>}/>
                     <Route path='/myaccount' element={<MyAccount/>}/>
-                    <Route path='/pige/myWishList' element={<MyWishList/>}/>
+                    <Route path='/piges/:pigeName/myWishList' element={<MyWishList/>}/>
                     <Route path='/pige/myWishList/addWish' element={<AddWish/>}/>
 
 
