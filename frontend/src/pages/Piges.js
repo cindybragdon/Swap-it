@@ -31,7 +31,7 @@ function Piges() {
 
     const handlePigeClick = (pige) => {
         setSelectedPige(pige);
-        navigate('/piges/myPige', {state: {selectedPige: pige} });
+        navigate(`/piges/${pige.pige.pigeName}`, {state: {selectedPige: pige} });
         console.log(pige);
     }
     return (

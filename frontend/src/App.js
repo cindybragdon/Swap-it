@@ -34,7 +34,7 @@ function App() {
                     <Route path='/piges' element={<Piges/>}/>
                     <Route path='*' element={<NotFound/>}/>
                     <Route path='/piges/creation-piges' element={<CreationPiges/>}/>
-                    <Route path='/piges/myPige' element={<MyPige/>}/>
+                    <Route path='/piges/:pigeName' element={<MyPige/>}/>
                     <Route path='/forgotPwd' element={<ForgotPwd/>}/>
                     <Route path='/pige/picked' element={<QuiJaiPige/>}/>
                     <Route path='/create-account' element={<CreateAccount/>}/>
