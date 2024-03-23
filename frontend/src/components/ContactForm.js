@@ -21,6 +21,14 @@ const ContactForm = () => {
         reset();
     }
     return (
+        <div className='hero oui '>
+            <div className="card text-center card w-50 ">
+                <div className="card-header h5 text-white bg-info">Mot de passe perdu</div>
+                <div className="card-body px-5">
+                    <p className="card-text py-2">
+                        Entrez votre courriel et nous vous enverrons des instructions à suivre afin de réinitialiser
+                        votre mot de passe.
+                    </p>
         <form className='container' onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-3">
                 <label htmlFor="exampleFormControlInput1" className="form-label">Email address</label>
@@ -40,6 +48,10 @@ const ContactForm = () => {
             </div>
             <button type="submit" className="btn btn-primary">Submit</button>
         </form>
+                </div>
+            </div>
+        </div>
+
     )
 }
 

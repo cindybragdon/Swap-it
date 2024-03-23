@@ -3,6 +3,7 @@ import React from 'react';
 // Dans change  language, je voudrais faire un dropdown avec les langues disponibles, mais cela ne fonctionne pas.
 const Footer = () => {
     return (
+        <div className='footer'>
         <footer className="card text-center">
             <div className="card-header">
                 © 2024 Swap-it, All rights reserved
@@ -25,6 +26,7 @@ const Footer = () => {
                 </div>
             </div>
         </footer>
+        </div>
     );
 };
 

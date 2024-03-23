@@ -10,42 +10,14 @@ const CreateAccount = () => {
 // Problème avec le create user dans le controller, manque le password. Ignorer pour le moment.
     //Pour le password voir exemple span dans le label Password.
 
-    /*
-    * @KarolannMauger
-    * @Date : 2024-03-18
-    * @Revision1 :
-    * Faire le name dans les input.
-    * Ajoutr les errors message pour chaque input. Voir exemple du input nom.
-    * Changement du a href vers un Link. Le a href toujours en commentaire pour voir la diff
-    * Dupplicatino de la function voir et caché password. Elle est présente dans le update, je l'ai laissé.
-    * Suppression des useState et utilisation de watch, vient du react-hook-form.
-    * Problème avec le create user dans le controller, manque le password. Ignorer pour le moment.
-    * Modification du onSubmit. Fonctionne maintenant.
-    * Correction du post Axios. Fonctionne maintenant.
-    * Changement des types pour text, email or password pour les input. Cela ne doit pas être le nom de l'élément. Déjà corrigé.
-    *
-    * Les choses que j'ai modifié sont soit en commentaire ou supprimé, pour le bien du code.
-    * Quelques console.log ne sont pas obligatoire.
-    * En somme, la création de compte fonctionne, sans le stockage du password.
-    *
-    * Pourquoi ceci à été supprimé et les watch aussi.
-     * */
+    const {register, handleSubmit, formState: {errors}, reset} = useForm();
 
-    const {register, watch, handleSubmit, formState: {errors}, reset} = useForm();
 
-    /*
     const [nom, setNom] = useState('');
     const [prenom, setPrenom] = useState('');
     const [telephone, setTelephone] = useState('');
     const [courriel, setCourriel] = useState('');
     const [motPasse, setMotPasse] = useState('');
-    */
-    const nom = watch("nom", "");
-
-    const prenom = watch("prenom", "");
-    const telephone = watch("telephone", "");
-    const courriel = watch("courriel", "");
-    const motPasse = watch("motPasse", "");
 
 
     const [serverResponse, setServerResponse] = useState(null); // [0] = email, [1] = password, [2] = serverResponse
@@ -82,11 +54,11 @@ const CreateAccount = () => {
     }
 
     const onSubmit = (data) => {
-        //setNom(data.nom);
-        //setPrenom(data.prenom);
-        //setTelephone(data.telephone);
-        //setCourriel(data.courriel);
-        //setMotPasse(data.motPasse);
+        setNom(data.nom);
+        setPrenom(data.prenom);
+        setTelephone(data.telephone);
+        setCourriel(data.courriel);
+        setMotPasse(data.motPasse);
         createAcc().then(r => console.log(r));
         console.log(data);
         reset();

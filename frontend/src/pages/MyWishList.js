@@ -6,6 +6,7 @@ import ImageVernis from '../images/vernis.jpg';
 import ImageCadeau from '../images/gift.png';
 import {useNavigate} from "react-router-dom";
 import '../MyWishList.css';
+import BackToTopButton from "../components/BackToTopButton";
 
 //Les cartes passent sous la navbar et sur le footer dès quil y en a plus de 4
 // CETTE PAGE CONTIENT DES DONNEES HARDCODEES QUI DOIVENT ETRE REMPLACEES
@@ -76,8 +77,23 @@ const MyWishList = () => {
                             </div>
                         </div>
                     </div>
+                    <div className="col">
+                        <div className="card h-100">
+                            <img src={ImageCadeau} className="card-img-top" alt="..."/>
+                            <div className="card-body">
+                                <div className="card" onClick={handleClick}>
+                                    <div className="card-body">
+                                        <h5 className="card-title">Ajouter une suggestion</h5>
+                                        <p className="card-text"><i className="bi bi-plus-lg"></i></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
+            </div>
+            <div>
+                <BackToTopButton/>
             </div>
 
         </div>

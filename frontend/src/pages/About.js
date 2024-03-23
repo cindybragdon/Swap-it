@@ -1,5 +1,5 @@
 import React from 'react';
-import ImageScrumShine from "../images/ScrumShine3.jpg";
+import ImageScrumShine from "../images/OliCin3.jpg";
 import ReseauxSociaux from "../components/ReseauxSociaux";
 
 
@@ -15,7 +15,7 @@ const About = () => {
                     </div>
                     <div className="col-sm-8 ">
                         {/* Zone de texte à droite de l'image */}
-                        <div className="text-about p-3"  style={{backgroundColor: '#0B5A6F '}}>
+                        <div className="text-about p-3"  style={{backgroundColor: '#000000 '}}>
                             <h2>À propos de Swap-it</h2>
                             <p class="fs-6">Imaginez un monde où la pige de cadeaux n'est plus un casse-tête logistique, mais une
                                 joyeuse célébration de l'incertitude et de l'amitié (ou de l'obligation professionnelle,
@@ -36,8 +36,6 @@ const About = () => {
                                     <ReseauxSociaux userName='Olivier Poirier' gitHubUsername='olivierpoirier' linkedinUsername='olivier-poirier-66a3782bb' />
                                     <br/>
                                     <ReseauxSociaux userName='Cindy Bragdon' gitHubUsername='cindybragdon' linkedinUsername='cindy-bragdon-873a8822a' />
-                                    <br/>
-                                    <ReseauxSociaux userName='Karolann Mauger' gitHubUsername='KarolannMauger' linkedinUsername='karolann-mauger-777a082a4' />
                                 </div>
                             </div>
 

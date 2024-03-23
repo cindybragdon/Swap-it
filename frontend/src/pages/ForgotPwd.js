@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import http from "../http/http";
-import ImageCles from "../images/24506e66-0f0e-4633-8d9c-af3d8cacf4e9.webp"
+import ImageForgotPass from "../images/ForgotPass1.jpg"
 
 
 // Atteindre cette page au http://localhost:5555/forgotpwd
@@ -12,7 +12,7 @@ const ForgotPwd = () => {
 
 
     var sectionStyle = {
-        backgroundImage: `url(${ImageCles})`
+        backgroundImage: `url(${ImageForgotPass})`
     }
 
     const { register, handleSubmit, formState: { errors}, reset } = useForm();
@@ -53,11 +53,11 @@ const ForgotPwd = () => {
     return (
         <>
             <div className='hero oui ' style={sectionStyle}>
-                <div className="card text-center card w-50">
+                <div className="card text-center card w-50 ">
                     <div className="card-header h5 text-white bg-info">Mot de passe perdu</div>
                     <div className="card-body px-5">
                         <p className="card-text py-2">
-                            Entrez votre courriel et vous vous enverrons des instructions à suivre pour réinitialiser
+                            Entrez votre courriel et nous vous enverrons des instructions à suivre afin de réinitialiser
                             votre mot de passe.
                         </p>
                         <div className="form-outline">
