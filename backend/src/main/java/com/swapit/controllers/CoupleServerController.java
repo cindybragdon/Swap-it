@@ -31,6 +31,9 @@ public class  CoupleServerController {
         try {
             if (coupleToCreate.getFirstConjoint() != null
             && coupleToCreate.getSecondConjoint() != null) {
+                Couple coupleInverted = new Couple();
+                coupleInverted.setFirstConjoint(coupleToCreate.getSecondConjoint());
+                coupleInverted.setSecondConjoint(coupleToCreate.getFirstConjoint());
                 UserPige testFirstConjoint = userPigeRepository.findByIdUserPige(coupleToCreate.getFirstConjoint().getIdUserPige());
                 UserPige testSecondConjoint = userPigeRepository.findByIdUserPige(coupleToCreate.getSecondConjoint().getIdUserPige());
 
@@ -39,6 +42,7 @@ public class  CoupleServerController {
                         if(!coupleRepository.existsBySecondConjoint(testFirstConjoint)){
                             if(!coupleRepository.existsByFirstConjoint(testSecondConjoint)) {
                                 coupleRepository.save(coupleToCreate);
+                                coupleRepository.save(coupleInverted);
                                 messageCreate = "ACK-000";
                             }
                         }
@@ -59,6 +63,8 @@ public class  CoupleServerController {
         try{
             if (coupleUpdated.getFirstConjoint() != null && coupleUpdated.getSecondConjoint() != null) {
                 Couple couple = coupleRepository.findByIdCouple(idCouple);
+                Couple coupleInverted = coupleRepository.findCoupleByFirstConjoint(coupleUpdated.getSecondConjoint());
+
                 UserPige testFirstConjoint = userPigeRepository.findByIdUserPige(coupleUpdated.getFirstConjoint().getIdUserPige());
                 UserPige testSecondConjoint = userPigeRepository.findByIdUserPige(coupleUpdated.getSecondConjoint().getIdUserPige());
                 if (testFirstConjoint.getPige().equals(testSecondConjoint.getPige())) {
@@ -67,7 +73,10 @@ public class  CoupleServerController {
                             if (!coupleRepository.existsByFirstConjoint(testSecondConjoint)) {
                                 couple.setFirstConjoint(coupleUpdated.getFirstConjoint());
                                 couple.setSecondConjoint(coupleUpdated.getSecondConjoint());
+                                coupleInverted.setFirstConjoint(coupleUpdated.getSecondConjoint());
+                                coupleInverted.setSecondConjoint(coupleUpdated.getFirstConjoint());
                                 coupleRepository.save(couple);
+                                coupleRepository.save(coupleInverted);
                                 messageUpdate = "ACK-010";
                             }
                         }
