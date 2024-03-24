@@ -1,5 +1,4 @@
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faGithub, faLinkedinIn} from "@fortawesome/free-brands-svg-icons";
+
 import React from "react";
 
 const ReseauxSociaux = (props) => {

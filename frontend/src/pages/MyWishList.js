@@ -77,6 +77,19 @@ const MyWishList = () => {
                             </div>
                         </div>
                     </div>
+                    <div className="col">
+                        <div className="card h-100">
+                            <img src={ImageCadeau} className="card-img-top" alt="..."/>
+                            <div className="card-body">
+                                <div className="card" onClick={handleClick}>
+                                    <div className="card-body">
+                                        <h5 className="card-title">Ajouter une suggestion</h5>
+                                        <p className="card-text"><i className="bi bi-plus-lg"></i></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 
                 </div>
