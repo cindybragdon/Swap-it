@@ -4,33 +4,37 @@ import {useState, useEffect} from "react";
 import BackToTopButton from "../components/BackToTopButton";
 
 
+
 function Piges() {
 
-    /*
-    * @KarolannMauger
-    * @Date : 2024-03-21
-    * @Revision1 :
-    * Cela est pas urgent.
-    * Doit mettre le key dans le map, mais j'arrive pas a get le id de la Pige,
-    * donc soit on trouve une façon de comment get le id de la pige ou soit on créer une petite fonction qui génére un id.
-     */
 
     const navigate = useNavigate();
 
-    const [pigesT, setPiges] = useState([]);
+    const [listUserPige, setListUserPige] = useState([]);
     const [idUser, setUserId] = useState(1);
 
     const [selectedPige, setSelectedPige] = useState(null);
 
 
+    //Olivier :
+    //https://designcode.io/react-hooks-handbook-fetch-data-from-an-api
+
 
     useEffect(() => {
-        fetch(`http://localhost:9281/api/getListUserPigeFromIdUser?idUser=${idUser}`)
-            .then(response => response.json())
-            .then(data => setPiges(data))
-            .catch(error => console.error(error))
-    }, [idUser]);
+        const url = `http://localhost:9281/api/getListUserPigeFromIdUser?idUser=${idUser}`;
 
+        const fecthData = async () => {
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                setListUserPige(data);
+
+            } catch (error) {
+                console.log("error", error);
+            }
+        }
+        fecthData();
+    }, []);
 
 
     const handleClick = () => {
@@ -39,11 +43,16 @@ function Piges() {
         console.log('Button clicked')
     }
 
-    const handlePigeClick = (pige) => {
-        setSelectedPige(pige);
-        navigate(`/piges/${pige.pige.pigeName}`, {state: {selectedPige: pige} });
-        console.log(pige);
+    const handlePigeClick = (userPige) => {
+        setSelectedPige(userPige);
+        navigate(`/piges/${userPige.pige.pigeName}`, {state: userPige});
+        console.log(userPige);
     }
+
+
+
+
+
     return (
         <div className='renderingElement oui'>
             <div className="row row-cols-1 row-cols-md-2 g-4">
@@ -57,17 +66,22 @@ function Piges() {
                 </div>
 
 
-                {pigesT.map(pige => (
-                    <div className="col" onClick={() => handlePigeClick(pige)}>
-                        <div className="card">
-                                <div className="card-body">
-                                    <h5 className="card-title">{pige.pige.pigeName}</h5>
-                                    <p className="card-text">{pige.pige.pigeEndDate}</p>
-                                </div>
+                {listUserPige.map(userPige =>
+                        <div className="col" onClick={() => handlePigeClick(userPige)}>
+                            <div className="card">
+                                    <div className="card-body">
+                                        <h5 className="card-title">{userPige.pige.pigeName}</h5>
+                                        <p className="card-text">{userPige.pige.pigeEndDate}</p>
+                                        {console.log(userPige[0])}
+                                    </div>
+                            </div>
                         </div>
-                    </div>
-                ))}
-                {console.log(pigesT)}
+                )}
+
+
+
+
+
 
             </div>
             <BackToTopButton />
