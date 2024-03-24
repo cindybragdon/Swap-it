@@ -14,7 +14,6 @@ const About = () => {
                         <img src={ImageScrumShine} className="rounded mx-auto d-block img-thumbnail" alt="..."/>
                     </div>
                     <div className="col-sm-8 ">
-                        {/* Zone de texte à droite de l'image */}
                         <div className="text-about p-3"  style={{backgroundColor: '#000000 '}}>
                             <h2>À propos de Swap-it</h2>
                             <p class="fs-6">Imaginez un monde où la pige de cadeaux n'est plus un casse-tête logistique, mais une

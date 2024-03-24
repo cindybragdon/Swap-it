@@ -72,8 +72,11 @@ const Login = () => {
                     </div>
                 </div>
                 <div className="form-group row">
-                    <div className="col-sm-10">
-                        <button type="submit" className="btn btn-primary">Sign in</button>
+                    <div className="col-sm-5 mt-5">
+                        <button type="submit" className="btn btn-info">Se connecter</button>
+                    </div>
+                    <div className="col-sm-5 mt-5">
+                        <button type="bouton" className="btn btn-info">Se créer un compte</button>
                     </div>
                 </div>
             </form>

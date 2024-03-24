@@ -2,7 +2,6 @@ import React from 'react';
 import Login from "../components/Login";
 import ImageLogo2 from "../images/Logo2.jpg";
 
-
 function Home() {
     return (
         <div className='renderingElement oui'>
@@ -11,16 +10,17 @@ function Home() {
                     <div className='col-md-4'>
                         <img src={ImageLogo2} className="rounded mx-auto d-block img-thumbnail" alt="..."/>
                     </div>
-                </div>
-                <div className="col-sm-6">
-                    <div className="card ">
-                        <div className="card-body">
-                            <Login/>
+                    <div className="col-md-8">
+                        <div className="card ">
+                            <div className="card-body">
+                                <p>Bienvenue sur Swap-it!</p>
+                                <Login/>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div> {/* This closes the 'container' div */}
-        </div> /* This closes the 'renderingElement oui' div */
+            </div>
+        </div>
     );
 }
 

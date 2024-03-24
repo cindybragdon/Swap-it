@@ -42,7 +42,6 @@ function App() {
                     <Route path='/myaccount' element={<MyAccount/>}/>
                     <Route path='/piges/:pigeName/myWishList' element={<MyWishList/>}/>
                     <Route path='/pige/myWishList/addWish' element={<AddWish/>}/>
-
                 </Routes>
             </div>
             <Footer/>
