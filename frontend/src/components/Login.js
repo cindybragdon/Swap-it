@@ -76,7 +76,7 @@ const Login = () => {
                         <button type="submit" className="btn btn-info">Se connecter</button>
                     </div>
                     <div className="col-sm-5 mt-5">
-                        <button type="bouton" className="btn btn-info">Se créer un compte</button>
+                        <button type="bouton" className="btn btn-primary">Se créer un compte</button>
                     </div>
                 </div>
             </form>
