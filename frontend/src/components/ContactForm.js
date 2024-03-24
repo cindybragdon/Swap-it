@@ -21,9 +21,9 @@ const ContactForm = () => {
         reset();
     }
     return (
-        <div className='renderingElement oui '>
-            <div className="card text-center card w-50 ">
-                <div className="card-header h5 text-white bg-info">Contactez-nous! </div>
+        <div className='renderingElement oui d-flex ' style={{ marginRight: '40px' }}>
+            <div className="card text-center w-50 ms-auto ">
+                <div className="card-header h5 text-white" style={{ backgroundColor: "#D4015F" }}>Contactez-nous! </div>
                 <div className="card-body px-5">
                     <p className="card-text py-2">
                         Questions?  Commentaires?  Quelque chose cloche sur le site?  Une blague à partager qui sauvera

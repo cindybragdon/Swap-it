@@ -49,7 +49,11 @@ body {
 }
 
 .form-control my-3 create-account {
-  padding-right: 30px; /* Make space for the icon */
+  padding-right: 30px;
+}
+
+.no-underline {
+  text-decoration: none !important;
 }
 
 .toggle-password {
@@ -84,7 +88,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  /*background-color: rgba(0, 0, 0, 0.5);*/
   z-index: -1;
 }
 
