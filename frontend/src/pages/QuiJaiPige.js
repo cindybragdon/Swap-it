@@ -12,7 +12,7 @@ const QuiJaiPige = () => {
 
 
     return (
-        <div className='hero oui'>
+        <div className='renderingElement oui'>
             <div className='container '>
                 <p>
                     !!! Regardez bien derrière vous pour vous assurer que personne ne regarde au dessus de votre épaule !!!

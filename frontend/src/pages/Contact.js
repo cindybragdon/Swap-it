@@ -1,10 +1,14 @@
 import React from 'react';
 import ContactForm from "../components/ContactForm";
-
+import ImageContact from "../images/PageContact2.jpg"
 const Contact = () => {
 
+    var sectionStyle = {
+        backgroundImage: `url(${ImageContact})`
+    }
+
   return (
-    <div className='hero oui'>
+    <div className='renderingElement oui ' style={sectionStyle}>
         <ContactForm />
     </div>
   );

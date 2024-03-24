@@ -6,6 +6,7 @@ import ImageVernis from '../images/vernis.jpg';
 import ImageCadeau from '../images/gift.png';
 import {useNavigate} from "react-router-dom";
 import '../MyWishList.css';
+import BackToTopButton from "../components/BackToTopButton";
 
 //Les cartes passent sous la navbar et sur le footer dès quil y en a plus de 4
 // CETTE PAGE CONTIENT DES DONNEES HARDCODEES QUI DOIVENT ETRE REMPLACEES
@@ -23,7 +24,7 @@ const MyWishList = () => {
     }
 
     return (
-        <div className='hero oui'>
+        <div className='renderingElement oui'>
             <div className="container">
                 <p> getUserName, voici votre liste de suggestions de cadeaux pour la pige getPigeName </p>
                 <div className="row row-cols-1 row-cols-md-4 g-4">
@@ -76,8 +77,12 @@ const MyWishList = () => {
                             </div>
                         </div>
                     </div>
-                </div>
 
+
+                </div>
+            </div>
+            <div>
+                <BackToTopButton/>
             </div>
 
         </div>

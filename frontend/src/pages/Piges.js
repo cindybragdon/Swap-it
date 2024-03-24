@@ -1,9 +1,19 @@
 import React from 'react';
 import {useNavigate} from "react-router-dom";
 import {useState, useEffect} from "react";
+import BackToTopButton from "../components/BackToTopButton";
 
 
 function Piges() {
+
+    /*
+    * @KarolannMauger
+    * @Date : 2024-03-21
+    * @Revision1 :
+    * Cela est pas urgent.
+    * Doit mettre le key dans le map, mais j'arrive pas a get le id de la Pige,
+    * donc soit on trouve une façon de comment get le id de la pige ou soit on créer une petite fonction qui génére un id.
+     */
 
     const navigate = useNavigate();
 
@@ -31,11 +41,11 @@ function Piges() {
 
     const handlePigeClick = (pige) => {
         setSelectedPige(pige);
-        navigate('/piges/myPige', {state: {selectedPige: pige} });
+        navigate(`/piges/${pige.pige.pigeName}`, {state: {selectedPige: pige} });
         console.log(pige);
     }
     return (
-        <div className='hero oui'>
+        <div className='renderingElement oui'>
             <div className="row row-cols-1 row-cols-md-2 g-4">
                 <div className="col">
                     <div className="card" onClick={handleClick} >
@@ -45,6 +55,7 @@ function Piges() {
                             </div>
                     </div>
                 </div>
+
 
                 {pigesT.map(pige => (
                     <div className="col" onClick={() => handlePigeClick(pige)}>
@@ -59,38 +70,9 @@ function Piges() {
                 {console.log(pigesT)}
 
             </div>
+            <BackToTopButton />
         </div>
     );
 }
 
 export default Piges;
-
-
-/**
- * <div className="col">
- *                     <div className="card">
- *
- *                             <div className="card-body">
- *                                 <h5 className="card-title">Card title</h5>
- *                                 <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
- *                             </div>
- *                     </div>
- *                 </div>
- *                 <div className="col">
- *                     <div className="card">
- *
- *                             <div className="card-body">
- *                                 <h5 className="card-title">Card title</h5>
- *                                 <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
- *                             </div>
- *                     </div>
- *                 </div>
- *                 <div className="col">
- *                     <div className="card">
- *                             <div className="card-body">
- *                                 <h5 className="card-title">Card title</h5>
- *                                 <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
- *                             </div>
- *                     </div>
- *                 </div>
- */

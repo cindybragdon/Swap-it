@@ -18,6 +18,7 @@ import UpdateAccount from "./pages/UpdateAccount";
 import MyAccount from "./pages/MyAccount";
 import MyWishList from "./pages/MyWishList";
 import AddWish from "./pages/AddWish";
+import BackToTopButton from "./components/BackToTopButton";
 
 
 function App() {
@@ -34,18 +35,14 @@ function App() {
                     <Route path='/piges' element={<Piges/>}/>
                     <Route path='*' element={<NotFound/>}/>
                     <Route path='/piges/creation-piges' element={<CreationPiges/>}/>
-                    <Route path='/piges/myPige' element={<MyPige/>}/>
+                    <Route path='/piges/:pigeName' element={<MyPige/>}/>
                     <Route path='/forgotPwd' element={<ForgotPwd/>}/>
                     <Route path='/pige/picked' element={<QuiJaiPige/>}/>
                     <Route path='/create-account' element={<CreateAccount/>}/>
                     <Route path='/myaccount/updateaccount' element={<UpdateAccount/>}/>
                     <Route path='/myaccount' element={<MyAccount/>}/>
-                    <Route path='/pige/myWishList' element={<MyWishList/>}/>
+                    <Route path='/piges/:pigeName/myWishList' element={<MyWishList/>}/>
                     <Route path='/pige/myWishList/addWish' element={<AddWish/>}/>
-
-
-
-
 
                 </Routes>
             </div>

@@ -1,8 +1,11 @@
 
 body {
-  font-family: 'Open Sans', sans-serif;
-  color: #222;
-  padding-bottom: 50px;
+  font-family: "Inconsolata", monospace;
+  font-optical-sizing: auto;
+  /*font-weight: <weight>;*/
+  font-style: normal;
+  font-variation-settings:
+          "wdth" 100;
 }
 
 .container {
@@ -10,58 +13,33 @@ body {
   margin: 0 auto;
 }
 
-.nav {
-  position: fixed;
-  background-color: #222;
-  top: 0;
-  left: 0;
-  right: 0;
-  transition: all 0.3s ease-in-out;
+.navbar {
+  position: relative;
+  background-color: rebeccapurple;
+  z-index: 5;
 }
 
-.nav .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 0;
-  transition: all 0.3s ease-in-out;
+#myBtn {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: darkgreen; /* Set a background color */
+  color: white; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 15px; /* Some padding */
+  border-radius: 10px; /* Rounded corners */
+  font-size: 18px; /* Increase font size */
 }
 
-.nav ul {
-  display: flex;
-  list-style-type: none;
-  align-items: center;
-  justify-content: center;
+#myBtn:hover {
+  background-color: #555; /* Add a dark-grey background on hover */
 }
 
-.nav a {
-  color: #fff;
-  text-decoration: none;
-  padding: 7px 15px;
-  transition: all 0.3s ease-in-out;
-}
-
-.nav.active {
-  background-color: #fff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
-
-.nav.active a {
-  color: #000;
-}
-
-.nav.active .container {
-  padding: 10px 0;
-}
-
-.nav a.current,
-.nav a:hover {
-  color: #c0392b;
-  font-weight: bold;
-}
-
-.hero {
-
+.renderingElement {
   background-size: cover;
   background-position: bottom center;
   height: 100vh;
@@ -72,10 +50,10 @@ body {
   text-align: center;
   position: relative;
   margin-bottom: 20px;
-  z-index: -2;
+  z-index: 5;
 }
 
-.hero::before {
+.renderingElement::before {
   content: '';
   position: absolute;
   top: 0;
@@ -86,34 +64,18 @@ body {
   z-index: -1;
 }
 
-.hero h1 {
-  font-size: 46px;
-  margin: -20px 0 20px;
-}
 
-.hero p {
-  font-size: 20px;
-  letter-spacing: 1px;
-}
-
-.content h2,
-.content h3 {
-  font-size: 150%;
-  margin: 20px 0;
-}
-
-.content p {
-  color: #555;
-  line-height: 30px;
-  letter-spacing: 1.2px;
-}
-
-.nav{
-  z-index: 2;
-}
 
 .oui{
+  position: relative;
   z-index: 1;
+}
+
+.footer {
+  position: relative;
+  color: #FFFFFF;
+  background-color: rebeccapurple;
+  z-index: 0;
 }
 
 

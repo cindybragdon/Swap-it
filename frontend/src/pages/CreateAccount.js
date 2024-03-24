@@ -2,10 +2,16 @@ import React, {useState} from 'react';
 import {useForm} from "react-hook-form";
 import http from "../http/http";
 import '../CreateAccount.css';
+import TogglePasswordVisibility from "../components/TogglePassVisibility";
+import {Link} from "react-router-dom";
+
 const CreateAccount = () => {
 
+// Problème avec le create user dans le controller, manque le password. Ignorer pour le moment.
+    //Pour le password voir exemple span dans le label Password.
 
     const {register, handleSubmit, formState: {errors}, reset} = useForm();
+
 
     const [nom, setNom] = useState('');
     const [prenom, setPrenom] = useState('');
@@ -27,7 +33,7 @@ const CreateAccount = () => {
         },
         telephone: {
             requis: "Vous devez saisir un numero de telephone",
-            logueur: "Le telephone doit avoir au moins 10 caractere"
+            format: "Le telephone est invalide"
         },
         courriel: {
             requis: "Vous devez saisir un email",
@@ -39,129 +45,151 @@ const CreateAccount = () => {
         }
     }
 
-    const togglePasswordVisibility = () => {
-        const passwordInput = document.getElementById('typeMotPasse');
-        const toggleIcon = document.getElementById('togglePassword');
-        if (passwordInput.type === 'password') {
-            passwordInput.type = 'text';
-            toggleIcon.classList.replace('bi-eye-slash', 'bi-eye');
-        } else {
-            passwordInput.type = 'password';
-            toggleIcon.classList.replace('bi-eye', 'bi-eye-slash');
-        }
-    };
-
-
+    const formsCreateAccount = {
+        userFirstName: prenom,
+        userLastName: nom,
+        userEmail: courriel,
+        userPhone: telephone,
+        userMotPasse: motPasse
+    }
 
     const onSubmit = (data) => {
-
         setNom(data.nom);
         setPrenom(data.prenom);
         setTelephone(data.telephone);
         setCourriel(data.courriel);
         setMotPasse(data.motPasse);
-        createAcc(); // ??
-        //console.log(data);
+        createAcc().then(r => console.log(r));
+        console.log(data);
         reset();
     }
 
 
-//commentaire de Karolann => Manque a envoyé les données avec Axios, ne fonctionne pas. Doit attendre Réda
-
     const createAcc = async () => {
         try {
-            const response = await http.post(`/api/createUserByEmail`);
-            setServerResponse(response.data);
-            console.log(response)
+            const response = await http.post(`/createUserByEmail`, formsCreateAccount)
+                .then(response => {
+                    console.log(response.data);
+                    if (response.statusText === "ACK-101") {
+                        throw new Error("Erreur lors de la création du compte");
+                    }
+                })
         } catch (error) {
             console.error(error);
         } finally {
-            setCourriel('');
+            console.log("Création de compte réussi");
+
         }
 
     }
 
-return (
-    <div className='hero oui '>
-        <div className="card text-center card w-50 mt-5">
-            <div className="card-header h5 text-white bg-info">Créer un compte Swap-it!</div>
-            <div className="card-body px-5">
-                <p className="card-text py-2">
-                    Vos informations ici
-                </p>
-                <div className="form-outline">
-                    <input type="nom" id="typeNom" className="form-control my-3"
-                           placeholder={"Votre nom"}
-                           {...register("nom",
-                               {
-                                   required: msgErrors.nom.requis
-                               })}/>
-                </div>
-                <div className="form-outline">
-                    <input type="prenom" id="typePrenom" className="form-control my-3"
-                           placeholder={"Votre prenom"}
-                           {...register("prenom",
-                               {
-                                   required: msgErrors.prenom.requis
-                               })}/>
-                </div>
-                <div className="form-outline">
-                    <input type="telephone" id="typeTelephone" className="form-control my-3"
-                           placeholder={"Votre telephone"}
-                           {...register("telephone",
-                               {
-                                   required: msgErrors.telephone.requis,
-                                   pattern: {value: /^[0-9]{10}$/, message: msgErrors.telephone.format}
-                               })}/>
-                    {errors.telephone && errors.telephone.message}
-                    {errors.telephone && errors.telephone.type === "pattern"}
-                </div>
-                <div className="form-outline">
-                    <input type="courriel" id="typeEmail" className="form-control my-3"
-                           placeholder={"Votre courriel"}
-                           {...register("courriel",
-                               {
-                                   required: msgErrors.courriel.requis,
-                                   pattern: {value: /^\S+@\S+$/i, message: msgErrors.courriel.format}
-                               })}/>
-                    {errors.courriel && errors.courriel.message}
-                    {errors.courriel && errors.courriel.type === "pattern"}
-                </div>
-                <div className="form-outline">
-                    <p className="password-container">
-                        <input type="password" id="typeMotPasse" className="form-control my-3"
-                               placeholder={"Votre mot de passe"}
-                               {...register("motPasse", {
-                                   required: msgErrors.motPasse.requis,
-                                   pattern: {
-                                       value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&^])[A-Za-z\d@.#$!%*?&]{8,15}$/,
-                                       message: msgErrors.motPasse.format
-                                   }
-                               })}  />
-                        <i className="bi bi-eye-slash toggle-password" id="togglePassword"
-                           onClick={togglePasswordVisibility}></i>
+    return (
+        <div className='renderingElement oui '>
+            <div className="card text-center card w-50 mt-5">
+                <div className="card-header h5 text-white bg-info">Créer un compte Swap-it!</div>
+                <div className="card-body px-5">
+                    <p className="card-text py-2">
+                        Vos information ici
                     </p>
-                    <small id="emailHelp" className="form-text text-muted">
-                        Doit contenir : une minuscule, une majuscule, un chiffre, un caractère spécial et de 8 à 15
-                        caractères.
-                    </small>
-                    {errors.motPasse && errors.motPasse.message}
-                    {errors.motPasse && errors.motPasse.type === "pattern"}
-                </div>
-                <br/>
-                <div className="form-group row">
-                    <div className="col-sm-20 text-center">
-                        <button type="submit" className="btn btn-info w-30">Creer mon compte</button>
-                    </div>
-                </div>
-                <div className="d-flex justify-content-between mt-4">
-                    <a className="" href="/">Compte existant? Connexion ici!</a>
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <div className="text-start">
+                            <label>Nom</label>
+                        </div>
+                        <div className="form-outline ">
+                            <input type="text" name="nom" id="typeNom" className="form-control my-3"
+                                   placeholder={"Votre nom"}
+                                   {...register("nom",
+                                       {
+                                           required: msgErrors.nom.requis
+                                       })}/>
+                            {errors.nom && errors.nom.message}
+                        </div>
+                        <div className="text-start">
+                            <label>Prenom</label>
+                        </div>
+                        <div className="form-outline">
+                            <input type="text" name="prenom" id="typePrenom" className="form-control my-3"
+                                   placeholder={"Votre prenom"}
+                                   {...register("prenom",
+                                       {
+                                           required: msgErrors.prenom.requis
+                                       })}/>
+                            {errors.prenom && errors.prenom.message}
+
+                        </div>
+                        <div className="text-start">
+                            <label>Telephone</label>
+                        </div>
+                        <div className="form-outline">
+                            <input type="text" name="telephone" id="typeTelephone" className="form-control my-3"
+                                   placeholder={"Votre telephone"}
+                                   {...register("telephone",
+                                       {
+                                           required: msgErrors.telephone.requis,
+                                           pattern: {
+                                               value: /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/,
+                                               message: msgErrors.telephone.format
+                                           }
+                                       })}/>
+                            {errors.telephone && errors.telephone.message}
+                            {errors.telephone && errors.telephone.type && errors.telephone.type === "pattern"}
+                        </div>
+                        <div className="text-start">
+                            <label>Courriel</label>
+                        </div>
+                        <div className="form-outline">
+                            <input type="email" name="courriel" id="typeEmail" className="form-control my-3"
+                                   placeholder={"Votre courriel"}
+                                   {...register("courriel",
+                                       {
+                                           required: msgErrors.courriel.requis,
+                                           pattern: {value: /^\S+@\S+$/i, message: msgErrors.courriel.format}
+                                       })}/>
+                            {errors.courriel && errors.courriel.message}
+                            {errors.courriel && errors.courriel.type && errors.courriel.type === "pattern"}
+
+                        </div>
+                        <div className="text-start">
+                            <label>Mot de Passe : <span id="toto">Doit contenir une minuscule, </span> <span id="tata">une majuscule </span> <span id="titi">et 8 caractères</span></label>
+                        </div>
+                        <div className="form-outline">
+                            <p className="password-container">
+                                <input type="password" name="motPasse" id="typeMotPasse" className="form-control my-3"
+                                       placeholder={"Votre mot de passe"}
+                                       {...register("motPasse", {
+                                           required: msgErrors.motPasse.requis,
+                                           pattern: {
+                                               value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&^])[A-Za-z\d@.#$!%*?&]{8,15}$/,
+                                               message: msgErrors.motPasse.format
+                                           }
+                                       })}  />
+                                <i className="bi bi-eye-slash toggle-password" id="togglePassword"
+                                   onClick={TogglePasswordVisibility}></i>
+                            </p>
+                            <small id="emailHelp" className="form-text text-muted">
+
+
+                            </small>
+                            {errors.motPasse && errors.motPasse.message}
+                            {errors.motPasse && errors.motPasse.type === "pattern"}
+                        </div>
+                        <br/>
+                        <div className="form-group row">
+                            <div className="col-sm-20 text-center">
+                                <button type="submit" className="btn btn-info w-30">Creer mon compte</button>
+                            </div>
+                        </div>
+                        <div className="d-flex justify-content-between mt-4">
+                            <Link to="/" rel="noopener noreferrer">Compte existant? Connexion ici!</Link>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-    </div>
 
-);
+    );
 }
 
 export default CreateAccount;
+
+
