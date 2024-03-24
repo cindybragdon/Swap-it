@@ -84,7 +84,7 @@ const CreateAccount = () => {
     }
 
     return (
-        <div className='hero oui '>
+        <div className='renderingElement oui '>
             <div className="card text-center card w-50 mt-5">
                 <div className="card-header h5 text-white bg-info">Créer un compte Swap-it!</div>
                 <div className="card-body px-5">

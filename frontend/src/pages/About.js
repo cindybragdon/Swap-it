@@ -7,7 +7,7 @@ const About = () => {
 
 
     return (
-        <div className='hero oui'>
+        <div className='renderingElement oui'>
             <div className="container text-center">
                 <div className="row align-items-center pt-5">
                     <div className='col-sm-4'>

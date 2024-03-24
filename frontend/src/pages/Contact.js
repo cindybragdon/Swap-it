@@ -8,7 +8,7 @@ const Contact = () => {
     }
 
   return (
-    <div className='hero oui ' style={sectionStyle}>
+    <div className='renderingElement oui ' style={sectionStyle}>
         <ContactForm />
     </div>
   );

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import questionsAnswers from "../Data/QuestionsAnswers";
+import BackToTopButton from "../components/BackToTopButton";
 
 const FAQ = () => {
     const [openItemId, setOpenItemId] = useState(null);
@@ -14,7 +15,7 @@ const FAQ = () => {
 
 
     return (
-        <div className='hero oui'>
+        <div className='renderingElement oui'>
             <div className='container'>
                 <h1>Page FAQ</h1>
                 <p>Parce que parfois, tout comprendre seul, c'est pas un cadeau!</p>
@@ -43,8 +44,10 @@ const FAQ = () => {
                         </div>
                     ))}
                 </div>
+                <BackToTopButton />
             </div>
         </div>
+
     );
 };
 

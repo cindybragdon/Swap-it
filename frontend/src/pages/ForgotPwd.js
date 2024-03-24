@@ -52,7 +52,7 @@ const ForgotPwd = () => {
 
     return (
         <>
-            <div className='hero oui ' style={sectionStyle}>
+            <div className='renderingElement oui ' style={sectionStyle}>
                 <div className="card text-center card w-50 ">
                     <div className="card-header h5 text-white bg-info">Mot de passe perdu</div>
                     <div className="card-body px-5">

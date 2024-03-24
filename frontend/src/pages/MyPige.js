@@ -29,7 +29,7 @@ const MyPige = () => {
 
 
     return (
-        <div className='hero oui'>
+        <div className='renderingElement oui'>
             <div className='container'>
                 <h1>Coucou myPige</h1>
                 <p> Lorem ipsum dolor sit amet.</p>

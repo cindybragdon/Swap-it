@@ -18,6 +18,7 @@ import UpdateAccount from "./pages/UpdateAccount";
 import MyAccount from "./pages/MyAccount";
 import MyWishList from "./pages/MyWishList";
 import AddWish from "./pages/AddWish";
+import BackToTopButton from "./components/BackToTopButton";
 
 
 function App() {
@@ -42,10 +43,6 @@ function App() {
                     <Route path='/myaccount' element={<MyAccount/>}/>
                     <Route path='/piges/:pigeName/myWishList' element={<MyWishList/>}/>
                     <Route path='/pige/myWishList/addWish' element={<AddWish/>}/>
-
-
-
-
 
                 </Routes>
             </div>

@@ -4,7 +4,7 @@ import Image404 from "../images/NotFound404.jpg";
 
 const NotFound = () => {
   return (
-    <div className='hero oui'>
+    <div className='renderingElement oui'>
         <div className='container'>
             <h1>Page Not Found, Page Introuvable</h1>
             <div>

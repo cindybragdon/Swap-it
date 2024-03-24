@@ -1,6 +1,7 @@
 import React from 'react';
 import {useNavigate} from "react-router-dom";
 import {useState, useEffect} from "react";
+import BackToTopButton from "../components/BackToTopButton";
 
 
 function Piges() {
@@ -44,7 +45,7 @@ function Piges() {
         console.log(pige);
     }
     return (
-        <div className='hero oui'>
+        <div className='renderingElement oui'>
             <div className="row row-cols-1 row-cols-md-2 g-4">
                 <div className="col">
                     <div className="card" onClick={handleClick} >
@@ -69,6 +70,7 @@ function Piges() {
                 {console.log(pigesT)}
 
             </div>
+            <BackToTopButton />
         </div>
     );
 }

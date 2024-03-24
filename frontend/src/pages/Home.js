@@ -4,7 +4,7 @@ import Login from "../components/Login";
 
 function Home() {
   return (
-    <div className='hero oui'>
+    <div className='renderingElement oui'>
         <div className='container'>
             <h1>Page Home</h1>
             <p> Lorem ipsum dolor sit amet.</p>

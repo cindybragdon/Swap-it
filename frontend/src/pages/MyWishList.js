@@ -24,7 +24,7 @@ const MyWishList = () => {
     }
 
     return (
-        <div className='hero oui'>
+        <div className='renderingElement oui'>
             <div className="container">
                 <p> getUserName, voici votre liste de suggestions de cadeaux pour la pige getPigeName </p>
                 <div className="row row-cols-1 row-cols-md-4 g-4">
@@ -77,19 +77,8 @@ const MyWishList = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="col">
-                        <div className="card h-100">
-                            <img src={ImageCadeau} className="card-img-top" alt="..."/>
-                            <div className="card-body">
-                                <div className="card" onClick={handleClick}>
-                                    <div className="card-body">
-                                        <h5 className="card-title">Ajouter une suggestion</h5>
-                                        <p className="card-text"><i className="bi bi-plus-lg"></i></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+
                 </div>
             </div>
             <div>

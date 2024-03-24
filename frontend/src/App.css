@@ -27,7 +27,7 @@ body {
   z-index: 99; /* Make sure it does not overlap */
   border: none; /* Remove borders */
   outline: none; /* Remove outline */
-  background-color: red; /* Set a background color */
+  background-color: darkgreen; /* Set a background color */
   color: white; /* Text color */
   cursor: pointer; /* Add a mouse pointer on hover */
   padding: 15px; /* Some padding */
@@ -39,7 +39,7 @@ body {
   background-color: #555; /* Add a dark-grey background on hover */
 }
 
-.hero {
+.renderingElement {
   background-size: cover;
   background-position: bottom center;
   height: 100vh;
@@ -53,7 +53,7 @@ body {
   z-index: 5;
 }
 
-.hero::before {
+.renderingElement::before {
   content: '';
   position: absolute;
   top: 0;
@@ -64,27 +64,6 @@ body {
   z-index: -1;
 }
 
-.hero h1 {
-  font-size: 46px;
-  margin: -20px 0 20px;
-}
-
-.hero p {
-  font-size: 20px;
-  letter-spacing: 1px;
-}
-
-.content h2,
-.content h3 {
-  font-size: 150%;
-  margin: 20px 0;
-}
-
-.content p {
-  color: #555;
-  line-height: 30px;
-  letter-spacing: 1.2px;
-}
 
 
 .oui{
@@ -94,6 +73,8 @@ body {
 
 .footer {
   position: relative;
+  color: #FFFFFF;
+  background-color: rebeccapurple;
   z-index: 0;
 }
 

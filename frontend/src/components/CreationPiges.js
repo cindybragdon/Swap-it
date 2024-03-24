@@ -72,7 +72,7 @@ const CreationPiges = () => {
 
     return (
 
-        <div className="hero oui">
+        <div className="renderingElement oui">
             <form className='container' method="post" onSubmit={handleSubmit(onSubmit)}>
                 <h1 className="texte-title">Salut</h1>
                 <br/><br/>

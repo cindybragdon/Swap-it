@@ -21,17 +21,18 @@ const ContactForm = () => {
         reset();
     }
     return (
-        <div className='hero oui '>
+        <div className='renderingElement oui '>
             <div className="card text-center card w-50 ">
-                <div className="card-header h5 text-white bg-info">Mot de passe perdu</div>
+                <div className="card-header h5 text-white bg-info">Contactez-nous! </div>
                 <div className="card-body px-5">
                     <p className="card-text py-2">
-                        Entrez votre courriel et nous vous enverrons des instructions à suivre afin de réinitialiser
-                        votre mot de passe.
+                        Questions?  Commentaires?  Quelque chose cloche sur le site?  Une blague à partager qui sauvera
+                        notre journée d'une morosité absolue?  Vous ne savez pas à qui envoyer ce petit mot doux un petit
+                        peu fleur bleue que vous avez écrit sur une serviette de table?  On est là pour vous!
                     </p>
-        <form className='container' onSubmit={handleSubmit(onSubmit)}>
+        <form className='container text-start' onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-3">
-                <label htmlFor="exampleFormControlInput1" className="form-label">Email address</label>
+                <label htmlFor="exampleFormControlInput1" className="form-label">Votre courriel</label>
                 <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com" { ...register("email",
                     {required: msgErrors.email.requis, pattern: {value: /^\S+@\S+$/i, message: msgErrors.email.format}})}/>
                 {errors.email && errors.email.message}
@@ -46,7 +47,10 @@ const ContactForm = () => {
             <div>
                 <input type="file" className="form-control" id="exampleFormControlInput1" placeholder="File"/>
             </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
+            <div className="m-3">
+            <button type="submit" className="btn btn-info ">Envoyer <i className="bi bi-envelope-paper-heart"></i>
+            </button>
+            </div>
         </form>
                 </div>
             </div>
