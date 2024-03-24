@@ -35,6 +35,35 @@ body {
   font-size: 18px; /* Increase font size */
 }
 
+.card-img-top {
+  object-fit: cover;
+  height: 300px; /* Adjust the height to your preference */
+  width: 100%; /* Ensure images fill their containers */
+}
+
+.card-img-top-my-wish-list {
+  object-fit: cover;
+  height: 300px; /* Adjust the height to your preference */
+  width: 100%; /* Ensure images fill their containers */
+}
+
+.password-container-create-account {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.form-control my-3 create-account {
+  padding-right: 30px; /* Make space for the icon */
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}
+
+
 #myBtn:hover {
   background-color: #555; /* Add a dark-grey background on hover */
 }

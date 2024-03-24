@@ -18,7 +18,6 @@ import UpdateAccount from "./pages/UpdateAccount";
 import MyAccount from "./pages/MyAccount";
 import MyWishList from "./pages/MyWishList";
 import AddWish from "./pages/AddWish";
-import BackToTopButton from "./components/BackToTopButton";
 
 
 function App() {

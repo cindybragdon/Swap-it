@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useForm} from "react-hook-form";
 import http from "../http/http";
-import '../CreateAccount.css';
+import '../App.css';
 import TogglePasswordVisibility from "../components/TogglePassVisibility";
 import {Link} from "react-router-dom";
 
@@ -153,8 +153,8 @@ const CreateAccount = () => {
                             <label>Mot de Passe : <span id="toto">Doit contenir une minuscule, </span> <span id="tata">une majuscule </span> <span id="titi">et 8 caractères</span></label>
                         </div>
                         <div className="form-outline">
-                            <p className="password-container">
-                                <input type="password" name="motPasse" id="typeMotPasse" className="form-control my-3"
+                            <p className="password-container-create-account">
+                                <input type="password" name="motPasse" id="typeMotPasse" className="form-control my-3 create-account"
                                        placeholder={"Votre mot de passe"}
                                        {...register("motPasse", {
                                            required: msgErrors.motPasse.requis,
