@@ -1,5 +1,4 @@
 import React from 'react'
-import {useForm} from 'react-hook-form';
 import ImageSouliers from '../images/nike.jpg';
 import ImageRobe from '../images/simons.jpg';
 import ImageVernis from '../images/vernis.jpg';
@@ -43,7 +42,7 @@ const MyWishList = () => {
                     </div>
                     <div className="col">
                         <div className="card h-100">
-                            <img src={ImageRobe} className="card-img-top" alt="..."/>
+                            <img src={ImageRobe} className="card-img-top-my-wish-list" alt="..."/>
                             <div className="card-body">
                                 <h5 className="card-title">Robe Simons</h5>
                                 <p className="card-text">Cette robe est très jolie.</p>
@@ -55,7 +54,7 @@ const MyWishList = () => {
                     </div>
                     <div className="col">
                         <div className="card h-100">
-                            <img src={ImageVernis} className="card-img-top" alt="..."/>
+                            <img src={ImageVernis} className="card-img-top-my-wish-list" alt="..."/>
                             <div className="card-body">
                                 <h5 className="card-title">Vernis a ongles</h5>
                                 <p className="card-text">Délicieuse couleur parfaite pour le printemps.</p>
@@ -66,7 +65,7 @@ const MyWishList = () => {
                     </div>
                     <div className="col">
                         <div className="card h-100">
-                            <img src={ImageCadeau} className="card-img-top" alt="..."/>
+                            <img src={ImageCadeau} className="card-img-top-my-wish-list" alt="..."/>
                             <div className="card-body">
                                 <div className="card" onClick={handleClick}>
                                     <div className="card-body">
@@ -79,7 +78,7 @@ const MyWishList = () => {
                     </div>
                     <div className="col">
                         <div className="card h-100">
-                            <img src={ImageCadeau} className="card-img-top" alt="..."/>
+                            <img src={ImageCadeau} className="card-img-top-my-wish-list" alt="..."/>
                             <div className="card-body">
                                 <div className="card" onClick={handleClick}>
                                     <div className="card-body">
