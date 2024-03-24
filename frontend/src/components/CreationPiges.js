@@ -7,6 +7,12 @@ import http from "../http/http";
 //Problème de CSS
 
 const CreationPiges = () => {
+    return(
+        <>
+        </>
+    )
+}
+    /*
 
     const {handleSubmit, reset} = useForm();
 
@@ -31,7 +37,7 @@ const CreationPiges = () => {
         user:{
             idUser: 1
         },
-        pige:{
+        piges:{
             pigeName: nomPige,
             pigeType: pigeType,
             pigeDescription: pigeDescription,
@@ -122,5 +128,5 @@ const CreationPiges = () => {
         </div>
     )
 }
-
+*/
 export default CreationPiges;

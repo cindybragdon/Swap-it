@@ -87,6 +87,17 @@ public class UserPigeServerController {
 
     }
 
+    @GetMapping("/getListUserPigeFromIdPige")
+    public List<UserPige> getListUserPigeFromIdPige(@RequestParam int idPige) throws Exception {
+        try {
+            return userPigeRepository.findAllByPige_IdPige(idPige);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+
+    }
+
     /*
     @GetMapping("/getInfoUserPigeByIdUserAndIdPige")
     public UserPige getInfoUserPigeByIdUserAndIdPige(int idUser, int idPige) throws Exception {
