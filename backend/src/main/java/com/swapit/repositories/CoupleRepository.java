@@ -10,15 +10,19 @@ import java.util.List;
 
 public interface CoupleRepository extends JpaRepository<Couple, Integer> {
 
-public Couple findByFirstConjointAndSecondConjointAndFirstConjoint_User_IdUserAndFirstConjoint_Pige(UserPige firstConjoint, UserPige secondConjoint, int idOfUserSearched, Pige pigeToLookInto);
+    public Couple findCoupleByFirstConjointOrSecondConjoint(UserPige userPige, UserPige sameUserPige);
 
-public Couple findByIdCouple(Integer idCouple);
+    public Couple findByIdCouple(Integer idCouple);
 
-public List<Couple> findCouplesByFirstConjoint_Pige_IdPige(int idPigeToFindAllCouple);
+    public Couple findCoupleByFirstConjoint(UserPige firstConjoint);
+
+    public Couple findCoupleBySecondConjoint(UserPige secondConjoint);
+
+    public List<Couple> findCouplesByFirstConjoint_Pige_IdPige(int idPigeToFindAllCouple);
 
 
-public boolean existsByFirstConjoint(UserPige firstConjoint);
-public boolean existsBySecondConjoint(UserPige secondConjoint);
+    public boolean existsByFirstConjoint(UserPige firstConjoint);
+    public boolean existsBySecondConjoint(UserPige secondConjoint);
 
 
 
