@@ -5,7 +5,7 @@ import ImageRobe from '../images/simons.jpg';
 import ImageVernis from '../images/vernis.jpg';
 import ImageCadeau from '../images/gift.png';
 import {useNavigate} from "react-router-dom";
-import '../MyWishList.css';
+import '../App.css';
 import BackToTopButton from "../components/BackToTopButton";
 
 //Les cartes passent sous la navbar et sur le footer dès quil y en a plus de 4
@@ -30,7 +30,7 @@ const MyWishList = () => {
                 <div className="row row-cols-1 row-cols-md-4 g-4">
                     <div className="col">
                         <div className="card h-500">
-                            <img src={ImageSouliers} className="card-img-top " alt="..." height="300" width="100"/>
+                            <img src={ImageSouliers} className="card-img-top-my-wish-list " alt="..." height="300" width="100"/>
                             <div className="card-body">
                                 <h5 className="card-title">Souliers Nike</h5>
                                 <p className="card-text">J'aimerais avoir ces souliers grandeur 7.5 Mais je crois que ça
