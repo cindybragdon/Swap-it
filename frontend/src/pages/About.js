@@ -1,20 +1,24 @@
 import React from 'react';
 import ImageScrumShine from "../images/OliCin3.jpg";
 import ReseauxSociaux from "../components/ReseauxSociaux";
+import ImageAbout from "../images/AboutUs.jpg";
 
 
 const About = () => {
+    var sectionStyle = {
+        backgroundImage: `url(${ImageAbout})`
+    }
 
 
     return (
-        <div className='renderingElement oui'>
+        <div className='renderingElement oui' style={sectionStyle}>
             <div className="container text-center">
                 <div className="row align-items-center pt-5">
                     <div className='col-sm-4'>
                         <img src={ImageScrumShine} className="rounded mx-auto d-block img-thumbnail" alt="..."/>
                     </div>
                     <div className="col-sm-8 ">
-                        <div className="text-about p-3"  style={{backgroundColor: '#000000 '}}>
+                        <div className="text-black p-3"  style={{backgroundColor: 'antiquewhite'}}>
                             <h2>À propos de Swap-it</h2>
                             <p class="fs-6">Imaginez un monde où la pige de cadeaux n'est plus un casse-tête logistique, mais une
                                 joyeuse célébration de l'incertitude et de l'amitié (ou de l'obligation professionnelle,

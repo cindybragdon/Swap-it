@@ -32,9 +32,6 @@ const Login = () => {
         reset();
     }
 
-
-    //Manque a envoyé les données avec Axios, ne fonctionne pas.
-
     const loginUser = async () => {
         try{
             const response = await http.get(`/getUserByEmail?email=${email}&password=${password}`);
@@ -50,39 +47,46 @@ const Login = () => {
 
     return (
         <>
-
             <div className="container">
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="form-group row justify-content-center">
-                    <label className="col-sm-2 col-form-label">Email</label>
-                    <div className="form-group row ">
-                        <input type="email" name="email"  className="form-control w-50 " placeholder="Email"
-                               { ...register("email",
-                                   {required: msgErrors.email.requis, pattern: {value: /^\S+@\S+$/i, message: msgErrors.email.format}})}/>
-                        {errors.email && errors.email.message}
-                        {errors.email && errors.email.type === "pattern"}
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <div className="row justify-content-center">
+                        <div className="col-sm-6">
+                            <div className="form-group">
+                                <label className="text-white">Email</label>
+                                <input type="email" className="form-control m-2" placeholder="Email"
+                                       {...register("email", {
+                                           required: "Vous devez saisir un email",
+                                           pattern: {
+                                               value: /^\S+@\S+$/i,
+                                               message: "Le email est invalide"
+                                           }
+                                       })}
+                                />
+                                {errors.email && <p>{errors.email.message}</p>}
+                            </div>
+
+                            <div className="form-group">
+                                <label className="text-white">Password</label>
+                                <input type="password" className="form-control m-2" placeholder="Password"
+                                       {...register("password", {
+                                           required: "Vous devez saisir un mot de passe",
+                                           pattern: {
+                                               value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/,
+                                               message: "Le mot de passe est invalide"
+                                           }
+                                       })}
+                                />
+                                {errors.password && <p>{errors.password.message}</p>}
+                            </div>
+
+                            <div className="form-group">
+                                <button type="submit" className="btn btn-info m-3">Se connecter</button>
+                                <button type="button" className="btn btn-info ml-2">Se créer un compte</button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div className="form-group row">
-                    <label className="col-sm-2 col-form-label">Password</label>
-                    <div className="form-group row">
-                        <input type="password" className="form-control w-50" placeholder="Password"
-                               { ...register("password",
-                                   {required: msgErrors.password.requis, pattern: {value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}/, message: msgErrors.password.format}})}/>
-                        {errors.password && errors.password.message}
-                        {errors.password && errors.password.type === "pattern"}
-                    </div>
-                </div>
-                <div className="form-group row">
-                    <div className="col-sm-5 mt-5">
-                        <button type="submit" className="btn btn-info">Se connecter</button>
-                    </div>
-                    <div className="col-sm-5 mt-5">
-                        <button type="bouton" className="btn btn-info">Se créer un compte</button>
-                    </div>
-                </div>
-            </form>
-            {serverResponse && <p>{serverResponse}</p>}
+                </form>
+                {serverResponse && <p>{serverResponse}</p>}
             </div>
         </>
     );
