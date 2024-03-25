@@ -15,10 +15,10 @@ function Home() {
         <div className='renderingElement oui' style={sectionStyle}>
             <div className='container'>
                 <div className="row align-items-center pt-5">
-                    <div className='col-md-4'>
+                    <div className='col-md-5'>
                         <img src={ImageLogo2} className="rounded mx-auto d-block img-thumbnail" alt="..."/>
                     </div>
-                    <div className="col-md-8">
+                    <div className="col-md-6">
                         <div className="card " style={{backgroundColor: 'rebeccapurple'}}>
                             <div className="card-body">
 

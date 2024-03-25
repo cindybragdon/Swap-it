@@ -50,8 +50,10 @@ const Login = () => {
 
     return (
         <>
+
+            <div className="container">
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="form-group row ">
+                <div className="form-group row justify-content-center">
                     <label className="col-sm-2 col-form-label">Email</label>
                     <div className="form-group row ">
                         <input type="email" name="email"  className="form-control w-50 " placeholder="Email"
@@ -81,6 +83,7 @@ const Login = () => {
                 </div>
             </form>
             {serverResponse && <p>{serverResponse}</p>}
+            </div>
         </>
     );
 };

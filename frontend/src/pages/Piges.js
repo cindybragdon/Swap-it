@@ -72,7 +72,6 @@ function Piges() {
                                     <div className="card-body">
                                         <h5 className="card-title">{userPige.pige.pigeName}</h5>
                                         <p className="card-text">{userPige.pige.pigeEndDate}</p>
-                                        {console.log(userPige[0])}
                                     </div>
                             </div>
                         </div>

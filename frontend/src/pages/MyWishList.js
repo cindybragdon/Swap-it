@@ -65,17 +65,31 @@ const MyWishList = () => {
                         <div className="container row">
                             {console.log(wishedItem)}
                             <div className="card h-500 mt-5 mb-5">
-                                <img src={wishedItem.wishedItemName} className="card-img-top-my-wish-list " alt="..." height="300"
+                                <img src={wishedItem.wishedItemName} className="card-img-top-my-wish-list " alt="..."
+                                     height="300"
                                      width="100"/>
                                 <div className="card-body">
                                     <h5 className="card-title">{wishedItem.wishedItemName}</h5>
                                     <p className="card-text">{wishedItem.wishedItemDescription}</p>
-                                    <a href={wishedItem.wishedItemUrl} className="stretched-link new-tab " target='_blank'>Voir cet item en ligne</a>
+                                    <a href={wishedItem.wishedItemUrl} className="stretched-link new-tab "
+                                       target='_blank'>Voir cet item en ligne</a>
                                 </div>
                             </div>
                         </div>
                     )}
-
+                    <div className="col">
+                        <div className="card h-100">
+                            <img src={ImageCadeau} className="card-img-top-my-wish-list" alt="..."/>
+                            <div className="card-body">
+                                <div className="card" onClick={handleClick}>
+                                    <div className="card-body">
+                                        <h5 className="card-title">Ajouter une suggestion</h5>
+                                        <p className="card-text"><i className="bi bi-plus-lg"></i></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 
                 </div>
