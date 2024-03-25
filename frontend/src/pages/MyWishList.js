@@ -52,9 +52,9 @@ const MyWishList = () => {
     }
 
     return (
-        <div className='renderingElement oui bg-primary'>
-            <div className="container bg-primary">
-                <div>
+        <div className='container row bg-primary text-center'>
+            <div >
+                <div className="pt-3">
                 <h2>{userPige.user.userFirstName}, voici votre liste de suggestions de cadeaux pour la pige {userPige.pige.pigeName} </h2>
                 </div>
                 <div className="row row-cols-1 row-cols-md-4 g-4">
@@ -77,7 +77,7 @@ const MyWishList = () => {
                             </div>
                         </div>
                     )}
-                    <div className="col">
+                    <div className="col pb-5">
                         <div className="card h-100">
                             <img src={ImageCadeau} className="card-img-top-my-wish-list" alt="..."/>
                             <div className="card-body">

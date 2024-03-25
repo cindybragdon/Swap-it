@@ -10,11 +10,13 @@ const NavBar = () => {
               </button>
               <div class="collapse navbar-collapse" id="n_bar">
                   <ul class="navbar-nav">
-                      <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
-                      <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
-                      <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
-                      <li class="nav-item"><a class="nav-link" href="/faq">FAQ</a></li>
-                      <li class="nav-item"><a class="nav-link" href="/features">Fonctionnalites</a></li>
+                      <li className="nav-item active"><a className="nav-link" href="/">Home</a></li>
+                      <li className="nav-item"><a className="nav-link" href="/about">About</a></li>
+                      <li className="nav-item"><a className="nav-link" href="/contact">Contact</a></li>
+                      <li className="nav-item"><a className="nav-link" href="/faq">FAQ</a></li>
+                      <li className="nav-item"><a className="nav-link" href="/features">Fonctionnalites</a></li>
+                      <li className="nav-item"><a className="nav-link" href="/piges">Mes piges</a></li>
+                      <li className="nav-item"><a className="nav-link" href="/myaccount">Mon compte</a></li>
                   </ul>
               </div>
           </div>
