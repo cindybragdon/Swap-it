@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import questionsAnswers from "../Data/QuestionsAnswers";
 import BackToTopButton from "../components/BackToTopButton";
+import ImageFAQ from "../images/FAQ.jpg";
 
 const FAQ = () => {
+
+    var sectionStyle = {
+        backgroundImage: `url(${ImageFAQ})`
+    }
+
     const [openItemId, setOpenItemId] = useState(null);
 
     const toggleItem = (itemId) => {
@@ -15,10 +21,9 @@ const FAQ = () => {
 
 
     return (
-        <div className='renderingElement oui'>
+        <div className='renderingElement oui' style={sectionStyle}>
             <div className='container'>
-                <h1>Page FAQ</h1>
-                <p>Parce que parfois, tout comprendre seul, c'est pas un cadeau!</p>
+                <h2 style={{ backgroundColor: "#D4015F"}}>Parce que parfois, tout comprendre seul, c'est pas un cadeau!</h2>
                 <div className="accordion" id="accordionExample">
                     {questionsAnswers.map((questionAns) => (
                         <div className="card" key={questionAns.itemId}>
