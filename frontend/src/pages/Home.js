@@ -12,7 +12,7 @@ function Home() {
     }
 
     return (
-        <div className='renderingElement oui' style={sectionStyle}>
+        <div style={sectionStyle}>
             <div className='container'>
                 <div className="row align-items-center pt-5">
                     <div className='col-md-5'>

@@ -11,7 +11,7 @@ const About = () => {
 
 
     return (
-        <div className='renderingElement oui' style={sectionStyle}>
+        <div  style={sectionStyle}>
             <div className="container text-center">
                 <div className="row align-items-center pt-5">
                     <div className='col-sm-4'>
