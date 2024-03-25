@@ -51,10 +51,10 @@ const Login = () => {
     return (
         <>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="form-group row">
+                <div className="form-group row ">
                     <label className="col-sm-2 col-form-label">Email</label>
-                    <div className="form-group row">
-                        <input type="email" name="email"  className="form-control" placeholder="Email"
+                    <div className="form-group row ">
+                        <input type="email" name="email"  className="form-control w-50 " placeholder="Email"
                                { ...register("email",
                                    {required: msgErrors.email.requis, pattern: {value: /^\S+@\S+$/i, message: msgErrors.email.format}})}/>
                         {errors.email && errors.email.message}
@@ -64,7 +64,7 @@ const Login = () => {
                 <div className="form-group row">
                     <label className="col-sm-2 col-form-label">Password</label>
                     <div className="form-group row">
-                        <input type="password" className="form-control" placeholder="Password"
+                        <input type="password" className="form-control w-50" placeholder="Password"
                                { ...register("password",
                                    {required: msgErrors.password.requis, pattern: {value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}/, message: msgErrors.password.format}})}/>
                         {errors.password && errors.password.message}
@@ -76,7 +76,7 @@ const Login = () => {
                         <button type="submit" className="btn btn-info">Se connecter</button>
                     </div>
                     <div className="col-sm-5 mt-5">
-                        <button type="bouton" className="btn btn-primary">Se créer un compte</button>
+                        <button type="bouton" className="btn btn-info">Se créer un compte</button>
                     </div>
                 </div>
             </form>
