@@ -5,6 +5,7 @@ const Footer = () => {
     return (
 
             <footer className="footer">
+                <div className="container">
 
                 <section className="style={{ backgroundColor: 'light purple' }} py-2 py-xl-3 border-top border-light">
                     <div className="container overflow-hidden">
@@ -14,8 +15,8 @@ const Footer = () => {
                                     &copy; 2024. Swap-it, all Rights Reserved.
                                 </div>
                                 <div className="credits text-white text-center text-md-start mt-2 fs-7">
-                                    Built by <a href="/about"
-                                                className="link-danger text-decoration-none">ScrumShine</a> with <i className="bi bi-heart text-danger"></i>
+                                    Imaginé par <a href="/about"
+                                                className="link-danger text-decoration-none">ScrumShine</a> avec <i className="bi bi-heart text-danger"></i>
                                 </div>
                             </div>
 
@@ -41,7 +42,7 @@ const Footer = () => {
                         </div>
                     </div>
                 </section>
-
+                </div>
             </footer>
 
     );

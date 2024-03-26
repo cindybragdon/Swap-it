@@ -8,9 +8,11 @@ const Contact = () => {
     }
 
   return (
-    <div className='renderingElement oui ' style={sectionStyle}>
+
+    <div className='renderingElement ' style={sectionStyle}>
         <ContactForm />
     </div>
+
   );
 };
 
