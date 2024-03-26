@@ -21,7 +21,7 @@ const ContactForm = () => {
         reset();
     }
     return (
-        <div className='renderingElement oui d-flex ' style={{ marginRight: '40px' }}>
+        <div className=' d-flex ' style={{ marginRight: '40px' }}>
             <div className="card text-center w-50 ms-auto ">
                 <div className="card-header h5 text-white" style={{ backgroundColor: "#D4015F" }}>Contactez-nous! </div>
                 <div className="card-body px-5">

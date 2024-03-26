@@ -3,12 +3,6 @@ import {useLocation, useNavigate} from "react-router-dom";
 
 
 const MyPige = () => {
-    /*
-    * @KarolannMauger
-    * @Date : 2024-03-21
-    * @Revision1 :
-    * Petit problème pour get le idUserPige dans ma list, j'essaie de trouver le bug, voir avec moi pour explication.
-     */
 
     const navigate = useNavigate();
 

@@ -18,7 +18,7 @@ const QuiJaiPige = () => {
 
 
     return (
-        <div className='renderingElement oui' style={sectionStyle}>
+        <div className='renderingElement' style={sectionStyle}>
             <div className='container '>
                 <h3 style={{backgroundColor: "#D4015F",
                     position: 'absolute',
