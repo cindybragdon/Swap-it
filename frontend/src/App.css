@@ -114,7 +114,6 @@ body {
   z-index: 0;
 }
 
-
-
-
-
+.nav-item {
+  padding: 5px;
+}
