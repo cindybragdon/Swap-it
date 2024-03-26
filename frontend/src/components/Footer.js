@@ -22,18 +22,18 @@ const Footer = () => {
                             <div className="col-xs-12 col-md-5 order-0 order-md-1">
                                 <ul className="nav justify-content-center justify-content-md-end">
                                     <li className="nav-item">
-                                        <a className="nav-link link-dark" href="#!">
-                                            <i className="bi bi-facebook text-primary "></i>
+                                        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+                                            <i className="bi bi-facebook text-white "></i>
                                         </a>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link link-dark" href="#!">
-                                            <i className="bi bi-twitter-x"></i>
+                                        <a href="https://www.twitter.com/" target="_blank" rel="noopener noreferrer">
+                                            <i className="bi bi-twitter-x text-white"></i>
                                         </a>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link link-dark" href="#!">
-                                            <i className="bi bi-instagram text-info"></i>
+                                        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+                                            <i className="bi bi-instagram text-white"></i>
                                         </a>
                                     </li>
                                 </ul>
