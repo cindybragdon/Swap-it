@@ -9,8 +9,10 @@ const Contact = () => {
 
   return (
 
-    <div className='renderingElement ' style={sectionStyle}>
-        <ContactForm />
+    <div className='card justify-content-center min-vh-100' style={sectionStyle}>
+        <div className="container mt-5 mb-5 d-flex justify-content-end text-center">
+            <ContactForm />
+        </div>
     </div>
 
   );

@@ -21,8 +21,7 @@ const ContactForm = () => {
         reset();
     }
     return (
-        <div className=' d-flex ' style={{ marginRight: '40px' }}>
-            <div className="card text-center w-50 ms-auto ">
+            <div className="card text-center w-50  ">
                 <div className="card-header h5 text-white" style={{ backgroundColor: "#D4015F" }}>Contactez-nous! </div>
                 <div className="card-body px-5">
                     <p className="card-text py-2">
@@ -53,7 +52,7 @@ const ContactForm = () => {
             </div>
         </form>
                 </div>
-            </div>
+
         </div>
 
     )

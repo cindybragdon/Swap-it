@@ -31,15 +31,15 @@ const MyPige = () => {
 
 
     return (
-        <div className='renderingElement oui bg-primary'>
-            <div className='container'>
+        <div className='container row justify-content-center text-center oui bg-primary min-vh-100'>
+            <div className='col-sm-4 mt-5'>
                 <h1>Coucou myPige</h1>
                 <p> Lorem ipsum dolor sit amet.</p>
                 <h1>{selectedPige.pige.pigeName}</h1>
                 <h1>{selectedPige.user.userFirstName}</h1>
             </div>
 
-            <div className="container row">
+            <div className="col-sm-4">
                 <div className="w-2">
                 {listUserPige.map(userPige =>
 
@@ -57,7 +57,7 @@ const MyPige = () => {
             </div>
 
 
-            <div className="container">
+            <div className="col-sm-4 mt-5">
                 <button onClick={() => handleButton2Click()}> My Piges</button>
             </div>
         </div>

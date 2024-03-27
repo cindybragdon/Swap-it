@@ -7,12 +7,8 @@ import http from "../http/http";
 //Problème de CSS
 
 const CreationPiges = () => {
-    return(
-        <>
-        </>
-    )
-}
-    /*
+
+
 
     const {handleSubmit, reset} = useForm();
 
@@ -126,7 +122,7 @@ const CreationPiges = () => {
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
         </div>
-    )
+    );
 }
-*/
+
 export default CreationPiges;

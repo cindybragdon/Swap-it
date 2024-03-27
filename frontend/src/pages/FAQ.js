@@ -21,8 +21,8 @@ const FAQ = () => {
 
 
     return (
-        <div className='renderingElement oui' style={sectionStyle}>
-            <div className='container'>
+        <div className='card p-5 justify-content-center text-center min-vh-100  oui ' style={sectionStyle}>
+            <div className='d-block align-middle'>
                 <h2 style={{ backgroundColor: "#D4015F"}}>Parce que parfois, tout comprendre seul, c'est pas un cadeau!</h2>
                 <div className="accordion" id="accordionExample">
                     {questionsAnswers.map((questionAns) => (

@@ -54,9 +54,9 @@ function Piges() {
 
 
     return (
-        <div className='container row justify-content-center text-center'>
-            <div className=" row-cols-md-2 g-4">
-                <div className="col">
+        <div className='container col justify-content-center text-center min-vh-100'>
+
+                <div className="col m-5">
                     <div className="card" onClick={handleClick} >
                             <div className="card-body" >
                                 <h5 className="card-title">Créer une nouvelle pige</h5>
@@ -67,7 +67,7 @@ function Piges() {
 
 
                 {listUserPige.map(userPige =>
-                        <div className="col" onClick={() => handlePigeClick(userPige)}>
+                        <div className="col m-5" onClick={() => handlePigeClick(userPige)}>
                             <div className="card">
                                     <div className="card-body">
                                         <h5 className="card-title">{userPige.pige.pigeName}</h5>
@@ -79,11 +79,9 @@ function Piges() {
 
 
 
-
-
-
+            <div>
+                <BackToTopButton/>
             </div>
-            <BackToTopButton />
         </div>
     );
 }

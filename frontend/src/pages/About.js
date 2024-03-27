@@ -11,8 +11,8 @@ const About = () => {
 
 
     return (
-        <div  style={sectionStyle}>
-            <div className="container row h-100 text-center">
+        <div style={sectionStyle} >
+            <div className="container row min-vh-100 text-center">
                 <div className="container row align-items-center">
 
                     <div className="col-sm-6 p-4">
