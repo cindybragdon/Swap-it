@@ -37,9 +37,11 @@ const About = () => {
                         <p>Voici une brève introduction de notre équipe ScrumShine:</p>
                         <div className="row">
                                 <br/>
-                                <ReseauxSociaux userName='Olivier Poirier' gitHubUsername='olivierpoirier' linkedinUsername='olivier-poirier-66a3782bb' />
+                            <ReseauxSociaux userName='Jenna-Lee Lecavalier' gitHubUsername='JennaLeeL' linkedinUsername='jenna-lee-lecavalier-745408294' />
                                 <br/>
-                                <ReseauxSociaux userName='Cindy Bragdon' gitHubUsername='cindybragdon' linkedinUsername='cindy-bragdon-873a8822a' />
+                            <ReseauxSociaux userName='Olivier Poirier' gitHubUsername='olivierpoirier' linkedinUsername='olivier-poirier-66a3782bb' />
+                                <br/>
+                            <ReseauxSociaux userName='Cindy Bragdon' gitHubUsername='cindybragdon' linkedinUsername='cindy-bragdon-873a8822a' />
                         </div>
                     </div>
                 </div>

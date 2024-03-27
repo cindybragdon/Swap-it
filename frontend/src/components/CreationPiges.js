@@ -4,7 +4,6 @@ import {useNavigate} from "react-router-dom";
 import http from "../http/http";
 
 
-//Problème de CSS
 
 const CreationPiges = () => {
 
@@ -27,8 +26,7 @@ const CreationPiges = () => {
    // const [serverResponse, setServerResponse] = useState(null); // [0] = email, [1] = password, [2] = serverResponse
 
 
-    //Problème avec le id de la pige, pour le moment on  doit le set nous même, mais normalement on veut qu'il s'incrémente automatiquement
-    //UPDATE: Le problème du id est pas régler. On doit le set nous même pour le moment
+
     const formsUserWithPige = {
         user:{
             idUser: 1
