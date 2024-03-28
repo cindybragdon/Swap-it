@@ -4,14 +4,14 @@ import Image404 from "../images/NotFound404.jpg";
 
 const NotFound = () => {
   return (
-    <div className='renderingElement oui'>
+    <div className='renderingElement oui' style={{backgroundColor: "floralwhite"}}>
         <div className='container'>
-            <h1>Page Not Found, Page Introuvable</h1>
+            <h1 style={{color:"black"}}>Page Not Found, Page Introuvable</h1>
             <div>
-                <img src={Image404} className="rounded mx-auto d-block text-center " height="300" width="300" alt="..."/>
+                <img src={Image404} className="rounded mx-auto d-block text-center " height="400" width="400" alt="..."/>
             </div>
             <div className=" mt-4 text-center ">
-               <h3> <a className="text-danger bg-white" href="/">Retour à la page d'acceuil</a></h3>
+               <h3> <a className="text-danger "  href="/">Retour à la page d'acceuil</a></h3>
             </div>
 
         </div>
