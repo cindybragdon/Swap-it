@@ -22,15 +22,16 @@ const FAQ = () => {
 
     return (
         <div className='card p-5 justify-content-center text-center min-vh-100  oui ' style={sectionStyle}>
+           <div className="card p-3" style={{ backgroundColor: "#FFF4C6"}}>
             <div className='d-block align-middle'>
-                <h2 style={{ backgroundColor: "#D4015F"}}>Parce que parfois, tout comprendre seul, c'est pas un cadeau!</h2>
+                <h2 className="p-2" style={{ backgroundColor: "#D4015F"}}>Parce que parfois, tout comprendre seul, c'est pas un cadeau!</h2>
                 <div className="accordion" id="accordionExample">
                     {questionsAnswers.map((questionAns) => (
-                        <div className="card" key={questionAns.itemId}>
-                            <div className={`card-header ${questionAns.itemId === openItemId ? '' : 'collapsed'}`} id={`heading${questionAns.itemId}`}>
+                        <div className="card "   key={questionAns.itemId}>
+                            <div className={`card-header  ${questionAns.itemId === openItemId ? '' : 'collapsed'}`} id={`heading${questionAns.itemId}`} style={{ backgroundColor: "#2AB59A"}}>
                                 <h2 className="mb-0">
                                     <button
-                                        className="btn btn-link text-info"
+                                        className="btn btn-link text-dark"
                                         type="button"
                                         onClick={() => toggleItem(questionAns.itemId)}
                                         aria-expanded={openItemId === questionAns.itemId}
@@ -41,8 +42,8 @@ const FAQ = () => {
                                 </h2>
                             </div>
 
-                            <div id={`collapse${questionAns.itemId}`} className={`collapse ${openItemId === questionAns.itemId ? 'show' : ''}`} aria-labelledby={`heading${questionAns.itemId}`}>
-                                <div className="card-body">
+                            <div  id={`collapse${questionAns.itemId}`} className={`collapse ${openItemId === questionAns.itemId ? 'show' : ''}`} aria-labelledby={`heading${questionAns.itemId}`} style={{ backgroundColor: "#3BFFD9"}}>
+                                <div className="card-body" >
                                     {questionAns.answer}
                                 </div>
                             </div>
@@ -51,6 +52,7 @@ const FAQ = () => {
                 </div>
                 <BackToTopButton />
             </div>
+           </div>
         </div>
 
     );

@@ -1,5 +1,5 @@
 
-html, body {
+html {
   height: 100%;
   margin: 0;
 }
@@ -35,8 +35,9 @@ body {
   z-index: 99;
   border: none;
   outline: none;
-  background-color: darkgreen;
-  color: white;
+  background-color: yellow;
+  border: black;
+  color: black;
   cursor: pointer;
   padding: 15px;
   border-radius: 10px;

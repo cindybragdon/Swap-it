@@ -19,10 +19,10 @@ function Home() {
                         <img src={ImageLogo2} className="rounded mx-auto d-block img-thumbnail" alt="..."/>
                     </div>
                     <div className="col-md-6">
-                        <div className="card " style={{backgroundColor: 'rebeccapurple'}}>
+                        <div className="card card text-start " style={{backgroundColor: 'rebeccapurple'}}>
                             <div className="card-body">
 
-                                <h3 className="text-white">Bienvenue sur Swap-it!</h3>
+                                <h3 className="text-white text-center">Bienvenue sur Swap-it!</h3>
 
                                 <Login/>
                             </div>

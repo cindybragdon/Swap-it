@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import http from "../http/http";
+import {Link} from "react-router-dom";
 
 
 
@@ -81,7 +82,7 @@ const Login = () => {
 
                             <div className="form-group">
                                 <button type="submit" className="btn btn-info m-3">Se connecter</button>
-                                <button type="button" className="btn btn-info ml-2">Se créer un compte</button>
+                                <button type="button" className="btn btn-info ml-2 ">Creer un compte ici!</button>
                             </div>
                         </div>
                     </div>
