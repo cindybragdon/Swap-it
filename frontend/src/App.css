@@ -117,3 +117,26 @@ body {
 .nav-item {
   padding: 5px;
 }
+
+#welcomeText {
+  font-family: "Bangers", sans-serif;
+  font-weight: 200;
+  font-size: 35px;
+  letter-spacing: 1px;
+  text-align: center;
+  text-shadow: 3px 0 black, -3px 0 black;
+}
+
+span {
+  color: rgb(254, 200, 49);
+  font-family: "Lobster", sans-serif;
+}
+
+.container-login {
+  border: white 10px solid;
+}
+
+.card {
+  border: white 5px solid;
+}
+
