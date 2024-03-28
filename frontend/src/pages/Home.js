@@ -9,7 +9,7 @@ function Home() {
     var sectionStyle = {
         backgroundImage: `url(${ImageParty})`,
         position: 'relative',
-        minHeight: '100vh',
+        minHeight: '85vh',
     }
 
     const navigate = useNavigate();
@@ -30,7 +30,7 @@ function Home() {
                         <div className="card " style={{backgroundColor: 'rebeccapurple'}}>
                             <div className="card-body">
 
-                                <h3 className="text-white">Bienvenue sur Swap-it!</h3>
+                                <h3 className="text-white m-2" id="welcomeText">Bienvenue sur Swap-<span>i</span>t!</h3>
 
                                 <Login/>
                             </div>
