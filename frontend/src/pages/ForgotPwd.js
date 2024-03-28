@@ -52,8 +52,8 @@ const ForgotPwd = () => {
 
     return (
         <>
-            <div className='renderingElement oui ' style={sectionStyle}>
-                <div className="card text-center card w-50 ">
+            <div className= 'renderingElement card justify-content-center min-vh-100'  style={sectionStyle}>
+                <div className="card text-center card w-50" id="container-forgot" >
                     <div className="card-header h5 text-white bg-info">Mot de passe perdu</div>
                     <div className="card-body px-5">
                         <p className="card-text py-2">
@@ -62,7 +62,7 @@ const ForgotPwd = () => {
                         </p>
                         <div className="form-outline">
                             <input type="email" id="typeEmail" className="form-control my-3"
-                                   placeholder={"votre courriel ici"}
+                                   placeholder={"Votre courriel ici"}
                                    { ...register("email",
                                        {required: msgErrors.email.requis, pattern: {value: /^\S+@\S+$/i, message: msgErrors.email.format}})}/>
                             {errors.email && errors.email.message}
@@ -74,8 +74,8 @@ const ForgotPwd = () => {
                             </div>
                         </div>
                         <div className="d-flex justify-content-between mt-4">
-                            <a className="" href="/">Connexion au compte</a>
-                            <a className="" href="/">Se créer un compte</a>
+                            <a id="link-text" className="" href="/">Connexion au compte</a>
+                            <a  id="link-text" className="" href="/">Se créer un compte</a>
                         </div>
                     </div>
                 </div>

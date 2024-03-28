@@ -15,12 +15,12 @@ const About = () => {
             <div className="container row min-vh-100 text-center">
                 <div className="container row align-items-center">
 
-                    <div className="col-sm-6 p-4">
+                    <div className="col-sm-6 p-3">
                         <img src={ImageScrumShine} className="rounded mx-auto d-block img-thumbnail " alt="..."/>
                     </div>
 
-                    <div className="col-sm-6 text-black pb-3 "  style={{backgroundColor: 'antiquewhite'}}>
-                        <h2>À propos de Swap-it</h2>
+                    <div className="col-sm-6 text-black pb-3 " id="container-about" >
+                        <h2 className="title-about">À propos de Swap-it</h2>
                         <p className="fs-6">Imaginez un monde où la pige de cadeaux n'est plus un casse-tête logistique, mais une
                             joyeuse célébration de l'incertitude et de l'amitié (ou de l'obligation professionnelle,
                             soyons honnêtes).Et pour ceux qui redoutent le moment où leur nom sera associé à la

@@ -11,7 +11,7 @@ const NotFound = () => {
                 <img src={Image404} className="rounded mx-auto d-block text-center " height="300" width="300" alt="..."/>
             </div>
             <div className=" mt-4 text-center ">
-               <h3> <a className="text-danger bg-white" href="/">Retour à la page d'acceuil</a></h3>
+               <h3> <a id="link-text" className="text-danger bg-white" href="/">Retour à la page d'acceuil</a></h3>
             </div>
 
         </div>

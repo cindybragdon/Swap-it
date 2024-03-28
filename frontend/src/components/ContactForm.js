@@ -21,7 +21,7 @@ const ContactForm = () => {
         reset();
     }
     return (
-            <div className="card text-center w-50  ">
+            <div className="card text-center w-50 " id="container-contact">
                 <div className="card-header h5 text-white" style={{ backgroundColor: "#D4015F" }}>Contactez-nous! </div>
                 <div className="card-body px-5">
                     <p className="card-text py-2">
@@ -46,8 +46,9 @@ const ContactForm = () => {
             <div>
                 <input type="file" className="form-control" id="exampleFormControlInput1" placeholder="File"/>
             </div>
-            <div className="m-3">
-            <button type="submit" className="btn btn-info ">Envoyer <i className="bi bi-envelope-paper-heart"></i>
+            <br/>
+            <div className="mb-3">
+            <button type="submit" className="btn btn-info">Envoyer <i className="bi bi-envelope-paper-heart"></i>
             </button>
             </div>
         </form>

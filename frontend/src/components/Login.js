@@ -52,23 +52,23 @@ const Login = () => {
                     <div className="row justify-content-center">
                         <div className="col-sm-12">
                             <div className="form-group">
-                                <label className="text-white m-2">Email</label>
-                                <input type="email" className="form-control m-2" placeholder="Email"
+                                <label className="text-white m-2" id="home-label">Email :</label>
+                                <input id="required" type="email" className="form-control m-2" placeholder="Email"
                                        {...register("email", {
-                                           required: "Vous devez saisir un email",
+                                           required: "  Vous devez saisir un email",
                                        })}
                                 />
-                                {errors.email && <p>{errors.email.message}</p>}
+                                {errors.email && <p className="m-2 msgError">{errors.email.message}</p>}
                             </div>
 
                             <div className="form-group">
-                                <label className="text-white m-2">Password</label>
+                                <label className="text-white m-2" id="home-label"> Password : </label>
                                 <input type="password" className="form-control m-2" placeholder="Password"
                                     {...register("password", {
-                                        required: "Vous devez saisir un email",
+                                        required: " Vous devez saisir un email",
                                     })}
                                     />
-                                {errors.password && <p>{errors.password.message}</p>}
+                                {errors.password && <p className="m-2 msgError">{errors.password.message}</p>}
                             </div>
 
                             <div className="form-group">
