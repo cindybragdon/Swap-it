@@ -1,5 +1,5 @@
 import React from 'react';
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {useState, useEffect} from "react";
 import BackToTopButton from "../components/BackToTopButton";
 
@@ -9,9 +9,10 @@ function Piges() {
 
 
     const navigate = useNavigate();
+    const location = useLocation();
 
     const [listUserPige, setListUserPige] = useState([]);
-    const [idUser, setUserId] = useState(1);
+    const [user, setUser] = useState(location.state);
 
     const [selectedPige, setSelectedPige] = useState(null);
 
@@ -21,7 +22,7 @@ function Piges() {
 
 
     useEffect(() => {
-        const url = `http://localhost:9281/api/getListUserPigeFromIdUser?idUser=${idUser}`;
+        const url = `http://localhost:9281/api/getListUserPigeFromIdUser?idUser=${user.idUser}`;
 
         const fecthData = async () => {
             try {
@@ -55,6 +56,7 @@ function Piges() {
 
     return (
         <div className='container col justify-content-center text-center min-vh-100'>
+            <h1 className="mt-1">Bonjour, {user.userFirstName}</h1>
 
                 <div className="col m-5">
                     <div className="card" onClick={handleClick} >

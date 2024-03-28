@@ -42,6 +42,8 @@ public class UserPigeServerController {
 
     }
 
+
+
     //(Verified and tested)
     @PostMapping("/createUserPigeWithPige")
     public String createUserPigeWithPige(@RequestBody UserPige userPigeToCreate) throws Exception{
@@ -64,11 +66,11 @@ public class UserPigeServerController {
                 userPigeToCreate.getPige().setUserAdmin(userPigeToCreate.getUser());
                 userPigeToCreate.getPige().setPigeState("CREATED");
                 userPigeToCreate.getPige().setPigeTimestampCreation(Timestamp.valueOf(currentDateTime));
+                userPigeToCreate.getPige().setNumberPigeOfUser(pigeRepository.countPigesByUserAdmin_IdUser(userPigeToCreate.getUser().getIdUser())+1);
                 pigeRepository.save(userPigeToCreate.getPige());
                 userPigeRepository.save(userPigeToCreate);
                 messageInvitation = "ACK-400";
             }
-
         }catch (Exception e){
             return messageInvitation + e.getMessage();
         }

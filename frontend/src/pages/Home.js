@@ -2,6 +2,7 @@ import React from 'react';
 import Login from "../components/Login";
 import ImageLogo2 from "../images/Logo2.jpg";
 import ImageParty from "../images/Party7.jpg";
+import {useLocation, useNavigate} from "react-router-dom";
 
 function Home() {
 
@@ -10,6 +11,13 @@ function Home() {
         position: 'relative',
         minHeight: '100vh',
     }
+
+    const navigate = useNavigate();
+
+    const location = useLocation();
+    const userPige = location.state;
+
+    const idUser = 0;
 
     return (
         <div style={sectionStyle}>

@@ -20,15 +20,20 @@ public class InvitationServerController {
     @Autowired
     private InvitationsRepository invitationsRepository;
 
+    @Autowired
+    private PigeRepository pigeRepository;
+
 
     //Creates an invitation to be sended by email
     // (Verified and tested)
     @PostMapping("/createInvitation")
-    public String createInvitation(@RequestBody Invitations invitationsToCreate) throws Exception{
+    public String createInvitation(@RequestBody Invitations invitationsToCreate, @RequestParam int idUser) throws Exception{
         String messageInvitation = "ACK-401";
         try{
-            if (invitationsToCreate.getPige() != null
-            && invitationsToCreate.getEmailWantedUser() != null) {
+            if (invitationsToCreate.getEmailWantedUser() != null) {
+                invitationsToCreate.setPige(pigeRepository.findPigeByNumberPigeOfUser(pigeRepository.countPigesByUserAdmin_IdUser(idUser)));
+                invitationsToCreate.setAsBeenAnswered(false);
+
                 invitationsRepository.save(invitationsToCreate);
                 messageInvitation = "ACK-400";
             }

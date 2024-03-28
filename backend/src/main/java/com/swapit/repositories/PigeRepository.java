@@ -9,6 +9,9 @@ public interface PigeRepository extends JpaRepository<Pige, Integer> {
 
     public Pige findPigeByIdPige(Integer idPige);
 
+    public Pige findPigeByNumberPigeOfUser(int numberPigeOfUser);
+
+    public int countPigesByUserAdmin_IdUser(int idUser);
 
     public void deleteByIdPige(int idPige);
 

@@ -29,6 +29,7 @@ public class Pige implements Serializable {
     private String qrCodeUrl;
     private byte[] qrCodeImage;
     private String pigeState;
+    private int numberPigeOfUser;
 
     @ManyToOne
     private User userAdmin;

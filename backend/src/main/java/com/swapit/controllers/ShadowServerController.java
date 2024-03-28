@@ -23,6 +23,21 @@ public class ShadowServerController {
     @Autowired
     private ShadowRepository shadowRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
+
+
+    @GetMapping("/loginByEmailAndPassword")
+    public Shadow loginByEmailAndPassword(@RequestParam String userEmail, @RequestParam String password) throws Exception {
+        try {
+            return shadowRepository.findByUser_UserEmailAndUserPassword(userEmail, password);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
     // (Verified and tested)
     @PostMapping("/createShadow")
     public String createShadow(@RequestBody Shadow shadowToCreate) throws Exception {
@@ -38,6 +53,8 @@ public class ShadowServerController {
             return messagePwdCreate + e.getMessage();
         }
     }
+
+
 
     //Update Password
     // (Verified and tested)

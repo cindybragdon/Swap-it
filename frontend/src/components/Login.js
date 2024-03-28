@@ -1,16 +1,20 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { useForm } from 'react-hook-form';
 import http from "../http/http";
+import {useLocation, useNavigate} from "react-router-dom";
 
 
 
 const Login = () => {
 
+    const navigate = useNavigate();
+
+
+    const [user, setUser] = useState('');
+
+
     const { register, handleSubmit, formState: { errors}, reset } = useForm();
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [serverResponse, setServerResponse] = useState(null); // [0] = email, [1] = password, [2] = serverResponse
 
 
     const msgErrors = {
@@ -25,25 +29,21 @@ const Login = () => {
 
     }
     const onSubmit = (data) => {
-        setEmail(data.email);
-        setPassword(data.password);
-        loginUser();
+        fetch(`http://localhost:9281/api/loginByEmailAndPassword?userEmail=${data.email}&password=${data.password}`)
+            .then(response => response.json())
+            .then(data => setUser(data))
+            .catch(error => console.error(error))
+        console.log(user.user)
+        if (user.user != null) {
+            navigate(`/piges`, {state: user.user});
+        }
+
         //console.log(data);
-        reset();
     }
 
-    const loginUser = async () => {
-        try{
-            const response = await http.get(`/getUserByEmail?email=${email}&password=${password}`);
-            setServerResponse(response.data);
-            console.log(response)
-        } catch (error) {
-            console.error(error);
-        } finally {
-            setEmail('');
-            setPassword('');
-        }
-    }
+
+
+
 
     return (
         <>
@@ -56,10 +56,6 @@ const Login = () => {
                                 <input type="email" className="form-control m-2" placeholder="Email"
                                        {...register("email", {
                                            required: "Vous devez saisir un email",
-                                           pattern: {
-                                               value: /^\S+@\S+$/i,
-                                               message: "Le email est invalide"
-                                           }
                                        })}
                                 />
                                 {errors.email && <p>{errors.email.message}</p>}
@@ -68,14 +64,10 @@ const Login = () => {
                             <div className="form-group">
                                 <label className="text-white">Password</label>
                                 <input type="password" className="form-control m-2" placeholder="Password"
-                                       {...register("password", {
-                                           required: "Vous devez saisir un mot de passe",
-                                           pattern: {
-                                               value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/,
-                                               message: "Le mot de passe est invalide"
-                                           }
-                                       })}
-                                />
+                                    {...register("password", {
+                                        required: "Vous devez saisir un email",
+                                    })}
+                                    />
                                 {errors.password && <p>{errors.password.message}</p>}
                             </div>
 
@@ -86,7 +78,6 @@ const Login = () => {
                         </div>
                     </div>
                 </form>
-                {serverResponse && <p>{serverResponse}</p>}
             </div>
         </>
     );

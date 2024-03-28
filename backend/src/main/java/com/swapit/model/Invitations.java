@@ -17,4 +17,6 @@ public class Invitations implements Serializable {
     private Pige pige;
 
     private String emailWantedUser;
+
+    private boolean asBeenAnswered;
 }
