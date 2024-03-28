@@ -50,9 +50,9 @@ const Login = () => {
             <div className="container">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="row justify-content-center">
-                        <div className="col-sm-6">
+                        <div className="col-sm-12">
                             <div className="form-group">
-                                <label className="text-white">Email</label>
+                                <label className="text-white m-2">Email</label>
                                 <input type="email" className="form-control m-2" placeholder="Email"
                                        {...register("email", {
                                            required: "Vous devez saisir un email",
@@ -62,7 +62,7 @@ const Login = () => {
                             </div>
 
                             <div className="form-group">
-                                <label className="text-white">Password</label>
+                                <label className="text-white m-2">Password</label>
                                 <input type="password" className="form-control m-2" placeholder="Password"
                                     {...register("password", {
                                         required: "Vous devez saisir un email",
@@ -72,8 +72,8 @@ const Login = () => {
                             </div>
 
                             <div className="form-group">
-                                <button type="submit" className="btn btn-info m-3">Se connecter</button>
-                                <button type="button" className="btn btn-info ml-2">Se créer un compte</button>
+                                <button type="submit" className="btn btn-info m-2">Se connecter</button>
+                                <button type="button" className="btn btn-info m-2">Se créer un compte</button>
                             </div>
                         </div>
                     </div>
