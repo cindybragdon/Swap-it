@@ -156,7 +156,8 @@ span {
   align-items: center;
   align-content: center;
   margin: auto;
-  padding-top: 200px;
+  padding-top: 100px;
+  font-family: "Reddit Mono", monospace;
 }
 
 #connectText {
@@ -199,97 +200,99 @@ span {
   font-family: "Reddit Mono", monospace;
   text-transform: uppercase;
 
-
 }
+
+
 
 /*CSS pour le Caroussel*/
 
-.container {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
-  max-width: 1200px;
-  margin: auto;
-}
+/*.container {*/
+/*  display: flex;*/
+/*  justify-content: space-between;*/
+/*  padding: 20px;*/
+/*  max-width: 1200px;*/
+/*  margin: auto;*/
+/*}*/
 
-.carousel {
-  flex: 1;
-  margin-right: 20px;
-}
+/*.carousel {*/
+/*  flex: 1;*/
+/*  margin-right: 20px;*/
+/*}*/
 
-.carousel__wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+/*.carousel__wrapper {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  align-items: center;*/
+/*}*/
 
-.item {
-  margin-bottom: 10px;
-  border: 1px solid #ddd;
-  padding: 5px;
-}
+/*.item {*/
+/*  margin-bottom: 10px;*/
+/*  border: 1px solid #ddd;*/
+/*  padding: 5px;*/
+/*}*/
 
-.item img {
-  max-width: 100%;
-  height: auto;
-}
+/*.item img {*/
+/*  max-width: 100%;*/
+/*  height: auto;*/
+/*}*/
 
-.instagram {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
+/*.instagram {*/
+/*  flex: 1;*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*}*/
 
-.instagram__header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
+/*.instagram__header {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  margin-bottom: 20px;*/
+/*}*/
 
-.instagram__header img {
-  margin-right: 10px;
-  border-radius: 50%;
-}
+/*.instagram__header img {*/
+/*  margin-right: 10px;*/
+/*  border-radius: 50%;*/
+/*}*/
 
-.instagram__header figcaption {
-  font-size: 16px;
-  font-weight: bold;
-}
+/*.instagram__header figcaption {*/
+/*  font-size: 16px;*/
+/*  font-weight: bold;*/
+/*}*/
 
-.instagram__media {
-  flex: 1;
-  background-color: #f9f9f9;
-  margin-bottom: 20px;
-}
+/*.instagram__media {*/
+/*  flex: 1;*/
+/*  background-color: #f9f9f9;*/
+/*  margin-bottom: 20px;*/
+/*}*/
 
-.instagram__buttons {
-  display: flex;
-  justify-content: space-between;
-}
+/*.instagram__buttons {*/
+/*  display: flex;*/
+/*  justify-content: space-between;*/
+/*}*/
 
-.instagram__buttons .left,
-.instagram__buttons .right {
-  display: flex;
-}
+/*.instagram__buttons .left,*/
+/*.instagram__buttons .right {*/
+/*  display: flex;*/
+/*}*/
 
-.instagram__icon {
-  margin-right: 10px;
-  cursor: pointer;
-}
+/*.instagram__icon {*/
+/*  margin-right: 10px;*/
+/*  cursor: pointer;*/
+/*}*/
 
-.instagram__icon:last-child {
-  margin-right: 0;
-}
+/*.instagram__icon:last-child {*/
+/*  margin-right: 0;*/
+/*}*/
 
-/* Add your SVG icon styles here */
-.instagram__icon--heart,
-.instagram__icon--comment,
-.instagram__icon--message,
-.instagram__icon--saved {
-  /* Example placeholder style */
-  width: 24px;
-  height: 24px;
-  fill: none;
-  stroke: black;
-  stroke-width: 2;
-}
+/*!* Add your SVG icon styles here *!*/
+/*.instagram__icon--heart,*/
+/*.instagram__icon--comment,*/
+/*.instagram__icon--message,*/
+/*.instagram__icon--saved {*/
+/*  !* Example placeholder style *!*/
+/*  width: 24px;*/
+/*  height: 24px;*/
+/*  fill: none;*/
+/*  stroke: black;*/
+/*  stroke-width: 2;*/
+/*}*/
+

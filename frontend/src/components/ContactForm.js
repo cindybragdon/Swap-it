@@ -22,7 +22,7 @@ const ContactForm = () => {
     }
     return (
             <div className="card text-center w-50 " id="container-contact">
-                <div className="card-header h5 text-white" style={{ backgroundColor: "#D4015F" }}>Contactez-nous! </div>
+                <div className="card-header h3 text-white" style={{ backgroundColor: "#D4015F" }}>Contactez-nous! </div>
                 <div className="card-body px-5">
                     <p className="card-text py-2">
                         Questions?  Commentaires?  Quelque chose cloche sur le site?  Une blague à partager qui sauvera
@@ -47,7 +47,7 @@ const ContactForm = () => {
                 <input type="file" className="form-control" id="exampleFormControlInput1" placeholder="File"/>
             </div>
             <br/>
-            <div className="mb-3">
+            <div className="text-center mb-3">
             <button type="submit" className="btn btn-info">Envoyer <i className="bi bi-envelope-paper-heart"></i>
             </button>
             </div>

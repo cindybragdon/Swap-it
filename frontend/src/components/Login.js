@@ -65,7 +65,7 @@ const Login = () => {
                                 <label className="text-white m-2" id="home-label"> Password : </label>
                                 <input type="password" className="form-control m-2" placeholder="Password"
                                     {...register("password", {
-                                        required: " Vous devez saisir un email",
+                                        required: " Vous devez saisir un mot de passe",
                                     })}
                                     />
                                 {errors.password && <p className="m-2 msgError">{errors.password.message}</p>}
