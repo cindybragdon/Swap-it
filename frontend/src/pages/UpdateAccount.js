@@ -2,12 +2,15 @@ import React, {useState} from 'react';
 import {useForm} from "react-hook-form";
 import http from "../http/http";
 import '../CreateAccount.css';
-
-// Problème de CSS.  La carte passe en dessous de la navbar et par dessus le footer
-// SUR CETTE PAGE, LES PLACEHOLDER SERONT LES ANCIENNES INFOS USER
-// POUR CHANGER LE MOT DE PASSE, IL FAUT CONFIRMER LANCIEN QUI NE SERA PAS DEJA DANS LE INPUT
+import ImageParty from "../images/Party1.jpg";
 
 const UpdateAccount = () => {
+
+    var sectionStyle = {
+        backgroundImage: `url(${ImageParty})`,
+        position: 'relative',
+        minHeight: '100vh',
+    }
 
 
     const {register, handleSubmit, formState: {errors}, reset} = useForm();
@@ -73,9 +76,6 @@ const UpdateAccount = () => {
         reset();
     }
 
-
-//commentaire de Karolann => Manque a envoyé les données avec Axios, ne fonctionne pas. Doit attendre Réda
-
     const createAcc = async () => {
         try {
             const response = await http.post(`/api/createUserByEmail`);
@@ -90,7 +90,7 @@ const UpdateAccount = () => {
     }
 
     return (
-        <div className='renderingElement oui '>
+        <div className='renderingElement oui ' style={sectionStyle}>
             <div className="card text-center card w-50 mt-5 ">
                 <div className="card-header h5 text-white bg-info">Modifier votre compte Swap-it!</div>
                 <div className="card-body px-5">
