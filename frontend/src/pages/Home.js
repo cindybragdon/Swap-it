@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Login from "../components/Login";
 import ImageLogo2 from "../images/Logo2.jpg";
 import ImageParty from "../images/Party7.jpg";
@@ -12,12 +12,7 @@ function Home() {
         minHeight: '85vh',
     }
 
-    const navigate = useNavigate();
 
-    const location = useLocation();
-    const userPige = location.state;
-
-    const idUser = 0;
 
     return (
         <div style={sectionStyle}>

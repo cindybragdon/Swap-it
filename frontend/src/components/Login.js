@@ -33,9 +33,10 @@ const Login = () => {
             .then(response => response.json())
             .then(data => setUser(data))
             .catch(error => console.error(error))
-        console.log(user.user)
+            //console.log(user.user)
         if (user.user != null) {
-            navigate(`/piges`, {state: user.user});
+            navigate(`/piges`);
+            sessionStorage.setItem('user', JSON.stringify(user.user));
         }
 
         //console.log(data);

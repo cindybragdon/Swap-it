@@ -1,4 +1,5 @@
 import React from 'react';
+import {Navigate, Outlet} from "react-router-dom";
 
 
 const NavBar = () => {
@@ -17,6 +18,7 @@ const NavBar = () => {
                       <li className="nav-item"><a className="nav-link" href="/features">Fonctionnalites</a></li>
                       <li className="nav-item"><a className="nav-link" href="/piges">Mes piges</a></li>
                       <li className="nav-item"><a className="nav-link" href="/myaccount">Mon compte</a></li>
+                      {sessionStorage.getItem('user') ? <li className="nav-item"><p>{JSON.parse(sessionStorage.user).userFirstName} {JSON.parse(sessionStorage.user).userLastName}</p></li> : <li></li>}
                   </ul>
               </div>
           </div>
