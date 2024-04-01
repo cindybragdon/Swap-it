@@ -46,7 +46,7 @@ const MyWishList = () => {
 
 
     const handleClick = () => {
-        navigate('/pige/myWishList/addWish');
+        navigate('/pige/myWishList/addWish', {state:userPige});
         //alert('Button clicked');
         console.log('Button clicked')
     }

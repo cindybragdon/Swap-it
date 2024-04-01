@@ -10,12 +10,12 @@ const Contact = () => {
 
     return (
 
-        <div class="row">
-            <div class="col-sm">
+        <div className="row">
+            <div className="col-sm">
                 <div className='card justify-content-center min-vh-100' style={sectionStyle}>
                 </div>
             </div>
-            <div class="col-sm" id="container-contact-page">
+            <div className="col-sm" id="container-contact-page">
                 <ContactForm />
             </div>
         </div>
