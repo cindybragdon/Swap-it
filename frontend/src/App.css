@@ -27,6 +27,7 @@ body {
   background-color: rebeccapurple;
   z-index: 5;
 
+
 }
 
 #myBtn {
@@ -120,6 +121,7 @@ body {
 .nav-item {
   padding: 5px;
 
+
 }
 
 #welcomeText {
@@ -134,7 +136,7 @@ body {
   line-height: 80%;
 }
 
-span {
+.welcome-span {
   color: rgb(254, 200, 49);
   font-family: "Lobster", sans-serif;
 }
@@ -201,6 +203,11 @@ span {
   font-style: italic;
 }
 
+.navbar-span {
+  font-style: italic;
+  color: white;
+}
+
 #home-label {
   font-family: "Reddit Mono", monospace;
   text-transform: uppercase;
@@ -210,6 +217,13 @@ span {
 .card img {
   max-width: 100%;
   height: auto;
+}
+
+#container-update {
+  align-content: center;
+  display: inline-block;
+  margin-bottom: 100px;
+
 }
 
 

@@ -8,11 +8,12 @@ const UpdateAccount = () => {
 
     var sectionStyle = {
         backgroundImage: `url(${ImageParty})`,
-        position: 'relative',
-        minHeight: '100vh',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        minWidth: '100vw'
     }
 
-
+    const currentUser = JSON.parse(sessionStorage.user);
 
     const {register, handleSubmit, formState: {errors}, reset} = useForm();
 
@@ -91,8 +92,8 @@ const UpdateAccount = () => {
     }
 
     return (
-        <div className='renderingElement oui ' style={sectionStyle}>
-            <div className="card text-center card w-50 mt-5 ">
+        <div className="row justify-content-center" style={sectionStyle}>
+            <div className="card text-center card w-50 mt-5 " id="container-update">
                 <div className="card-header h5 text-white bg-info">Modifier votre compte Swap-it!</div>
                 <div className="card-body px-5">
                     <p className="card-text py-2">
@@ -101,7 +102,8 @@ const UpdateAccount = () => {
                     <div className="form-outline text-start">
                         <label>Nom</label>
                         <input type="nom" id="typeNom" className="form-control my-3"
-                               placeholder={"user.getNom"}
+                               placeholder={"hello"}
+                               value={currentUser.userLastName}
                                {...register("nom",
                                    {
                                        required: msgErrors.nom.requis
@@ -110,7 +112,7 @@ const UpdateAccount = () => {
                     <div className="form-outline text-start">
                         <label>Prénom</label>
                         <input type="prenom" id="typePrenom" className="form-control my-3"
-                               placeholder={"user.getPrenom"}
+                               value={currentUser.userFirstName}
                                {...register("prenom",
                                    {
                                        required: msgErrors.prenom.requis
@@ -119,7 +121,7 @@ const UpdateAccount = () => {
                     <div className="form-outline text-start">
                         <label>Telephone</label>
                         <input type="telephone" id="typeTelephone" className="form-control my-3"
-                               placeholder={"user.getPhone"}
+                               value={currentUser.userPhone}
                                {...register("telephone",
                                    {
                                        required: msgErrors.telephone.requis,
@@ -131,7 +133,7 @@ const UpdateAccount = () => {
                     <div className="form-outline text-start">
                         <label>Courriel</label>
                         <input type="courriel" id="typeEmail" className="form-control my-3"
-                               placeholder={"user.getEmail"}
+                               value={currentUser.userEmail}
                                {...register("courriel",
                                    {
                                        required: msgErrors.courriel.requis,
@@ -194,15 +196,16 @@ const UpdateAccount = () => {
                     <br/>
                     <div className="form-group row">
                         <div className="col-sm-20 text-center">
-                            <button type="submit" className="btn btn-info w-30">Creer mon compte</button>
+                            <button type="submit" className="btn btn-info w-30">Modifier vos informations!</button>
                         </div>
                     </div>
-                    <div className="d-flex justify-content-between mt-4">
-                        <a className="" href="/">Retour à votre compte sans faire de changements</a>
+                    <div className="d-flex justify-content-center mt-4">
+                        <a id="link-text" className="" href="/">Retour à la page d'accueil </a>
                     </div>
                 </div>
             </div>
         </div>
+
 
     )
         ;

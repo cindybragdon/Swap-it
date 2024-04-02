@@ -2,6 +2,7 @@ import React from 'react';
 import {Navigate, Outlet} from "react-router-dom";
 
 
+
 const NavBar = () => {
   return (
       <nav className="navbar navbar-expand-sm navbar-dark p-2 fixed-top mb-0">
@@ -17,8 +18,11 @@ const NavBar = () => {
                       <li className="nav-item"><a className="nav-link" href="/faq">FAQ</a></li>
                       <li className="nav-item"><a className="nav-link" href="/features">Fonctionnalites</a></li>
                       <li className="nav-item"><a className="nav-link" href="/piges">Mes piges</a></li>
-                      <li className="nav-item"><a className="nav-link" href="/myaccount">Mon compte</a></li>
-                      {sessionStorage.getItem('user') ? <li className="nav-item"><p>{JSON.parse(sessionStorage.user).userFirstName} {JSON.parse(sessionStorage.user).userLastName}</p></li> : <li></li>}
+                      <li className="nav-item"><a className="nav-link" href="/myaccount">Mon compte {sessionStorage.getItem('user') ? <span className="navbar-span"> ( {JSON.parse(sessionStorage.user).userFirstName} {JSON.parse(sessionStorage.user).userLastName} )</span> : <a></a>} </a></li>
+
+
+
+                      {/*{sessionStorage.getItem('user') ? <li className="nav-item"><a className="nav-link">{JSON.parse(sessionStorage.user).userFirstName} {JSON.parse(sessionStorage.user).userLastName}</a></li> : <li></li>}*/}
                   </ul>
               </div>
           </div>

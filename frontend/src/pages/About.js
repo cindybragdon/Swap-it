@@ -6,7 +6,10 @@ import ImageAbout from "../images/AboutUs.jpg";
 
 const About = () => {
     var sectionStyle = {
-        backgroundImage: `url(${ImageAbout})`
+        backgroundImage: `url(${ImageAbout})`,
+
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover'
     }
 
 
