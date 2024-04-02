@@ -3,6 +3,9 @@ import {Navigate, Outlet} from "react-router-dom";
 
 
 const NavBar = () => {
+
+
+
   return (
       <nav className="navbar navbar-expand-sm navbar-dark p-2 fixed-top mb-0">
           <div className="container">

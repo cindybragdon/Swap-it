@@ -4,11 +4,17 @@ import http from "../http/http";
 import '../CreateAccount.css';
 import TogglePasswordVisibility from "../components/TogglePassVisibility";
 import {Link} from "react-router-dom";
+import ImageBG from "../images/BGCadeaux.jpg";
 
 const CreateAccount = () => {
 
-// Problème avec le create user dans le controller, manque le password. Ignorer pour le moment.
-    //Pour le password voir exemple span dans le label Password.
+    var sectionStyle = {
+        backgroundImage: `url(${ImageBG})`,
+        position: 'relative',
+        minHeight: '100vh',
+    }
+
+
 
     const {register, handleSubmit, formState: {errors}, reset} = useForm();
 
@@ -83,7 +89,7 @@ const CreateAccount = () => {
     }
 
     return (
-        <div className='renderingElement oui '>
+        <div className='renderingElement oui ' style={sectionStyle}>
             <div className="card text-center card w-50 mt-5">
                 <div className="card-header h5 text-white bg-info">Créer un compte Swap-it!</div>
                 <div className="card-body px-5">

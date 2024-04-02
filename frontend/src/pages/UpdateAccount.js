@@ -13,6 +13,7 @@ const UpdateAccount = () => {
     }
 
 
+
     const {register, handleSubmit, formState: {errors}, reset} = useForm();
 
     const [nom, setNom] = useState('');
@@ -90,7 +91,7 @@ const UpdateAccount = () => {
     }
 
     return (
-        <div className='renderingElement oui ' style={sectionStyle}>
+        <div className='' style={sectionStyle}>
             <div className="card text-center card w-50 mt-5 ">
                 <div className="card-header h5 text-white bg-info">Modifier votre compte Swap-it!</div>
                 <div className="card-body px-5">
@@ -140,32 +141,49 @@ const UpdateAccount = () => {
                         {errors.courriel && errors.courriel.type === "pattern"}
                     </div>
                     <div className="form-outline ">
-                        <p className="password-container text-start">
-                            <input type="password" id="typeMotPasse" className="form-control my-3"
-                                   placeholder={"Votre MOT DE PASSE ACTUEL"}
+                        <div className="password-container text-start position-relative">
+                            <input type="password" id="typeMotPasse" className="form-control my-3 pr-5"
+                                   placeholder="Votre MOT DE PASSE ACTUEL"
                                    {...register("motPasse", {
                                        required: msgErrors.motPasse.requis,
                                        pattern: {
                                            value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&^])[A-Za-z\d@.#$!%*?&]{8,15}$/,
                                            message: msgErrors.motPasse.format
                                        }
-                                   })}  />
+                                   })} />
                             <i className="bi bi-eye-slash toggle-password" id="togglePassword"
-                               onClick={togglePasswordVisibility}></i>
-                        </p>
-                        <p className="password-container text-start">
-                            <input type="password" id="typeNouveauMotPasse" className="form-control my-3"
-                                   placeholder={"Votre NOUVEAU MOT DE PASSE"}
-                                   {...register("nouveauMotPasse", {
-                                       required: msgErrors.motPasse.requis,
-                                       pattern: {
-                                           value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&^])[A-Za-z\d@.#$!%*?&]{8,15}$/,
-                                           message: msgErrors.motPasse.format
-                                       }
-                                   })}  />
-                            <i className="bi bi-eye-slash toggle-password" id="togglePassword"
-                               onClick={togglePasswordVisibility}></i>
-                        </p>
+                               onClick={togglePasswordVisibility}
+                               style={{
+                                   position: 'absolute',
+                                   top: '50%',
+                                   right: '10px',
+                                   transform: 'translateY(-50%)',
+                                   cursor: 'pointer'
+                               }}></i>
+                        </div>
+
+                        <div className="form-outline ">
+                            <div className="password-container text-start position-relative">
+                                <input type="password" id="typeMotPasse" className="form-control my-3 pr-5"
+                                       placeholder="Votre NOUVEAU MOT DE PASSE"
+                                       {...register("motPasse", {
+                                           required: msgErrors.motPasse.requis,
+                                           pattern: {
+                                               value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&^])[A-Za-z\d@.#$!%*?&]{8,15}$/,
+                                               message: msgErrors.motPasse.format
+                                           }
+                                       })} />
+                                <i className="bi bi-eye-slash toggle-password" id="togglePassword"
+                                   onClick={togglePasswordVisibility}
+                                   style={{
+                                       position: 'absolute',
+                                       top: '50%',
+                                       right: '10px',
+                                       transform: 'translateY(-50%)',
+                                       cursor: 'pointer'
+                                   }}></i>
+                            </div>
+                        </div>
                         <small id="emailHelp" className="form-text text-muted">
                             Doit contenir : une minuscule, une majuscule, un chiffre, un caractère spécial et de 8 à 15
                             caractères.
@@ -186,7 +204,8 @@ const UpdateAccount = () => {
             </div>
         </div>
 
-    );
+    )
+        ;
 }
 
 export default UpdateAccount;
