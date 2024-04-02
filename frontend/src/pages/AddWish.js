@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useForm} from 'react-hook-form';
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import http from "../http/http";
 
 
@@ -9,21 +9,15 @@ import http from "../http/http";
 
 const AddWish = () => {
 
-    const {register, handleSubmit, formState: {errors}, reset} = useForm();
 
-    //const {handleSubmit, reset} = useForm();
 
-    const navigate = useNavigate();
+    const location = useLocation();
 
-    //Ajout useState, pas terminé
-    //UPDATE : useState terminé
+    const [selectedUserPige, setSelectedUserPige] = useState(location.state);
     const [wishedItemName, setWishedItemName] = useState('');
     const [wishedItemDescription, setItemDescription] = useState('');
     const [wishedItemUrl, setItemUrl] = useState('');
-    //on doit ajouter l'image
-
-
-    // const [serverResponse, setServerResponse] = useState(null); // [0] = email, [1] = password, [2] = serverResponse
+    const [wishedItemImage, setWishedItemImage] = useState('');
 
     const msgErrors = {
 
@@ -36,17 +30,20 @@ const AddWish = () => {
 
     }
     const formsWishedItem = {
+        userPige : selectedUserPige,
         wishedItemName: wishedItemName,
         wishedItemDescription: wishedItemDescription,
         wishedItemUrl: wishedItemUrl,
-        //image
+        wishedItemImage :wishedItemImage
     }
 
-    const pigesPost = async () => {
+    const addWishedItemPost = async () => {
         try {
-            const response = await http.post(`/api/createWishedItem`, formsWishedItem)
+            const url = `http://localhost:9281/api/createWishedItem`;
+            const response = await http.post(url, formsWishedItem)
                 .then(response => {
                     console.log(response.data);
+                    console.log(formsWishedItem);
                     if (response.statusText === "ACK-901") {
                         throw new Error("Erreur lors de la création de la suggestion");
                     }
@@ -57,47 +54,47 @@ const AddWish = () => {
             setWishedItemName('');
             setItemDescription('');
             setItemUrl('');
-            //image
-            alert('Suggestion créeée');
-            navigate('/pige/myWishList');
+            setSelectedUserPige('')
+            setWishedItemImage('')
         }
     }
 
     const onSubmit = (data) => {
-        pigesPost().then(r => console.log(r));
+        addWishedItemPost().then(r => console.log(r));
         console.log(data);
-        reset();
     }
 
     return (
         <div className="renderingElement oui">
             <div className="container mt-4 mb-4 p-3 d-flex justify-content-center">
                 <div className="card p-4">
-                    <form className='container' onSubmit={handleSubmit(onSubmit)}>
+                    <form className='container' onSubmit={onSubmit}>
                         <p>Ajouter une suggestion à ma liste</p>
 
                         <div className="mb-3">
-                            <label htmlFor="exampleFormControlInput1" className="form-label">Nom Item</label>
-                            <input type="nom" id="typeNom" className="form-control my-3"
-                                   placeholder={"Nom Item"}
-                                   {...register("wishedItemName",
-                                       {
-                                           required: msgErrors.wishedItemName.requis
-                                       })}/>
+                            <label>Nom Item</label>
+                            <input type="nom" id="typeNom" className="my-3" placeholder={"Nom Item"}
+                                   onChange={event => setWishedItemName(event.target.value)} required/>
+
                             {msgErrors.wishedItemName && msgErrors.wishedItemName.message}
                         </div>
                         <div className="mb-3">
-                            <label htmlFor="exampleFormControlTextarea1" className="form-label">Description</label>
-                            <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"
-                                      {...register("wishedItemDescription", {required: msgErrors.wishedItemDescription.requis})}></textarea>
+                            <label>Description</label>
+                            <textarea rows="3" placeholder={"Entrez la description ici"}
+                                      onChange={event => setItemDescription(event.target.value)} required/>
                             {msgErrors.message && msgErrors.wishedItemDescription.message}
                         </div>
                         <div className="mb-3">
-                            <label htmlFor="exampleFormControlInput1" className="form-label">URL</label>
-                            <input type="nom" id="typeNom" className="form-control my-3"
-                                   placeholder={"URL"}
-                                   {...register("wishedItemName",
-                                       )}/>
+                            <label>URL</label>
+                            <input type="nom" placeholder={"Entrez un url ici"}
+                                   onChange={event => setItemUrl(event.target.value)}/>
+                            {msgErrors.wishedItemName && msgErrors.wishedItemName.message}
+                        </div>
+
+                        <div className="mb-3">
+                            <label>Image</label>
+                            <input type="nom" placeholder={"Entrez l'url d'une image ici"}
+                                   onChange={event => setWishedItemImage(event.target.value)}/>
                             {msgErrors.wishedItemName && msgErrors.wishedItemName.message}
                         </div>
                         <div>

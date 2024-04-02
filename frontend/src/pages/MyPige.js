@@ -7,22 +7,26 @@ const MyPige = () => {
     const navigate = useNavigate();
 
     const location = useLocation();
-    const selectedPige = location.state;
+    const selectedUserPige = location.state;
 
     const [listUserPige, setListIUserPige] = useState([]);
 
+    console.log(selectedUserPige);
+
 
     useEffect(() => {
-        fetch(`http://localhost:9281/api/getListUserPigeFromIdPige?idPige=${selectedPige.pige.idPige}`)
+        fetch(`http://localhost:9281/api/getListUserPigeFromIdPige?idPige=${selectedUserPige.pige.idPige}`)
             .then(response => response.json())
             .then(data => setListIUserPige(data))
             .catch(error => console.error(error))
-            console.log(selectedPige.idPige)
-    }, [selectedPige.idPige]);
+            console.log(selectedUserPige.idPige)
+
+
+    }, [selectedUserPige.idPige]);
 
 
     const handleButtonClick = (userPige) => {
-        navigate(`/piges/${selectedPige.pige.pigeName}/myWishList`, {state: userPige});
+        navigate(`/piges/${selectedUserPige.pige.pigeName}/myWishList`, {state: userPige});
         console.log(userPige);
     }
     const handleButton2Click = () => {
@@ -33,10 +37,10 @@ const MyPige = () => {
     return (
         <div className='container row justify-content-center text-center oui bg-primary min-vh-100'>
             <div className='col-sm-4 mt-5'>
-                <h1>Coucou myPige</h1>
-                <p> Lorem ipsum dolor sit amet.</p>
-                <h1>{selectedPige.pige.pigeName}</h1>
-                <h1>{selectedPige.user.userFirstName}</h1>
+                <h1>Coucou {selectedUserPige.userPigePseudo}</h1>
+                <p>{selectedUserPige.pige.pigeDescription}</p>
+                <h1>{selectedUserPige.pige.pigeName}</h1>
+                <h1>{selectedUserPige.user.userFirstName}</h1>
             </div>
 
             <div className="col-sm-4">
@@ -45,7 +49,7 @@ const MyPige = () => {
 
                     <div className="card m-5">
                         <div className="container row card-body">
-                            <img src={userPige.userPigeImage} /> <h6 className="card-title">Nom : {userPige.user.userFirstName} {userPige.user.userLastName} Pseudo : {userPige.userPigePseudo}</h6>
+                            <img src={selectedUserPige.userPigeImage} /> <h6 className="card-title">Nom : {userPige.user.userFirstName} {userPige.user.userLastName} Pseudo : {userPige.userPigePseudo}</h6>
 
                             <button onClick={() => handleButtonClick(userPige)}> My Wish List</button>
 

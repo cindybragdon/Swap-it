@@ -9,20 +9,19 @@ function Piges() {
 
 
     const navigate = useNavigate();
-    const location = useLocation();
 
     const [listUserPige, setListUserPige] = useState([]);
-    const [user, setUser] = useState(location.state);
 
     const [selectedPige, setSelectedPige] = useState(null);
 
+    const currentUser = JSON.parse(sessionStorage.user);
 
     //Olivier :
     //https://designcode.io/react-hooks-handbook-fetch-data-from-an-api
 
 
     useEffect(() => {
-        const url = `http://localhost:9281/api/getListUserPigeFromIdUser?idUser=${user.idUser}`;
+        const url = `http://localhost:9281/api/getListUserPigeFromIdUser?idUser=${currentUser.idUser}`;
 
         const fecthData = async () => {
             try {
@@ -41,7 +40,7 @@ function Piges() {
     const handleClick = () => {
         navigate('/piges/creation-piges');
         alert('Button clicked');
-        console.log('Button clicked')
+        console.log('Button clicked');
     }
 
     const handlePigeClick = (userPige) => {
@@ -56,7 +55,7 @@ function Piges() {
 
     return (
         <div className='container col justify-content-center text-center min-vh-100'>
-            <h1 className="mt-1">Bonjour, {user.userFirstName}</h1>
+            <h1 className="mt-1">Bonjour, {currentUser.userFirstName}</h1>
 
                 <div className="col m-5">
                     <div className="card" onClick={handleClick} >
