@@ -91,7 +91,7 @@ const UpdateAccount = () => {
     }
 
     return (
-        <div className='renderingElement oui ' style={sectionStyle}>
+        <div className='' style={sectionStyle}>
             <div className="card text-center card w-50 mt-5 ">
                 <div className="card-header h5 text-white bg-info">Modifier votre compte Swap-it!</div>
                 <div className="card-body px-5">

@@ -67,7 +67,6 @@ const CreationPiges = () => {
             setPigeType('');
             setPigeAmount('');
             setPigeEndDate('');
-            alert('Pige créée');
             navigate('/piges')
         }
     }
