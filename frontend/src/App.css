@@ -186,6 +186,11 @@ span {
   text-shadow: 3px 0 #fc6e78, -3px 0 #fc6e78;
 }
 
+.title-createpige {
+  font-family: "Bangers", sans-serif;
+  text-shadow: 3px 0 #fc6e78, -3px 0 #b76efc;
+}
+
 #container-forgot {
   background-color: #ffcf00 !important;
 }
@@ -202,6 +207,10 @@ span {
 
 }
 
+.card img {
+  max-width: 100%;
+  height: auto;
+}
 
 
 /*CSS pour le Caroussel*/

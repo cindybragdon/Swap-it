@@ -15,11 +15,11 @@ const MyAccount = () => {
                         <p className="name mt-3">PRENOM : user.getPrenom *** NOM : user.getNom </p>
 
                         <div className="text mt-3">
-                            {/* Used {} to evaluate method call */}
+
                             <p>TELEPHONE : user.getTelephone</p>
                         </div>
                         <div className="text mt-3">
-                            {/* Used {} to evaluate method call */}
+
                             <p>EMAIL : user.getEmail</p>
                         </div>
 
