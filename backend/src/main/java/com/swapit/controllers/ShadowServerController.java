@@ -89,10 +89,33 @@ public class ShadowServerController {
     public String updatePwdById(@RequestBody Shadow shadowUpdated) throws Exception {
         String messagePwdUpdated = "ACK-211";
         try {
-            if (shadowUpdated.getUserPassword() != null && shadowUpdated.getUser() != null) {
+            if (shadowUpdated.getUserPassword() != null
+                    && shadowUpdated.getUser() != null
+                    && shadowUpdated.getUser().getUserEmail() != null
+                    && shadowUpdated.getUser().getUserFirstName() != null
+                    && shadowUpdated.getUser().getUserLastName() != null) {
                 Shadow shadow = shadowRepository.findByUser_IdUser(shadowUpdated.getUser().getIdUser());
-                shadow.setUserPassword(shadowUpdated.getUserPassword());
-                shadowRepository.save(shadow);
+
+                boolean userIdExists = userRepository.existsUserByIdUser(shadow.getUser().getIdUser());
+                boolean userEmailExists = userRepository.existsUserByUserEmail(shadowUpdated.getUser().getUserEmail());
+                boolean userEmailExistsButIsTheRightUser = userRepository.existsUserByIdUserAndUserEmail(shadowUpdated.getUser().getIdUser(), shadowUpdated.getUser().getUserEmail());
+
+                if (userIdExists) {
+                    if (!userEmailExists || userEmailExistsButIsTheRightUser) {
+                        User user = userRepository.findUserByIdUser(shadowUpdated.getUser().getIdUser());
+                        user.setUserFirstName(shadowUpdated.getUser().getUserFirstName());
+                        user.setUserLastName(shadowUpdated.getUser().getUserLastName());
+                        user.setUserEmail(shadowUpdated.getUser().getUserEmail());
+                        user.setUserPhone(shadowUpdated.getUser().getUserPhone());
+                        user.setUserImage(shadowUpdated.getUser().getUserImage());
+                        shadow.setUserPassword(shadowUpdated.getUserPassword());
+                        userRepository.save(user);
+                        shadowRepository.save(shadow);
+                        messagePwdUpdated = "ACK-110";
+                    }
+                }
+
+
                 messagePwdUpdated = "ACK-210";
             }
             return messagePwdUpdated;

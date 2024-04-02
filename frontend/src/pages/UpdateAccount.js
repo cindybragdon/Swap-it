@@ -12,21 +12,27 @@ const UpdateAccount = () => {
         minHeight: '100vh',
     }
 
-
+    const currentUser = JSON.parse(sessionStorage.getItem('user'));
 
     const {register, handleSubmit, formState: {errors}, reset} = useForm();
 
-    const [nom, setNom] = useState('');
-    const [prenom, setPrenom] = useState('');
-    const [telephone, setTelephone] = useState('');
-    const [courriel, setCourriel] = useState('');
+    const [nom, setNom] = useState(currentUser.userLastName);
+    const [prenom, setPrenom] = useState(currentUser.userFirstName);
+    const [telephone, setTelephone] = useState(currentUser.userPhone);
+    const [courriel, setCourriel] = useState(currentUser.userEmail);
     const [motPasse, setMotPasse] = useState('');
     const [nouveauMotPasse, setNouveauMotPasse] = useState('');
 
-
-
-    const [serverResponse, setServerResponse] = useState(null); // [0] = email, [1] = password, [2] = serverResponse
-
+    const formsUpdateAccount = {
+        userPassword: motPasse,
+        user: {
+            idUser: currentUser.idUser,
+            userFirstName: prenom,
+            userLastName: nom,
+            userEmail: courriel,
+            userPhone: telephone
+        }
+    }
 
     const msgErrors = {
 
@@ -65,27 +71,25 @@ const UpdateAccount = () => {
 
 
     const onSubmit = (data) => {
-
-        setNom(data.nom);
-        setPrenom(data.prenom);
-        setTelephone(data.telephone);
-        setCourriel(data.courriel);
-        setMotPasse(data.motPasse);
-        setNouveauMotPasse(data.nouveauMotPasse);
-        createAcc(); // ??
-        //console.log(data);
-        reset();
+        updateAcc().then(r => console.log(r));
     }
 
-    const createAcc = async () => {
+    const updateAcc = async () => {
+
         try {
-            const response = await http.post(`/api/createUserByEmail`);
-            setServerResponse(response.data);
-            console.log(response)
+
+            const response = await http.put(`updatePwdById`, formsUpdateAccount)
+            .then(response => {
+                console.log(response.data);
+                if (response.statusText === "ACK-211") {
+                    throw new Error("Erreur lors de la création du compte");
+                }
+            });
+            console.log(formsUpdateAccount);
+
+
         } catch (error) {
             console.error(error);
-        } finally {
-            setCourriel('');
         }
 
     }
@@ -99,58 +103,39 @@ const UpdateAccount = () => {
                         Vos nouvelles informations ici
                     </p>
                     <div className="form-outline text-start">
-                        <label>Nom</label>
-                        <input type="nom" id="typeNom" className="form-control my-3"
-                               placeholder={"user.getNom"}
-                               {...register("nom",
-                                   {
-                                       required: msgErrors.nom.requis
-                                   })}/>
+                        <label>Prénom</label>
+                        <input type="prenom" id="typePrenom" className="form-control my-3" value={prenom}
+                               placeholder={"votre prénom : "} required
+                               onChange={event => setPrenom(event.target.value)}/>
                     </div>
                     <div className="form-outline text-start">
-                        <label>Prénom</label>
-                        <input type="prenom" id="typePrenom" className="form-control my-3"
-                               placeholder={"user.getPrenom"}
-                               {...register("prenom",
-                                   {
-                                       required: msgErrors.prenom.requis
-                                   })}/>
+                        <label>Nom</label>
+                        <input type="nom" id="typeNom" className="form-control my-3" value={nom}
+                               placeholder={"votre nom : "} required onChange={event => setNom(event.target.value)}/>
                     </div>
+
                     <div className="form-outline text-start">
                         <label>Telephone</label>
-                        <input type="telephone" id="typeTelephone" className="form-control my-3"
-                               placeholder={"user.getPhone"}
-                               {...register("telephone",
-                                   {
-                                       required: msgErrors.telephone.requis,
-                                       pattern: {value: /^[0-9]{10}$/, message: msgErrors.telephone.format}
-                                   })}/>
+                        <input type="telephone" id="typeTelephone" className="form-control my-3" value={telephone}
+                               placeholder={"votre téléphone : "}
+                               pattern={"\"[0-9]{3}[0-9]{3}[0-9]{4}\""} required
+                               onChange={event => setTelephone(event.target.value)}/>
                         {errors.telephone && errors.telephone.message}
                         {errors.telephone && errors.telephone.type === "pattern"}
                     </div>
                     <div className="form-outline text-start">
                         <label>Courriel</label>
-                        <input type="courriel" id="typeEmail" className="form-control my-3"
-                               placeholder={"user.getEmail"}
-                               {...register("courriel",
-                                   {
-                                       required: msgErrors.courriel.requis,
-                                       pattern: {value: /^\S+@\S+$/i, message: msgErrors.courriel.format}
-                                   })}/>
+                        <input type="courriel" id="typeEmail" className="form-control my-3" value={courriel}
+                               placeholder={"votre email : "} pattern={"[a-z0-9._%+\\-]+@[a-z0-9.\\-]+\\.[a-z]{2,}$"}
+                               required onChange={event => setCourriel(event.target.value)}/>
                         {errors.courriel && errors.courriel.message}
                         {errors.courriel && errors.courriel.type === "pattern"}
                     </div>
                     <div className="form-outline ">
                         <div className="password-container text-start position-relative">
                             <input type="password" id="typeMotPasse" className="form-control my-3 pr-5"
-                                   placeholder="Votre MOT DE PASSE ACTUEL"
-                                   {...register("motPasse", {
-                                       required: msgErrors.motPasse.requis,
-                                       pattern: {
-                                           value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&^])[A-Za-z\d@.#$!%*?&]{8,15}$/,
-                                           message: msgErrors.motPasse.format
-                                       }
-                                   })} />
+                                   placeholder="Votre MOT DE PASSE ACTUEL" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                   required onChange={event => setMotPasse(event.target.value)}/>
                             <i className="bi bi-eye-slash toggle-password" id="togglePassword"
                                onClick={togglePasswordVisibility}
                                style={{
@@ -166,14 +151,9 @@ const UpdateAccount = () => {
                             <div className="password-container text-start position-relative">
                                 <input type="password" id="typeMotPasse" className="form-control my-3 pr-5"
                                        placeholder="Votre NOUVEAU MOT DE PASSE"
-                                       {...register("motPasse", {
-                                           required: msgErrors.motPasse.requis,
-                                           pattern: {
-                                               value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&^])[A-Za-z\d@.#$!%*?&]{8,15}$/,
-                                               message: msgErrors.motPasse.format
-                                           }
-                                       })} />
-                                <i className="bi bi-eye-slash toggle-password" id="togglePassword"
+                                       pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required
+                                       onChange={event => setNouveauMotPasse(event.target.value)}/>
+                                <i className="bi bi-eye-slash toggle-password" id="typeMotPasse"
                                    onClick={togglePasswordVisibility}
                                    style={{
                                        position: 'absolute',
@@ -185,8 +165,7 @@ const UpdateAccount = () => {
                             </div>
                         </div>
                         <small id="emailHelp" className="form-text text-muted">
-                            Doit contenir : une minuscule, une majuscule, un chiffre, un caractère spécial et de 8 à 15
-                            caractères.
+                            Doit contenir : une minuscule, une majuscule, un chiffre et au moins 8 charactères..
                         </small>
                         {errors.motPasse && errors.motPasse.message}
                         {errors.motPasse && errors.motPasse.type === "pattern"}
@@ -194,7 +173,7 @@ const UpdateAccount = () => {
                     <br/>
                     <div className="form-group row">
                         <div className="col-sm-20 text-center">
-                            <button type="submit" className="btn btn-info w-30">Creer mon compte</button>
+                            <button type="submit" className="btn btn-info w-30">Modifier mon compte</button>
                         </div>
                     </div>
                     <div className="d-flex justify-content-between mt-4">

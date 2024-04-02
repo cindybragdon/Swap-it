@@ -60,7 +60,8 @@ const CreateAccount = () => {
 
     const onSubmit = () => {
         createAcc().then(r => console.log(r));
-        console.log(nom);
+        console.log();
+        reset();
     }
 
 
@@ -143,7 +144,7 @@ const CreateAccount = () => {
                             {errors.motPasse && errors.motPasse.type === "pattern"}
                         </div>
                         <br/>
-                        <div className="row">
+                        <div className=" row">
                             <div className="col-sm-20 text-center">
                                 <button type="submit" className="btn btn-info w-30">Creer mon compte</button>
                             </div>
