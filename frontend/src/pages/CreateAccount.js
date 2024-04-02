@@ -54,24 +54,19 @@ const CreateAccount = () => {
             userFirstName: prenom,
             userLastName: nom,
             userEmail: courriel,
-            userPhone: telephone,
+            userPhone: telephone
         }
     }
 
-    const onSubmit = (data) => {
-        setNom(data.nom);
-        setPrenom(data.prenom);
-        setTelephone(data.telephone);
-        setCourriel(data.courriel);
-        setMotPasse(data.motPasse);
+    const onSubmit = () => {
         createAcc().then(r => console.log(r));
-        console.log(data);
-        reset();
+        console.log(nom);
     }
 
 
     const createAcc = async () => {
         try {
+            console.log(formsCreateAccount);
             const response = await http.post(`/createShadowAndUser`, formsCreateAccount)
                 .then(response => {
                     console.log(response.data);
@@ -119,7 +114,7 @@ const CreateAccount = () => {
                             <label>Telephone</label>
                         </div>
                         <div>
-                            <input pattern={'/^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/'} type="text" name="telephone" id="typeTelephone" className="form-control my-3" placeholder={"Votre telephone"} onChange={event => setTelephone(event.target.value)}/>
+                            <input pattern="/^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/" type="text" name="telephone" id="typeTelephone" className="form-control my-3" placeholder={"Votre telephone"} onChange={event => setTelephone(event.target.value)}/>
                             {errors.telephone && errors.telephone.message}
                             {errors.telephone && errors.telephone.type && errors.telephone.type === "pattern"}
                         </div>
@@ -129,7 +124,7 @@ const CreateAccount = () => {
                             <label>Courriel</label>
                         </div>
                         <div>
-                            <input pattern={`/^\\S+@\\S+$/i`} type="email" name="courriel" id="typeEmail" className="form-control my-3" placeholder={"Votre courriel"} onChange={event => setCourriel(event.target.value)}/>
+                            <input pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" type="email" name="courriel" id="typeEmail" className="form-control my-3" placeholder={"Votre courriel"} onChange={event => setCourriel(event.target.value)}/>
                             {errors.courriel && errors.courriel.message}
                             {errors.courriel && errors.courriel.type && errors.courriel.type === "pattern"}
 
@@ -139,7 +134,7 @@ const CreateAccount = () => {
                         </div>
                         <div>
                             <p className="password-container-create-account">
-                                <input pattern={'/^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@.#$!%*?&^])[A-Za-z\\d@.#$!%*?&]{8,15}$/'} type="password" name="motPasse" id="typeMotPasse" className="form-control my-3 create-account" placeholder={"Votre mot de passe"} onChange={event => setMotPasse(event.target.value)}/>
+                                <input pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password" name="motPasse" id="typeMotPasse" className="form-control my-3 create-account" placeholder={"Votre mot de passe"} onChange={event => setMotPasse(event.target.value)}/>
                                 <i className="bi bi-eye-slash toggle-password" id="togglePassword"
                                    onClick={TogglePasswordVisibility}></i>
                             </p>
@@ -148,7 +143,7 @@ const CreateAccount = () => {
                             {errors.motPasse && errors.motPasse.type === "pattern"}
                         </div>
                         <br/>
-                        <div className="form-group row">
+                        <div className="row">
                             <div className="col-sm-20 text-center">
                                 <button type="submit" className="btn btn-info w-30">Creer mon compte</button>
                             </div>
