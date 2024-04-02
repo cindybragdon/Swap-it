@@ -38,6 +38,33 @@ public class ShadowServerController {
         }
     }
 
+
+
+    @PostMapping("/createShadowAndUser")
+    public String createShadowAndUser(@RequestBody Shadow shadowToCreate) throws Exception {
+        String messagePwdCreate = "ACK-301";
+        try {
+            if (shadowToCreate.getUserPassword() != null
+                    && shadowToCreate.getUser() != null
+                    && shadowToCreate.getUser().getUserFirstName() != null
+                    && shadowToCreate.getUser().getUserLastName() != null
+                    && shadowToCreate.getUser().getUserEmail() != null) {
+
+                boolean userExists = userRepository.existsUserByUserEmail(shadowToCreate.getUser().getUserEmail());
+                if (userExists) {
+                    messagePwdCreate = "ACK-102";
+                } else {
+                    userRepository.save(shadowToCreate.getUser());
+                    shadowRepository.save(shadowToCreate);
+                    messagePwdCreate = "ACK-100";
+                }
+            }
+            return messagePwdCreate;
+        } catch (Exception e) {
+            return messagePwdCreate + e.getMessage();
+        }
+    }
+
     // (Verified and tested)
     @PostMapping("/createShadow")
     public String createShadow(@RequestBody Shadow shadowToCreate) throws Exception {
