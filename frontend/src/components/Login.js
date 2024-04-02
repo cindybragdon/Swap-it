@@ -42,7 +42,9 @@ const Login = () => {
         //console.log(data);
     }
 
-
+    const handleClickCreerCompte = () => {
+        navigate('/create-account');
+    }
 
 
 
@@ -74,7 +76,7 @@ const Login = () => {
 
                             <div className="form-group">
                                 <button type="submit" className="btn btn-info m-2">Se connecter</button>
-                                <button type="button" className="btn btn-info m-2">Se créer un compte</button>
+                                <button type="button" className="btn btn-info m-2" onClick={handleClickCreerCompte}>Se créer un compte</button>
                             </div>
                         </div>
                     </div>

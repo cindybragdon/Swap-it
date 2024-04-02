@@ -36,7 +36,7 @@ const CreationPiges = () => {
 
     const formsUserWithPige = {
         user:{
-            idUser: 1
+            idUser: JSON.parse(sessionStorage.user.idUser)
         },
         pige:{
             pigeName: nomPige,
@@ -67,7 +67,6 @@ const CreationPiges = () => {
             setPigeType('');
             setPigeAmount('');
             setPigeEndDate('');
-            alert('Pige créée');
             navigate('/piges')
         }
     }

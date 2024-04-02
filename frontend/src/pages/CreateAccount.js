@@ -26,9 +26,6 @@ const CreateAccount = () => {
     const [motPasse, setMotPasse] = useState('');
 
 
-    const [serverResponse, setServerResponse] = useState(null); // [0] = email, [1] = password, [2] = serverResponse
-
-
     const msgErrors = {
 
         nom: {
@@ -52,28 +49,26 @@ const CreateAccount = () => {
     }
 
     const formsCreateAccount = {
-        userFirstName: prenom,
-        userLastName: nom,
-        userEmail: courriel,
-        userPhone: telephone,
-        userMotPasse: motPasse
+        userPassword: motPasse,
+        user: {
+            userFirstName: prenom,
+            userLastName: nom,
+            userEmail: courriel,
+            userPhone: telephone
+        }
     }
 
-    const onSubmit = (data) => {
-        setNom(data.nom);
-        setPrenom(data.prenom);
-        setTelephone(data.telephone);
-        setCourriel(data.courriel);
-        setMotPasse(data.motPasse);
+    const onSubmit = () => {
         createAcc().then(r => console.log(r));
-        console.log(data);
+        console.log();
         reset();
     }
 
 
     const createAcc = async () => {
         try {
-            const response = await http.post(`/createUserByEmail`, formsCreateAccount)
+            console.log(formsCreateAccount);
+            const response = await http.post(`/createShadowAndUser`, formsCreateAccount)
                 .then(response => {
                     console.log(response.data);
                     if (response.statusText === "ACK-101") {
@@ -101,56 +96,36 @@ const CreateAccount = () => {
                         <div className="text-start">
                             <label>Nom</label>
                         </div>
-                        <div className="form-outline ">
-                            <input type="text" name="nom" id="typeNom" className="form-control my-3"
-                                   placeholder={"Votre nom"}
-                                   {...register("nom",
-                                       {
-                                           required: msgErrors.nom.requis
-                                       })}/>
+                        <div>
+                            <input type="text" name="nom" id="typeNom" className="form-control my-3" placeholder={"Votre nom"} onChange={event => setNom(event.target.value)} />
                             {errors.nom && errors.nom.message}
                         </div>
+
+
                         <div className="text-start">
                             <label>Prenom</label>
                         </div>
-                        <div className="form-outline">
-                            <input type="text" name="prenom" id="typePrenom" className="form-control my-3"
-                                   placeholder={"Votre prenom"}
-                                   {...register("prenom",
-                                       {
-                                           required: msgErrors.prenom.requis
-                                       })}/>
+                        <div>
+                            <input type="text" name="prenom" id="typePrenom" className="form-control my-3" placeholder={"Votre prenom"} onChange={event => setPrenom(event.target.value)} />
                             {errors.prenom && errors.prenom.message}
-
                         </div>
+
+
                         <div className="text-start">
                             <label>Telephone</label>
                         </div>
-                        <div className="form-outline">
-                            <input type="text" name="telephone" id="typeTelephone" className="form-control my-3"
-                                   placeholder={"Votre telephone"}
-                                   {...register("telephone",
-                                       {
-                                           required: msgErrors.telephone.requis,
-                                           pattern: {
-                                               value: /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/,
-                                               message: msgErrors.telephone.format
-                                           }
-                                       })}/>
+                        <div>
+                            <input pattern="/^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/" type="text" name="telephone" id="typeTelephone" className="form-control my-3" placeholder={"Votre telephone"} onChange={event => setTelephone(event.target.value)}/>
                             {errors.telephone && errors.telephone.message}
                             {errors.telephone && errors.telephone.type && errors.telephone.type === "pattern"}
                         </div>
+
+
                         <div className="text-start">
                             <label>Courriel</label>
                         </div>
-                        <div className="form-outline">
-                            <input type="email" name="courriel" id="typeEmail" className="form-control my-3"
-                                   placeholder={"Votre courriel"}
-                                   {...register("courriel",
-                                       {
-                                           required: msgErrors.courriel.requis,
-                                           pattern: {value: /^\S+@\S+$/i, message: msgErrors.courriel.format}
-                                       })}/>
+                        <div>
+                            <input pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" type="email" name="courriel" id="typeEmail" className="form-control my-3" placeholder={"Votre courriel"} onChange={event => setCourriel(event.target.value)}/>
                             {errors.courriel && errors.courriel.message}
                             {errors.courriel && errors.courriel.type && errors.courriel.type === "pattern"}
 
@@ -158,29 +133,18 @@ const CreateAccount = () => {
                         <div className="text-start">
                             <label>Mot de Passe : <span id="toto">Doit contenir une minuscule, </span> <span id="tata">une majuscule </span> <span id="titi">et 8 caractères</span></label>
                         </div>
-                        <div className="form-outline">
+                        <div>
                             <p className="password-container-create-account">
-                                <input type="password" name="motPasse" id="typeMotPasse" className="form-control my-3 create-account"
-                                       placeholder={"Votre mot de passe"}
-                                       {...register("motPasse", {
-                                           required: msgErrors.motPasse.requis,
-                                           pattern: {
-                                               value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&^])[A-Za-z\d@.#$!%*?&]{8,15}$/,
-                                               message: msgErrors.motPasse.format
-                                           }
-                                       })}  />
+                                <input pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password" name="motPasse" id="typeMotPasse" className="form-control my-3 create-account" placeholder={"Votre mot de passe"} onChange={event => setMotPasse(event.target.value)}/>
                                 <i className="bi bi-eye-slash toggle-password" id="togglePassword"
                                    onClick={TogglePasswordVisibility}></i>
                             </p>
-                            <small id="emailHelp" className="form-text text-muted">
 
-
-                            </small>
                             {errors.motPasse && errors.motPasse.message}
                             {errors.motPasse && errors.motPasse.type === "pattern"}
                         </div>
                         <br/>
-                        <div className="form-group row">
+                        <div className=" row">
                             <div className="col-sm-20 text-center">
                                 <button type="submit" className="btn btn-info w-30">Creer mon compte</button>
                             </div>
