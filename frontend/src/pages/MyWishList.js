@@ -1,16 +1,9 @@
 import React, {useEffect, useState} from 'react'
-import ImageSouliers from '../images/nike.jpg';
-import ImageRobe from '../images/simons.jpg';
-import ImageVernis from '../images/vernis.jpg';
-import ImageCadeau from '../images/gift.png';
+import ImageCadeau from '../images/newWishItem.jpg';
 import {useLocation, useNavigate} from "react-router-dom";
 import '../App.css';
 import BackToTopButton from "../components/BackToTopButton";
 
-//Les cartes passent sous la navbar et sur le footer dès quil y en a plus de 4
-// CETTE PAGE CONTIENT DES DONNEES HARDCODEES QUI DOIVENT ETRE REMPLACEES
-// Il doit y avoir autant de carte que de suggestions, PLUS une carte qui permet dajouter une suggestion supplementaire
-// L'usager ne doit voir que les suggestions qu'il aura placé LUI-MÊME
 
 const MyWishList = () => {
 
