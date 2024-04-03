@@ -5,8 +5,10 @@ import '../CreateAccount.css';
 import TogglePasswordVisibility from "../components/TogglePassVisibility";
 import {Link} from "react-router-dom";
 import ImageBG from "../images/BGCadeaux.jpg";
+import axios from "axios";
 
 const CreateAccount = () => {
+
 
     var sectionStyle = {
         backgroundImage: `url(${ImageBG})`,
@@ -58,22 +60,39 @@ const CreateAccount = () => {
         }
     }
 
-    const onSubmit = () => {
+    const onSubmit = (data) => {
         createAcc().then(r => console.log(r));
-        console.log();
+        console.log(data);
         reset();
+    }
+
+    const getNewAcc = async () => {
+        const response = await http.get(`localhost:9281/api/getUserByEmail?userEmail=${courriel}`)
+
+            .then(data => {
+                console.log('Data received:', data);
+                sessionStorage.setItem('user', JSON.stringify(data));
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+        console.log(JSON.parse(sessionStorage.user));
     }
 
 
     const createAcc = async () => {
         try {
-            console.log(formsCreateAccount);
+            //console.log(formsCreateAccount);
             const response = await http.post(`/createShadowAndUser`, formsCreateAccount)
                 .then(response => {
                     console.log(response.data);
                     if (response.statusText === "ACK-101") {
                         throw new Error("Erreur lors de la création du compte");
                     }
+
+
+                    getNewAcc();
+
                 })
         } catch (error) {
             console.error(error);
@@ -144,7 +163,7 @@ const CreateAccount = () => {
                             {errors.motPasse && errors.motPasse.type === "pattern"}
                         </div>
                         <br/>
-                        <div className=" row">
+                        <div className="form-group row">
                             <div className="col-sm-20 text-center">
                                 <button type="submit" className="btn btn-info w-30">Creer mon compte</button>
                             </div>
