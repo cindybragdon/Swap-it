@@ -3,6 +3,7 @@ import {useForm} from "react-hook-form";
 import http from "../http/http";
 import '../CreateAccount.css';
 import ImageParty from "../images/Party1.jpg";
+import {useNavigate} from "react-router-dom";
 
 const UpdateAccount = () => {
 
@@ -11,6 +12,8 @@ const UpdateAccount = () => {
         position: 'relative',
         minHeight: '100vh',
     }
+
+    const navigate = useNavigate();
 
     const currentUser = JSON.parse(sessionStorage.getItem('user'));
 
