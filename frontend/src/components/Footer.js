@@ -6,7 +6,7 @@ const Footer = () => {
 
         <footer className="footer">
 
-            <section className="style={{ backgroundColor: 'light purple' }} py-2 py-xl-3 border-top border-light">
+            <section className="py-2 py-xl-3 border-top border-light">
                 <div className="container overflow-hidden">
                     <div className="row gy-5 gy-md-2">
                         <div className="col-xs-12 col-md-7 order-1 order-md-0">

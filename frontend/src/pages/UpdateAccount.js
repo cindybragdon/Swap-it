@@ -3,39 +3,31 @@ import {useForm} from "react-hook-form";
 import http from "../http/http";
 import '../CreateAccount.css';
 import ImageParty from "../images/Party1.jpg";
-import {useNavigate} from "react-router-dom";
 
 const UpdateAccount = () => {
 
     var sectionStyle = {
         backgroundImage: `url(${ImageParty})`,
-        position: 'relative',
-        minHeight: '100vh',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        minWidth: '100vw'
     }
 
-    const navigate = useNavigate();
-
-    const currentUser = JSON.parse(sessionStorage.getItem('user'));
+    const currentUser = JSON.parse(sessionStorage.user);
 
     const {register, handleSubmit, formState: {errors}, reset} = useForm();
 
-    const [nom, setNom] = useState(currentUser.userLastName);
-    const [prenom, setPrenom] = useState(currentUser.userFirstName);
-    const [telephone, setTelephone] = useState(currentUser.userPhone);
-    const [courriel, setCourriel] = useState(currentUser.userEmail);
+    const [nom, setNom] = useState('');
+    const [prenom, setPrenom] = useState('');
+    const [telephone, setTelephone] = useState('');
+    const [courriel, setCourriel] = useState('');
     const [motPasse, setMotPasse] = useState('');
     const [nouveauMotPasse, setNouveauMotPasse] = useState('');
 
-    const formsUpdateAccount = {
-        userPassword: motPasse,
-        user: {
-            idUser: currentUser.idUser,
-            userFirstName: prenom,
-            userLastName: nom,
-            userEmail: courriel,
-            userPhone: telephone
-        }
-    }
+
+
+    const [serverResponse, setServerResponse] = useState(null); // [0] = email, [1] = password, [2] = serverResponse
+
 
     const msgErrors = {
 
@@ -74,71 +66,93 @@ const UpdateAccount = () => {
 
 
     const onSubmit = (data) => {
-        updateAcc().then(r => console.log(r));
+
+        setNom(data.nom);
+        setPrenom(data.prenom);
+        setTelephone(data.telephone);
+        setCourriel(data.courriel);
+        setMotPasse(data.motPasse);
+        setNouveauMotPasse(data.nouveauMotPasse);
+        createAcc(); // ??
+        //console.log(data);
+        reset();
     }
 
-    const updateAcc = async () => {
-
+    const createAcc = async () => {
         try {
-
-            const response = await http.put(`updatePwdById`, formsUpdateAccount)
-            .then(response => {
-                console.log(response.data);
-                if (response.statusText === "ACK-211") {
-                    throw new Error("Erreur lors de la création du compte");
-                }
-            });
-            console.log(formsUpdateAccount);
-
-
+            const response = await http.post(`/api/createUserByEmail`);
+            setServerResponse(response.data);
+            console.log(response)
         } catch (error) {
             console.error(error);
+        } finally {
+            setCourriel('');
         }
 
     }
 
     return (
-        <div className='' style={sectionStyle}>
-            <div className="card text-center card w-50 mt-5 ">
+        <div className="row justify-content-center" style={sectionStyle}>
+            <div className="card text-center card w-50 mt-5 " id="container-update">
                 <div className="card-header h5 text-white bg-info">Modifier votre compte Swap-it!</div>
                 <div className="card-body px-5">
                     <p className="card-text py-2">
                         Vos nouvelles informations ici
                     </p>
                     <div className="form-outline text-start">
-                        <label>Prénom</label>
-                        <input type="prenom" id="typePrenom" className="form-control my-3" value={prenom}
-                               placeholder={"votre prénom : "} required
-                               onChange={event => setPrenom(event.target.value)}/>
+                        <label>Nom</label>
+                        <input type="nom" id="typeNom" className="form-control my-3"
+                               placeholder={"hello"}
+                               value={currentUser.userLastName}
+                               {...register("nom",
+                                   {
+                                       required: msgErrors.nom.requis
+                                   })}/>
                     </div>
                     <div className="form-outline text-start">
-                        <label>Nom</label>
-                        <input type="nom" id="typeNom" className="form-control my-3" value={nom}
-                               placeholder={"votre nom : "} required onChange={event => setNom(event.target.value)}/>
+                        <label>Prénom</label>
+                        <input type="prenom" id="typePrenom" className="form-control my-3"
+                               value={currentUser.userFirstName}
+                               {...register("prenom",
+                                   {
+                                       required: msgErrors.prenom.requis
+                                   })}/>
                     </div>
-
                     <div className="form-outline text-start">
                         <label>Telephone</label>
-                        <input type="telephone" id="typeTelephone" className="form-control my-3" value={telephone}
-                               placeholder={"votre téléphone : "}
-                               pattern={"\"[0-9]{3}[0-9]{3}[0-9]{4}\""} required
-                               onChange={event => setTelephone(event.target.value)}/>
+                        <input type="telephone" id="typeTelephone" className="form-control my-3"
+                               value={currentUser.userPhone}
+                               {...register("telephone",
+                                   {
+                                       required: msgErrors.telephone.requis,
+                                       pattern: {value: /^[0-9]{10}$/, message: msgErrors.telephone.format}
+                                   })}/>
                         {errors.telephone && errors.telephone.message}
                         {errors.telephone && errors.telephone.type === "pattern"}
                     </div>
                     <div className="form-outline text-start">
                         <label>Courriel</label>
-                        <input type="courriel" id="typeEmail" className="form-control my-3" value={courriel}
-                               placeholder={"votre email : "} pattern={"[a-z0-9._%+\\-]+@[a-z0-9.\\-]+\\.[a-z]{2,}$"}
-                               required onChange={event => setCourriel(event.target.value)}/>
+                        <input type="courriel" id="typeEmail" className="form-control my-3"
+                               value={currentUser.userEmail}
+                               {...register("courriel",
+                                   {
+                                       required: msgErrors.courriel.requis,
+                                       pattern: {value: /^\S+@\S+$/i, message: msgErrors.courriel.format}
+                                   })}/>
                         {errors.courriel && errors.courriel.message}
                         {errors.courriel && errors.courriel.type === "pattern"}
                     </div>
                     <div className="form-outline ">
                         <div className="password-container text-start position-relative">
                             <input type="password" id="typeMotPasse" className="form-control my-3 pr-5"
-                                   placeholder="Votre MOT DE PASSE ACTUEL" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                                   required onChange={event => setMotPasse(event.target.value)}/>
+                                   placeholder="Votre MOT DE PASSE ACTUEL"
+                                   {...register("motPasse", {
+                                       required: msgErrors.motPasse.requis,
+                                       pattern: {
+                                           value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&^])[A-Za-z\d@.#$!%*?&]{8,15}$/,
+                                           message: msgErrors.motPasse.format
+                                       }
+                                   })} />
                             <i className="bi bi-eye-slash toggle-password" id="togglePassword"
                                onClick={togglePasswordVisibility}
                                style={{
@@ -154,9 +168,14 @@ const UpdateAccount = () => {
                             <div className="password-container text-start position-relative">
                                 <input type="password" id="typeMotPasse" className="form-control my-3 pr-5"
                                        placeholder="Votre NOUVEAU MOT DE PASSE"
-                                       pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required
-                                       onChange={event => setNouveauMotPasse(event.target.value)}/>
-                                <i className="bi bi-eye-slash toggle-password" id="typeMotPasse"
+                                       {...register("motPasse", {
+                                           required: msgErrors.motPasse.requis,
+                                           pattern: {
+                                               value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&^])[A-Za-z\d@.#$!%*?&]{8,15}$/,
+                                               message: msgErrors.motPasse.format
+                                           }
+                                       })} />
+                                <i className="bi bi-eye-slash toggle-password" id="togglePassword"
                                    onClick={togglePasswordVisibility}
                                    style={{
                                        position: 'absolute',
@@ -168,7 +187,8 @@ const UpdateAccount = () => {
                             </div>
                         </div>
                         <small id="emailHelp" className="form-text text-muted">
-                            Doit contenir : une minuscule, une majuscule, un chiffre et au moins 8 charactères..
+                            Doit contenir : une minuscule, une majuscule, un chiffre, un caractère spécial et de 8 à 15
+                            caractères.
                         </small>
                         {errors.motPasse && errors.motPasse.message}
                         {errors.motPasse && errors.motPasse.type === "pattern"}
@@ -176,15 +196,16 @@ const UpdateAccount = () => {
                     <br/>
                     <div className="form-group row">
                         <div className="col-sm-20 text-center">
-                            <button type="submit" className="btn btn-info w-30">Modifier mon compte</button>
+                            <button type="submit" className="btn btn-info w-30">Modifier vos informations!</button>
                         </div>
                     </div>
-                    <div className="d-flex justify-content-between mt-4">
-                        <a className="" href="/">Retour à votre compte sans faire de changements</a>
+                    <div className="d-flex justify-content-center mt-4">
+                        <a id="link-text" className="" href="/">Retour à la page d'accueil </a>
                     </div>
                 </div>
             </div>
         </div>
+
 
     )
         ;

@@ -169,7 +169,7 @@ const CreateAccount = () => {
                             </div>
                         </div>
                         <div className="d-flex justify-content-between mt-4">
-                            <Link to="/" rel="noopener noreferrer">Compte existant? Connexion ici!</Link>
+                            <Link to="/" rel="noopener noreferrer" id="link-text">Compte existant? Connexion ici!</Link>
                         </div>
                     </form>
                 </div>
