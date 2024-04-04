@@ -67,11 +67,11 @@ const CreateAccount = () => {
     }
 
     const getNewAcc = async () => {
-        const response = await http.get(`localhost:9281/api/getUserByEmail?userEmail=${courriel}`)
+        const response = await http.get(`getUserByEmail?userEmail=${courriel}`)
 
             .then(data => {
-                console.log('Data received:', data);
-                sessionStorage.setItem('user', JSON.stringify(data));
+                console.log('Data received:', data.data);
+                sessionStorage.setItem('user', JSON.stringify(data.data));
             })
             .catch(error => {
                 console.error('There was a problem with the fetch operation:', error);
@@ -86,19 +86,18 @@ const CreateAccount = () => {
             const response = await http.post(`/createShadowAndUser`, formsCreateAccount)
                 .then(response => {
                     console.log(response.data);
-                    if (response.statusText === "ACK-101") {
+                    if (response.data === "ACK-101" || response.data === "ACK-102") {
                         throw new Error("Erreur lors de la création du compte");
+                    }
+                    if (response.data === "ACK-100") {
+                        getNewAcc();
                     }
 
 
-                    getNewAcc();
 
                 })
         } catch (error) {
             console.error(error);
-        } finally {
-            console.log("Création de compte réussi");
-
         }
 
     }
@@ -116,7 +115,7 @@ const CreateAccount = () => {
                             <label>Nom</label>
                         </div>
                         <div>
-                            <input type="text" name="nom" id="typeNom" className="form-control my-3" placeholder={"Votre nom"} onChange={event => setNom(event.target.value)} />
+                            <input type="text" name="nom" id="typeNom" className="form-control my-3" placeholder={"Votre nom"} onChange={event => setNom(event.target.value)} required />
                             {errors.nom && errors.nom.message}
                         </div>
 
@@ -125,7 +124,7 @@ const CreateAccount = () => {
                             <label>Prenom</label>
                         </div>
                         <div>
-                            <input type="text" name="prenom" id="typePrenom" className="form-control my-3" placeholder={"Votre prenom"} onChange={event => setPrenom(event.target.value)} />
+                            <input type="text" name="prenom" id="typePrenom" className="form-control my-3" placeholder={"Votre prenom"} onChange={event => setPrenom(event.target.value)} required/>
                             {errors.prenom && errors.prenom.message}
                         </div>
 
@@ -134,7 +133,7 @@ const CreateAccount = () => {
                             <label>Telephone</label>
                         </div>
                         <div>
-                            <input pattern="/^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/" type="text" name="telephone" id="typeTelephone" className="form-control my-3" placeholder={"Votre telephone"} onChange={event => setTelephone(event.target.value)}/>
+                            <input pattern="[0-9]{3}[0-9]{3}[0-9]{4}" type="tel" name="telephone" id="typeTelephone" className="form-control my-3" placeholder={"Votre telephone"} onChange={event => setTelephone(event.target.value)}/>
                             {errors.telephone && errors.telephone.message}
                             {errors.telephone && errors.telephone.type && errors.telephone.type === "pattern"}
                         </div>
