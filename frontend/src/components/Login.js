@@ -28,19 +28,25 @@ const Login = () => {
         }
 
     }
+
     const onSubmit = (data) => {
         fetch(`http://localhost:9281/api/loginByEmailAndPassword?userEmail=${data.email}&password=${data.password}`)
             .then(response => response.json())
-            .then(data => setUser(data))
+            .then(data => {
+                setUser(data);
+                return data;
+            })
+            .then(data => {
+                if (data.user != null) {
+                    navigate(`/piges`);
+                    sessionStorage.setItem('user', JSON.stringify(data.user));
+                }
+            })
             .catch(error => console.error(error))
             //console.log(user.user)
-        if (user.user != null) {
-            navigate(`/piges`);
-            sessionStorage.setItem('user', JSON.stringify(user.user));
-        }
+        };
 
-        //console.log(data);
-    }
+
 
     const handleClickCreerCompte = () => {
         navigate('/create-account');
