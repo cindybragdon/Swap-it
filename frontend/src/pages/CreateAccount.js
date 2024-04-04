@@ -3,12 +3,13 @@ import {useForm} from "react-hook-form";
 import http from "../http/http";
 import '../CreateAccount.css';
 import TogglePasswordVisibility from "../components/TogglePassVisibility";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import ImageBG from "../images/BGCadeaux.jpg";
 import axios from "axios";
 
 const CreateAccount = () => {
 
+    const navigate = useNavigate();
 
     var sectionStyle = {
         backgroundImage: `url(${ImageBG})`,
@@ -72,6 +73,7 @@ const CreateAccount = () => {
             .then(data => {
                 console.log('Data received:', data.data);
                 sessionStorage.setItem('user', JSON.stringify(data.data));
+                navigate('/piges');
             })
             .catch(error => {
                 console.error('There was a problem with the fetch operation:', error);

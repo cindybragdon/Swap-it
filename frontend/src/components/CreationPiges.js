@@ -34,9 +34,10 @@ const CreationPiges = () => {
     const [email, setEmail] = useState('');
     const [listUserEmail, setListUserEmail] = useState([]);
 
+
     const formsUserWithPige = {
         user:{
-            idUser: JSON.parse(sessionStorage.user.idUser)
+            idUser: JSON.parse(sessionStorage.user).idUser
         },
         pige:{
             pigeName: nomPige,
