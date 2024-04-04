@@ -3,6 +3,7 @@ import {useForm} from "react-hook-form";
 import http from "../http/http";
 import '../CreateAccount.css';
 import ImageParty from "../images/Party1.jpg";
+import TogglePasswordVisibility from "../components/TogglePassVisibility";
 
 const UpdateAccount = () => {
 
@@ -17,10 +18,10 @@ const UpdateAccount = () => {
 
     const {register, handleSubmit, formState: {errors}, reset} = useForm();
 
-    const [nom, setNom] = useState('');
-    const [prenom, setPrenom] = useState('');
-    const [telephone, setTelephone] = useState('');
-    const [courriel, setCourriel] = useState('');
+    const [nom, setNom] = useState(currentUser.userLastName);
+    const [prenom, setPrenom] = useState(currentUser.userFirstName);
+    const [telephone, setTelephone] = useState(currentUser.userPhone);
+    const [courriel, setCourriel] = useState(currentUser.userEmail);
     const [motPasse, setMotPasse] = useState('');
     const [nouveauMotPasse, setNouveauMotPasse] = useState('');
 
@@ -54,6 +55,21 @@ const UpdateAccount = () => {
     const togglePasswordVisibility = () => {
         const passwordInput = document.getElementById('typeMotPasse');
         const toggleIcon = document.getElementById('togglePassword');
+        console.log(passwordInput.type);
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            toggleIcon.classList.replace('bi-eye-slash', 'bi-eye');
+        } else {
+            passwordInput.type = 'password';
+            toggleIcon.classList.replace('bi-eye', 'bi-eye-slash');
+        }
+    };
+
+
+    const togglePasswordVisibility2 = () => {
+        const passwordInput = document.getElementById('typeMotPasse2');
+        const toggleIcon = document.getElementById('togglePassword2');
+        console.log(passwordInput.type);
         if (passwordInput.type === 'password') {
             passwordInput.type = 'text';
             toggleIcon.classList.replace('bi-eye-slash', 'bi-eye');
@@ -73,22 +89,19 @@ const UpdateAccount = () => {
         setCourriel(data.courriel);
         setMotPasse(data.motPasse);
         setNouveauMotPasse(data.nouveauMotPasse);
-        createAcc(); // ??
+        updateACC(); // ??
         //console.log(data);
         reset();
     }
 
-    const createAcc = async () => {
+    const updateACC = async () => {
         try {
             const response = await http.post(`/api/createUserByEmail`);
             setServerResponse(response.data);
             console.log(response)
         } catch (error) {
             console.error(error);
-        } finally {
-            setCourriel('');
         }
-
     }
 
     return (
@@ -96,112 +109,111 @@ const UpdateAccount = () => {
             <div className="card text-center card w-50 mt-5 " id="container-update">
                 <div className="card-header h5 text-white bg-info">Modifier votre compte Swap-it!</div>
                 <div className="card-body px-5">
+
                     <p className="card-text py-2">
                         Vos nouvelles informations ici
                     </p>
-                    <div className="form-outline text-start">
-                        <label>Nom</label>
-                        <input type="nom" id="typeNom" className="form-control my-3"
-                               placeholder={"hello"}
-                               value={currentUser.userLastName}
-                               {...register("nom",
-                                   {
-                                       required: msgErrors.nom.requis
-                                   })}/>
-                    </div>
-                    <div className="form-outline text-start">
-                        <label>Prénom</label>
-                        <input type="prenom" id="typePrenom" className="form-control my-3"
-                               value={currentUser.userFirstName}
-                               {...register("prenom",
-                                   {
-                                       required: msgErrors.prenom.requis
-                                   })}/>
-                    </div>
-                    <div className="form-outline text-start">
-                        <label>Telephone</label>
-                        <input type="telephone" id="typeTelephone" className="form-control my-3"
-                               value={currentUser.userPhone}
-                               {...register("telephone",
-                                   {
-                                       required: msgErrors.telephone.requis,
-                                       pattern: {value: /^[0-9]{10}$/, message: msgErrors.telephone.format}
-                                   })}/>
-                        {errors.telephone && errors.telephone.message}
-                        {errors.telephone && errors.telephone.type === "pattern"}
-                    </div>
-                    <div className="form-outline text-start">
-                        <label>Courriel</label>
-                        <input type="courriel" id="typeEmail" className="form-control my-3"
-                               value={currentUser.userEmail}
-                               {...register("courriel",
-                                   {
-                                       required: msgErrors.courriel.requis,
-                                       pattern: {value: /^\S+@\S+$/i, message: msgErrors.courriel.format}
-                                   })}/>
-                        {errors.courriel && errors.courriel.message}
-                        {errors.courriel && errors.courriel.type === "pattern"}
-                    </div>
-                    <div className="form-outline ">
-                        <div className="password-container text-start position-relative">
-                            <input type="password" id="typeMotPasse" className="form-control my-3 pr-5"
-                                   placeholder="Votre MOT DE PASSE ACTUEL"
-                                   {...register("motPasse", {
-                                       required: msgErrors.motPasse.requis,
-                                       pattern: {
-                                           value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&^])[A-Za-z\d@.#$!%*?&]{8,15}$/,
-                                           message: msgErrors.motPasse.format
-                                       }
-                                   })} />
-                            <i className="bi bi-eye-slash toggle-password" id="togglePassword"
-                               onClick={togglePasswordVisibility}
-                               style={{
-                                   position: 'absolute',
-                                   top: '50%',
-                                   right: '10px',
-                                   transform: 'translateY(-50%)',
-                                   cursor: 'pointer'
-                               }}></i>
+
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <div className="text-start">
+                            <label>Prenom</label>
+                        </div>
+                        <div>
+                            <input type="text" name="prenom" id="typePrenom" className="form-control my-3"
+                                   placeholder={"Votre prenom"} value={prenom}
+                                   onChange={event => setPrenom(event.target.value)} required/>
+                            {errors.prenom && errors.prenom.message}
+                        </div>
+
+
+                        <div className="text-start">
+                            <label>Nom</label>
+                        </div>
+                        <div>
+                            <input type="text" name="nom" id="typeNom" className="form-control my-3"
+                                   placeholder={"Votre nom"} value={nom} onChange={event => setNom(event.target.value)}
+                                   required/>
+                            {errors.nom && errors.nom.message}
+                        </div>
+
+
+                        <div className="text-start">
+                            <label>Telephone</label>
+                        </div>
+                        <div>
+                            <input pattern="[0-9]{3}[0-9]{3}[0-9]{4}" type="tel" name="telephone" id="typeTelephone"
+                                   className="form-control my-3" placeholder={"Votre telephone"} value={telephone}
+                                   onChange={event => setTelephone(event.target.value)}/>
+                            {errors.telephone && errors.telephone.message}
+                            {errors.telephone && errors.telephone.type && errors.telephone.type === "pattern"}
+                        </div>
+
+
+                        <div className="text-start">
+                            <label>Courriel</label>
+                        </div>
+                        <div>
+                            <input pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" type="email" name="courriel"
+                                   id="typeEmail" className="form-control my-3" placeholder={"Votre courriel"}
+                                   value={courriel}
+                                   onChange={event => setCourriel(event.target.value)} required/>
+                            {errors.courriel && errors.courriel.message}
+                            {errors.courriel && errors.courriel.type && errors.courriel.type === "pattern"}
+
+                        </div>
+                        <div className="text-start">
+                            <label>Mot de Passe : <span id="toto">Doit contenir une minuscule, </span> <span id="tata">une majuscule </span>
+                                <span id="titi">et 8 caractères</span></label>
                         </div>
 
                         <div className="form-outline ">
-                            <div className="password-container text-start position-relative">
-                                <input type="password" id="typeMotPasse" className="form-control my-3 pr-5"
-                                       placeholder="Votre NOUVEAU MOT DE PASSE"
-                                       {...register("motPasse", {
-                                           required: msgErrors.motPasse.requis,
-                                           pattern: {
-                                               value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&^])[A-Za-z\d@.#$!%*?&]{8,15}$/,
-                                               message: msgErrors.motPasse.format
-                                           }
-                                       })} />
-                                <i className="bi bi-eye-slash toggle-password" id="togglePassword"
-                                   onClick={togglePasswordVisibility}
-                                   style={{
-                                       position: 'absolute',
-                                       top: '50%',
-                                       right: '10px',
-                                       transform: 'translateY(-50%)',
-                                       cursor: 'pointer'
-                                   }}></i>
+                            <div>
+                                <p className="password-container-create-account">
+                                    <input pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password" name="motPasse"
+                                           id="typeMotPasse" className="form-control my-3 create-account"
+                                           placeholder={"Votre mot de passe"}
+                                           onChange={event => setMotPasse(event.target.value)} required/>
+                                    <i className="bi bi-eye-slash toggle-password" id="togglePassword"
+                                       onClick={TogglePasswordVisibility}></i>
+                                </p>
+
+                                {errors.motPasse && errors.motPasse.message}
+                                {errors.motPasse && errors.motPasse.type === "pattern"}
+                            </div>
+
+                            <div>
+                                <p className="password-container-create-account">
+                                    <input pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password" name="motPasse"
+                                           id="typeMotPasse2" className="form-control my-3 create-account"
+                                           placeholder={"Votre mot de passe"}
+                                           onChange={event => setMotPasse(event.target.value)} required/>
+                                    <i className="bi bi-eye-slash toggle-password" id="togglePassword2"
+                                       onClick={togglePasswordVisibility2}></i>
+                                </p>
+
+                                {errors.motPasse && errors.motPasse.message}
+                                {errors.motPasse && errors.motPasse.type === "pattern"}
+                            </div>
+
+
+                            <small id="emailHelp" className="form-text text-muted">
+                                Doit contenir : une minuscule, une majuscule, un chiffre, un caractère spécial et de 8 à
+                                15
+                                caractères.
+                            </small>
+                            {errors.motPasse && errors.motPasse.message}
+                            {errors.motPasse && errors.motPasse.type === "pattern"}
+                        </div>
+                        <br/>
+                        <div className="form-group row">
+                            <div className="col-sm-20 text-center">
+                                <button type="submit" className="btn btn-info w-30">Modifier vos informations!</button>
                             </div>
                         </div>
-                        <small id="emailHelp" className="form-text text-muted">
-                            Doit contenir : une minuscule, une majuscule, un chiffre, un caractère spécial et de 8 à 15
-                            caractères.
-                        </small>
-                        {errors.motPasse && errors.motPasse.message}
-                        {errors.motPasse && errors.motPasse.type === "pattern"}
-                    </div>
-                    <br/>
-                    <div className="form-group row">
-                        <div className="col-sm-20 text-center">
-                            <button type="submit" className="btn btn-info w-30">Modifier vos informations!</button>
+                        <div className="d-flex justify-content-center mt-4">
+                            <a id="link-text" className="" href="/">Retour à la page d'accueil </a>
                         </div>
-                    </div>
-                    <div className="d-flex justify-content-center mt-4">
-                        <a id="link-text" className="" href="/">Retour à la page d'accueil </a>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
