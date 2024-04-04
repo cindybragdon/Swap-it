@@ -3,13 +3,16 @@ import {useLocation, useNavigate} from "react-router-dom";
 import {useState, useEffect} from "react";
 import BackToTopButton from "../components/BackToTopButton";
 import ImagePige from "../images/NewPige.jpg"
-import BGPiges from '../images/bgPiges.jpg'
+import BGPiges from '../images/BackgroundMesPiges.jpg'
 
 
 function Piges() {
 
     var sectionStyle = {
-        backgroundImage: `url(${BGPiges})`
+        backgroundImage: `url(${BGPiges})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        minWidth: '100vw'
     }
 
 
@@ -59,7 +62,8 @@ function Piges() {
         <div className='container row bg-primary text-center' style={sectionStyle}>
             <div >
                 <div className="pt-3">
-                    <h2>Bonjour, {currentUser.userFirstName}, voici vos piges! </h2>
+                    <h2 className="bg-white
+                    " style={ {color: '#FF3991'}} >Bonjour, {currentUser.userFirstName}, voici vos piges! </h2>
                 </div>
                 <div className="row row-cols-1 row-cols-md-4 g-4">
 
@@ -81,7 +85,7 @@ function Piges() {
                     <div className="row row-cols-1 row cols-med-4 g-4">
                     {listUserPige.map(UserPige =>
 
-                        <div className="col pb-5">
+                        <div className="col pb-5" onClick={() => handlePigeClick(UserPige)}>
 
                             <div className="card h100">
                                 <div className="card-body">
