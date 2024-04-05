@@ -38,6 +38,16 @@ public class ShadowServerController {
         }
     }
 
+    @GetMapping("/getPWDByIdUser")
+    public Shadow getPWDByIdUser(@RequestParam int idUser) throws Exception {
+        try {
+            return shadowRepository.findByUser_IdUser(idUser);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
 
 
     @PostMapping("/createShadowAndUser")
@@ -85,8 +95,8 @@ public class ShadowServerController {
 
     //Update Password
     // (Verified and tested)
-    @PutMapping("/updatePwdById")
-    public String updatePwdById(@RequestBody Shadow shadowUpdated) throws Exception {
+    @PutMapping("/updatePwdAndUser")
+    public String updatePwdAndUser(@RequestBody Shadow shadowUpdated) throws Exception {
         String messagePwdUpdated = "ACK-211";
         try {
             if (shadowUpdated.getUserPassword() != null

@@ -4,9 +4,12 @@ import http from "../http/http";
 import '../CreateAccount.css';
 import ImageParty from "../images/Party1.jpg";
 import TogglePasswordVisibility from "../components/TogglePassVisibility";
+import {connectAcc} from "../axi/AxiFunc";
+import {useNavigate} from "react-router-dom";
 
 const UpdateAccount = () => {
 
+    const navigate = useNavigate();
     var sectionStyle = {
         backgroundImage: `url(${ImageParty})`,
         backgroundRepeat: 'no-repeat',
@@ -18,16 +21,23 @@ const UpdateAccount = () => {
 
     const {register, handleSubmit, formState: {errors}, reset} = useForm();
 
-    const [nom, setNom] = useState(currentUser.userLastName);
     const [prenom, setPrenom] = useState(currentUser.userFirstName);
+    const [nom, setNom] = useState(currentUser.userLastName);
     const [telephone, setTelephone] = useState(currentUser.userPhone);
     const [courriel, setCourriel] = useState(currentUser.userEmail);
     const [motPasse, setMotPasse] = useState('');
     const [nouveauMotPasse, setNouveauMotPasse] = useState('');
 
-
-
-    const [serverResponse, setServerResponse] = useState(null); // [0] = email, [1] = password, [2] = serverResponse
+    const formUpdateUserAndPWD = {
+        userPassword: nouveauMotPasse,
+        user: {
+            idUser:currentUser.idUser,
+            userFirstName: prenom,
+            userLastName: nom,
+            userEmail: courriel,
+            userPhone: telephone
+        }
+    }
 
 
     const msgErrors = {
@@ -81,24 +91,34 @@ const UpdateAccount = () => {
 
 
 
-    const onSubmit = (data) => {
-
-        setNom(data.nom);
-        setPrenom(data.prenom);
-        setTelephone(data.telephone);
-        setCourriel(data.courriel);
-        setMotPasse(data.motPasse);
-        setNouveauMotPasse(data.nouveauMotPasse);
-        updateACC(); // ??
-        //console.log(data);
-        reset();
+    const onSubmit = () => {
+        checkIfPasswordCorresponds();
     }
 
+
+
+
+    const checkIfPasswordCorresponds = async () => {
+        try {
+            const response = await http.get(`getPWDByIdUser?idUser=${currentUser.idUser}`);
+            console.log(motPasse);
+            console.log(response.data.userPassword);
+            if(response.data.userPassword === motPasse) {
+                await updateACC()
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
     const updateACC = async () => {
         try {
-            const response = await http.post(`/api/createUserByEmail`);
-            setServerResponse(response.data);
-            console.log(response)
+            const response = await http.put(`updatePwdAndUser`, formUpdateUserAndPWD);
+            if(response.data === "ACK-210") {
+                let response = connectAcc(formUpdateUserAndPWD);
+                if (response) {
+                    navigate('/myaccount');
+                }
+            }
         } catch (error) {
             console.error(error);
         }
@@ -141,7 +161,7 @@ const UpdateAccount = () => {
                             <label>Telephone</label>
                         </div>
                         <div>
-                            <input pattern="[0-9]{3}[0-9]{3}[0-9]{4}" type="tel" name="telephone" id="typeTelephone"
+                            <input pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" type="tel" name="telephone" id="typeTelephone"
                                    className="form-control my-3" placeholder={"Votre telephone"} value={telephone}
                                    onChange={event => setTelephone(event.target.value)}/>
                             {errors.telephone && errors.telephone.message}
@@ -181,12 +201,17 @@ const UpdateAccount = () => {
                                 {errors.motPasse && errors.motPasse.type === "pattern"}
                             </div>
 
+                            <div className="text-start">
+                                <label>Nouveau mot de Passe : <span id="toto">Doit contenir une minuscule, </span> <span
+                                    id="tata">une majuscule </span>
+                                    <span id="titi">et 8 caractères</span></label>
+                            </div>
                             <div>
                                 <p className="password-container-create-account">
                                     <input pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password" name="motPasse"
                                            id="typeMotPasse2" className="form-control my-3 create-account"
-                                           placeholder={"Votre mot de passe"}
-                                           onChange={event => setMotPasse(event.target.value)} required/>
+                                           placeholder={"Votre nouveau mot de passe : "}
+                                           onChange={event => setNouveauMotPasse(event.target.value)} required/>
                                     <i className="bi bi-eye-slash toggle-password" id="togglePassword2"
                                        onClick={togglePasswordVisibility2}></i>
                                 </p>

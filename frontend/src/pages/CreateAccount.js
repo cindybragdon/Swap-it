@@ -5,6 +5,8 @@ import '../CreateAccount.css';
 import TogglePasswordVisibility from "../components/TogglePassVisibility";
 import {Link, useNavigate} from "react-router-dom";
 import ImageBG from "../images/BGCadeaux.jpg";
+import { createAcc } from "../axi/AxiFunc";
+import { connectAcc } from "../axi/AxiFunc"
 import axios from "axios";
 
 const CreateAccount = () => {
@@ -16,18 +18,6 @@ const CreateAccount = () => {
         position: 'relative',
         minHeight: '100vh',
     }
-
-
-
-    const {register, handleSubmit, formState: {errors}, reset} = useForm();
-
-
-    const [nom, setNom] = useState('');
-    const [prenom, setPrenom] = useState('');
-    const [telephone, setTelephone] = useState('');
-    const [courriel, setCourriel] = useState('');
-    const [motPasse, setMotPasse] = useState('');
-
 
     const msgErrors = {
 
@@ -51,6 +41,18 @@ const CreateAccount = () => {
         }
     }
 
+    const {register, handleSubmit, formState: {errors}, reset} = useForm();
+
+
+    const [nom, setNom] = useState('');
+    const [prenom, setPrenom] = useState('');
+    const [telephone, setTelephone] = useState('');
+    const [courriel, setCourriel] = useState('');
+    const [motPasse, setMotPasse] = useState('');
+
+
+
+
     const formsCreateAccount = {
         userPassword: motPasse,
         user: {
@@ -61,48 +63,20 @@ const CreateAccount = () => {
         }
     }
 
-    const onSubmit = (data) => {
-        createAcc().then(r => console.log(r));
-        console.log(data);
+    const onSubmit = () => {
+        let response = createAcc(formsCreateAccount);
+        if (response) {
+            response = connectAcc(formsCreateAccount);
+            if (response) {
+                navigate('/piges');
+            }
+        }
         reset();
     }
 
-    const getNewAcc = async () => {
-        const response = await http.get(`getUserByEmail?userEmail=${courriel}`)
-
-            .then(data => {
-                console.log('Data received:', data.data);
-                sessionStorage.setItem('user', JSON.stringify(data.data));
-                navigate('/piges');
-            })
-            .catch(error => {
-                console.error('There was a problem with the fetch operation:', error);
-            });
-        console.log(JSON.parse(sessionStorage.user));
-    }
-
-
-    const createAcc = async () => {
-        try {
-            //console.log(formsCreateAccount);
-            const response = await http.post(`/createShadowAndUser`, formsCreateAccount)
-                .then(response => {
-                    console.log(response.data);
-                    if (response.data === "ACK-101" || response.data === "ACK-102") {
-                        throw new Error("Erreur lors de la création du compte");
-                    }
-                    if (response.data === "ACK-100") {
-                        getNewAcc();
-                    }
 
 
 
-                })
-        } catch (error) {
-            console.error(error);
-        }
-
-    }
 
     return (
         <div className='renderingElement oui ' style={sectionStyle}>
