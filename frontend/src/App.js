@@ -19,6 +19,7 @@ import MyAccount from "./pages/MyAccount";
 import MyWishList from "./pages/MyWishList";
 import AddWish from "./pages/AddWish";
 import PrivateRoute from "./components/PrivateRoute";
+import UpdatePige from "./pages/UpdatePige";
 
 
 function App() {
@@ -65,6 +66,10 @@ function App() {
 
                     <Route path='/piges/:pigeName/myWishList' element={<PrivateRoute/>}>
                         <Route path='/piges/:pigeName/myWishList' element={<MyWishList/>}/>
+                    </Route>
+
+                    <Route path='/pige/:pigeName/UpdatePige' element={<PrivateRoute/>}>
+                        <Route path='/pige/:pigeName/UpdatePige' element={<UpdatePige/>}/>
                     </Route>
 
                     <Route path='/pige/myWishList/addWish' element={<PrivateRoute/>}>
