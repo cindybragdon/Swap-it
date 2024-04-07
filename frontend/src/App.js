@@ -9,7 +9,7 @@ import FAQ from './pages/FAQ';
 import NotFound from './pages/NotFound';
 import Features from './pages/Features';
 import Piges from "./pages/Piges";
-import CreationPiges from "./components/CreationPiges";
+import CreationPiges from "./pages/CreationPiges";
 import MyPige from "./pages/MyPige";
 import ForgotPwd from "./pages/ForgotPwd";
 import QuiJaiPige from "./pages/QuiJaiPige";
@@ -19,6 +19,7 @@ import MyAccount from "./pages/MyAccount";
 import MyWishList from "./pages/MyWishList";
 import AddWish from "./pages/AddWish";
 import PrivateRoute from "./components/PrivateRoute";
+import AddUserToPige from "./pages/AddUserToPige";
 
 
 function App() {
@@ -41,6 +42,10 @@ function App() {
 
                     <Route path='/piges/creation-piges' element={<PrivateRoute/>}>
                         <Route path='/piges/creation-piges' element={<CreationPiges/>}/>
+                    </Route>
+
+                    <Route path='/addPeople' element={<PrivateRoute/>}>
+                        <Route path='/addPeople' element={<AddUserToPige/>}/>
                     </Route>
 
                     <Route path='/piges/:pigeName' element={<PrivateRoute/>}>

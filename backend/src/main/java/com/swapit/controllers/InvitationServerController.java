@@ -10,6 +10,8 @@ import com.swapit.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin("http://localhost:5555/")
 @RequestMapping("/api")
@@ -27,14 +29,18 @@ public class InvitationServerController {
     //Creates an invitation to be sended by email
     // (Verified and tested)
     @PostMapping("/createInvitation")
-    public String createInvitation(@RequestBody Invitations invitationsToCreate, @RequestParam int idUser) throws Exception{
+    public String createInvitation(@RequestBody List<String> listEmailsToSendInv, @RequestParam int idUser) throws Exception{
         String messageInvitation = "ACK-401";
         try{
-            if (invitationsToCreate.getEmailWantedUser() != null) {
-                invitationsToCreate.setPige(pigeRepository.findPigeByNumberPigeOfUser(pigeRepository.countPigesByUserAdmin_IdUser(idUser)));
-                invitationsToCreate.setAsBeenAnswered(false);
+            if (listEmailsToSendInv != null) {
 
-                invitationsRepository.save(invitationsToCreate);
+                for(String email : listEmailsToSendInv) {
+                    Invitations invitationsToCreate = new Invitations();
+                    invitationsToCreate.setEmailWantedUser(email);
+                    invitationsToCreate.setPige(pigeRepository.findPigeByNumberPigeOfUser(pigeRepository.countPigesByUserAdmin_IdUser(idUser)));
+                    invitationsToCreate.setAsBeenAnswered(false);
+                    invitationsRepository.save(invitationsToCreate);
+                }
                 messageInvitation = "ACK-400";
             }
         }catch (Exception e){
