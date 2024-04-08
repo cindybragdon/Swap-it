@@ -1,10 +1,10 @@
 import {getAllInv} from "../axi/AxiFunc";
 import {useState} from "react";
 
-const Invitations = () => {
+const Invitations = async () => {
 
     let listOfInv = [];
-     getAllInv()
+     await getAllInv()
          .then((response) => response.json())
          .then((value) => {return value});
 

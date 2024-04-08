@@ -46,9 +46,9 @@ function App() {
                         <Route path='/piges/creation-piges' element={<CreationPiges/>}/>
                     </Route>
 
-                    <Route path='/pige/:pigeName/UpdatePige' element={<PrivateRoute/>}>
-                    <Route path='/pige/:pigeName/UpdatePige' element={<UpdatePige/>}/>
-                </Route>
+                    <Route path='/piges/:pigeName/UpdatePige' element={<PrivateRoute/>}>
+                        <Route path='/piges/:pigeName/UpdatePige' element={<UpdatePige/>}/>
+                    </Route>
 
                     <Route path='/addPeople' element={<PrivateRoute/>}>
                         <Route path='/addPeople' element={<AddUserToPige/>}/>
