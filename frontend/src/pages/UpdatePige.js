@@ -100,8 +100,7 @@ const UpdatePige = () => {
                 </div>
 
 
-                <p className="fst-italic" style={{color: 'black'}}>La pige ne sera lancée que plus tard</p>
-                <button type="submit" className="btn " style={{width: '33%', backgroundColor: '#D4025B'}}>Créer la pige!</button>
+                <button type="submit" className="btn " style={{width: '33%', backgroundColor: '#D4025B'}}>Modifier la pige!</button>
             </form>
         </div>
     );
