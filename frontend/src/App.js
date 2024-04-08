@@ -21,6 +21,7 @@ import AddWish from "./pages/AddWish";
 import PrivateRoute from "./components/PrivateRoute";
 import AddUserToPige from "./pages/AddUserToPige";
 import UpdatePige from "./pages/UpdatePige";
+import Invitations from "./pages/Invitations";
 
 
 function App() {
@@ -79,6 +80,10 @@ function App() {
 
                     <Route path='/pige/myWishList/addWish' element={<PrivateRoute/>}>
                         <Route path='/pige/myWishList/addWish' element={<AddWish/>}/>
+                    </Route>
+
+                    <Route path='/inv' element={<PrivateRoute/>}>
+                        <Route path='/inv' element={<Invitations/>}/>
                     </Route>
                 </Routes>
             </div>

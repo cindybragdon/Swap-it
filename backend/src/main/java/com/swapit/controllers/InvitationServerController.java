@@ -50,4 +50,14 @@ public class InvitationServerController {
 
     }
 
+    @GetMapping("/getAllInvitationsFromUserEmail")
+    public List<Invitations> getAllInvitationsFromUserEmail(@RequestParam String userEmail) throws Exception {
+        try {
+            return invitationsRepository.findAllByEmailWantedUser(userEmail);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
 }
