@@ -1,24 +1,30 @@
 import {getAllInv} from "../axi/AxiFunc";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import http from "../http/http";
 
-const Invitations = async () => {
 
-    let listOfInv = [];
-     await getAllInv()
-         .then((response) => response.json())
-         .then((value) => {return value});
+import axios from "axios";
 
-     const getValueForList = () => {
-         getAllInv.then((response) => {return response();});
+const Invitations = () => {
 
-     }
 
-     listOfInv = getValueForList();
+
+
+    const [tabCustomers, setTabCustomers] = useState([]);
+
+     useEffect(() => {
+        axios.get(`http://localhost:9281/api/getAllInvitationsFromUserEmail?userEmail=${JSON.parse(sessionStorage.user).userEmail}`)
+            .then(res => setTabCustomers(res.data))
+            .catch(err => console.log(err));
+    }, []);
+
+
 
     return (
         <div>
             <p>Vos invitations : </p>
-                {listOfInv.map((inv) => (
+                {tabCustomers.map((inv) => (
+
                 <div>
                     <p>Vous avez été invité à la pige {inv.pige.pigeName} </p>
                 </div>
@@ -28,3 +34,17 @@ const Invitations = async () => {
 }
 
 export default Invitations;
+
+/**
+ * let listOfInv = [];
+ *       getAllInv()
+ *          .then((response) => response.json())
+ *          .then((value) => {return value});
+ *
+ *      const getValueForList = () => {
+ *          getAllInv.then((response) => {return response();});
+ *
+ *      }
+ *
+ *      listOfInv = getValueForList();
+ */
