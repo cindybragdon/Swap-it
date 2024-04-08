@@ -46,6 +46,20 @@ const MyPige = () => {
         navigate(`/piges`);
     }
 
+    const handleButton3Click = () => {
+        navigate(`/pige/picked`);
+    }
+
+    const handleButton4Click = () => {
+        navigate(`/piges/:pigeName/myWishList`);
+    }
+
+    const handleButton5Click = () => {
+        navigate(`/pige/:pigeName/UpdatePige`);
+    }
+
+
+
     const handleButtonUpdatePige = () => {
         navigate(`/piges/${selectedUserPige.pige.pigeName}/UpdatePige`, {state: JSON.stringify(selectedUserPige)});
         console.log('this : ' + selectedUserPige);
@@ -92,10 +106,10 @@ const MyPige = () => {
                                 </button>
                                 </div>
                                 <div className="d-flex flex-column  justify-content-start align-items-start */}">
-                                    <a href='/pige/:pigeName/UpdatePige'>
-                                        <button type="submit" className="btn btn-info w-30 mb-2 " onClick={handleButtonUpdatePige}>Modifier la pige
+                                    <div className="mt-2 ">
+                                        <button onClick={() => handleButton5Click()}> Mofidier la pige
                                         </button>
-                                    </a>
+                                    </div>
                                     {/*Changer le href pour une page dinvitation*/}
                                     <a href='/pige/:pigeName/UpdatePige'>
                                         <button type="submit" className="btn btn-info w-30 mb-2">Envoyer des invitations
@@ -114,15 +128,13 @@ const MyPige = () => {
                         <div className=" d-flex border flex-column  border-2 p-3 mt-3 text-start" id='MonEspace'>
                             <h5>Espace de {selectedUserPige.user.userFirstName}</h5>
                             {/*Bien vefifier les navigate des boutons... ya 2 sortes et je pense que cest important pour le current user*/}
-                            <a href='/piges/:pigeName/myWishList'>
-                                <button type="submit" className="btn btn-info w-30 ">Ma liste de souhaits pour cette
-                                    pige
-                                </button>
-                            </a>
-                            <a href='/pige/picked'>
-                                <button type="submit" className="btn btn-info w-30  mt-2">Voir qui j'ai pigé!
-                                </button>
-                            </a>
+                            <div className="mt-2 ">
+                                <button onClick={() => handleButton4Click()}> Ma liste de souhaits pour cette
+                                    pige!</button>
+                            </div>
+                            <div className="mt-2 ">
+                                <button onClick={() => handleButton3Click()}> Voir qui j'ai pigé!</button>
+                            </div>
                             <div className="mt-2">
                                 <button onClick={() => handleButton2Click()}> Voir toutes mes Piges</button>
                             </div>
