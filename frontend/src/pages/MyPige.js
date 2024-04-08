@@ -38,9 +38,8 @@ const MyPige = () => {
     }, [selectedUserPige.idPige]);
 
 
-    const handleButtonClick = (userPige) => {
+    const handleClickWishList = (userPige) => {
         navigate(`/piges/${selectedUserPige.pige.pigeName}/myWishList`, {state: userPige});
-        console.log(userPige);
     }
     const handleButton2Click = () => {
         navigate(`/piges`);
@@ -50,8 +49,8 @@ const MyPige = () => {
         navigate(`/pige/picked`);
     }
 
-    const handleButton4Click = () => {
-        navigate(`/piges/:pigeName/myWishList`);
+    const handleButtonMyWishlist = () => {
+        navigate(`/piges/${selectedUserPige.pige.pigeName}/myWishList`, {state: selectedUserPige});
     }
 
     const handleButton5Click = () => {
@@ -84,7 +83,7 @@ const MyPige = () => {
                             </div>
                             <div className="d-flex">
                                 <h5 className="text-start">L'organisateur de cette pige est : </h5>
-                                <p>{/*{selectedUserPige.pige.userAdmin}*/}</p>
+                                <p>{selectedUserPige.pige.userAdmin.userFirstName}</p>
                             </div>
                             <div className="d-flex">
                                 <h5 className="text-start">Date de l'échange : </h5>
@@ -94,7 +93,8 @@ const MyPige = () => {
                                 <h5 className="text-start">Montant suggéré : </h5>
                                 <p>{selectedUserPige.pige.pigeSuggestedMoneyAmount} $</p>
                             </div>
-                            {/*Cet espace ne sera vu que par ladmin de la pige*/}
+                            {JSON.parse(sessionStorage.user).idUser === selectedUserPige.pige.userAdmin.idUser ?
+
                             <div className=" border border-2 p-3 " id="espaceAdmin">
                                 <h5 className="text-start"> Espace Admin pour l'organisateur de la
                                     pige {selectedUserPige.pige.pigeName} </h5>
@@ -122,12 +122,13 @@ const MyPige = () => {
 
                                 </div>
                             </div>
+                                : <p></p>}
                         </div>
                         <div className=" d-flex border flex-column  border-2 p-3 mt-3 text-start" id='MonEspace'>
                             <h5>Espace de {selectedUserPige.user.userFirstName}</h5>
                             {/*Bien vefifier les navigate des boutons... ya 2 sortes et je pense que cest important pour le current user*/}
                             <div className="mt-2 ">
-                                <button onClick={() => handleButton4Click()}> Ma liste de souhaits pour cette
+                                <button onClick={() => handleButtonMyWishlist()}> Ma liste de souhaits pour cette
                                     pige!</button>
                             </div>
                             <div className="mt-2 ">
@@ -148,7 +149,7 @@ const MyPige = () => {
                                         <h6 className="card-title">Nom
                                             : {userPige.user.userFirstName} {userPige.user.userLastName} Pseudo
                                             : {userPige.userPigePseudo}</h6>
-                                        <button onClick={() => handleButtonClick(userPige)}> Liste de souhaits
+                                        <button onClick={() => handleClickWishList(userPige)}> Liste de souhaits
                                             de {userPige.user.userFirstName}</button>
                                     </div>
                                 </div>
