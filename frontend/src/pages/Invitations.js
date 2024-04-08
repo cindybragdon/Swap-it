@@ -24,11 +24,13 @@ const Invitations = () => {
         <div>
             <p>Vos invitations : </p>
                 {tabCustomers.map((inv) => (
-
-                <div>
-                    <p>Vous avez été invité à la pige {inv.pige.pigeName} </p>
-                </div>
-            ))}
+                    !inv.asBeenAnswered ?
+                        <div className="container-sm justify-content-center text-center bg-danger rounded-4 border p-3">
+                            <p>Vous avez été invité à la pige {inv.pige.pigeName} </p>
+                            <p>Par : {inv.pige.userAdmin.userFirstName} {inv.pige.userAdmin.userLastName}</p>
+                            <button>Accepter l'invitation</button> <button>Refuser L'invitation</button>
+                        </div> : ''
+                ))}
         </div>
     )
 }
