@@ -46,7 +46,11 @@ const MyPige = () => {
         navigate(`/piges`);
     }
 
-
+    const handleButtonUpdatePige = () => {
+        navigate(`/piges/${selectedUserPige.pige.pigeName}/UpdatePige`, {state: JSON.stringify(selectedUserPige)});
+        console.log('this : ' + selectedUserPige);
+        alert(JSON.stringify(selectedUserPige));
+    }
     return (
         <div className='container-fluid row justify-content-center text-center oui min-vh-100 '
              style={sectionStyle}>
@@ -89,7 +93,7 @@ const MyPige = () => {
                                 </div>
                                 <div className="d-flex flex-column  justify-content-start align-items-start */}">
                                     <a href='/pige/:pigeName/UpdatePige'>
-                                        <button type="submit" className="btn btn-info w-30 mb-2 ">Modifier la pige
+                                        <button type="submit" className="btn btn-info w-30 mb-2 " onClick={handleButtonUpdatePige}>Modifier la pige
                                         </button>
                                     </a>
                                     {/*Changer le href pour une page dinvitation*/}
