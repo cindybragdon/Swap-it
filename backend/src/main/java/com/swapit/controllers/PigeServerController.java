@@ -70,10 +70,10 @@ public class PigeServerController {
     // If admin is updated, change toggle to isNotAdmin
     // (Verified and tested)
     @PutMapping("/updatePige")
-    public String updatePige(@RequestBody Pige pigeUpdated, @RequestParam int idPige) {
+    public String updatePige(@RequestBody Pige pigeUpdated) {
         String messagePigeUpdated = "ACK-311";
         try {
-            if (pigeRepository.existsById(idPige)) {
+            if (pigeRepository.existsById(pigeUpdated.getIdPige())) {
                 if (pigeUpdated.getPigeName() != null
                         && pigeUpdated.getPigeType() != null
                         && pigeUpdated.getPigeEndDate() != null
@@ -81,20 +81,15 @@ public class PigeServerController {
                         || pigeUpdated.getPigeType().equals("TARGETED")
                         || pigeUpdated.getPigeType().equals("NORMAL")
                         || pigeUpdated.getPigeType().equals("GIFTLIST")
-                )&& (pigeUpdated.getPigeState().equals("CREATED")
-                        || pigeUpdated.getPigeState().equals("AVIS LANCEE")
-                        || pigeUpdated.getPigeState().equals("STARTED")
-                        || pigeUpdated.getPigeState().equals("ENDED")
                 )) {
 
-                    Pige pige = pigeRepository.findPigeByIdPige(idPige);
+                    Pige pige = pigeRepository.findPigeByIdPige(pigeUpdated.getIdPige());
                     pige.setPigeName(pigeUpdated.getPigeName());
                     pige.setPigeType(pigeUpdated.getPigeType());
                     pige.setPigeDescription(pigeUpdated.getPigeDescription());
                     pige.setPigeEndDate(pigeUpdated.getPigeEndDate());
                     pige.setPigeSuggestedMoneyAmount(pigeUpdated.getPigeSuggestedMoneyAmount());
                     pige.setPigeImage(pigeUpdated.getPigeImage());
-                    pige.setUserAdmin(pigeUpdated.getUserAdmin());
                     pigeRepository.save(pige);
                     messagePigeUpdated = "ACK-310";
                 }

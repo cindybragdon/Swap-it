@@ -3,6 +3,7 @@ import ImagePigeCreate from "../images/Chapeau.jpg";
 import { useForm } from "react-hook-form";
 import {useLocation, useNavigate} from "react-router-dom";
 import { createPige } from "../axi/AxiPost";
+import {updatePige} from "../axi/AxiPut";
 
 const UpdatePige = () => {
     var sectionStyle = {
@@ -14,35 +15,33 @@ const UpdatePige = () => {
         backgroundRepeat: 'no-repeat'
     }
 
-    const location = useLocation();
-    const selectedUserPige = location.state;
-    console.log(selectedUserPige);
-
-    const { register, handleSubmit, formState: { errors }, reset } = useForm();
-    const [nomPige, setNomPige] = useState('');
-    const [pigeDescription, setPigeDescription] = useState('');
-    const [pigeAmount, setPigeAmount] = useState('');
-    const [pigeEndDate, setPigeEndDate] = useState('');
-    const [pigeType, setPigeType] = useState('');
     const navigate = useNavigate();
 
-    const formsUserWithPige = {
-        user:{
-            idUser: JSON.parse(sessionStorage.user).idUser
-        },
-        pige:{
-            pigeName: nomPige,
-            pigeType: pigeType,
-            pigeDescription: pigeDescription,
-            pigeSuggestedMoneyAmount: Number(pigeAmount),
-            pigeEndDate: pigeEndDate
-        }
+    const location = useLocation();
+    const selectedUserPige = location.state;
+
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
+    const [nomPige, setNomPige] = useState(selectedUserPige.pige.pigeName);
+    const [pigeDescription, setPigeDescription] = useState(selectedUserPige.pige.pigeDescription);
+    const [pigeAmount, setPigeAmount] = useState(selectedUserPige.pige.pigeSuggestedMoneyAmount);
+    const [pigeEndDate, setPigeEndDate] = useState(selectedUserPige.pige.pigeEndDate);
+    const [pigeType, setPigeType] = useState(selectedUserPige.pige.pigeType);
+
+
+    const formsPige = {
+        idPige: selectedUserPige.pige.idPige,
+        pigeName: nomPige,
+        pigeType: pigeType,
+        pigeDescription: pigeDescription,
+        pigeSuggestedMoneyAmount: pigeAmount,
+        pigeEndDate: pigeEndDate
+
     }
 
     const onSubmit = () => {
-        let response = createPige(formsUserWithPige);
+        let response = updatePige(formsPige);
         if (response) {
-            navigate('/addPeople');
+            navigate('/piges');
         }
     }
 

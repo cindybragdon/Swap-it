@@ -55,15 +55,13 @@ const MyPige = () => {
     }
 
     const handleButton5Click = () => {
-        navigate(`/pige/:pigeName/UpdatePige`);
+        navigate(`/piges/:pigeName/UpdatePige`);
     }
 
 
 
     const handleButtonUpdatePige = () => {
-        navigate(`/piges/${selectedUserPige.pige.pigeName}/UpdatePige`, {state: JSON.stringify(selectedUserPige)});
-        console.log('this : ' + selectedUserPige);
-        alert(JSON.stringify(selectedUserPige));
+        navigate(`/piges/${selectedUserPige.pige.pigeName}/UpdatePige`, {state: selectedUserPige});
     }
     return (
         <div className='container-fluid row justify-content-center text-center oui min-vh-100 '
@@ -107,7 +105,7 @@ const MyPige = () => {
                                 </div>
                                 <div className="d-flex flex-column  justify-content-start align-items-start */}">
                                     <div className="mt-2 ">
-                                        <button onClick={() => handleButton5Click()}> Mofidier la pige
+                                        <button onClick={() => handleButtonUpdatePige()}> Mofidier la pige
                                         </button>
                                     </div>
                                     {/*Changer le href pour une page dinvitation*/}
