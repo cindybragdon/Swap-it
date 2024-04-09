@@ -2,12 +2,19 @@ import React, {useState} from 'react';
 import {useForm} from 'react-hook-form';
 import {useLocation, useNavigate} from "react-router-dom";
 import http from "../http/http";
+import ImageAddWish from "../images/Thinking.jpg";
 
 
-//IMAGE A AJOUTER
-//Arranger le input URL
+
 
 const AddWish = () => {
+
+    var sectionStyle = {
+        backgroundImage: `url(${ImageAddWish})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        minWidth: '100vw'
+    }
 
 
 
@@ -65,49 +72,64 @@ const AddWish = () => {
     }
 
     return (
-        <div className="renderingElement oui">
-            <div className="container mt-4 mb-4 p-3 d-flex justify-content-center">
-                <div className="card p-4">
+        <div className='container-fluid row justify-content-center text-center oui min-vh-100 ' style={sectionStyle}>
+            <div className="col-sm-5">
+                <div className="card p-2 mt-5 border border-black" style={{backgroundColor: '#88CFED'}}>
+                    <div className="card-header " style={{backgroundColor: '#012C57'}}>
+                        <h3 className= "text header " style={{color: 'white'}} >Ajouter une suggestion</h3>
+                    </div>
                     <form className='container' onSubmit={onSubmit}>
-                        <p>Ajouter une suggestion à ma liste</p>
 
-                        <div className="mb-3">
+
+                        <div className="mb-2">
+                            <div>
                             <label>Nom Item</label>
-                            <input type="nom" id="typeNom" className="my-3" placeholder={"Nom Item"}
+                            </div>
+                            <input type="nom" id="typeNom" className="col-sm-6" placeholder={"Nom Item"}
                                    onChange={event => setWishedItemName(event.target.value)} required/>
 
                             {msgErrors.wishedItemName && msgErrors.wishedItemName.message}
                         </div>
-                        <div className="mb-3">
+                        <div className="mb-2">
+                            <div>
                             <label>Description</label>
-                            <textarea rows="3" placeholder={"Entrez la description ici"}
+                            </div>
+                            <textarea rows="3" placeholder={"Entrez la description ici"} className="col-sm-6"
                                       onChange={event => setItemDescription(event.target.value)} required/>
                             {msgErrors.message && msgErrors.wishedItemDescription.message}
                         </div>
-                        <div className="mb-3">
-                            <label>URL</label>
-                            <input type="nom" placeholder={"Entrez un url ici"}
+                        <div className="mb-2">
+                            <div>
+                            <label>Voir cet item en ligne au : </label>
+                            </div>
+                            <input type="nom" placeholder={"Entrez un url ici"} className="col-sm-6"
                                    onChange={event => setItemUrl(event.target.value)}/>
                             {msgErrors.wishedItemName && msgErrors.wishedItemName.message}
                         </div>
 
-                        <div className="mb-3">
-                            <label>Image</label>
-                            <input type="nom" placeholder={"Entrez l'url d'une image ici"}
+                        <div className="mb-2">
+                            <div>
+                                <label>Image</label>
+                                <a href='/faq'>
+                                    <p><a className="link-opacity-50"  style={{color : 'black'}} href='/faq'>vous avez besoin d'aide pour obtenir
+                                        l'url? cliquez ici!</a></p>
+                                </a>
+                            </div>
+                            <input type="nom" placeholder={"Entrez l'url d'une image ici"} className="col-sm-6"
                                    onChange={event => setWishedItemImage(event.target.value)}/>
                             {msgErrors.wishedItemName && msgErrors.wishedItemName.message}
+
                         </div>
-                        <div>
-                            <input type="file" className="form-control" id="exampleFormControlInput1"
-                                   placeholder="photo"/>
-                        </div>
+
                         <br/>
-                        <button type="submit" className="btn btn-primary">Submit</button>
+                        <button type="submit" className="btn " style={{backgroundColor:'#012C57', color: 'white'}} >Ajouter à la liste</button>
                     </form>
                 </div>
             </div>
 
         </div>
+
+
 
     );
 };

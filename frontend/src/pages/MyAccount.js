@@ -20,11 +20,9 @@ const MyAccount = () => {
                         <p className="name mt-3">PRENOM : {currentUser.userFirstName} NOM : {currentUser.userLastName} </p>
 
                         <div className="text mt-3">
-                            {/* Used {} to evaluate method call */}
                             <p>TELEPHONE : {currentUser.userPhone}</p>
                         </div>
                         <div className="text mt-3">
-                            {/* Used {} to evaluate method call */}
                             <p>EMAIL : {currentUser.userEmail}</p>
                         </div>
 
