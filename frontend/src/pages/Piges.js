@@ -3,7 +3,7 @@ import {useLocation, useNavigate} from "react-router-dom";
 import {useState, useEffect} from "react";
 import BackToTopButton from "../components/BackToTopButton";
 import ImagePige from "../images/NewPige.jpg"
-import BGPiges from '../images/objects.jpg'
+import BGPiges from '../images/BackGroundPiges.jpg'
 
 
 function Piges() {

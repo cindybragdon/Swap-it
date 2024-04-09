@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import questionsAnswers from "../Data/QuestionsAnswers";
 import BackToTopButton from "../components/BackToTopButton";
-import ImageFAQ from "../images/FAQ.jpg";
+import ImageFAQ from "../images/QuestionMarks.jpg";
 
 const FAQ = () => {
 
@@ -24,11 +24,11 @@ const FAQ = () => {
         <div className='card p-5 justify-content-center text-center min-vh-100  oui ' style={sectionStyle}>
            <div className="card p-3" style={{ backgroundColor: "#516565"}}>
             <div className='d-block align-middle'>
-                <h2 id="welcomeText" className="text-white p-2" style={{ backgroundColor: "#D4015F"}}>Parce que parfois, tout comprendre seul, c'est pas un cadeau!</h2>
+                <h2 id="welcomeText" className="text-white p-2" style={{ backgroundColor: "darkgrey"}}>Parce que parfois, tout comprendre seul, c'est pas un cadeau!</h2>
                 <div className="accordion" id="accordionExample">
                     {questionsAnswers.map((questionAns) => (
                         <div className="card "   key={questionAns.itemId}>
-                            <div className={`card-header  ${questionAns.itemId === openItemId ? '' : 'collapsed'}`} id={`heading${questionAns.itemId}`} style={{ backgroundColor: "#2AB59A"}}>
+                            <div className={`card-header  ${questionAns.itemId === openItemId ? '' : 'collapsed'}`} id={`heading${questionAns.itemId}`} style={{ backgroundColor: "darkgrey"}}>
                                 <h2 className="mb-0">
                                     <button
                                         id="link-text"
@@ -43,7 +43,7 @@ const FAQ = () => {
                                 </h2>
                             </div>
 
-                            <div  id={`collapse${questionAns.itemId}`} className={`collapse ${openItemId === questionAns.itemId ? 'show' : ''}`} aria-labelledby={`heading${questionAns.itemId}`} style={{ backgroundColor: "#3BFFD9"}}>
+                            <div  id={`collapse${questionAns.itemId}`} className={`collapse ${openItemId === questionAns.itemId ? 'show' : ''}`} aria-labelledby={`heading${questionAns.itemId}`} style={{ backgroundColor: "lightgrey"}}>
                                 <div className="card-body" >
                                     {questionAns.answer}
                                 </div>

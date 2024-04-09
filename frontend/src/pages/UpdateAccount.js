@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {useForm} from "react-hook-form";
 import http from "../http/http";
 import '../CreateAccount.css';
-import ImageParty from "../images/Party1.jpg";
+import ImagePencil from "../images/UpdatePencil.jpg";
 import TogglePasswordVisibility from "../components/TogglePassVisibility";
 import {connectAcc} from "../axi/AxiFunc";
 import {useNavigate} from "react-router-dom";
@@ -11,7 +11,7 @@ const UpdateAccount = () => {
 
     const navigate = useNavigate();
     var sectionStyle = {
-        backgroundImage: `url(${ImageParty})`,
+        backgroundImage: `url(${ImagePencil})`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         minWidth: '100vw'
