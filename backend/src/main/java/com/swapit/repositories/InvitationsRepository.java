@@ -8,7 +8,7 @@ import java.util.List;
 public interface InvitationsRepository extends JpaRepository<Invitations, Integer> {
 
     //exemple :
-    public void findByIdInvitation(int idInvitation);
+    public Invitations findByIdInvitation(int idInvitation);
 
     public int findByPige_IdPige(int idpige);
 
