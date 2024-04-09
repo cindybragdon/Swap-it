@@ -1,13 +1,15 @@
 import React, {useState} from 'react';
 import Login from "../components/Login";
 import ImageLogo2 from "../images/Logo2.jpg";
-import ImageParty from "../images/Party7.jpg";
+import ImageParty from "../images/HomeBG.jpg";
 import {useLocation, useNavigate} from "react-router-dom";
 
 function Home() {
 
     var sectionStyle = {
         backgroundImage: `url(${ImageParty})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
         position: 'relative',
         minHeight: '85vh',
     }
