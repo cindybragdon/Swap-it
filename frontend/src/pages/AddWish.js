@@ -107,19 +107,7 @@ const AddWish = () => {
                             {msgErrors.wishedItemName && msgErrors.wishedItemName.message}
                         </div>
 
-                        <div className="mb-2">
-                            <div>
-                                <label>Image</label>
-                                <a href='/faq'>
-                                    <p><a className="link-opacity-50"  style={{color : 'black'}} href='/faq'>vous avez besoin d'aide pour obtenir
-                                        l'url? cliquez ici!</a></p>
-                                </a>
-                            </div>
-                            <input type="nom" placeholder={"Entrez l'url d'une image ici"} className="col-sm-6"
-                                   onChange={event => setWishedItemImage(event.target.value)}/>
-                            {msgErrors.wishedItemName && msgErrors.wishedItemName.message}
 
-                        </div>
 
                         <br/>
                         <button type="submit" className="btn " style={{backgroundColor:'#012C57', color: 'white'}} >Ajouter à la liste</button>
