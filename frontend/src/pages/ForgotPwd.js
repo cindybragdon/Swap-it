@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import http from "../http/http";
-import ImageForgotPass from "../images/ForgotPass1.jpg"
+import ImageForgotPass from "../images/CadenasCles.jpg"
 
 
-// Atteindre cette page au http://localhost:5555/forgotpwd
 
 
 
@@ -53,8 +52,8 @@ const ForgotPwd = () => {
     return (
         <>
             <div className= 'renderingElement card justify-content-center min-vh-100'  style={sectionStyle}>
-                <div className="card text-center card w-50" id="container-forgot" >
-                    <div className="card-header h5 text-white bg-info">Mot de passe perdu</div>
+                <div className="card text-center card w-50"  >
+                    <div className="card-header h5 text-white " style={{backgroundColor: '#625FC8'}}>Mot de passe perdu</div>
                     <div className="card-body px-5">
                         <p className="card-text py-2">
                             Entrez votre courriel et nous vous enverrons des instructions à suivre afin de réinitialiser
