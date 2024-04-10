@@ -1,11 +1,10 @@
 package com.swapit.controllers;
 
 
-import com.swapit.model.Invitations;
-import com.swapit.model.Pige;
-import com.swapit.model.User;
+import com.swapit.model.*;
 import com.swapit.repositories.InvitationsRepository;
 import com.swapit.repositories.PigeRepository;
+import com.swapit.repositories.UserPigeRepository;
 import com.swapit.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +23,9 @@ public class InvitationServerController {
 
     @Autowired
     private PigeRepository pigeRepository;
+
+    @Autowired
+    private UserPigeRepository userPigeRepository;
 
 
     //Creates an invitation to be sended by email
@@ -58,6 +60,29 @@ public class InvitationServerController {
             System.out.println(e.getMessage());
             return null;
         }
+    }
+
+    @PutMapping("/updateInv")
+    public String updateInv(@RequestBody UserPige userPigeToCreate, @RequestParam int idInvToUpdate, @RequestParam boolean isAccepted) throws Exception{
+        String messageInvitation = "ACK-401";
+        try{
+            if (idInvToUpdate > 0) {
+                if (userPigeToCreate.getUser() != null && userPigeToCreate.getPige() != null) {
+                    Invitations invitations = invitationsRepository.findByIdInvitation(idInvToUpdate);
+                    invitations.setAsBeenAnswered(true);
+                    invitationsRepository.save(invitations);
+                    if (isAccepted) {
+                        userPigeRepository.existsUserPigeByUser_IdUserAndPige_IdPige(userPigeToCreate.getUser().getIdUser(), userPigeToCreate.getPige().getIdPige());
+                        userPigeRepository.save(userPigeToCreate);
+                    }
+                }
+                messageInvitation = "ACK-400";
+            }
+        }catch (Exception e){
+            return messageInvitation + e.getMessage();
+        }
+        return messageInvitation;
+
     }
 
 }

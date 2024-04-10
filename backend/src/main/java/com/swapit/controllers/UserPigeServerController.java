@@ -26,7 +26,7 @@ public class UserPigeServerController {
 
     //(Verified and tested)
     @PostMapping("/createUserPigeWithoutPige")
-    public String createUserPige(@RequestBody UserPige userPigeToCreate) throws Exception{
+    public String createUserPigeWithoutPige(@RequestBody UserPige userPigeToCreate) throws Exception{
         String messageInvitation = "ACK-401";
         try{
             if (userPigeToCreate.getUser() != null && userPigeToCreate.getPige() != null) {
