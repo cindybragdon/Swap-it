@@ -3,7 +3,7 @@ import ImageCadeau from '../images/newWishItem.jpg';
 import { useLocation, useNavigate } from "react-router-dom";
 import '../App.css';
 import BackToTopButton from "../components/BackToTopButton";
-import ImageAdItem from "../images/wishlistbg.jpg";
+import ImageAdItem from "../images/Listes.jpg";
 
 const MyWishList = () => {
 
