@@ -20,6 +20,6 @@ public class User implements Serializable {
     private String userLastName;
     private String userEmail;
     private String userPhone;
-    private byte[] userImage;
+    private String userImage;
 
 }

@@ -12,7 +12,7 @@ const MyAccount = () => {
                     <div className="image d-flex flex-column justify-content-center align-items-center">
                         <button className="btn btn-secondary">
                             {currentUser.userImage ? <img
-                                src='https://images-prod.healthline.com/hlcmsresource/images/AN_images/healthiest-cheese-1296x728-swiss.jpg'
+                                src={currentUser.userImage}
                                 height="300" width="375" alt="Account"/> : <img
                                 src={ImageAccount} height="300" width="375" alt="Account"/>}
 

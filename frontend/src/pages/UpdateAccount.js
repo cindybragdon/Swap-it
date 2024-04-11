@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {useForm} from "react-hook-form";
 import http from "../http/http";
 import '../CreateAccount.css';
 import ImagePencil from "../images/UpdatePencil.jpg";
@@ -19,12 +18,11 @@ const UpdateAccount = () => {
 
     const currentUser = JSON.parse(sessionStorage.user);
 
-    const {register, handleSubmit, formState: {errors}, reset} = useForm();
-
     const [prenom, setPrenom] = useState(currentUser.userFirstName);
     const [nom, setNom] = useState(currentUser.userLastName);
     const [telephone, setTelephone] = useState(currentUser.userPhone);
     const [courriel, setCourriel] = useState(currentUser.userEmail);
+    const [image, setImage] = useState(currentUser.userImage);
     const [motPasse, setMotPasse] = useState('');
     const [nouveauMotPasse, setNouveauMotPasse] = useState('');
 
@@ -35,7 +33,8 @@ const UpdateAccount = () => {
             userFirstName: prenom,
             userLastName: nom,
             userEmail: courriel,
-            userPhone: telephone
+            userPhone: telephone,
+            userImage: image
         }
     }
 
@@ -105,6 +104,8 @@ const UpdateAccount = () => {
             console.log(response.data.userPassword);
             if(response.data.userPassword === motPasse) {
                 await updateACC()
+            } else {
+                alert("Courriel incorrect ou mot de passe erronné")
             }
         } catch (error) {
             console.error(error);
@@ -140,7 +141,7 @@ const UpdateAccount = () => {
                         Vos nouvelles informations ici
                     </p>
 
-                    <form onSubmit={handleSubmit(onSubmit)}>
+                    <form onSubmit={onSubmit}>
                         <div className="text-start">
                             <label>Prenom</label>
                         </div>
@@ -148,7 +149,6 @@ const UpdateAccount = () => {
                             <input type="text" name="prenom" id="typePrenom" className="form-control my-3"
                                    placeholder={"Votre prenom"} value={prenom}
                                    onChange={event => setPrenom(event.target.value)} required/>
-                            {errors.prenom && errors.prenom.message}
                         </div>
 
 
@@ -159,7 +159,7 @@ const UpdateAccount = () => {
                             <input type="text" name="nom" id="typeNom" className="form-control my-3"
                                    placeholder={"Votre nom"} value={nom} onChange={event => setNom(event.target.value)}
                                    required/>
-                            {errors.nom && errors.nom.message}
+
                         </div>
 
 
@@ -170,8 +170,17 @@ const UpdateAccount = () => {
                             <input pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" type="tel" name="telephone" id="typeTelephone"
                                    className="form-control my-3" placeholder={"Votre telephone"} value={telephone}
                                    onChange={event => setTelephone(event.target.value)}/>
-                            {errors.telephone && errors.telephone.message}
-                            {errors.telephone && errors.telephone.type && errors.telephone.type === "pattern"}
+
+                        </div>
+
+                        <div className="text-start">
+                            <label>Image (doit être un lien https vers une image)</label>
+                        </div>
+                        <div>
+                            <input   name="urlImage" id="typeImage"
+                                   className="form-control my-3" placeholder={"Le lien https vers votre image : "} value={image}
+                                   onChange={event => setImage(event.target.value)}/>
+
                         </div>
 
 
@@ -183,8 +192,7 @@ const UpdateAccount = () => {
                                    id="typeEmail" className="form-control my-3" placeholder={"Votre courriel"}
                                    value={courriel}
                                    onChange={event => setCourriel(event.target.value)} required/>
-                            {errors.courriel && errors.courriel.message}
-                            {errors.courriel && errors.courriel.type && errors.courriel.type === "pattern"}
+
 
                         </div>
                         <div className="text-start">
@@ -203,8 +211,7 @@ const UpdateAccount = () => {
                                        onClick={TogglePasswordVisibility}></i>
                                 </p>
 
-                                {errors.motPasse && errors.motPasse.message}
-                                {errors.motPasse && errors.motPasse.type === "pattern"}
+
                             </div>
 
                             <div className="text-start">
@@ -222,8 +229,6 @@ const UpdateAccount = () => {
                                        onClick={togglePasswordVisibility2}></i>
                                 </p>
 
-                                {errors.motPasse && errors.motPasse.message}
-                                {errors.motPasse && errors.motPasse.type === "pattern"}
                             </div>
 
 
@@ -232,13 +237,12 @@ const UpdateAccount = () => {
                                 15
                                 caractères.
                             </small>
-                            {errors.motPasse && errors.motPasse.message}
-                            {errors.motPasse && errors.motPasse.type === "pattern"}
+
                         </div>
                         <br/>
                         <div className="form-group row">
                             <div className="col-sm-20 text-center">
-                                <button type="submit" className="btn btn-info w-30" onClick={updateACC}>Modifier vos informations!</button>
+                                <button type="submit" className="btn btn-info w-30">Modifier vos informations!</button>
                             </div>
                         </div>
                         <div className="d-flex justify-content-center mt-4">

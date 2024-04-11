@@ -1,4 +1,6 @@
 import http from "../http/http";
+import {useEffect, useState} from "react";
+import axios from "axios";
 
 
 
@@ -39,4 +41,18 @@ export async function getAllInv() {
         });
     //console.log(JSON.parse(sessionStorage.user));
     return listOfInv;
+}
+
+
+export function useGetAxi(url) {
+    const [data,setData] = useState([])
+    useEffect(() => {
+         axios.get(`${url}`)
+            .then(res => setData(res.data))
+            .catch(err => console.log(err));
+    }, []);
+    console.log(data);
+
+
+
 }
