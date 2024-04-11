@@ -40,19 +40,19 @@ const FormCreationPige = () => {
 
     return (
         <form className='container' method="post" onSubmit={onSubmit}>
-            <h2 className="title-createpige">Créer une pige, on met tous les noms dans le chapeau!</h2>
+            <h3 className="title-createpige">Créer une pige, on met tous les noms dans le chapeau!</h3>
             <div className="mb-2">
                 <label className="form-label" style={{color: 'black'}}><h5>Nom de la pige</h5></label>
                 <div className="mb-2" style={{display: 'flex'}}>
                     <input type="text" value={nomPige} onChange={e => setNomPige(e.target.value)}
-                           className="form-control" placeholder="Nom de la pige" required style={{width: '50%'}}/>
+                           className="form-control" placeholder="Nom de la pige" required style={{width: '40%'}}/>
                 </div>
             </div>
 
             <div className="mb-2">
                 <label className="form-label" style={{color: 'black'}}><h5>Description</h5></label>
                 <div className="mb-2" style={{display: 'flex' }}>
-                    <textarea className="form-control" style={{width: '50%'}} value={pigeDescription}
+                    <textarea className="form-control" style={{width: '40%'}} value={pigeDescription}
                               onChange={e => setPigeDescription(e.target.value)} rows="3" required></textarea>
                 </div>
             </div>

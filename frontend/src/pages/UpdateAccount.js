@@ -238,7 +238,7 @@ const UpdateAccount = () => {
                         <br/>
                         <div className="form-group row">
                             <div className="col-sm-20 text-center">
-                                <button type="submit" className="btn btn-info w-30" onClick={handleClickUpdateCompte}>Modifier vos informations!</button>
+                                <button type="submit" className="btn btn-info w-30" onClick={updateACC}>Modifier vos informations!</button>
                             </div>
                         </div>
                         <div className="d-flex justify-content-center mt-4">

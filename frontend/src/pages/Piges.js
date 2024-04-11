@@ -11,6 +11,7 @@ function Piges() {
     var sectionStyle = {
         backgroundImage: `url(${BGPiges})`,
         backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
         backgroundSize: 'cover',
         minWidth: '100vw'
     }

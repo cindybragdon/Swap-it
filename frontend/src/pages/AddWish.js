@@ -69,6 +69,7 @@ const AddWish = () => {
     const onSubmit = (data) => {
         addWishedItemPost().then(r => console.log(r));
         console.log(data);
+        alert("Ajout/ avec succ'es!")
     }
 
     return (
@@ -106,8 +107,6 @@ const AddWish = () => {
                                    onChange={event => setItemUrl(event.target.value)}/>
                             {msgErrors.wishedItemName && msgErrors.wishedItemName.message}
                         </div>
-
-
 
                         <br/>
                         <button type="submit" className="btn " style={{backgroundColor:'#012C57', color: 'white'}} >Ajouter à la liste</button>
