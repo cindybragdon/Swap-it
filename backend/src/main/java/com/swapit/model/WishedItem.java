@@ -20,5 +20,5 @@ public class WishedItem implements Serializable {
     private String wishedItemDescription;
     private String wishedItemUrl;
 
-    private byte[] wishedItemImage;
+    private String wishedItemImage;
 }

@@ -25,7 +25,7 @@ public class Pige implements Serializable {
     private Timestamp pigeTimestampCreation;
     private Date pigeEndDate;
     private int pigeSuggestedMoneyAmount;
-    private byte[] pigeImage;
+    private String pigeImage;
     private String qrCodeUrl;
     private byte[] qrCodeImage;
     private String pigeState;

@@ -1,4 +1,4 @@
-import {getAllInv} from "../axi/AxiFunc";
+import {useGetAxi} from "../axi/AxiFunc";
 import {useEffect, useState} from "react";
 import http from "../http/http";
 
@@ -17,6 +17,7 @@ const Invitations = () => {
             .then(res => setTabCustomers(res.data))
             .catch(err => console.log(err));
     }, []);
+
 
 
      function onClickInv(inv, isAccepted) {
@@ -40,14 +41,16 @@ const Invitations = () => {
     return (
         <div>
             <p>Vos invitations : </p>
-                {tabCustomers.map((inv) => (
+            {tabCustomers != null ?
+                tabCustomers.map((inv) => (
                     !inv.asBeenAnswered ?
                         <div className="container-sm justify-content-center text-center bg-danger rounded-4 border p-3">
                             <p>Vous avez été invité à la pige {inv.pige.pigeName} </p>
                             <p>Par : {inv.pige.userAdmin.userFirstName} {inv.pige.userAdmin.userLastName}</p>
                             <button onClick={() => onClickInv(inv, true)}>Accepter l'invitation</button> <button onClick={() => onClickInv(inv, false)}>Refuser L'invitation</button>
                         </div> : ''
-                ))}
+                )) : <p></p>
+            }
         </div>
     )
 }
