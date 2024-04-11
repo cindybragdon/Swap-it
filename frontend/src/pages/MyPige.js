@@ -53,7 +53,7 @@ const MyPige = () => {
         navigate(`/piges/${selectedUserPige.pige.pigeName}/myWishList`, {state: selectedUserPige});
     }
 
-    const handleButton5Click = () => {
+    const handleClickAddPeople = () => {
         navigate(`/piges/:pigeName/UpdatePige`);
     }
 
