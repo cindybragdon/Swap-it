@@ -164,9 +164,15 @@ body {
 #container-contact {
   align-items: center;
   align-content: center;
-  margin: auto;
+
   padding-top: 100px;
   font-family: "Reddit Mono", monospace;
+}
+
+#container-contact-main {
+  border: white solid 3px;
+  display: inline-grid;
+  grid-template-columns: auto auto;
 }
 
 #connectText {

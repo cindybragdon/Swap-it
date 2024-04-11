@@ -5,18 +5,22 @@ import ImageContact from "../images/contactImage.jpg"
 const Contact = () => {
 
     var sectionStyle = {
-        backgroundImage: `url(${ImageContact})`
+        backgroundImage: `url(${ImageContact})`,
+        minHeight: '85vh',
+        backgroundRepeat: 'no repeat',
+
+
     }
 
     return (
 
-        <div className="row">
-            <div className="col-sm">
-                <div className='card justify-content-center min-vh-100' style={sectionStyle}>
-                </div>
+        <div  id="container-contact-main" >
+
+            <div  style={sectionStyle}>
+
             </div>
-            <div className="col-sm" id="container-contact-page">
-                <ContactForm />
+            <div  id="container-contact-page">
+                <ContactForm/>
             </div>
         </div>
     );
