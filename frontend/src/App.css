@@ -82,14 +82,17 @@ body {
 .renderingElement {
   background-size: cover;
   background-position: bottom center;
-  height: 100vh;
+  align-items: center;
+}
+
+.container-account {
+  background-size: cover;
+  background-position: bottom center;
+  height: 85vh;
   color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  position: relative;
-
 }
 
 .renderingElement::before {
@@ -194,7 +197,8 @@ body {
 }
 
 #container-forgot {
-  background-color: #ffcf00 !important;
+  border: #b76efc solid 9px;
+
 }
 
 .msgError {
@@ -225,6 +229,7 @@ body {
   margin-bottom: 100px;
 
 }
+
 
 
 

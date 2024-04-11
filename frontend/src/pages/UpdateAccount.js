@@ -13,7 +13,7 @@ const UpdateAccount = () => {
         backgroundImage: `url(${ImagePencil})`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
-        minWidth: '100vw'
+        minHeight: '100vh'
     }
 
     const currentUser = JSON.parse(sessionStorage.user);
