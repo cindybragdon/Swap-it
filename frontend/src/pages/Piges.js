@@ -4,6 +4,7 @@ import {useState, useEffect} from "react";
 import BackToTopButton from "../components/BackToTopButton";
 import ImagePige from "../images/NewPige.jpg"
 import BGPiges from '../images/MesPigesFemme.jpg'
+import axios from "axios";
 
 
 function Piges() {
@@ -13,48 +14,43 @@ function Piges() {
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
         backgroundSize: 'cover',
-        minWidth: '100vw'
+        minWidth: '100vw',
+        border: 'white solid 3px'
     }
 
 
     const navigate = useNavigate();
 
     const [listUserPige, setListUserPige] = useState([]);
-
-    const [selectedPige, setSelectedPige] = useState(null);
-
-    const currentUser = JSON.parse(sessionStorage.user);
-
-    //Olivier :
-    //https://designcode.io/react-hooks-handbook-fetch-data-from-an-api
-
+    const [currentUser, setCurrentUser] =useState({});
 
     useEffect(() => {
-        const url = `http://localhost:9281/api/getListUserPigeFromIdUser?idUser=${currentUser.idUser}`;
+        const urlGetUser = `http://localhost:9281/api/getUserById?idUser=${JSON.parse(sessionStorage.user).idUser}`;
+        axios.get(urlGetUser)
+            .then(res => setCurrentUser(res.data))
+            .catch(err => console.log(err));
 
-        const fecthData = async () => {
-            try {
-                const response = await fetch(url);
-                const data = await response.json();
-                setListUserPige(data);
-
-            } catch (error) {
-                console.log("error", error);
-            }
-        }
-        fecthData();
     }, []);
-    //
+
+    useEffect(() => {
+        const urlGetListUserPige = `http://localhost:9281/api/getListUserPigeFromIdUser?idUser=${JSON.parse(sessionStorage.user).idUser}`;
+        axios.get(urlGetListUserPige)
+            .then(res => setListUserPige(res.data))
+            .catch(err => console.log(err));
+
+    }, []);
 
 
-    const handleClick = () => {
+
+
+    const handleClickCreatePige = () => {
         navigate('/piges/creation-piges');
         alert('Button clicked');
         console.log('Button clicked');
     }
 
     const handlePigeClick = (userPige) => {
-        setSelectedPige(userPige);
+
         navigate(`/piges/${userPige.pige.pigeName}`, {state: userPige});
         console.log(userPige);
     }
@@ -73,12 +69,11 @@ function Piges() {
                         <div className="card h-auto">
                             <img src={ImagePige} className="card-img-top-my-wish-list" alt="..."/>
                             <div className="card-body">
-                                <div className="card" onClick={handleClick}>
-                                    <div className="card" style={{height: 'auto'}}>
-                                        <div style={{backgroundColor: "rebeccapurple"}}>
-                                            <h5 className="card-title">Créer une pige!</h5>
-
+                                <div className="card" onClick={handleClickCreatePige}>
+                                    <div className="card-body">
+                                        <h5 className="card-title">Créer une pige!</h5>
                                         <p className="card-text"><i className="bi bi-plus-lg"></i></p>
+
                                     </div>
                                 </div>
                             </div>
