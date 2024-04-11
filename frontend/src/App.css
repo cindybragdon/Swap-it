@@ -49,9 +49,8 @@ body {
 
 
 .card-img-top-my-wish-list {
-  object-fit: cover;
-  height: 300px; /* Adjust the height to your preference */
-  width: 100%; /* Ensure images fill their containers */
+  height: 100px;
+  width: 50%;
 }
 
 .password-container-create-account {
@@ -88,7 +87,7 @@ body {
 .container-account {
   background-size: cover;
   background-position: bottom center;
-  height: 85vh;
+  height: 100vh;
   color: #fff;
   display: flex;
   justify-content: center;

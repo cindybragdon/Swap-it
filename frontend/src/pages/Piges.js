@@ -66,16 +66,19 @@ function Piges() {
                     <h2 className="bg-white
                     " style={ {color: '#FF3991'}} >Bonjour, {currentUser.userFirstName}, voici vos piges! </h2>
                 </div>
-                <div className="row row-cols-1 row-cols-md-4 g-4">
+                <div className="row row-cols-1 row-cols-md-3 g-3" id="cardAdd">
 
-                    <div className="col pb-5">
-                        <div className="card h-auto">
+                    <div className="col pb-5 mt-5" id="carteAjout">
+                        <div className="card" style={{height: 'auto'}}>
                             <img src={ImagePige} className="card-img-top-my-wish-list" alt="..."/>
                             <div className="card-body">
                                 <div className="card" onClick={handleClick}>
-                                    <div className="card-body">
-                                        <h5 className="card-title">Créer une pige!</h5>
+                                    <div className="card" style={{height: 'auto'}}>
+                                        <div style={{backgroundColor: "rebeccapurple"}}>
+                                            <h5 className="card-title">Créer une pige!</h5>
+
                                         <p className="card-text"><i className="bi bi-plus-lg"></i></p>
+                                    </div>
                                     </div>
                                 </div>
                             </div>
@@ -83,14 +86,18 @@ function Piges() {
                     </div>
 
 
-                    <div className="row row-cols-1 row cols-med-4 g-4">
+
                     {listUserPige.map(UserPige =>
 
-                        <div className="col pb-5" onClick={() => handlePigeClick(UserPige)}>
+                        <div className="col pb-5 mt-5 " onClick={() => handlePigeClick(UserPige)}>
 
-                            <div className="card h100">
-                                <div className="card-body">
+                            <div className="card h-100">
+                                <div className="card-header " style={{backgroundColor: 'rebeccapurple'}}>
                                     <h5 className="card-title">{UserPige.pige.pigeName}</h5>
+                                </div>
+                                <div className="card-body">
+
+                                    <h5 className="card-text1">Organisée par : {UserPige.pige.userAdmin.userFirstName}</h5>
                                     <p className="card-text">Cette pige se terminera le {UserPige.pige.pigeEndDate}</p>
                                 </div>
                             </div>
@@ -98,7 +105,7 @@ function Piges() {
 
 
                     )}
-                    </div>
+
 
                 </div>
             </div>
@@ -111,6 +118,6 @@ function Piges() {
     )
         ;
 }
-;
+
 export default Piges;
 
