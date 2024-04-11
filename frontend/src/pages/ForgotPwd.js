@@ -11,7 +11,11 @@ const ForgotPwd = () => {
 
 
     var sectionStyle = {
-        backgroundImage: `url(${ImageForgotPass})`
+        backgroundImage: `url(${ImageForgotPass})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        position: 'relative',
+        minHeight: '85vh'
     }
 
     const { register, handleSubmit, formState: { errors}, reset } = useForm();
@@ -51,8 +55,8 @@ const ForgotPwd = () => {
 
     return (
         <>
-            <div className= 'renderingElement card justify-content-center min-vh-100'  style={sectionStyle}>
-                <div className="card text-center card w-50"  >
+            <div className= 'renderingElement card justify-content-center'  style={sectionStyle} >
+                <div className="card text-center card w-50" id="container-forgot" >
                     <div className="card-header h5 text-white " style={{backgroundColor: '#625FC8'}}>Mot de passe perdu</div>
                     <div className="card-body px-5">
                         <p className="card-text py-2">
@@ -74,7 +78,7 @@ const ForgotPwd = () => {
                         </div>
                         <div className="d-flex justify-content-between mt-4">
                             <a id="link-text" className="" href="/">Connexion au compte</a>
-                            <a  id="link-text" className="" href="/">Se créer un compte</a>
+                            <a  id="link-text" className="" href="/create-account">Se créer un compte</a>
                         </div>
                     </div>
                 </div>
