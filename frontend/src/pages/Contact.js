@@ -1,6 +1,6 @@
 import React from 'react';
 import ContactForm from "../components/ContactForm";
-import ImageContact from "../images/contactImage.jpg"
+import ImageContact from "../images/ContactBG.jpg"
 
 const Contact = () => {
 
@@ -8,17 +8,14 @@ const Contact = () => {
         backgroundImage: `url(${ImageContact})`,
         minHeight: '85vh',
         backgroundRepeat: 'no repeat',
-
-
+        backgroundSize: 'cover',
+        border: 'white solid 3px'
     }
 
     return (
 
-        <div  id="container-contact-main" >
+        <div  id="container-contact-main"style={sectionStyle} >
 
-            <div  style={sectionStyle}>
-
-            </div>
             <div  id="container-contact-page">
                 <ContactForm/>
             </div>
@@ -27,4 +24,3 @@ const Contact = () => {
 };
 
 export default Contact;
-

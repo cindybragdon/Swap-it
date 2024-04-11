@@ -162,10 +162,13 @@ body {
 }
 
 #container-contact {
+  width: 45%;
   align-items: center;
   align-content: center;
-
-  padding-top: 100px;
+  padding-top: 80px;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 21px;
   font-family: "Reddit Mono", monospace;
 }
 
