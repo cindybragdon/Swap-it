@@ -11,23 +11,22 @@ const CreationPiges = () => {
 
     var sectionStyle = {
         backgroundImage: `url(${ImagePigeCreate})`,
-        width: '50vw',
-        height: '100vh',
-        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat'
-
+        position: 'relative',
+        minHeight: '85vh',
+        border: 'white solid 3px'
     }
 
 
 
     return (
 
-        <div className="bg-white d-flex" style={{ height: '100vh' }}>
+        <div  style={sectionStyle}>
 
-            <FormCreationPige />
-            <div className="col-sm">
-                <div className=" " style={sectionStyle}>
+            <div >
+                <div >
+                    <FormCreationPige />
                 </div>
             </div>
 

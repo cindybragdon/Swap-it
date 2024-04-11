@@ -196,8 +196,8 @@ const UpdateAccount = () => {
 
                         </div>
                         <div className="text-start">
-                            <label>Mot de Passe : <span id="toto">Doit contenir une minuscule, </span> <span id="tata">une majuscule </span>
-                                <span id="titi">et 8 caractères</span></label>
+                            <label>Mot de Passe : <small id="update-pw"> Veuillez écrire votre mot de passe courrant </small>
+                                </label>
                         </div>
 
                         <div className="form-outline ">
@@ -215,9 +215,7 @@ const UpdateAccount = () => {
                             </div>
 
                             <div className="text-start">
-                                <label>Nouveau mot de Passe : <span id="toto">Doit contenir une minuscule, </span> <span
-                                    id="tata">une majuscule </span>
-                                    <span id="titi">et 8 caractères</span></label>
+                                <label>Nouveau mot de Passe : </label>
                             </div>
                             <div>
                                 <p className="password-container-create-account">

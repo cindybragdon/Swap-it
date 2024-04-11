@@ -39,13 +39,14 @@ const FormCreationPige = () => {
 
 
     return (
-        <form className='container' method="post" onSubmit={onSubmit}>
+        <div className="card "id="container-pige-creation" >
+        <form className='container-pige ' method="post" onSubmit={onSubmit} >
             <h3 className="title-createpige">Créer une pige, on met tous les noms dans le chapeau!</h3>
             <div className="mb-2">
                 <label className="form-label" style={{color: 'black'}}><h5>Nom de la pige</h5></label>
                 <div className="mb-2" style={{display: 'flex'}}>
                     <input type="text" value={nomPige} onChange={e => setNomPige(e.target.value)}
-                           className="form-control" placeholder="Nom de la pige" required style={{width: '40%'}}/>
+                           className="form-control m-2" placeholder="Nom de la pige" required style={{width: '40%'}}/>
                 </div>
             </div>
 
@@ -97,6 +98,7 @@ const FormCreationPige = () => {
                 pige!
             </button>
         </form>
+        </div>
     )
 }
 

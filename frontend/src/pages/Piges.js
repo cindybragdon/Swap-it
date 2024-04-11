@@ -12,10 +12,11 @@ function Piges() {
     var sectionStyle = {
         backgroundImage: `url(${BGPiges})`,
         backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center',
         backgroundSize: 'cover',
-        minWidth: '100vw',
-        border: 'white solid 3px'
+        minHeight: '85vh',
+        border: 'white solid 3px',
+        minWidth: '99vw'
+
     }
 
 
@@ -44,7 +45,6 @@ function Piges() {
 
     const handleClickCreatePige = () => {
         navigate('/piges/creation-piges');
-        alert('Button clicked');
         console.log('Button clicked');
     }
 
@@ -59,8 +59,7 @@ function Piges() {
         <div className='container row bg-primary text-center' style={sectionStyle}>
             <div >
                 <div className="pt-3">
-                    <h2 className="bg-white
-                    " style={ {color: '#FF3991'}} >Bonjour, {currentUser.userFirstName}, voici vos piges! </h2>
+                    <h2 className="title-piges" style={ {color: '#FF3991'}} >Bonjour, {currentUser.userFirstName}, voici vos piges! </h2>
                 </div>
                 <div className="row row-cols-1 row-cols-md-4 g-4">
 

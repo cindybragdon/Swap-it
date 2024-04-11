@@ -13,8 +13,10 @@ const CreateAccount = () => {
 
     var sectionStyle = {
         backgroundImage: `url(${ImageBG})`,
-        position: 'relative',
-        minHeight: '100vh',
+        minHeight: '85vh',
+        backgroundRepeat: 'no repeat',
+        backgroundSize: 'cover',
+        border: 'white solid 3px'
     }
 
     const msgErrors = {
@@ -77,11 +79,11 @@ const CreateAccount = () => {
 
 
     return (
-        <div className='renderingElement oui ' style={sectionStyle}>
-            <div className="card text-center card w-50 mt-5">
+        <div className='renderingElement' style={sectionStyle}>
+            <div className="card text-center card  mt-5" id="container-create">
                 <div className="card-header h5 text-white bg-info">Créer un compte Swap-it!</div>
                 <div className="card-body px-5">
-                    <p className="card-text py-2">
+                    <p className="card-text ">
                         Vos information ici
                     </p>
                     <form onSubmit={handleSubmit(onSubmit)}>
@@ -107,7 +109,7 @@ const CreateAccount = () => {
                             <label>Telephone</label>
                         </div>
                         <div>
-                            <input pattern="[0-9]{3}[0-9]{3}[0-9]{4}" type="tel" name="telephone" id="typeTelephone" className="form-control my-3" placeholder={"Votre telephone"} onChange={event => setTelephone(event.target.value)}/>
+                            <input pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" type="tel" name="telephone" id="typeTelephone" className="form-control my-3" placeholder={"Votre telephone"} onChange={event => setTelephone(event.target.value)}/>
                             {errors.telephone && errors.telephone.message}
                             {errors.telephone && errors.telephone.type && errors.telephone.type === "pattern"}
                         </div>
@@ -135,13 +137,13 @@ const CreateAccount = () => {
                             {errors.motPasse && errors.motPasse.message}
                             {errors.motPasse && errors.motPasse.type === "pattern"}
                         </div>
-                        <br/>
+
                         <div className="form-group row">
                             <div className="col-sm-20 text-center">
                                 <button type="submit" className="btn btn-info w-30">Creer mon compte</button>
                             </div>
                         </div>
-                        <div className="d-flex justify-content-between mt-4">
+                        <div className="d-flex justify-content-center mt-4">
                             <Link to="/" rel="noopener noreferrer" id="link-text">Compte existant? Connexion ici!</Link>
                         </div>
                     </form>

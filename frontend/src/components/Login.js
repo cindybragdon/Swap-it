@@ -73,11 +73,12 @@ const Login = () => {
                             <div className="form-group">
                                 <label className="text-white m-2" id="home-label"> Password : </label>
                                 <input type="password" className="form-control m-2" placeholder="Password"
-                                    {...register("password", {
-                                        required: " Vous devez saisir un mot de passe",
-                                    })}
-                                    />
+                                       {...register("password", {
+                                           required: " Vous devez saisir un mot de passe",
+                                       })}
+                                />
                                 {errors.password && <p className="m-2 msgError">{errors.password.message}</p>}
+
                             </div>
 
                             <div className="form-group">
@@ -87,7 +88,7 @@ const Login = () => {
                                     créer un compte
                                 </button>
                                 <a href='/forgotPwd'>
-                                    <button type="button" className="btn btn-info w-30">Mot de passe oublié?</button>
+                                    <button type="button" className="btn btn-info w-30" >Mot de passe oublié?</button>
                                 </a>
 
                             </div>

@@ -59,10 +59,6 @@ body {
   align-items: center;
 }
 
-.form-control my-3 create-account {
-  padding-right: 30px;
-}
-
 .no-underline {
   text-decoration: none !important;
 }
@@ -87,13 +83,44 @@ body {
 .container-account {
   background-size: cover;
   background-position: bottom center;
-  height: 100vh;
+  height: 85vh;
   color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
 
 }
+
+.title-piges{
+  background-color: #ffffff;
+  font-family: "Bangers", sans-serif;
+  font-weight: 200;
+  font-size: 35px;
+  letter-spacing: 2px;
+  text-align: center;
+  padding: 20px;
+  align-items: center;
+
+
+}
+
+#container-pige-creation {
+  background-color: #ffffff;
+  border: white solid 3px;
+  width: 40%;
+  align-items: center;
+  align-content: center;
+  padding: 20px;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: "Reddit Mono", monospace;
+}
+
+#account-box {
+  margin-top: 10px;
+}
+
 
 .renderingElement::before {
   content: '';
@@ -168,8 +195,22 @@ body {
   padding-top: 80px;
   margin: auto;
   margin-top: 20px;
-  margin-bottom: 21px;
+  margin-bottom: 20px;
   font-family: "Reddit Mono", monospace;
+}
+
+#container-create {
+  width: 45%;
+  align-items: center;
+  align-content: center;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: "Reddit Mono", monospace;
+}
+
+#update-pw {
+  font-style: italic;
 }
 
 #container-contact-main {
@@ -187,6 +228,8 @@ body {
   margin: 0px;
   line-height: 0.1%;
 }
+
+
 
 #container-faq {
   margin-top: 100px;
@@ -207,8 +250,10 @@ body {
 }
 
 .title-createpige {
+  color: #ffe600;
   font-family: "Bangers", sans-serif;
-  text-shadow: 3px 0 #fc6e78, -3px 0 #b76efc;
+  text-shadow: 3px 0 black, -3px 0 black;
+  text-align: center;
 }
 
 #container-forgot {
