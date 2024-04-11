@@ -21,7 +21,7 @@ const ContactForm = () => {
         reset();
     }
     return (
-            <div className="card text-center w-80 " id="container-contact">
+            <div className="card text-center w " id="container-contact">
                 <div className="card-header h3 text-white" style={{ backgroundColor: "#D4015F" }}>Contactez-nous! </div>
                 <div className="card-body px-5">
                     <p className="card-text py-2">
