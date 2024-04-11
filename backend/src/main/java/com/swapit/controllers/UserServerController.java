@@ -82,6 +82,16 @@ public class UserServerController {
         }
     }
 
+    @GetMapping("/getUserById")
+    public User getUserById(@RequestParam int idUser) throws Exception {
+        try {
+            return userRepository.findUserByIdUser(idUser);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
 
 
 

@@ -21,6 +21,6 @@ public class UserPige implements Serializable {
 
     private String userPigePseudo;
 
-    private byte[] userPigeImage;
+    private String userPigeImage;
 
 }

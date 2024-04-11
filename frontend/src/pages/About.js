@@ -9,13 +9,15 @@ const About = () => {
         backgroundImage: `url(${ImageAbout})`,
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover'
+        backgroundSize: 'cover',
+        minHeight: '85vh',
+        border: 'white solid 3px'
     }
 
 
     return (
         <div style={sectionStyle} >
-            <div className="container row min-vh-100 text-center">
+            <div className="container row min-vh-10 text-center" id="container-about-main">
                 <div className="container row align-items-center">
 
                     <div className="col-sm-6 p-3">

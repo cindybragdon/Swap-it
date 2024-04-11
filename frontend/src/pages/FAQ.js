@@ -6,7 +6,12 @@ import ImageFAQ from "../images/QuestionMarks.jpg";
 const FAQ = () => {
 
     var sectionStyle = {
-        backgroundImage: `url(${ImageFAQ})`
+        backgroundImage: `url(${ImageFAQ})`,
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        border: 'white solid 3px',
+        minHeight: '85vh'
     }
 
     const [openItemId, setOpenItemId] = useState(null);
@@ -21,8 +26,8 @@ const FAQ = () => {
 
 
     return (
-        <div className='card p-5 justify-content-center text-center min-vh-100  oui ' style={sectionStyle}>
-           <div className="card p-3" style={{ backgroundColor: "#516565"}}>
+        <div className='card p-5 text-center' style={sectionStyle} >
+           <div className="card p-3" style={{ backgroundColor: "#516565"}} id="container-faq">
             <div className='d-block align-middle'>
                 <h2 id="welcomeText" className="text-white p-2" style={{ backgroundColor: "darkgrey"}}>Parce que parfois, tout comprendre seul, c'est pas un cadeau!</h2>
                 <div className="accordion" id="accordionExample">
