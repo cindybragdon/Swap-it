@@ -13,6 +13,8 @@ const Login = () => {
     const [user, setUser] = useState('');
 
 
+
+
     const { register, handleSubmit, formState: { errors}, reset } = useForm();
 
 
@@ -68,6 +70,7 @@ const Login = () => {
                                        })}
                                 />
                                 {errors.email && <p className="m-2 msgError">{errors.email.message}</p>}
+
                             </div>
 
                             <div className="form-group">
@@ -78,6 +81,7 @@ const Login = () => {
                                     })}
                                     />
                                 {errors.password && <p className="m-2 msgError">{errors.password.message}</p>}
+
                             </div>
 
                             <div className="form-group">
