@@ -58,9 +58,7 @@ function App() {
                         <Route path='/piges/:pigeName' element={<MyPige/>}/>
                     </Route>
 
-                    <Route path='/forgotPwd' element={<PrivateRoute/>}>
-                        <Route path='/forgotPwd' element={<ForgotPwd/>}/>
-                    </Route>
+                    <Route path='/forgotPwd' element={<ForgotPwd/>}/>
 
                     <Route path='/pige/picked' element={<PrivateRoute/>}>
                         <Route path='/pige/picked' element={<QuiJaiPige/>}/>

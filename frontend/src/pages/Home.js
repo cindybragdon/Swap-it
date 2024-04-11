@@ -27,8 +27,10 @@ function Home() {
                         <div className="card " style={{backgroundColor: 'rebeccapurple'}}>
                             <div className="card-body">
                                 <div className="card-text">
-                                <h3 className="text-white m-2" id="welcomeText">Bienvenue sur Swap-<span className="welcome-span">i</span>t!</h3>
-                                <h6 className="text-white m-2" id="connectText"> Connectez vous</h6>
+                                    <h3 className="text-white m-2" id="welcomeText">Bienvenue sur Swap-<span
+                                        className="welcome-span">i</span>t!</h3>
+                                    <h6 className="text-white m-2" id="connectText"> Connectez vous</h6>
+
                                 </div>
                                 <Login/>
                             </div>
