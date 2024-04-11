@@ -88,11 +88,12 @@ body {
 .container-account {
   background-size: cover;
   background-position: bottom center;
-  height: 85vh;
+  height: 100vh;
   color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 
 .renderingElement::before {
@@ -106,6 +107,10 @@ body {
   z-index: -1;
 }
 
+#container-about-main {
+  padding-top: 30px;
+
+}
 
 
 .oui{
@@ -175,7 +180,9 @@ body {
   line-height: 0.1%;
 }
 
-
+#container-faq {
+  margin-top: 100px;
+}
 #container-about {
   padding: 20px;
   border: white 4px solid;
@@ -197,7 +204,7 @@ body {
 }
 
 #container-forgot {
-  border: #b76efc solid 9px;
+  border: #625FC8 solid 9px;
 
 }
 

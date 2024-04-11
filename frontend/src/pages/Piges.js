@@ -13,7 +13,8 @@ function Piges() {
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
         backgroundSize: 'cover',
-        minWidth: '100vw'
+        minWidth: '100vw',
+        border: 'white solid 3px'
     }
 
 

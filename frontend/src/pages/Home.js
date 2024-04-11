@@ -12,6 +12,7 @@ function Home() {
         backgroundSize: 'cover',
         position: 'relative',
         minHeight: '85vh',
+        border: 'white solid 3px'
     }
 
 

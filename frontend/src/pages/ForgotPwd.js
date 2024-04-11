@@ -15,7 +15,8 @@ const ForgotPwd = () => {
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         position: 'relative',
-        minHeight: '85vh'
+        minHeight: '85vh',
+        border: 'white solid 3px'
     }
 
     const { register, handleSubmit, formState: { errors}, reset } = useForm();
