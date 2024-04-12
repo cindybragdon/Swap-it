@@ -2,7 +2,7 @@ import React from 'react';
 import {useLocation, useNavigate} from "react-router-dom";
 import {useState, useEffect} from "react";
 import BackToTopButton from "../components/BackToTopButton";
-import ImagePige from "../images/NewPige.jpg"
+import ImagePige from "../images/addPige.jpg"
 import BGPiges from '../images/MesPigesFemme.jpg'
 import axios from "axios";
 
@@ -22,7 +22,7 @@ function Piges() {
 
     const navigate = useNavigate();
     const [listUserPige, setListUserPige] = useState([]);
-    const [currentUser, setCurrentUser] =useState({});
+    const [currentUser, setCurrentUser] = useState({});
 
     useEffect(() => {
         const urlGetUser = `http://localhost:9281/api/getUserById?idUser=${JSON.parse(sessionStorage.user).idUser}`;
@@ -41,8 +41,6 @@ function Piges() {
     }, []);
 
 
-
-
     const handleClickCreatePige = () => {
         navigate('/piges/creation-piges');
         console.log('Button clicked');
@@ -54,58 +52,50 @@ function Piges() {
         console.log(userPige);
     }
 
-
     return (
-        <div className='container row bg-primary text-center' style={sectionStyle}>
-            <div >
-                <div className="pt-3">
-                    <h2 className="title-piges" style={ {color: '#FF3991'}} >Bonjour, {currentUser.userFirstName}, voici vos piges! </h2>
+        <div className='container bg-primary text-center' style={sectionStyle}>
+            <div className="pt-3">
+                <h2 className="title-piges" style={{color: '#FF3991'}}>Bonjour, {currentUser.userFirstName}, voici vos
+                    piges!</h2>
+            </div>
+            <div className="row row-cols-1 row-cols-md-4 g-4">
+                <div className="col pb-3">
+                    <div className="card" style={{
+                        height: '30vh',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                    }}>
+                        <img src={ImagePige} className="card-img-top-my-wish-list" alt="..."
+                             style={{
+                                 height: '20vh',
+                                 width: '20vh',
+                                 display: 'block',
+                                 margin: 'auto',
+                                 objectFit: 'cover'
+                             }}/>
+                        <button type="button" className="btn btn-info m-2" onClick={handleClickCreatePige}>Créer une
+                            pige!
+                        </button>
+                    </div>
                 </div>
-                <div className="row row-cols-1 row-cols-md-4 g-4">
 
-                    <div className="col pb-5">
-                        <div className="card h-auto">
-                            <img src={ImagePige} className="card-img-top-my-wish-list" alt="..."/>
+                {listUserPige.map(UserPige => (
+                    <div className="col pb-3" onClick={() => handlePigeClick(UserPige)}>
+                        <div className="card" style={{height: '30vh'}}>
+                            <div className="title-card-piges card-header bg-danger">{UserPige.pige.pigeName}</div>
                             <div className="card-body">
-                                <div className="card" onClick={handleClickCreatePige}>
-                                    <div className="card-body">
-                                        <h5 className="card-title">Créer une pige!</h5>
-                                        <p className="card-text"><i className="bi bi-plus-lg"></i></p>
-                                    </div>
-                                </div>
+                                <p className="card-text"> Pige organisée par : get la valeur userAdmin </p>
+                                <p className="card-text">Cette pige se terminera le {UserPige.pige.pigeEndDate}</p>
                             </div>
                         </div>
                     </div>
-
-
-                    <div className="row row-cols-1 row cols-med-4 g-4">
-                    {listUserPige.map(UserPige =>
-
-                        <div className="col pb-5" onClick={() => handlePigeClick(UserPige)}>
-
-                            <div className="card h100">
-                                <div className="card-body">
-                                    <h5 className="card-title">{UserPige.pige.pigeName}</h5>
-                                    <p className="card-text">Cette pige se terminera le {UserPige.pige.pigeEndDate}</p>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    )}
-                    </div>
-
-                </div>
+                ))}
             </div>
-            <div>
-                <BackToTopButton/>
-            </div>
-
+            <BackToTopButton/>
         </div>
-
-    )
-        ;
+    );
 }
-;
-export default Piges;
+    export default Piges;
 

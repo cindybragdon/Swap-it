@@ -48,10 +48,7 @@ body {
 }
 
 
-.card-img-top-my-wish-list {
-  height: 100px;
-  width: 50%;
-}
+
 
 .password-container-create-account {
   position: relative;
@@ -100,8 +97,17 @@ body {
   text-align: center;
   padding: 20px;
   align-items: center;
+}
 
-
+.title-card-piges{
+  background-color: #ffffff;
+  font-family: "Bangers", sans-serif;
+  font-weight: 200;
+  font-size: 20px;
+  letter-spacing: 2px;
+  text-align: center;
+  padding: 20px;
+  align-items: center;
 }
 
 #container-pige-creation {

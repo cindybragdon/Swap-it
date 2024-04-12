@@ -98,7 +98,6 @@ const MyPige = () => {
                             <div className=" border border-2 p-3 " id="espaceAdmin">
                                 <h5 className="text-start"> Espace Admin pour l'organisateur de la
                                     pige {selectedUserPige.pige.pigeName} </h5>
-                                {/*Bouton a setter OnClick qui lance le random*/}
                                 <div className="d-flex flex-column  justify-content-start align-items-start ">
                                 <button type="submit" className="liste p-2 rounded" style={{backgroundColor: '#FFD801', color:'white'}}>Lancer la pige!
                                 </button>

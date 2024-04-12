@@ -72,15 +72,7 @@ const AddUserToPige = () => {
                          id="container-forgot">
                         <div className="card-header h5 text-white bg-info">Ils sont tous là?</div>
                         <div className="card-body d-flex flex-column" style={{flex: "1"}}>
-                            <div className="form-outline">
-                                <p>Prénom du participant</p>
-                                <div className="form-outline">
-                                    <p>Nom de famille du participant 1</p>
-                                </div>
-                            </div>
-                            <div className="form-outline">
-                                <p>Courriel du participant 1</p>
-                            </div>
+
                             <button className="btn btn-secondary d-flex justify-content-center mt-auto"
                                     style={{width: "100%", margin: "auto"}}>
                                 <img src={ImageChapeauLapin} height="220" width="250" alt="Account"/>
