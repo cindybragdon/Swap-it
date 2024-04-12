@@ -297,6 +297,23 @@ body {
 }
 
 
+.card-custom {
+  height: 40vh;
+  display: flex;
+  width: auto;
+  border: 1px solid black;
+}
+
+.card-image {
+  height: 20vh;
+  width: 20vh;
+  display: block;
+  margin: auto;
+
+}
+
+
+
 
 
 /*CSS pour le Caroussel*/

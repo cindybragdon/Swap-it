@@ -41,27 +41,15 @@ const MyWishList = () => {
 
     return (
         <div style={fullBackgroundStyle}>
-            <div className='container-fluid text-center'>  // Changed from 'container' to 'container-fluid'
+            <div className='container-fluid text-center'>
                 <div className="pt-3">
-                    <h2 className="title-piges" style={{color: '#FF3991'}}>{userPige.user.userFirstName}, voici votre liste de suggestions de cadeaux pour la pige {userPige.pige.pigeName}</h2>
+                    <h2 className="title-piges" style={{color: '#FF3991'}}>{userPige.user.userFirstName}, voici votre
+                        liste de suggestions de cadeaux pour la pige {userPige.pige.pigeName}</h2>
                 </div>
                 <div className="row row-cols-1 row-cols-md-4 g-4">
                     <div className="col pb-5">
-                        <div className="card border border-dark h-100" style={{
-                            height: '40vh',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'center',
-                            justifyContent: 'center'
-                        }} onClick={handleClick}>
-                            <img src={ImageCadeau} className="card-img-top-my-wish-list img-fluid"
-                                 style={{
-                                     height: '20vh',
-                                     width: '20vh',
-                                     display: 'block',
-                                     margin: 'auto',
-                                     objectFit: 'cover'
-                                 }}/>
+                        <div className="card card-custom" onClick={handleClick}>
+                            <img src={ImageCadeau} className="card-image img-fluid"/>
                             <div className="card-body">
                                 <h5 className="card-title">Ajouter une suggestion</h5>
                                 <p className="card-text"><i className="bi bi-plus-lg"></i></p>
@@ -70,16 +58,10 @@ const MyWishList = () => {
                     </div>
                     {listWishedItems.map((wishedItem, index) => (
                         <div className="col" key={index}>
-                            <div className="card border border-dark h-100 mb-3" style={{height: '40vh'}}>
-                                <div className="title-card-piges card-header bg-danger">{wishedItem.wishedItemName}</div>
-                                <img src={wishedItem.wishedItemName} className="card-img-top-my-wish-list img-fluid p-2"
-                                     style={{
-                                         height: '20vh',
-                                         width: '20vh',
-                                         display: 'block',
-                                         margin: 'auto',
-                                         objectFit: 'cover'
-                                     }} />
+                            <div className="card card-custom mb-3">
+                                <div
+                                    className="title-card-piges card-header bg-danger">{wishedItem.wishedItemName}</div>
+                                <img src={wishedItem.wishedItemName} className="card-image img-fluid p-2"/>
                                 <div className="card-body">
                                     <p className="card-text">{wishedItem.wishedItemDescription}</p>
                                     <a href={wishedItem.wishedItemUrl} className="stretched-link new-tab"
@@ -93,6 +75,5 @@ const MyWishList = () => {
             </div>
         </div>
     );
-};
-
-export default MyWishList;
+}
+    export default MyWishList;
