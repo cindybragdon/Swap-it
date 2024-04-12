@@ -27,7 +27,7 @@ const FAQ = () => {
 
     return (
         <div className='card p-5 text-center' style={sectionStyle} >
-           <div className="card p-3" style={{ backgroundColor: "#516565"}} id="container-faq">
+           <div className="card p-3" style={{ backgroundColor: "white"}} id="container-faq">
             <div className='d-block align-middle'>
                 <h2 id="welcomeText" className="text-white p-2" style={{ backgroundColor: "darkgrey"}}>Parce que parfois, tout comprendre seul, c'est pas un cadeau!</h2>
                 <div className="accordion" id="accordionExample">
