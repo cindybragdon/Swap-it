@@ -41,7 +41,7 @@ const FormCreationPige = () => {
     return (
         <div className="card "id="container-pige-creation" >
         <form className='container-pige ' method="post" onSubmit={onSubmit} >
-            <h3 className="title-createpige">Créer une pige, on met tous les noms dans le chapeau!</h3>
+            <h3 className="title-createpige">Créer une pige, c'est créer du bonheur!</h3>
             <div className="mb-2">
                 <label className="form-label" style={{color: 'black'}}><h5>Nom de la pige</h5></label>
                 <div className="mb-2" style={{display: 'flex'}}>

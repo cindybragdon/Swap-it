@@ -48,7 +48,7 @@ const UpdatePige = () => {
     return (
         <div className="bg-white " style={{ marginBottom: '0.5rem', textColor: 'black' }}>
             <form className='container' method="post" onSubmit={onSubmit}>
-                <h2 className="title-createpige">Modifier la pige {nomPige}</h2>
+                <h2 className="title-createpige ">Modifier la pige {nomPige}</h2>
                 <div className="mb-2">
                     <label className="form-label" style={{color: 'black'}}><h5>Nom de la pige</h5></label>
                     <div className="mb-2" style={{display: 'flex', justifyContent: 'center'}}>

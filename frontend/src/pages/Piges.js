@@ -55,12 +55,12 @@ function Piges() {
     return (
         <div className='container bg-primary text-center' style={sectionStyle}>
             <div className="pt-3">
-                <h2 className="title-piges" style={{color: '#FF3991'}}>Bonjour, {currentUser.userFirstName}, voici vos
+                <h2 className="title-piges " style={{color: '#FF3991'}}>Bonjour, {currentUser.userFirstName}, voici vos
                     piges!</h2>
             </div>
             <div className="row row-cols-1 row-cols-md-4 g-4">
                 <div className="col pb-3">
-                    <div className="card" style={{
+                    <div className="card border border-dark" style={{
                         height: '30vh',
                         display: 'flex',
                         flexDirection: 'column',
@@ -82,7 +82,7 @@ function Piges() {
                 </div>
 
                 {listUserPige.map(UserPige => (
-                    <div className="col pb-3" onClick={() => handlePigeClick(UserPige)}>
+                    <div className="col pb-3 " onClick={() => handlePigeClick(UserPige)}>
                         <div className="card" style={{height: '30vh'}}>
                             <div className="title-card-piges card-header bg-danger">{UserPige.pige.pigeName}</div>
                             <div className="card-body">
