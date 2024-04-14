@@ -62,7 +62,7 @@ public class InvitationServerController {
     @GetMapping("/getAllInvitationsFromUserId")
     public List<Invitations> getAllInvitationsFromUserId(@RequestParam int userId) throws Exception {
         try {
-            return invitationsRepository.findAllByIdWantedUser(userId);
+            return invitationsRepository.findAllByPige_UserAdmin_IdUser(userId);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return null;
