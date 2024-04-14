@@ -46,7 +46,8 @@ public class WishedItemServiceController {
         String messageWishItemCreated = "ACK-901";
         try {
             if (wishedItemToCreate.getWishedItemName() != null
-                && wishedItemToCreate.getUserPige() != null){
+                && wishedItemToCreate.getUserPige() != null
+                && wishedItemToCreate.getUserWhoAddedTheItem() != null){
                 wishedItemRepository.save(wishedItemToCreate);
                 messageWishItemCreated = "ACK-900";
             }

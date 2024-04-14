@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import ImageCadeau from '../images/newWishItem.jpg';
 import ImageAdItem from "../images/Listes.jpg";
+import ImageWishedItemBlank from "../images/noWishedItemImage.jpg";
 import { useLocation, useNavigate } from "react-router-dom";
 import BackToTopButton from "../components/BackToTopButton";
-
 
 const MyWishList = () => {
     var fullBackgroundStyle = {
@@ -36,9 +36,13 @@ const MyWishList = () => {
         fetchData();
     }, []);
 
-    const handleClick = () => {
+    const handleClickToAddItem = () => {
         sessionStorage.setItem('userPigeToAddItem', JSON.stringify(userPige));
         navigate('/pige/myWishList/addWish');
+    };
+
+    const handleClickBackToPige = () => {
+        navigate(`/piges/${userPige.pige.pigeName}`, {state: userPige});
     };
 
     return (
@@ -47,11 +51,11 @@ const MyWishList = () => {
                 <div className="pt-3">
                     <h2 className="title-piges" style={{color: '#FF3991'}}>{userPige.user.userFirstName}, voici votre
                         liste de suggestions de cadeaux pour la pige {userPige.pige.pigeName}<h5><a
-                            className="link-opacity-75" href="/piges/{userPige.user.pigeName}">Retour à la pige</a></h5></h2>
+                            className="link-opacity-75" onClick={handleClickBackToPige}>Retour à la pige</a></h5></h2>
                 </div>
                 <div className="row row-cols-1 row-cols-md-4 g-4">
                     <div className="col pb-5">
-                        <div className="card card-custom" onClick={handleClick}>
+                        <div className="card card-custom" onClick={handleClickToAddItem}>
                             <img src={ImageCadeau} className="card-image img-fluid"/>
                             <div className="card-body">
                                 <h5 className="card-title">Ajouter une suggestion</h5>
@@ -60,18 +64,45 @@ const MyWishList = () => {
                         </div>
                     </div>
                     {listWishedItems.map((wishedItem, index) => (
-                        <div className="col" key={index}>
-                            <div className="card card-custom mb-3">
-                                <div
-                                    className="title-card-piges card-header bg-danger">{wishedItem.wishedItemName} </div>
-                                <img src={wishedItem.wishedItemName} className="card-image img-fluid p-2"/>
-                                <div className="card-body">
-                                    <p className="card-text">{wishedItem.wishedItemDescription}</p>
-                                    <a href={wishedItem.wishedItemUrl} className="stretched-link new-tab"
-                                       target='_blank'>Voir cet item en ligne</a>
+                        userPige.user.idUser !== JSON.parse(sessionStorage.user).idUser ?
+                            <div className="col" key={index}>
+                                <div className="card card-custom mb-3">
+                                    <div
+                                        className="title-card-piges card-header bg-danger">{wishedItem.wishedItemName}</div>
+                                    {wishedItem.wishedItemImage ?
+                                        <img src={wishedItem.wishedItemImage} className="card-image img-fluid p-2"/> :
+                                        <img src={ImageWishedItemBlank} className="card-image img-fluid p-2"/>}
+                                    <div className="card-body">
+                                        <p className="card-text">{wishedItem.wishedItemDescription}</p>
+                                        {wishedItem.wishedItemUrl ?
+                                            <a href={wishedItem.wishedItemUrl} className="stretched-link new-tab"
+                                               target='_blank'>Voir cet item en ligne</a> : ''}
+
+                                    </div>
+
+                                    <div className="card-body">
+                                        <p className="card-text">Ajouté par : {wishedItem.userWhoAddedTheItem.userFirstName}</p>
+
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
+                            </div> : wishedItem.userWhoAddedTheItem.idUser === userPige.user.idUser ?
+                                <div className="col" key={index}>
+                                    <div className="card card-custom mb-3">
+                                        <div
+                                            className="title-card-piges card-header bg-danger">{wishedItem.wishedItemName}</div>
+                                        {wishedItem.wishedItemImage ?
+                                            <img src={wishedItem.wishedItemImage} className="card-image img-fluid p-2"/> :
+                                            <img src={ImageWishedItemBlank} className="card-image img-fluid p-2"/>}
+                                        <div className="card-body">
+                                            <p className="card-text">{wishedItem.wishedItemDescription}</p>
+                                            {wishedItem.wishedItemUrl ?
+                                                <a href={wishedItem.wishedItemUrl} className="stretched-link new-tab"
+                                                   target='_blank'>Voir cet item en ligne</a> : ''}
+
+                                        </div>
+                                    </div>
+                                </div> : ''
+
                     ))}
                 </div>
                 <BackToTopButton/>
@@ -79,4 +110,4 @@ const MyWishList = () => {
         </div>
     );
 }
-    export default MyWishList;
+export default MyWishList;

@@ -1,7 +1,7 @@
 import React, {useState} from "react";
-import http from "../http/http";
 import {useNavigate} from "react-router-dom";
 import {createPige} from "../axi/AxiPost";
+import axios, {Axios} from "axios";
 
 const FormCreationPige = () => {
 
@@ -28,15 +28,20 @@ const FormCreationPige = () => {
     const onSubmit = () => {
         let response = createPige(formsUserWithPige);
         if (response) {
-            navigate('/addPeople');
+            const urlGetPige = `http://localhost:9281/api/getLastlyCreatedPigeFromIdUser?idUser=${JSON.parse(sessionStorage.user).idUser}`;
+            axios.get(urlGetPige)
+                .then(res => {
+                    if(res.data === null) {
+                        alert("Erreur : Impossible de créer la pige");
+                    } else {
+                        sessionStorage.setItem('pigeToAddPeopleTo', JSON.stringify(res.data));
+                        navigate('/addPeople');
+                    }
+                })
+                .catch(err => console.log(err));
+
         }
     }
-
-
-
-
-
-
 
     return (
         <div className="card "id="container-pige-creation" >

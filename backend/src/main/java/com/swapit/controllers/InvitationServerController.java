@@ -28,10 +28,13 @@ public class InvitationServerController {
     private UserPigeRepository userPigeRepository;
 
 
+
+
+
     //Creates an invitation to be sended by email
     // (Verified and tested)
     @PostMapping("/createInvitation")
-    public String createInvitation(@RequestBody List<String> listEmailsToSendInv, @RequestParam int idUser, @RequestParam int idPige) throws Exception{
+    public String createInvitation(@RequestBody List<String> listEmailsToSendInv, @RequestParam int idPige) throws Exception{
         String messageInvitation = "ACK-401";
         try{
             if (listEmailsToSendInv != null) {

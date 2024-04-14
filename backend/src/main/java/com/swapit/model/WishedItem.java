@@ -16,6 +16,9 @@ public class WishedItem implements Serializable {
     @ManyToOne
     private UserPige userPige;
 
+    @ManyToOne
+    private User userWhoAddedTheItem;
+
     private String wishedItemName;
     private String wishedItemDescription;
     private String wishedItemUrl;
