@@ -103,7 +103,7 @@ const MyPige = () => {
                                 </div>
                                 <div className="d-flex flex-column  justify-content-start align-items-start */}">
                                     <div className="mt-2 ">
-                                        <button className="liste p-2 rounded" style={{backgroundColor: '#FFD801', color:'white'}} onClick={() => handleButtonUpdatePige()}> Mofidier la pige
+                                        <button className="liste p-2 rounded" style={{backgroundColor: '#FFD801', color:'white'}} onClick={() => handleButtonUpdatePige()}> Modifier la pige
                                         </button>
                                     </div>
 
