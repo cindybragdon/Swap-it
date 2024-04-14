@@ -1,32 +1,43 @@
 import React, {useState} from "react";
 import ImageLapin from "../images/Lapin.jpg";
-import {useForm} from "react-hook-form";
 import ImageChapeauLapin from "../images/ChapeauLapins.jpg";
 import {createInvitations} from "../axi/AxiPost";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 
 
 const AddUserToPige = () => {
 
-    const [listUserEmail, setListUserEmail] = useState([]);
+
+    const [listFormInv, setListFormInv] = useState([]);
 
     const [emailToAdd, setEmailToAdd] = useState('');
-
+    const [firstNameToAdd, setFirstNameToAdd] = useState('');
+    const [lastNameToAdd, setLastNameToAdd] = useState('');
+    const asBeenAnswered = false;
     const navigate = useNavigate();
+
+    const formInv = {
+
+        pige:JSON.parse(sessionStorage.pigeToAddPeopleTo),
+        firstNameOfWantedUser: firstNameToAdd,
+        lastNameOfWantedUser:lastNameToAdd,
+        emailWantedUser: emailToAdd,
+        asBeenAnswered:asBeenAnswered
+    }
 
     const handleSubmit = (event) => {
         alert('A name was submitted: ' + emailToAdd);
-        setListUserEmail(listUserEmail => [...listUserEmail, emailToAdd])
-        console.log(listUserEmail);
+        setListFormInv(listFormInv => [...listFormInv, formInv]);
+        console.log(listFormInv);
         event.preventDefault();
     }
 
     const onClickEnoughPeople = () => {
         const minNumberPeople = 3;
-        if (listUserEmail.length < minNumberPeople) {
+        if (listFormInv.length < minNumberPeople) {
             alert('Il doit y avoir au moins 3 utilisateurs pour une pige.')
         } else {
-            createInvitations(listUserEmail);
+            createInvitations(listFormInv);
             alert('invitations envoyées');
             navigate("/piges");
         }
@@ -43,13 +54,16 @@ const AddUserToPige = () => {
                         <img src={ImageLapin} height="220" width="250" alt="Account"/>
                     </button>
                     <form className='container text-start' onSubmit={handleSubmit}>
-                        <label className="form-outline">Prénom
-                            <input className="form-control my-3" placeholder="Prénom"/>
-                        </label>
-                        <label className="form-outline">Nom
-                            <input className="form-control my-3" placeholder="Nom"/>
-                        </label>
-
+                        <div className="form-outline">Prénom
+                            <input className="form-control my-3"
+                                   placeholder="Prénom du participant"
+                                   onChange={event => setFirstNameToAdd(event.target.value)} required/>
+                        </div>
+                        <div className="form-outline">Nom de famille
+                            <input className="form-control my-3"
+                                   placeholder="Nom de famille du participant"
+                                   onChange={event => setLastNameToAdd(event.target.value)} required/>
+                        </div>
                         <div className="form-outline">Email
                             <input type="email" id="typeEmailZ" className="form-control my-3"
                                    placeholder="Courriel du participant"
@@ -77,7 +91,7 @@ const AddUserToPige = () => {
                                     style={{width: "100%", margin: "auto"}}>
                                 <img src={ImageChapeauLapin} height="220" width="250" alt="Account"/>
                             </button>
-                            {listUserEmail.map((userToAdd) => (
+                            {listFormInv.map((userToAdd) => (
                                 <p>{userToAdd}</p>
                             ))}
                         </div>

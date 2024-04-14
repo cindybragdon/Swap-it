@@ -2,6 +2,7 @@ package com.swapit.controllers;
 
 import com.swapit.model.Pige;
 import com.swapit.model.User;
+import com.swapit.model.UserPige;
 import com.swapit.repositories.PigeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -63,7 +64,17 @@ public class PigeServerController {
         }
     }
     */
+    //Get all the piges from one user (Verified and tested)
+    @GetMapping("/getLastlyCreatedPigeFromIdUser")
+    public Pige getLastlyCreatedPigeFromIdUser(@RequestParam int idUser) throws Exception {
+        try {
+            return pigeRepository.findPigeByNumberPigeOfUser(pigeRepository.countPigesByUserAdmin_IdUser(idUser));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
 
+    }
 
     //Get les infos pour courriel dans Java (nom pige, pige description, nom admin, date pige,url et QrCode)
     //Update pige
