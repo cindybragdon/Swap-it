@@ -35,10 +35,16 @@ const FormCreationPige = () => {
                         alert("Erreur : Impossible de créer la pige");
                     } else {
                         sessionStorage.setItem('pigeToAddPeopleTo', JSON.stringify(res.data));
-                        navigate('/addPeople');
                     }
                 })
                 .catch(err => console.log(err));
+            if(JSON.parse(sessionStorage.pigeToAddPeopleTo) !== null) {
+                alert(`La pige ${nomPige} a été créée`);
+                navigate('/addPeople');
+            } else {
+                alert("Erreur : impossible de créer la pige");
+                navigate('/piges');
+            }
 
         }
     }

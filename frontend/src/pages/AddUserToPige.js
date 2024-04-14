@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import ImageLapin from "../images/Lapin.jpg";
 import ImageChapeauLapin from "../images/ChapeauLapins.jpg";
-import {createInvitations} from "../axi/AxiPost";
-import {useLocation, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
+import axios from "axios";
 
 
 const AddUserToPige = () => {
@@ -26,21 +26,29 @@ const AddUserToPige = () => {
     }
 
     const handleSubmit = (event) => {
-        alert('A name was submitted: ' + emailToAdd);
         setListFormInv(listFormInv => [...listFormInv, formInv]);
         console.log(listFormInv);
         event.preventDefault();
     }
 
-    const onClickEnoughPeople = () => {
-        const minNumberPeople = 3;
-        if (listFormInv.length < minNumberPeople) {
-            alert('Il doit y avoir au moins 3 utilisateurs pour une pige.')
-        } else {
-            createInvitations(listFormInv);
-            alert('invitations envoyées');
-            navigate("/piges");
-        }
+
+
+
+
+
+    const onClickCreateInvitations = () => {
+
+        const url = `http://localhost:9281/api/createInvitation`;
+        axios.post(url, listFormInv)
+            .then(res => {if(res.data === "ACK-400") {
+                alert(`Les invitations ont bien été envoyées!`) ;
+                navigate(`/piges`);
+
+            } else {
+                alert(`Erreur : Les invitations n'ont pas été envoyées.`)
+            }})
+            .catch(err => console.log(err));
+
     }
 
     return (
@@ -91,11 +99,11 @@ const AddUserToPige = () => {
                                     style={{width: "100%", margin: "auto"}}>
                                 <img src={ImageChapeauLapin} height="220" width="250" alt="Account"/>
                             </button>
-                            {listFormInv.map((userToAdd) => (
-                                <p>{userToAdd}</p>
+                            {listFormInv.map((inv) => (
+                                <p>{inv.firstNameOfWantedUser} {inv.lastNameOfWantedUser}, {inv.emailWantedUser}</p>
                             ))}
                         </div>
-                        <button onClick={onClickEnoughPeople}>Tout le monde est là!</button>
+                        <button onClick={onClickCreateInvitations}>Tout le monde est là!</button>
                     </div>
                 </div>
 

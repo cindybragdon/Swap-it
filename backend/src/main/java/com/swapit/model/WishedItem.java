@@ -24,4 +24,6 @@ public class WishedItem implements Serializable {
     private String wishedItemUrl;
 
     private String wishedItemImage;
+
+    private boolean isDeleted;
 }
