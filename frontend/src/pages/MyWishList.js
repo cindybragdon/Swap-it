@@ -36,7 +36,8 @@ const MyWishList = () => {
     }, []);
 
     const handleClick = () => {
-        navigate('/pige/myWishList/addWish', {state: userPige});
+        sessionStorage.setItem('userPigeToAddItem', JSON.stringify(userPige));
+        navigate('/pige/myWishList/addWish');
     };
 
     return (

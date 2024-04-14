@@ -31,7 +31,7 @@ public class InvitationServerController {
     //Creates an invitation to be sended by email
     // (Verified and tested)
     @PostMapping("/createInvitation")
-    public String createInvitation(@RequestBody List<String> listEmailsToSendInv, @RequestParam int idUser) throws Exception{
+    public String createInvitation(@RequestBody List<String> listEmailsToSendInv, @RequestParam int idUser, @RequestParam int idPige) throws Exception{
         String messageInvitation = "ACK-401";
         try{
             if (listEmailsToSendInv != null) {
@@ -39,7 +39,7 @@ public class InvitationServerController {
                 for(String email : listEmailsToSendInv) {
                     Invitations invitationsToCreate = new Invitations();
                     invitationsToCreate.setEmailWantedUser(email);
-                    invitationsToCreate.setPige(pigeRepository.findPigeByNumberPigeOfUser(pigeRepository.countPigesByUserAdmin_IdUser(idUser)));
+                    invitationsToCreate.setPige(pigeRepository.findPigeByIdPige(idPige));
                     invitationsToCreate.setAsBeenAnswered(false);
                     invitationsRepository.save(invitationsToCreate);
                 }

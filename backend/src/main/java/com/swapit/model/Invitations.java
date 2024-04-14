@@ -16,6 +16,13 @@ public class Invitations implements Serializable {
     @ManyToOne
     private Pige pige;
 
+    @ManyToOne
+    private User userWhoSentInvitation;
+
+    private String firstNameOfWantedUser;
+
+    private String lastNameOfWantedUser;
+
     private String emailWantedUser;
 
     private boolean asBeenAnswered;
