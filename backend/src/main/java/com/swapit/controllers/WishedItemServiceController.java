@@ -81,23 +81,24 @@ public class WishedItemServiceController {
         }
     }
 
-    //(Verified and bugging)
-    @DeleteMapping("/deleteWishedItem")
+    //(Verified and tested)
+    @PutMapping("/deleteWishedItem")
     public String deleteWishedItem(@RequestParam int idWishedItem) throws Exception {
-        String messageDeleteItem = "ACK-921";
+        String messageWishedItemUpdated = "ACK-911";
         try {
             boolean wishedItemExists = wishedItemRepository.existsById(idWishedItem);
             if (wishedItemExists) {
-                wishedItemRepository.deleteByIdWishedItem(idWishedItem);
-                messageDeleteItem = "ACK-920";
-            } else {
-                messageDeleteItem = "ACK-922";
+                WishedItem wishedItem = wishedItemRepository.findByIdWishedItem(idWishedItem);
+                wishedItem.setDeleted(true);
+                wishedItemRepository.save(wishedItem);
+                messageWishedItemUpdated = "ACK-910";
             }
-            return messageDeleteItem;
+            return messageWishedItemUpdated;
         } catch (Exception e) {
-            return messageDeleteItem + e.getMessage();
+            return messageWishedItemUpdated + e.getMessage();
         }
     }
+
 
 
 }

@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {createPige} from "../axi/AxiPost";
 import axios, {Axios} from "axios";
+import http from "../http/http";
 
 const FormCreationPige = () => {
 
@@ -26,20 +27,46 @@ const FormCreationPige = () => {
     const navigate = useNavigate();
 
     const onSubmit = () => {
-        let response = createPige(formsUserWithPige);
-        if (response) {
-            const urlGetPige = `http://localhost:9281/api/getLastlyCreatedPigeFromIdUser?idUser=${JSON.parse(sessionStorage.user).idUser}`;
-            axios.get(urlGetPige)
-                .then(res => {
-                    if(res.data === null) {
-                        alert("Erreur : Impossible de créer la pige");
+
+        let flag = false;
+        try {
+            const currentDate = new Date();
+            if(formsUserWithPige.pige.pigeEndDate > currentDate.getDay()) {
+                axios.post(`/createUserPigeWithPige`, formsUserWithPige)
+                .then(response => {
+                    if (response.statusText === "ACK-400") {
+                        flag = true;
+                        alert(`La pige ${nomPige} a été créée`);
                     } else {
-                        sessionStorage.setItem('pigeToAddPeopleTo', JSON.stringify(res.data));
-                        navigate('/addPeople');
+                        alert("Erreur lors de la création de la pige");
                     }
                 })
-                .catch(err => console.log(err));
+            } else {
+                alert("Erreur : Impossible de créer la pige car la date de fin est plus petite ou égale à aujourd'hui");
+                navigate('/piges');
+            }
+            if (flag) {
+                const urlGetPige = `http://localhost:9281/api/getLastlyCreatedPigeFromIdUser?idUser=${JSON.parse(sessionStorage.user).idUser}`;
+                axios.get(urlGetPige)
+                    .then(res => {
+                        if(res.data === null) {
+                            alert("Erreur : Impossible de récupérer la pige");
+                        } else {
+                            sessionStorage.setItem('pigeToAddPeopleTo', JSON.stringify(res.data));
+                        }
+                    })
+                    .catch(err => console.log(err));
+                if(JSON.parse(sessionStorage.pigeToAddPeopleTo) !== null) {
+                    alert(`Vous pouvez maintenant ajouter des utilisateurs à votre pige ${JSON.parse(sessionStorage.user).userFirstName}!`);
+                    navigate('/addPeople');
+                } else {
+                    alert("Erreur : impossible de récupérer les informations de la pige");
+                    navigate('/piges');
+                }
 
+            }
+        } catch (error) {
+            console.error(error);
         }
     }
 

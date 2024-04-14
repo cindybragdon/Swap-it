@@ -77,7 +77,7 @@ const AddWish = () => {
                             <div>
                                 <label>Image</label>
                             </div>
-                            <textarea rows="3" placeholder={"Entrez la un URL pour l'image ici"} className="col-sm-6"
+                            <textarea rows="3" placeholder={"Entrez un URL pour l'image ici"} className="col-sm-6"
                                       onChange={event => setWishedItemImage(event.target.value)}/>
                         </div>
                         <div className="mb-2">

@@ -1,6 +1,4 @@
-import {useGetAxi} from "../axi/AxiFunc";
 import React, {useEffect, useState} from "react";
-import http from "../http/http";
 
 
 import axios from "axios";
@@ -46,6 +44,7 @@ const Invitations = () => {
 
      }
 
+     console.log(tabInvitations);
 
     return (
         <div className='container bg-primary' style={{ ...sectionStyle, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -54,7 +53,7 @@ const Invitations = () => {
                     Bonjour, {JSON.parse(sessionStorage.user).userFirstName}, voici vos invitations!
                 </h2>
             </div>
-            {tabInvitations != null ?
+            {tabInvitations !== null ?
                 tabInvitations.map((inv) => (
                     !inv.asBeenAnswered ?
                         <div className="container-sm text-center  p-5 m-2"
