@@ -65,6 +65,16 @@ public class InvitationServerController {
         }
     }
 
+    @GetMapping("/getAllInvitationsFromUserId")
+    public List<Invitations> getAllInvitationsFromUserId(@RequestParam int userId) throws Exception {
+        try {
+            return invitationsRepository.findAllByIdWantedUser(userId);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
     @PutMapping("/updateInv")
     public String updateInv(@RequestBody UserPige userPigeToCreate, @RequestParam int idInvToUpdate, @RequestParam boolean isAccepted) throws Exception{
         String messageInvitation = "ACK-401";
