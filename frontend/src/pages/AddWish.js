@@ -29,7 +29,8 @@ const AddWish = () => {
         wishedItemName: wishedItemName,
         wishedItemDescription: wishedItemDescription,
         wishedItemUrl: wishedItemUrl,
-        wishedItemImage :wishedItemImage
+        wishedItemImage :wishedItemImage,
+        userWhoAddedTheItem: JSON.parse(sessionStorage.user)
     }
 
 
@@ -39,7 +40,9 @@ const AddWish = () => {
         const url = `http://localhost:9281/api/createWishedItem?idUser=${JSON.parse(sessionStorage.user).idUser}`;
         axios.post(url, formsWishedItem)
             .then(res => {if(res.data === "ACK-900") {
-                alert(`L'objet ${wishedItemName} a bien été ajouté!`);
+                alert(`L'objet ${wishedItemName} a bien été ajouté!`) ;
+            } else {
+                alert(`Erreur : L'objet ${wishedItemName} n'a pas été ajouté.`)
             }})
             .catch(err => console.log(err));
 
