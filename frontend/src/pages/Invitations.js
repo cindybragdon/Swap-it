@@ -72,7 +72,7 @@ const Invitations = () => {
                             <button className="m-1" onClick={() => onClickInv(inv, true)}>Accepter l'invitation</button>
                             <button onClick={() => onClickInv(inv, false)}>Refuser L'invitation</button>
                         </div> : null
-                )) : <p>No invitations found.</p>
+                )) : <p>Pas d'invitations</p>
             }
         </div>
     );
