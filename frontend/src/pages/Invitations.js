@@ -1,20 +1,30 @@
 import {useGetAxi} from "../axi/AxiFunc";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import http from "../http/http";
 
 
 import axios from "axios";
+import ImageInvitation from "../images/Invitations.jpg";
 
 const Invitations = () => {
 
+    var sectionStyle = {
+        backgroundImage: `url(${ImageInvitation})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        minHeight: '85vh',
+        border: 'white solid 3px',
+        minWidth: '99vw'
+
+    }
 
 
 
-    const [tabCustomers, setTabCustomers] = useState([]);
+    const [tabInvitations, setTabInvitations] = useState([]);
 
      useEffect(() => {
         axios.get(`http://localhost:9281/api/getAllInvitationsFromUserEmail?userEmail=${JSON.parse(sessionStorage.user).userEmail}`)
-            .then(res => setTabCustomers(res.data))
+            .then(res => setTabInvitations(res.data))
             .catch(err => console.log(err));
     }, []);
 
@@ -31,28 +41,43 @@ const Invitations = () => {
              }
          }
          axios.put(`http://localhost:9281/api/updateInv?idInvToUpdate=${inv.idInvitation}&isAccepted=${isAccepted}`, formsUserWithPige)
-             .then(res => setTabCustomers(res.data))
+             .then(res => setTabInvitations(res.data))
              .catch(err => console.log(err));
 
      }
 
 
-
     return (
-        <div>
-            <p>Vos invitations : </p>
-            {tabCustomers != null ?
-                tabCustomers.map((inv) => (
+        <div className='container bg-primary' style={{ ...sectionStyle, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <div className="pt-3 text-center">
+                <h2 className="title-piges" style={{color: '#FF3991'}}>
+                    Bonjour, {JSON.parse(sessionStorage.user).userFirstName}, voici vos invitations!
+                </h2>
+            </div>
+            {tabInvitations != null ?
+                tabInvitations.map((inv) => (
                     !inv.asBeenAnswered ?
-                        <div className="container-sm justify-content-center text-center bg-danger rounded-4 border p-3">
-                            <p>Vous avez été invité à la pige {inv.pige.pigeName} </p>
+                        <div className="container-sm text-center  p-5 m-2"
+                             style={{
+                                 backgroundColor: "#7F0A7F",
+                                 fontFamily: "Reddit Mono",
+                                 width: '600px',
+                                 borderRadius: '60%',
+                                 borderStyle: 'solid',
+                                 borderWidth: '5px',
+                                 borderColor: '#4160CC',
+                                 color: "white"
+                             }}>
+                            <p>Vous avez été invité à la pige {inv.pige.pigeName}</p>
                             <p>Par : {inv.pige.userAdmin.userFirstName} {inv.pige.userAdmin.userLastName}</p>
-                            <button onClick={() => onClickInv(inv, true)}>Accepter l'invitation</button> <button onClick={() => onClickInv(inv, false)}>Refuser L'invitation</button>
-                        </div> : ''
-                )) : <p></p>
+                            <button className="m-1" onClick={() => onClickInv(inv, true)}>Accepter l'invitation</button>
+                            <button onClick={() => onClickInv(inv, false)}>Refuser L'invitation</button>
+                        </div> : null
+                )) : <p>No invitations found.</p>
             }
         </div>
-    )
+    );
+
 }
 
 export default Invitations;

@@ -4,6 +4,7 @@ import ImageAdItem from "../images/Listes.jpg";
 import { useLocation, useNavigate } from "react-router-dom";
 import BackToTopButton from "../components/BackToTopButton";
 
+
 const MyWishList = () => {
     var fullBackgroundStyle = {
         backgroundImage: `url(${ImageAdItem})`,
@@ -62,7 +63,7 @@ const MyWishList = () => {
                         <div className="col" key={index}>
                             <div className="card card-custom mb-3">
                                 <div
-                                    className="title-card-piges card-header bg-danger">{wishedItem.wishedItemName}</div>
+                                    className="title-card-piges card-header bg-danger">{wishedItem.wishedItemName} </div>
                                 <img src={wishedItem.wishedItemName} className="card-image img-fluid p-2"/>
                                 <div className="card-body">
                                     <p className="card-text">{wishedItem.wishedItemDescription}</p>
