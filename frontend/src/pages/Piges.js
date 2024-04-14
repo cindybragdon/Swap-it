@@ -86,7 +86,7 @@ function Piges() {
                         <div className="card" style={{height: '30vh'}}>
                             <div className="title-card-piges card-header bg-danger">{UserPige.pige.pigeName}</div>
                             <div className="card-body">
-                                <p className="card-text"> Pige organisée par : get la valeur userAdmin </p>
+                                <p className="card-text"> Pige organisée par : {UserPige.pige.userAdmin.userFirstName} {UserPige.pige.userAdmin.userLastName}</p>
                                 <p className="card-text">Cette pige se terminera le {UserPige.pige.pigeEndDate}</p>
                             </div>
                         </div>
