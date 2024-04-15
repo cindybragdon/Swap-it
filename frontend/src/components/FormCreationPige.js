@@ -30,25 +30,26 @@ const FormCreationPige = () => {
 
         let flag = false;
         try {
-            console.log(pigeEndDate);
-            
-            const choosedEndDate = new Date(pigeEndDate);
             const currentDate = new Date();
-            if(choosedEndDate > currentDate) {
+            const endDate = new Date(formsUserWithPige.pige.pigeEndDate);
+
+            if(endDate >= currentDate) {
                 axios.post(`/createUserPigeWithPige`, formsUserWithPige)
-                .then(response => {
-                    if (response.statusText === "ACK-400") {
-                        flag = true;
-                        alert(`La pige ${nomPige} a été créée`);
-                    } else {
-                        alert("Erreur lors de la création de la pige");
-                    }
-                })
+                    .then(response => {
+                        if (response.statusText === "ACK-400") {
+                            flag = true;
+                            alert(`La pige ${nomPige} a été créée`);
+                        } else {
+                            alert("Erreur lors de la création de la pige");
+                        }
+                    })
             } else {
                 alert("Erreur : Impossible de créer la pige car la date de fin est plus petite ou égale à aujourd'hui");
                 navigate('/piges');
             }
-            alert(flag);
+
+
+
             if (flag) {
                 const urlGetPige = `http://localhost:9281/api/getLastlyCreatedPigeFromIdUser?idUser=${JSON.parse(sessionStorage.user).idUser}`;
                 axios.get(urlGetPige)
