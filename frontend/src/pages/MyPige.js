@@ -10,7 +10,7 @@ const MyPige = () => {
     var sectionStyle = {
         backgroundImage: `url(${ImageBGWish})`,
         width: '100%',
-        height: '100vh',
+        minHeight: '100vh',
         backgroundPosition: 'center',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat'
@@ -30,7 +30,7 @@ const MyPige = () => {
     console.log(selectedUserPige);
 
     useEffect(() => {
-        const urlGetListInvitation = `http://localhost:9281/api/getAllInvitationsFromUserId?idUser=${JSON.parse(sessionStorage.user).idUser}`;
+        const urlGetListInvitation = `http://localhost:9281/api/getAllInvitationsFromUserId?idPige=${selectedUserPige.pige.idPige}`;
         axios.get(urlGetListInvitation)
             .then(res => setListInvitation(res.data))
             .catch(err => console.log(err));
@@ -165,8 +165,12 @@ const MyPige = () => {
 
 
                         <div className="border border-2  mt-3 ">
+                            <div className="card-header" style={{backgroundColor: '#1C67A1'}}>
+                                <h3>Seront présents : </h3>
+                            </div>
                             {listUserPige.map((userPige, index) =>
-                                <div className="card m-1" key={index}>
+                                <div className="card " key={index} >
+
                                     <div className="container row border border-2 p-2 ">
                                         <img src={selectedUserPige.userPigeImage} alt="User Pige Image"/>
                                         <h6 className="card-title">Nom
@@ -186,12 +190,15 @@ const MyPige = () => {
 
                         </div>
                         <div className="border border-2  mt-3 ">
+                            <div className="card-header" style={{backgroundColor: '#808080'}}>
+                                <h3>N'ont pas encore répondu : </h3>
+                            </div>
                             {listInvitation.map(inv =>
-                                <div className="card m-1">
+                                <div className="card m-1" style={{backgroundColor: '#C0C0C0'}}>
                                     <div className="container row border border-2 p-2 ">
-                                        <h6 className="card-title">Nom
-                                            : {inv.firstNameOfWantedUser} {inv.lastNameOfWantedUser}
-                                            : {inv.emailWantedUser}</h6>
+                                        <h6 className="card-title">
+                                            Nom : {inv.firstNameOfWantedUser} {inv.lastNameOfWantedUser}
+                                            Email : {inv.emailWantedUser}</h6>
 
                                     </div>
                                 </div>
