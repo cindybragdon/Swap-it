@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useLocation, useNavigate} from "react-router-dom";
 import ImageBGWish from "../images/BGPiges2.jpg";
 import BackToTopButton from "../components/BackToTopButton";
+import axios from "axios";
 
 
 const MyPige = () => {
@@ -23,8 +24,19 @@ const MyPige = () => {
     const selectedUserPige = location.state;
 
     const [listUserPige, setListIUserPige] = useState([]);
+    const [listInvitation, setListInvitation] = useState([]);
+
 
     console.log(selectedUserPige);
+
+    useEffect(() => {
+        const urlGetListInvitation = `http://localhost:9281/api/getAllInvitationsFromUserId?idUser=${JSON.parse(sessionStorage.user).idUser}`;
+        axios.get(urlGetListInvitation)
+            .then(res => setListInvitation(res.data))
+            .catch(err => console.log(err));
+
+    }, []);
+
 
 
     useEffect(() => {
@@ -94,43 +106,59 @@ const MyPige = () => {
                             </div>
                             {JSON.parse(sessionStorage.user).idUser === selectedUserPige.pige.userAdmin.idUser ?
 
-                            <div className=" border border-2 p-3 " id="espaceAdmin">
-                                <h5 className="text-start"> Espace Admin pour l'organisateur de la
-                                    pige {selectedUserPige.pige.pigeName} </h5>
-                                <div className="d-flex flex-column  justify-content-start align-items-start ">
-                                <button type="submit" className="liste p-2 rounded" style={{backgroundColor: '#FFD801', color:'white'}}>Lancer la pige!
-                                </button>
-                                </div>
-                                <div className="d-flex flex-column  justify-content-start align-items-start */}">
-                                    <div className="mt-2 ">
-                                        <button className="liste p-2 rounded" style={{backgroundColor: '#FFD801', color:'white'}} onClick={() => handleButtonUpdatePige()}> Modifier la pige
+                                <div className=" border border-2 p-3 " id="espaceAdmin">
+                                    <h5 className="text-start"> Espace Admin pour l'organisateur de la
+                                        pige {selectedUserPige.pige.pigeName} </h5>
+                                    <div className="d-flex flex-column  justify-content-start align-items-start ">
+                                        <button type="submit" className="liste p-2 rounded"
+                                                style={{backgroundColor: '#FFD801', color: 'white'}}>Lancer la pige!
                                         </button>
                                     </div>
+                                    <div className="d-flex flex-column  justify-content-start align-items-start */}">
+                                        <div className="mt-2 ">
+                                            <button className="liste p-2 rounded"
+                                                    style={{backgroundColor: '#FFD801', color: 'white'}}
+                                                    onClick={() => handleButtonUpdatePige()}> Modifier la pige
+                                            </button>
+                                        </div>
 
-                                    <button onClick={handleClickAddPeople} className="liste p-2 rounded mt-2" style={{backgroundColor: '#FFD801', color:'white'}}>Envoyer des invitations</button>
-                                    {/*Changer le href pour une alert Voulez-vous cancel oui ou non*/}
-                                    <a href='/pige/:pigeName/UpdatePige'>
-                                        <button type="submit" className="liste p-2 rounded mt-2" style={{backgroundColor: '#EB0134', color:'white'}}>Annuler la pige
+                                        <button onClick={handleClickAddPeople} className="liste p-2 rounded mt-2"
+                                                style={{backgroundColor: '#FFD801', color: 'white'}}>Envoyer des
+                                            invitations
                                         </button>
-                                    </a>
+                                        {/*Changer le href pour une alert Voulez-vous cancel oui ou non*/}
+                                        <a href='/pige/:pigeName/UpdatePige'>
+                                            <button type="submit" className="liste p-2 rounded mt-2"
+                                                    style={{backgroundColor: '#EB0134', color: 'white'}}>Annuler la pige
+                                            </button>
+                                        </a>
 
 
+                                    </div>
                                 </div>
-                            </div>
                                 : <p></p>}
                         </div>
                         <div className=" d-flex border flex-column  border-2 p-3 mt-3 text-start" id='MonEspace'>
                             <h5>Espace de {selectedUserPige.user.userFirstName}</h5>
                             {/*Bien vefifier les navigate des boutons... ya 2 sortes et je pense que cest important pour le current user*/}
-                            <div className="mt-2 " >
-                                <button className="liste p-2 rounded" style={{backgroundColor: '#1C67A1', color:'white'}} onClick={() => handleButtonMyWishlist()}> Ma liste de souhaits pour cette
-                                    pige!</button>
+                            <div className="mt-2 ">
+                                <button className="liste p-2 rounded"
+                                        style={{backgroundColor: '#1C67A1', color: 'white'}}
+                                        onClick={() => handleButtonMyWishlist()}> Ma liste de souhaits pour cette
+                                    pige!
+                                </button>
                             </div>
                             <div className="mt-2 ">
-                                <button  className="liste p-2 rounded" style={{backgroundColor: '#1C67A1', color:'white'}} onClick={() => handleButton2Click()}> Voir qui j'ai pigé!</button>
+                                <button className="liste p-2 rounded"
+                                        style={{backgroundColor: '#1C67A1', color: 'white'}}
+                                        onClick={() => handleButton2Click()}> Voir qui j'ai pigé!
+                                </button>
                             </div>
                             <div className="mt-2">
-                                <button  className="liste p-2 rounded" style={{backgroundColor: '#1C67A1', color:'white'}} onClick={() => handleButton2Click()}> Voir toutes mes Piges</button>
+                                <button className="liste p-2 rounded"
+                                        style={{backgroundColor: '#1C67A1', color: 'white'}}
+                                        onClick={() => handleButton2Click()}> Voir toutes mes Piges
+                                </button>
                             </div>
 
                         </div>
@@ -144,8 +172,27 @@ const MyPige = () => {
                                         <h6 className="card-title">Nom
                                             : {userPige.user.userFirstName} {userPige.user.userLastName} Pseudo
                                             : {userPige.userPigePseudo}</h6>
-                                        <button  className="liste p-2 rounded " style={{backgroundColor: '#67A600', color:'white', width: '400px' , margin: 'auto', display: 'block'}} onClick={() => handleClickWishList(userPige)}> Liste de souhaits
+                                        <button className="liste p-2 rounded " style={{
+                                            backgroundColor: '#67A600',
+                                            color: 'white',
+                                            width: '400px',
+                                            margin: 'auto',
+                                            display: 'block'
+                                        }} onClick={() => handleClickWishList(userPige)}> Liste de souhaits
                                             de {userPige.user.userFirstName}</button>
+                                    </div>
+                                </div>
+                            )}
+
+                        </div>
+                        <div className="border border-2  mt-3 ">
+                            {listInvitation.map(inv =>
+                                <div className="card m-1">
+                                    <div className="container row border border-2 p-2 ">
+                                        <h6 className="card-title">Nom
+                                            : {inv.firstNameOfWantedUser} {inv.lastNameOfWantedUser}
+                                            : {inv.emailWantedUser}</h6>
+
                                     </div>
                                 </div>
                             )}
