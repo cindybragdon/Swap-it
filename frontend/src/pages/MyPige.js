@@ -169,7 +169,7 @@ const MyPige = () => {
                                 <h3>Seront présents : </h3>
                             </div>
                             {listUserPige.map((userPige, index) =>
-                                <div className="card " key={index} style={{backgroundColor: '#DFF1FF'}}>
+                                <div className="card " key={index} >
 
                                     <div className="container row border border-2 p-2 ">
                                         <img src={selectedUserPige.userPigeImage} alt="User Pige Image"/>
