@@ -30,7 +30,7 @@ const MyPige = () => {
     console.log(selectedUserPige);
 
     useEffect(() => {
-        const urlGetListInvitation = `http://localhost:9281/api/getAllInvitationsFromUserId?idUser=${JSON.parse(sessionStorage.user).idUser}`;
+        const urlGetListInvitation = `http://localhost:9281/api/getAllInvitationsFromUserId?idPige=${selectedUserPige.pige.idPige}`;
         axios.get(urlGetListInvitation)
             .then(res => setListInvitation(res.data))
             .catch(err => console.log(err));

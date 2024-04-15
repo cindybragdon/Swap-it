@@ -13,9 +13,9 @@ function Piges() {
         backgroundImage: `url(${BGPiges})`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
-        minHeight: '85vh',
+        height: '100vh',
         border: 'white solid 3px',
-        minWidth: '99vw'
+        minWidth: '100vw'
 
     }
 

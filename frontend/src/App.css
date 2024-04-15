@@ -300,10 +300,14 @@ body {
 
 
 .card-custom {
-  height: 40vh;
   display: flex;
-  width: auto;
-  border: 1px solid black;
+  flex-direction: column;
+  justify-content: space-between; /* Aligns content and stretches the card */
+  min-height: 200px; /* Minimum height but can grow */
+}
+
+.card-body {
+  flex: 1; /* Takes up as much space as possible */
 }
 
 .card-image {
