@@ -57,6 +57,14 @@ const MyPige = () => {
         navigate(`/piges`);
     }
 
+    const handleClickStartPige = () => {
+        const minimumUserPige = 3;
+        if(listUserPige.length >= minimumUserPige) {
+            alert('Pige doit être lancée...')
+        } else {
+            alert(`Impossible de lancer la pige : il doit y avoir au moins ${minimumUserPige} utilisateurs qui ont accepté leur invitation.`)
+        }
+    }
     const handleClickAddPeople = () => {
         sessionStorage.setItem('pigeToAddPeopleTo', JSON.stringify(selectedUserPige.pige));
         navigate('/addPeople');
@@ -110,7 +118,7 @@ const MyPige = () => {
                                     <h5 className="text-start"> Espace Admin pour l'organisateur de la
                                         pige {selectedUserPige.pige.pigeName} </h5>
                                     <div className="d-flex flex-column  justify-content-start align-items-start ">
-                                        <button type="submit" className="liste p-2 rounded"
+                                        <button type="submit" className="liste p-2 rounded" onClick={handleClickStartPige}
                                                 style={{backgroundColor: '#FFD801', color: 'white'}}>Lancer la pige!
                                         </button>
                                     </div>
