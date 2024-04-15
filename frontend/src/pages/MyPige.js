@@ -10,7 +10,7 @@ const MyPige = () => {
     var sectionStyle = {
         backgroundImage: `url(${ImageBGWish})`,
         width: '100%',
-        height: '100vh',
+        minHeight: '100vh',
         backgroundPosition: 'center',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat'
