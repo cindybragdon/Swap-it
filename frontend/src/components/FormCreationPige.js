@@ -1,9 +1,6 @@
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {createPige} from "../axi/AxiPost";
-import axios, {Axios} from "axios";
-import http from "../http/http";
-
+import axios from "axios";
 const FormCreationPige = () => {
 
     const [nomPige, setNomPige] = useState('');
@@ -11,6 +8,8 @@ const FormCreationPige = () => {
     const [pigeAmount, setPigeAmount] = useState('');
     const [pigeEndDate, setPigeEndDate] = useState('');
     const [pigeType, setPigeType] = useState('');
+
+    const [flag,setFlag] = useState(false);
 
     const formsUserWithPige = {
         user:{
@@ -26,58 +25,89 @@ const FormCreationPige = () => {
     }
     const navigate = useNavigate();
 
-    const onSubmit = () => {
 
-        let flag = false;
+
+    const createPige = async () => {
         try {
             const currentDate = new Date();
             const endDate = new Date(formsUserWithPige.pige.pigeEndDate);
 
-            if(endDate >= currentDate) {
-                axios.post(`/createUserPigeWithPige`, formsUserWithPige)
-                    .then(response => {
-                        if (response.statusText === "ACK-400") {
-                            flag = true;
-                            alert(`La pige ${nomPige} a été créée`);
-                        } else {
-                            alert("Erreur lors de la création de la pige");
-                        }
-                    })
-            } else {
-                alert("Erreur : Impossible de créer la pige car la date de fin est plus petite ou égale à aujourd'hui");
-                navigate('/piges');
-            }
+            if(endDate > currentDate) {
+                const response = await axios.post(`http://localhost:9281/api/createUserPigeWithPige`, formsUserWithPige);
+                if (response.data === "ACK-400") {
+                    alert(`La pige ${nomPige} a été créée!`);
+                    const urlGetPige = `http://localhost:9281/api/getLastlyCreatedPigeFromIdUser?idUser=${JSON.parse(sessionStorage.user).idUser}`;
+                    const responseGetLastCreatedPige = await axios.get(urlGetPige);
+                    if(responseGetLastCreatedPige.data !== null) {
+                        await sessionStorage.setItem('pigeToAddPeopleTo', JSON.stringify(responseGetLastCreatedPige.data));
+                        await setFlag(true);
+                        console.log(JSON.parse(sessionStorage.pigeToAddPeopleTo));
+                        alert(JSON.parse(sessionStorage.pigeToAddPeopleTo));
+                        alert(`Vous pouvez maintenant ajouter des utilisateurs à votre pige ${JSON.parse(sessionStorage.user).userFirstName}!`);
+                        navigate('/addPeople');
+                        return true;
+                    } else {
+                        alert("Erreur : Impossible de récupérer la pige");
+                        return false;
+                    }
 
 
 
-            if (flag) {
-                const urlGetPige = `http://localhost:9281/api/getLastlyCreatedPigeFromIdUser?idUser=${JSON.parse(sessionStorage.user).idUser}`;
-                axios.get(urlGetPige)
-                    .then(res => {
-                        if(res.data === null) {
-                            alert("Erreur : Impossible de récupérer la pige");
-                        } else {
-                            sessionStorage.setItem('pigeToAddPeopleTo', JSON.stringify(res.data));
-                        }
-                    })
-                    .catch(err => console.log(err));
-                if(JSON.parse(sessionStorage.pigeToAddPeopleTo) !== null) {
-                    alert(`Vous pouvez maintenant ajouter des utilisateurs à votre pige ${JSON.parse(sessionStorage.user).userFirstName}!`);
-                    navigate('/addPeople');
+
                 } else {
-                    alert("Erreur : impossible de récupérer les informations de la pige");
-                    navigate('/piges');
+                    alert("Erreur lors de la création de la pige");
+                    setFlag(false);
+                    return false;
                 }
 
+            } else {
+                alert("Erreur : Impossible de créer la pige car la date de fin est plus petite ou égale à aujourd'hui");
+                setFlag(false);
+                return false;
             }
-        } catch (error) {
-            console.error(error);
+        } catch (e) {
+            console.log(e);
         }
     }
 
+    const getPigeData = async () => {
+        try {
+            //await setFlag(false);
+
+        } catch (e) {
+            console.log(e);
+        }
+
+    }
+
+
+     const onSubmit = () => {
+        try {
+            const response =  createPige();
+            response.then(res => setFlag(res));
+            if(flag) {
+                const response2 =  getPigeData();
+                if (response2) {
+                    alert(1)
+
+                } else {
+                    alert(2)
+                }
+            } else {
+                navigate('/piges');
+                alert(3)
+            }
+
+        } catch (error) {
+            console.error(error);
+            alert(error);
+        }
+    }
+
+
     return (
-        <div className="card "id="container-pige-creation" >
-        <form className='container-pige ' method="post" onSubmit={onSubmit} >
+        <div className="card " id="container-pige-creation" >
+        <form className='container-pige' onSubmit={onSubmit} >
             <h3 className="title-createpige">Créer une pige, c'est créer du bonheur!</h3>
             <div className="mb-2">
                 <label className="form-label" style={{color: 'black'}}><h5>Nom de la pige</h5></label>
@@ -106,7 +136,7 @@ const FormCreationPige = () => {
                 </div>
                 <div className="form-check" style={{color: 'black'}}>
                     <input className="form-check-input" name="pigeType" type="radio" value={pigeType}
-                           onChange={e => setPigeType("THEMED")} id="condition2"/>
+                           onChange={e => setPigeType("THEMED")} id="condition2" required/>
                     <label className="form-check-label">Liste de cadeaux pour événements (liste pour babyshower,
                         mariage...)</label>
                 </div>

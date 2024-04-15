@@ -32,7 +32,7 @@ const MyPige = () => {
             .then(response => response.json())
             .then(data => setListIUserPige(data))
             .catch(error => console.error(error))
-        console.log(selectedUserPige.idPige)
+
 
 
     }, [selectedUserPige.idPige]);
@@ -137,8 +137,8 @@ const MyPige = () => {
 
 
                         <div className="border border-2  mt-3 ">
-                            {listUserPige.map(userPige =>
-                                <div className="card m-1">
+                            {listUserPige.map((userPige, index) =>
+                                <div className="card m-1" key={index}>
                                     <div className="container row border border-2 p-2 ">
                                         <img src={selectedUserPige.userPigeImage} alt="User Pige Image"/>
                                         <h6 className="card-title">Nom
