@@ -13,6 +13,7 @@ const MyWishList = () => {
         backgroundPosition: 'center',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
+        fontFamily: "Reddit Mono",
         padding: 0,
         margin: 0
     };
@@ -54,11 +55,11 @@ const MyWishList = () => {
                         <h5><a className="link-opacity-75" onClick={handleClickBackToPige}>Retour à la pige</a></h5>
                     </h2>
                 </div>
-                <div className="row row-cols-1 row-cols-md-4 g-5"> {/* Augmentation de l'espacement avec g-5 */}
+                <div className="row row-cols-1 row-cols-md-4 g-5">
                     {listWishedItems.map((wishedItem, index) => (
                         <div className="col mb-4"
-                             key={index}> {/* mb-4 ajoute un margin-bottom pour séparer verticalement */}
-                            <div className="card card-custom shadow-sm"> {/* shadow-sm pour un effet subtil d'ombre */}
+                             key={index}>
+                            <div className="card card-custom shadow-sm">
                                 <div
                                     className="title-card-piges card-header bg-danger">{wishedItem.wishedItemName}</div>
                                 {wishedItem.wishedItemImage ?

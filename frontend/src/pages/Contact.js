@@ -14,7 +14,7 @@ const Contact = () => {
 
     return (
 
-        <div  id="container-contact-main"style={sectionStyle} >
+        <div  id="container-contact-main" style={sectionStyle} >
 
             <div  id="container-contact-page">
                 <ContactForm/>
