@@ -39,7 +39,7 @@ const FormCreationPige = () => {
                     const urlGetPige = `http://localhost:9281/api/getLastlyCreatedPigeFromIdUser?idUser=${JSON.parse(sessionStorage.user).idUser}`;
                     const responseGetLastCreatedPige = await axios.get(urlGetPige);
                     if(responseGetLastCreatedPige.data !== null) {
-                        await sessionStorage.setItem('pigeToAddPeopleTo', JSON.stringify(responseGetLastCreatedPige.data));
+                        sessionStorage.setItem('pigeToAddPeopleTo', JSON.stringify(responseGetLastCreatedPige.data));
                         await setFlag(true);
                         console.log(JSON.parse(sessionStorage.pigeToAddPeopleTo));
                         alert(JSON.parse(sessionStorage.pigeToAddPeopleTo));
