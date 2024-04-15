@@ -38,6 +38,7 @@ const AddWish = () => {
     const OnSubmit = () => {
 
         const url = `http://localhost:9281/api/createWishedItem?idUser=${JSON.parse(sessionStorage.user).idUser}`;
+        console.log(selectedUserPige);
         axios.post(url, formsWishedItem)
             .then(res => {if(res.data === "ACK-900") {
                 alert(`L'objet ${wishedItemName} a bien été ajouté!`) ;
