@@ -4,6 +4,8 @@ import ImageAdItem from "../images/Listes.jpg";
 import ImageWishedItemBlank from "../images/noWishedItemImage.jpg";
 import { useLocation, useNavigate } from "react-router-dom";
 import BackToTopButton from "../components/BackToTopButton";
+import axios from "axios";
+import WishedItem from "../components/WishedItem";
 
 const MyWishList = () => {
     var fullBackgroundStyle = {
@@ -45,6 +47,9 @@ const MyWishList = () => {
         navigate(`/piges/${userPige.pige.pigeName}`, {state: userPige});
     };
 
+
+
+
     return (
         <div style={fullBackgroundStyle}>
             <div className='container-fluid text-center'>
@@ -66,48 +71,7 @@ const MyWishList = () => {
                     {listWishedItems.map((wishedItem, index) => (
 
                         userPige.user.idUser !== JSON.parse(sessionStorage.user).idUser ?
-                            <div className="col" key={index}>
-                                <div className="card card-custom mb-3">
-                                    <div
-                                        className="title-card-piges card-header bg-danger">{wishedItem.wishedItemName}</div>
-                                    {wishedItem.wishedItemImage ?
-                                        <img src={wishedItem.wishedItemImage} className="card-image img-fluid p-2"/> :
-                                        <img src={ImageWishedItemBlank} className="card-image img-fluid p-2"/>}
-                                    <div className="card-body">
-                                        <p className="card-text">{wishedItem.wishedItemDescription}</p>
-                                        {wishedItem.wishedItemUrl ?
-                                            <a href={wishedItem.wishedItemUrl} className="stretched-link new-tab"
-                                               target='_blank'>Voir cet item en ligne</a> : ''}
-
-                                    </div>
-                                    {userPige.user.idUser !== JSON.parse(sessionStorage.user).idUser ?
-                                        <div className="card-body">
-                                            <p className="card-text">Ajouté par
-                                                : {wishedItem.userWhoAddedTheItem.userFirstName}</p>
-
-                                        </div> : ''}
-                                </div>
-                            </div> : wishedItem.userWhoAddedTheItem.idUser === JSON.parse(sessionStorage.user).idUser ?
-                                <div className="card card-custom mb-3">
-                                    <div
-                                        className="title-card-piges card-header bg-danger">{wishedItem.wishedItemName}</div>
-                                    {wishedItem.wishedItemImage ?
-                                        <img src={wishedItem.wishedItemImage} className="card-image img-fluid p-2"/> :
-                                        <img src={ImageWishedItemBlank} className="card-image img-fluid p-2"/>}
-                                    <div className="card-body">
-                                        <p className="card-text">{wishedItem.wishedItemDescription}</p>
-                                        {wishedItem.wishedItemUrl ?
-                                            <a href={wishedItem.wishedItemUrl} className="stretched-link new-tab"
-                                               target='_blank'>Voir cet item en ligne</a> : ''}
-
-                                    </div>
-                                    {userPige.user.idUser !== JSON.parse(sessionStorage.user).idUser ?
-                                        <div className="card-body">
-                                            <p className="card-text">Ajouté par
-                                                : {wishedItem.userWhoAddedTheItem.userFirstName}</p>
-
-                                        </div> : ''}
-                                </div> : ''
+                            <WishedItem index={index} userPige={userPige} wishedItem={wishedItem} /> : <p></p>
                     ))}
                 </div>
                 <BackToTopButton/>
