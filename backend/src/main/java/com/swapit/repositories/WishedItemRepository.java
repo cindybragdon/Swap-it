@@ -13,6 +13,5 @@ public interface WishedItemRepository extends JpaRepository<WishedItem, Integer>
 
     public WishedItem findByIdWishedItem(Integer idWishedItem);
 
-    public void deleteByIdWishedItem(int idWishedItem);
 
 }
