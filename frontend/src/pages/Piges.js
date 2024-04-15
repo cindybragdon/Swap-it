@@ -43,13 +43,11 @@ function Piges() {
 
     const handleClickCreatePige = () => {
         navigate('/piges/creation-piges');
-        console.log('Button clicked');
     }
 
     const handlePigeClick = (userPige) => {
 
         navigate(`/piges/${userPige.pige.pigeName}`, {state: userPige});
-        console.log(userPige);
     }
 
     return (
@@ -81,8 +79,8 @@ function Piges() {
                     </div>
                 </div>
 
-                {listUserPige.map(UserPige => (
-                    <div className="col pb-3 " onClick={() => handlePigeClick(UserPige)}>
+                {listUserPige.map((UserPige, index) => (
+                    <div className="col pb-3 " key={index} onClick={() => handlePigeClick(UserPige)}>
                         <div className="card" style={{height: '30vh'}}>
                             <div className="title-card-piges card-header bg-danger">{UserPige.pige.pigeName}</div>
                             <div className="card-body">
