@@ -318,8 +318,22 @@ body {
 
 }
 
+.form-check-input:enabled {
+  border-color: #e3b5b5;
+  background-color: #e3b5b5;
 
+}
 
+.form-check-input:checked {
+
+  border-color: #ff0000;
+  background-color: #ff0000;
+}
+
+#piges-box {
+
+  padding: 5px;
+}
 
 
 /*CSS pour le Caroussel*/
@@ -413,4 +427,5 @@ body {
 /*  stroke: black;*/
 /*  stroke-width: 2;*/
 /*}*/
+
 

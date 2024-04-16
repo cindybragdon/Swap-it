@@ -13,7 +13,7 @@ function Piges() {
         backgroundImage: `url(${BGPiges})`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
-        height: '100vh',
+        minHeight: '100vh',
         border: 'white solid 3px',
         minWidth: '100vw'
 
@@ -82,7 +82,7 @@ function Piges() {
                 {listUserPige.map((UserPige, index) => (
                     <div className="col pb-3 " key={index} onClick={() => handlePigeClick(UserPige)}>
                         <div className="card" style={{height: '30vh'}}>
-                            <div className="title-card-piges card-header bg-danger">{UserPige.pige.pigeName}</div>
+                            <div id="piges-box"className="title-card-piges card-header bg-danger">{UserPige.pige.pigeName}</div>
                             <div className="card-body">
                                 <p className="card-text"> Pige organisée par : {UserPige.pige.userAdmin.userFirstName} {UserPige.pige.userAdmin.userLastName}</p>
                                 <p className="card-text">Cette pige se terminera le {UserPige.pige.pigeEndDate}</p>

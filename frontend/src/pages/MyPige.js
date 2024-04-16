@@ -13,8 +13,8 @@ const MyPige = () => {
         minHeight: '100vh',
         backgroundPosition: 'center',
         backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat'
-
+        backgroundRepeat: 'no-repeat',
+        border: 'white solid 3px',
     }
 
 

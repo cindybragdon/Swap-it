@@ -68,7 +68,7 @@ const MyWishList = () => {
                         <div className="col mb-4"
                              key={index}> {/* mb-4 ajoute un margin-bottom pour séparer verticalement */}
                             <div className="card card-custom shadow-sm"> {/* shadow-sm pour un effet subtil d'ombre */}
-                                <div
+                                <div id="piges-box"
                                     className="title-card-piges card-header bg-danger">{wishedItem.wishedItemName}</div>
                                 {wishedItem.wishedItemImage ?
                                     <img src={wishedItem.wishedItemImage} className="card-image img-fluid p-2"/> :
