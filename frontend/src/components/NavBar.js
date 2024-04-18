@@ -1,11 +1,19 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Navigate, Outlet} from "react-router-dom";
+import axios from "axios";
 
 
 
 const NavBar = () => {
 
+    const [countInv, setCountInv] = useState(0);
 
+    useEffect(() => {
+        const url =`http://localhost:9281/api/getCountInvByEmailWantedUserAndAsBeenAnswered?emailWantedUser=${JSON.parse(sessionStorage.user).userEmail}&asBeenAnswered=false`;
+        axios.get(url)
+            .then(res => setCountInv(res.data))
+            .catch(err => console.log(err));
+    }, []);
 
   return (
       <nav className="navbar navbar-expand-sm navbar-dark p-2 fixed-top mb-0">
@@ -21,7 +29,7 @@ const NavBar = () => {
                       <li className="nav-item"><a className="nav-link" href="/faq">FAQ</a></li>
                       <li className="nav-item"><a className="nav-link" href="/features">Fonctionnalites</a></li>
                       <li className="nav-item"><a className="nav-link" href="/piges">Mes piges</a></li>
-                      <li className="nav-item"><a className="nav-link" href="/inv">Invitations</a></li>
+                      <li className="nav-item"><a className="nav-link" href="/inv">Invitations {countInv >= 0 ? <span className="invNotif">{countInv}</span> : ''}</a></li>
                       <li className="nav-item"><a className="nav-link" href="/myaccount">Mon
                           compte {sessionStorage.getItem('user') ? <span
                                   className="navbar-span"> ( {JSON.parse(sessionStorage.user).userFirstName} {JSON.parse(sessionStorage.user).userLastName} )</span> :

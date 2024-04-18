@@ -69,6 +69,16 @@ public class InvitationServerController {
         }
     }
 
+    @GetMapping("/getCountInvByEmailWantedUserAndAsBeenAnswered")
+    public int getCountInvByEmailWantedUserAndAsBeenAnswered(@RequestParam String emailWantedUser, boolean asBeenAnswered) throws Exception {
+        try {
+            return invitationsRepository.countInvitationsByEmailWantedUser_AndAsBeenAnswered(emailWantedUser, asBeenAnswered);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return 0;
+        }
+    }
+
     @PutMapping("/updateInv")
     public String updateInv(@RequestBody UserPige userPigeToCreate, @RequestParam int idInvToUpdate, @RequestParam boolean isAccepted) throws Exception{
         String messageInvitation = "ACK-401";

@@ -15,4 +15,6 @@ public interface InvitationsRepository extends JpaRepository<Invitations, Intege
     public List<Invitations> findAllByEmailWantedUser(String emailWantedUser);
 
     public List<Invitations> findAllByPige_IdPige(int idPige);
+
+    public int countInvitationsByEmailWantedUser_AndAsBeenAnswered(String emailWantedUser, boolean asBeenAnswered);
 }
