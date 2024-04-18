@@ -206,11 +206,18 @@ const MyPige = () => {
                             {listUserPige.map((userPige, index) =>
                                 <div className="card " key={index}>
 
-                                <div className="container row border border-2 p-2 ">
-                                        <img src={selectedUserPige.userPigeImage} alt="User Pige Image"/>
+                                <div className="container col border border-2 p-2 ">
+                                    {userPige.userPigeImage ?
+                                    <div className="row justify-content-center">
+
+                                        <img className="imgUserPige" src={userPige.userPigeImage}  alt="User Pige "/>
+                                    </div>
+                                        : null}
+                                    <div className="row">
                                         <h6 className="card-title">Nom
-                                            : {userPige.user.userFirstName} {userPige.user.userLastName} Pseudo
-                                            : {userPige.userPigePseudo}</h6>
+                                            : {userPige.user.userFirstName} {userPige.user.userLastName} </h6>
+                                            {userPige.userPigePseudo ?
+                                            <h6>Pseudo : {userPige.userPigePseudo}</h6> : null}
                                         <button className="liste p-2 rounded " style={{
                                             backgroundColor: '#67A600',
                                             color: 'white',
@@ -219,6 +226,7 @@ const MyPige = () => {
                                             display: 'block'
                                         }} onClick={() => handleClickWishList(userPige)}> Liste de souhaits
                                             de {userPige.user.userFirstName}</button>
+                                    </div>
                                     </div>
                                 </div>
                             )}
