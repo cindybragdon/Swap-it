@@ -99,7 +99,7 @@ const MyPige = () => {
         <div className='container-fluid row justify-content-center text-center oui min-vh-100 '
              style={sectionStyle}>
             <div className="col-sm-8">
-                <div className="card p-2 mt-5">
+                <div className="card p-2 ">
                     <div className="card-header" style={{backgroundColor: '#1C67A1'}}>
                         <h3>Coucou! Voici les détails de la pige : </h3>
                         <h1>{selectedUserPige.pige.pigeName}</h1>

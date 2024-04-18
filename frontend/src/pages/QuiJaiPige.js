@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ImageSurprise from "../images/surprise.jpg"
+import {useLocation} from "react-router-dom";
 
 const QuiJaiPige = () => {
 
@@ -8,6 +9,9 @@ const QuiJaiPige = () => {
         position: 'relative',
         minHeight: '100vh',
     }
+
+    const location = useLocation();
+    const selectedUserPige = location.state;
 
     const [openItemId, setOpenItemId] = useState(null);
 
@@ -62,8 +66,7 @@ const QuiJaiPige = () => {
                              data-parent="#accordion"
                              style={{ backgroundColor: "#42f5ef"}}>
                             <div className="card-body">
-                                //{personnePigee}
-                                Snoop Dogg
+                                QUI JAI PIGE ICI
                             </div>
                         </div>
                     </div>
