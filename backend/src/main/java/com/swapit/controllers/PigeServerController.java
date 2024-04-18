@@ -102,14 +102,16 @@ public class PigeServerController {
         }
     }
 
-    /*
-    @DeleteMapping("/deletePige")
+
+    @PutMapping("/deletePige")
     public String deletePige(@RequestParam int idPige) throws Exception {
         String messageDeletePige = "ACK-321";
         try {
             boolean pigeExists = pigeRepository.existsById(idPige);
             if (pigeExists) {
-                pigeRepository.deleteByIdPige(idPige);
+                Pige pigeToUpdate = pigeRepository.findPigeByIdPige(idPige);
+                pigeToUpdate.setActive(false);
+                pigeRepository.save(pigeToUpdate);
                 messageDeletePige = "ACK-320";
             } else {
                 messageDeletePige = "ACK-322";
@@ -121,7 +123,7 @@ public class PigeServerController {
 
     }
 
-     */
+
 
 
 }

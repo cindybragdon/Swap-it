@@ -56,6 +56,7 @@ const Invitations = () => {
             {tabInvitations !== null ?
                 tabInvitations.map((inv) => (
                     !inv.asBeenAnswered ?
+                        inv.pige.pigeState === "CREATED" ?
                         <div className="container-sm text-center  p-5 m-2"
                              style={{
                                  backgroundColor: "#7F0A7F",
@@ -71,7 +72,7 @@ const Invitations = () => {
                             <p>Par : {inv.pige.userAdmin.userFirstName} {inv.pige.userAdmin.userLastName}</p>
                             <button className="m-1" onClick={() => onClickInv(inv, true)}>Accepter l'invitation</button>
                             <button onClick={() => onClickInv(inv, false)}>Refuser L'invitation</button>
-                        </div> : null
+                        </div> : null : null
                 )) : <p>Pas d'invitations</p>
             }
         </div>

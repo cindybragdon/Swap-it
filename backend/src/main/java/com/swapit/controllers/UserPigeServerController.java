@@ -66,6 +66,7 @@ public class UserPigeServerController {
                 userPigeToCreate.getPige().setUserAdmin(userPigeToCreate.getUser());
                 userPigeToCreate.getPige().setPigeState("CREATED");
                 userPigeToCreate.getPige().setPigeTimestampCreation(Timestamp.valueOf(currentDateTime));
+                userPigeToCreate.getPige().setActive(true);
                 userPigeToCreate.getPige().setNumberPigeOfUser(pigeRepository.countPigesByUserAdmin_IdUser(userPigeToCreate.getUser().getIdUser())+1);
                 pigeRepository.save(userPigeToCreate.getPige());
                 userPigeRepository.save(userPigeToCreate);

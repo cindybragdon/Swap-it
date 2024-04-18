@@ -1,10 +1,8 @@
 package com.swapit.controllers;
 
-import com.swapit.model.Couple;
-import com.swapit.model.Invitations;
-import com.swapit.model.UserPige;
-import com.swapit.model.UserPigeWithUserPicked;
+import com.swapit.model.*;
 import com.swapit.repositories.CoupleRepository;
+import com.swapit.repositories.PigeRepository;
 import com.swapit.repositories.UserPigeRepository;
 import com.swapit.repositories.UserPigeWithUserPickedRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +24,8 @@ public class UserPigeWithUserPickedServerController {
 
     @Autowired
     private CoupleRepository coupleRepository;
+    @Autowired
+    private PigeRepository pigeRepository;
 
     // (Verified and tested)
     @PostMapping("/createUserPigeWithUserPicked")
@@ -60,6 +60,7 @@ public class UserPigeWithUserPickedServerController {
     @PostMapping("/createAllUserPigeWithUserPickedForPige")
     public String createAllUserPigeWithUserPickedForPige(@RequestParam int idPige) throws Exception{
         String messageCreate = "ACK-101";
+        Pige pigeToUpdate = pigeRepository.findPigeByIdPige(idPige);
         ArrayList<UserPige> listUserPige = new ArrayList<>(userPigeRepository.findAllByPige_IdPige(idPige));
         ArrayList<UserPigeWithUserPicked> listUserPigePicked = new ArrayList<>();
         ArrayList<Integer> listOfIdsAlreadyPicked = new ArrayList<>();
@@ -70,7 +71,7 @@ public class UserPigeWithUserPickedServerController {
         int numberOfTriesOfUserPigePicked = 0;
 
         try {
-            if (!listUserPige.isEmpty() && listUserPige.size() > 1) {
+            if (!listUserPige.isEmpty() && listUserPige.size() > 3) {
                 while (comptor < listUserPige.size()) {
                     System.out.println(comptor);
                     int randomUserInt = (int) (Math.random() * range) + min;
@@ -80,12 +81,26 @@ public class UserPigeWithUserPickedServerController {
                         if (!listOfIdsAlreadyPicked.contains(randomUserInt)) {
                             UserPige userWhoPickedTheOther = listUserPige.get(comptor);
                             UserPige userPigePicked = listUserPige.get(randomUserInt);
-                            Couple coupleOfUserPigeByFirst = coupleRepository.findCoupleByFirstConjoint(userWhoPickedTheOther);
+                            if(pigeToUpdate.isCouplesFiltered()) {
 
-                            if (    (coupleOfUserPigeByFirst == null) ||
-                                    (coupleOfUserPigeByFirst.getSecondConjoint() != userPigePicked)
+                                Couple coupleOfUserPigeByFirst = coupleRepository.findCoupleByFirstConjoint(userWhoPickedTheOther);
+
+                                if ((coupleOfUserPigeByFirst == null) ||
+                                        (coupleOfUserPigeByFirst.getSecondConjoint() != userPigePicked)
                                 ) {
 
+                                    UserPigeWithUserPicked userPigeWithUserPickedToSave = new UserPigeWithUserPicked();
+                                    userPigeWithUserPickedToSave.setUserPigeWhoPickedTheOtherUserPige(userWhoPickedTheOther);
+                                    userPigeWithUserPickedToSave.setUserPigeWhoIsPickedByTheUserPige(userPigePicked);
+                                    listUserPigePicked.add(userPigeWithUserPickedToSave);
+                                    numberOfTriesOfUserPigePicked = 0;
+                                    comptor += 1;
+                                    listOfIdsAlreadyPicked.add(randomUserInt);
+                                } else {
+                                    numberOfTriesOfUserPigePicked += 1;
+
+                                }
+                            } else {
                                 UserPigeWithUserPicked userPigeWithUserPickedToSave = new UserPigeWithUserPicked();
                                 userPigeWithUserPickedToSave.setUserPigeWhoPickedTheOtherUserPige(userWhoPickedTheOther);
                                 userPigeWithUserPickedToSave.setUserPigeWhoIsPickedByTheUserPige(userPigePicked);
@@ -93,9 +108,6 @@ public class UserPigeWithUserPickedServerController {
                                 numberOfTriesOfUserPigePicked = 0;
                                 comptor += 1;
                                 listOfIdsAlreadyPicked.add(randomUserInt);
-                            } else {
-                                numberOfTriesOfUserPigePicked += 1;
-
                             }
 
 
@@ -114,9 +126,13 @@ public class UserPigeWithUserPickedServerController {
                 for (UserPigeWithUserPicked userPigeWithUserPicked : listUserPigePicked) {
                     System.out.println("UserPige1 : "+ userPigeWithUserPicked.getUserPigeWhoPickedTheOtherUserPige().getIdUserPige() + " UserPige 2 : " + userPigeWithUserPicked.getUserPigeWhoIsPickedByTheUserPige().getIdUserPige());
                     userPigeWithUserPickedRepository.save(userPigeWithUserPicked);
-                    messageCreate = "ACK-100";
                 }
+
             }
+
+
+            pigeToUpdate.setPigeState("STARTED");
+            messageCreate = "ACK-100";
 
             return messageCreate;
         } catch (Exception e) {

@@ -14,6 +14,7 @@ public interface UserPigeRepository extends JpaRepository<UserPige, Integer> {
 
     public List<UserPige> findAllByPige_IdPige(int idPige);
 
+
     //Trouver les infos d'un User avec une pige spécifique (avec son pseudo et tout)
     public UserPige findByUser_IdUserAndPige_IdPige(int idUser, int idPige);
 

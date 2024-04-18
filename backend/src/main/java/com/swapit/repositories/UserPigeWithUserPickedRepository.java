@@ -8,6 +8,6 @@ public interface UserPigeWithUserPickedRepository extends JpaRepository<UserPige
 
     public UserPigeWithUserPicked findByIdUserPigeWithUserPigePicked(int idUserPigeWithUserPigePicked);
     public boolean existsByUserPigeWhoPickedTheOtherUserPige(UserPige userPigeWhoPickedTheOther);
-
     public boolean existsByUserPigeWhoIsPickedByTheUserPige(UserPige userPigeWhoIsPickedByTheOther);
+
 }

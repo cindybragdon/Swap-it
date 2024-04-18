@@ -30,6 +30,8 @@ public class Pige implements Serializable {
     private byte[] qrCodeImage;
     private String pigeState;
     private int numberPigeOfUser;
+    private boolean isCouplesFiltered;
+    private boolean isActive;
 
     @ManyToOne
     private User userAdmin;
