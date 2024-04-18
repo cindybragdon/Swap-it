@@ -44,8 +44,8 @@ const CreateAccount = () => {
     const {register, handleSubmit, formState: {errors}, reset} = useForm();
 
 
-    const [nom, setNom] = useState('');
     const [prenom, setPrenom] = useState('');
+    const [nomFamille, setNomFamille] = useState('');
     const [telephone, setTelephone] = useState('');
     const [courriel, setCourriel] = useState('');
     const [motPasse, setMotPasse] = useState('');
@@ -57,7 +57,7 @@ const CreateAccount = () => {
         userPassword: motPasse,
         user: {
             userFirstName: prenom,
-            userLastName: nom,
+            userLastName: nomFamille,
             userEmail: courriel,
             userPhone: telephone
         }
@@ -87,21 +87,26 @@ const CreateAccount = () => {
                         Vos information ici
                     </p>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <div className="text-start">
-                            <label>Nom</label>
-                        </div>
-                        <div>
-                            <input type="text" name="nom" id="typeNom" className="form-control my-3" placeholder={"Votre nom"} onChange={event => setNom(event.target.value)} required />
-                            {errors.nom && errors.nom.message}
-                        </div>
 
 
                         <div className="text-start">
                             <label>Prenom</label>
                         </div>
                         <div>
-                            <input type="text" name="prenom" id="typePrenom" className="form-control my-3" placeholder={"Votre prenom"} onChange={event => setPrenom(event.target.value)} required/>
+                            <input type="text" name="prenom" id="typePrenom" className="form-control my-3"
+                                   placeholder={"Votre prenom"} onChange={event => setPrenom(event.target.value)}
+                                   required/>
                             {errors.prenom && errors.prenom.message}
+                        </div>
+
+                        <div className="text-start">
+                            <label>Nom de famille</label>
+                        </div>
+                        <div>
+                            <input type="text" name="nomFamille" id="typeNom" className="form-control my-3"
+                                   placeholder={"Votre nom de famille"}
+                                   onChange={event => setNomFamille(event.target.value)} required/>
+                            {errors.nom && errors.nom.message}
                         </div>
 
 
@@ -109,7 +114,9 @@ const CreateAccount = () => {
                             <label>Telephone</label>
                         </div>
                         <div>
-                            <input pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" type="tel" name="telephone" id="typeTelephone" className="form-control my-3" placeholder={"Votre telephone"} onChange={event => setTelephone(event.target.value)}/>
+                            <input pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" type="tel" name="telephone" id="typeTelephone"
+                                   className="form-control my-3" placeholder={"Votre telephone"}
+                                   onChange={event => setTelephone(event.target.value)}/>
                             {errors.telephone && errors.telephone.message}
                             {errors.telephone && errors.telephone.type && errors.telephone.type === "pattern"}
                         </div>
@@ -119,17 +126,23 @@ const CreateAccount = () => {
                             <label>Courriel</label>
                         </div>
                         <div>
-                            <input pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" type="email" name="courriel" id="typeEmail" className="form-control my-3" placeholder={"Votre courriel"} onChange={event => setCourriel(event.target.value)}/>
+                            <input pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" type="email" name="courriel"
+                                   id="typeEmail" className="form-control my-3" placeholder={"Votre courriel"}
+                                   onChange={event => setCourriel(event.target.value)}/>
                             {errors.courriel && errors.courriel.message}
                             {errors.courriel && errors.courriel.type && errors.courriel.type === "pattern"}
 
                         </div>
                         <div className="text-start">
-                            <label>Mot de Passe : <span id="toto">Doit contenir une minuscule, </span> <span id="tata">une majuscule </span> <span id="titi">et 8 caractères</span></label>
+                            <label>Mot de Passe : <span id="toto">Doit contenir une minuscule, </span> <span id="tata">une majuscule </span>
+                                <span id="titi">et 8 caractères</span></label>
                         </div>
                         <div>
                             <p className="password-container-create-account">
-                                <input pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password" name="motPasse" id="typeMotPasse" className="form-control my-3 create-account" placeholder={"Votre mot de passe"} onChange={event => setMotPasse(event.target.value)}/>
+                                <input pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password" name="motPasse"
+                                       id="typeMotPasse" className="form-control my-3 create-account"
+                                       placeholder={"Votre mot de passe"}
+                                       onChange={event => setMotPasse(event.target.value)}/>
                                 <i className="bi bi-eye-slash toggle-password" id="togglePassword"
                                    onClick={TogglePasswordVisibility}></i>
                             </p>

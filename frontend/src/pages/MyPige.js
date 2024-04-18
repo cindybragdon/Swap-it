@@ -3,7 +3,6 @@ import {useLocation, useNavigate} from "react-router-dom";
 import ImageBGWish from "../images/BGPiges2.jpg";
 import BackToTopButton from "../components/BackToTopButton";
 import axios from "axios";
-import ModalPseudo from "../components/ModalPseudo";
 
 
 const MyPige = () => {
@@ -55,7 +54,9 @@ const MyPige = () => {
     const handleClickWishList = (userPige) => {
         navigate(`/piges/${selectedUserPige.pige.pigeName}/myWishList`, {state: userPige});
     }
-    const handleButton2Click = () => {
+    const handleClickDeletePige =  () => {
+        const url = `http://localhost:9281/api/deletePige?idPige=${selectedUserPige.pige.idPige}`;
+        axios.put(url);
         navigate(`/piges`);
     }
 
@@ -78,11 +79,13 @@ const MyPige = () => {
         navigate('/addPeople');
     }
 
-    const handleButtonMyWishlist = () => {
+    const handleButton2Click = () => {
         navigate(`/piges/${selectedUserPige.pige.pigeName}/myWishList`, {state: selectedUserPige});
     }
 
-
+    const handleButtonMyWishlist = () => {
+        navigate(`/piges/${selectedUserPige.pige.pigeName}/myWishList`, {state: selectedUserPige});
+    }
 
 
 
@@ -125,11 +128,13 @@ const MyPige = () => {
                                 <div className=" border border-2 p-3 " id="espaceAdmin">
                                     <h5 className="text-start"> Espace Admin pour l'organisateur de la
                                         pige {selectedUserPige.pige.pigeName} </h5>
-                                    <div className="d-flex flex-column  justify-content-start align-items-start ">
-                                        <button type="submit" className="liste p-2 rounded" onClick={handleClickStartPige}
-                                                style={{backgroundColor: '#FFD801', color: 'white'}}>Lancer la pige!
-                                        </button>
-                                    </div>
+                                    {selectedUserPige.pige.pigeState === "CREATED" ?
+                                        <div className="d-flex flex-column  justify-content-start align-items-start ">
+                                            <button type="submit" className="liste p-2 rounded" onClick={handleClickStartPige}
+                                                    style={{backgroundColor: '#FFD801', color: 'white'}}>Lancer la pige!
+                                            </button>
+                                        </div> : null
+                                    }
                                     <div className="d-flex flex-column  justify-content-start align-items-start ">
                                         <div className="mt-2 ">
                                             <button className="liste p-2 rounded"
@@ -142,12 +147,13 @@ const MyPige = () => {
                                                 style={{backgroundColor: '#FFD801', color: 'white'}}>Envoyer des
                                             invitations
                                         </button>
-                                        {/*Changer le href pour une alert Voulez-vous cancel oui ou non*/}
-                                        <a href='/pige/:pigeName/UpdatePige'>
-                                            <button type="submit" className="liste p-2 rounded mt-2"
-                                                    style={{backgroundColor: '#EB0134', color: 'white'}}>Annuler la pige
-                                            </button>
-                                        </a>
+
+
+                                        <button type="submit" className="liste p-2 rounded mt-2"
+                                                style={{backgroundColor: '#EB0134', color: 'white'}}
+                                                onClick={() => handleClickDeletePige()}>Annuler la pige
+                                        </button>
+
 
 
                                     </div>
