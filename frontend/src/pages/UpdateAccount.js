@@ -13,6 +13,7 @@ const UpdateAccount = () => {
         backgroundImage: `url(${ImagePencil})`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
+        fontFamily: "Reddit Mono",
         minHeight: '100vh'
     }
 

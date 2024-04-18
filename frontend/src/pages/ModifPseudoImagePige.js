@@ -42,12 +42,12 @@ const ModifPseudoImagePige = () => {
     }
     return (
 
-    <div className="row justify-content-center" style={sectionStyle}>
-        <div className="card text-center card w-50 mt-5 " id="container-update">
-            <div className="card-header h5 text-white bg-info">Modifier votre compte Swap-it!</div>
-            <div className="card-body px-5">
+    <div className="row justify-content-left" style={sectionStyle}>
+        <div className="card text-center card w-25 m-5  " style={{ height: '440px', overflow: 'auto',  fontFamily: "Reddit Mono"}}>
+            <div className="card-header h5 text-white " style={{backgroundColor: "#05521A"}}>Modifiez vos infos pour la pige {selectedUserPige.pige.pigeName}!</div>
+            <div className="card-body px-2">
 
-                <p className="card-text py-2">
+                <p className="card-text ">
                     Modifiez vos infos
                 </p>
 
@@ -77,7 +77,7 @@ const ModifPseudoImagePige = () => {
                     <br/>
                     <div className="form-group row">
                         <div className="col-sm-20 text-center">
-                            <button type="submit" className="btn btn-info w-30">Modifier vos informations!</button>
+                            <button type="submit" style={{backgroundColor:"#549517"}} className="btn  w-30">Modifiez vos informations!</button>
                         </div>
                     </div>
 

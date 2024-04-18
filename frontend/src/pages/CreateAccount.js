@@ -3,7 +3,7 @@ import {useForm} from "react-hook-form";
 import '../CreateAccount.css';
 import TogglePasswordVisibility from "../components/TogglePassVisibility";
 import {Link, useNavigate} from "react-router-dom";
-import ImageBG from "../images/BGCadeaux.jpg";
+import ImageBG from "../images/createAccountBG.jpg";
 import { createAcc } from "../axi/AxiPost";
 import { connectAcc } from "../axi/AxiFunc"
 
@@ -84,7 +84,7 @@ const CreateAccount = () => {
                 <div className="card-header h5 text-white bg-info">Créer un compte Swap-it!</div>
                 <div className="card-body px-5">
                     <p className="card-text ">
-                        Vos information ici
+                        Vos informations ici
                     </p>
                     <form onSubmit={handleSubmit(onSubmit)}>
 

@@ -15,6 +15,7 @@ const CreationPiges = () => {
         backgroundSize: 'cover',
         position: 'relative',
         minHeight: '85vh',
+        fontFamily: "Reddit Mono",
         border: 'white solid 3px'
     }
 

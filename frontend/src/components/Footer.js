@@ -4,7 +4,7 @@ import React from 'react';
 const Footer = () => {
     return (
 
-        <footer className="footer">
+        <footer className="footer" style={{fontFamily: "Reddit Mono"}}>
 
             <section className="py-2 py-xl-3 border-top border-light">
                 <div className="container overflow-hidden">

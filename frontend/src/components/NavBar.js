@@ -19,7 +19,7 @@ const NavBar = () => {
     }, []);
 
   return (
-      <nav className="navbar navbar-expand-sm navbar-dark p-2 fixed-top mb-0">
+      <nav className="navbar navbar-expand-sm navbar-dark p-2 fixed-top mb-0" style={{ fontFamily: "Reddit Mono"}}>
           <div className="container">
               <button className="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#n_bar" aria-controls="navbarNavAltMarkup" aria-label="Toggle navigation">
                   <span className="navbar-toggler-icon"></span>

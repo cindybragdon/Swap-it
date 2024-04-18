@@ -10,6 +10,7 @@ const FAQ = () => {
         backgroundPosition: 'center',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
+        fontFamily: "Reddit Mono",
         border: 'white solid 3px',
         minHeight: '85vh'
     }

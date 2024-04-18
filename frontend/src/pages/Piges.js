@@ -14,6 +14,7 @@ function Piges() {
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         minHeight: '100vh',
+        fontFamily: "Reddit Mono",
         border: 'white solid 3px',
         minWidth: '100vw'
 
@@ -86,7 +87,8 @@ function Piges() {
                             <div id="piges-box" className="title-card-piges card-header bg-danger">{UserPige.pige.pigeName}</div>
                             <div className="card-body">
                                 <p className="card-text"> Pige organisée par : {UserPige.pige.userAdmin.userFirstName} {UserPige.pige.userAdmin.userLastName}</p>
-                                <p className="card-text">Cette pige se terminera le {UserPige.pige.pigeEndDate}</p>
+                                <p className="card-text">Cette pige se terminera le :</p>
+                                <p>{UserPige.pige.pigeEndDate}</p>
                             </div>
                         </div>
                     </div> : null

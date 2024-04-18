@@ -12,6 +12,7 @@ const AddWish = () => {
         backgroundImage: `url(${ImageAddWish})`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
+        fontFamily: "Reddit Mono",
         minWidth: '100vw'
     }
 

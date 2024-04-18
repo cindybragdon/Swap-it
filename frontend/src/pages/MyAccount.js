@@ -10,7 +10,9 @@ const MyAccount = () => {
         minHeight: '100vh',
         backgroundPosition: 'center',
         backgroundSize: 'cover',
+        fontFamily: "Reddit Mono",
         backgroundRepeat: 'no-repeat',
+
         padding: 0,
         margin: 0
     };

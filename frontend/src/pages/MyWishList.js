@@ -13,6 +13,7 @@ const MyWishList = () => {
         backgroundPosition: 'center',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
+        fontFamily: "Reddit Mono",
         padding: 0,
         margin: 0
     };

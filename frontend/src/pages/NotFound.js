@@ -4,7 +4,7 @@ import Image404 from "../images/NotFound404.jpg";
 
 const NotFound = () => {
   return (
-    <div className='renderingElement oui' style={{backgroundColor: "whitesmoke"}}>
+    <div className='renderingElement oui' style={{backgroundColor: "whitesmoke", fontFamily: "Reddit Mono"}}>
         <div className='container'>
             <h1  style={{color:"black"}}>Page Not Found, Page Introuvable</h1>
             <div>

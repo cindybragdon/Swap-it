@@ -8,6 +8,8 @@ const QuiJaiPige = () => {
         backgroundImage: `url(${ImageSurprise})`,
         position: 'relative',
         minHeight: '100vh',
+        fontFamily: "Reddit Mono",
+        fontSize: '15px'
     }
 
     const location = useLocation();
@@ -37,7 +39,7 @@ const QuiJaiPige = () => {
                 <div id="accordion  "
                      style={{backgroundColor: "#D4015F",
                          position: 'absolute',
-                         top: '70%',
+                         top: '75%',
                          left: '50%',
                          transform: 'translateX(-50%)',
                          width: 'auto',
