@@ -1,7 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import ImageModif from "../images/bgPseudo.jpg";
-import {useLocation} from "react-router-dom";
-import http from "../http/http";
+import {useLocation, useNavigate} from "react-router-dom";
 import axios from "axios";
 
 
@@ -18,7 +17,7 @@ const ModifPseudoImagePige = () => {
         padding: 0,
         margin: 0
     };
-
+    const navigate = useNavigate();
     const location = useLocation();
     const selectedUserPige = location.state;
 
@@ -26,15 +25,18 @@ const ModifPseudoImagePige = () => {
     const [imagePige, setImagePige] = useState(selectedUserPige.userPigeImage);
 
     const formUpdateUserPige = {
-        userPige: {
-            idUserPige:selectedUserPige.idUserPige,
-            userPigePseudo: pseudo,
-            userPigeImage: imagePige
-        }
+
+        idUserPige:selectedUserPige.idUserPige,
+        userPigePseudo: pseudo,
+        userPigeImage: imagePige
+
     }
+
+    console.log(selectedUserPige);
     const onSubmit = () => {
         try {
-            axios.put(`getPWDByIdUser?idUser=${selectedUserPige.idUserPige}`, formUpdateUserPige);
+            axios.put(`http://localhost:9281/api/updateUserPigePseudoAndImage`, formUpdateUserPige);
+            navigate("/piges")
 
         } catch (error) {
             console.error(error);

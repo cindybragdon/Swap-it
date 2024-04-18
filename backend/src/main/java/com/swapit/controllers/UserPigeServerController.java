@@ -2,6 +2,7 @@ package com.swapit.controllers;
 
 import com.swapit.model.Invitations;
 import com.swapit.model.Pige;
+import com.swapit.model.ShadowToto;
 import com.swapit.model.UserPige;
 import com.swapit.repositories.PigeRepository;
 import com.swapit.repositories.UserPigeRepository;
@@ -97,6 +98,25 @@ public class UserPigeServerController {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return null;
+        }
+
+    }
+
+    //Update Password
+    @PutMapping("/updateUserPigePseudoAndImage")
+    public String updateUserPigePseudoAndImage(@RequestBody UserPige userPigeUpdated) throws Exception {
+        String messagePwdUpdated = "ACK-511";
+        try {
+
+            UserPige userPigeToUpdate = userPigeRepository.findByIdUserPige((userPigeUpdated.getIdUserPige()));
+            userPigeToUpdate.setUserPigeImage(userPigeUpdated.getUserPigeImage());
+            userPigeToUpdate.setUserPigePseudo(userPigeUpdated.getUserPigePseudo());
+            userPigeRepository.save(userPigeToUpdate);
+            messagePwdUpdated = "ACK-510";
+
+            return messagePwdUpdated;
+        } catch (Exception e) {
+            return messagePwdUpdated + e.getMessage();
         }
 
     }

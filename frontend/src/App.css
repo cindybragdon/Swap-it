@@ -302,10 +302,15 @@ body {
 
 }
 
+.imgUserPige {
+  max-width: 20% !important;
+  height: 20% !important;
+}
 .card img {
   max-width: 100%;
   height: auto;
 }
+
 
 #container-update {
   align-content: center;
