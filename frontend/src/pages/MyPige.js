@@ -179,7 +179,7 @@ const MyPige = () => {
                             <div className="mt-2">
                                 <button className="liste p-2 rounded"
                                         style={{backgroundColor: '#1C67A1', color: 'white'}}
-                                        onClick={}> Changer mon pseudo pour la
+                                        > Changer mon pseudo pour la
                                     pige {selectedUserPige.pige.pigeName}
                                 </button>
 
