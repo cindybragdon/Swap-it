@@ -54,10 +54,10 @@ const Invitations = () => {
                 </h2>
             </div>
             {tabInvitations !== null ?
-                tabInvitations.map((inv) => (
+                tabInvitations.map((inv, index) => (
                     !inv.asBeenAnswered ?
                         inv.pige.pigeState === "CREATED" ?
-                        <div className="container-sm text-center  p-5 m-2"
+                        <div key={index} className="container-sm text-center  p-5 m-2"
                              style={{
                                  backgroundColor: "#7F0A7F",
                                  fontFamily: "Reddit Mono",
