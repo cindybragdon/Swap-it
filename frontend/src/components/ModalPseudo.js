@@ -3,10 +3,14 @@ import React from 'react';
 
 const ModalPseudo = () => {
 
-    return(
-
-        <div className="modal fade" id="staticBackdrop1" tabIndex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
-            <div className="modal-dialog d-flex justify-content-center">
+    return (
+        <>
+        <button type="button" data-mdb-button-init="" data-mdb-ripple-init="" className="btn btn-primary"
+                data-mdb-modal-init=""
+                data-mdb-target="#staticBackdrop1"> Launch modal login form</button>
+        <div className="modal fade" id="staticBackdrop1" tabIndex="-1" aria-labelledby="exampleModalLabel1"
+         aria-hidden="true">
+        <div className="modal-dialog d-flex justify-content-center">
                 <div className="modal-content w-75">
                     <div className="modal-header">
                         <h5 className="modal-title" id="exampleModalLabel1">Sign in</h5>
@@ -32,6 +36,7 @@ const ModalPseudo = () => {
                 </div>
             </div>
         </div>
+        </>
 );
 };
 

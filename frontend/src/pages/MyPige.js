@@ -28,6 +28,7 @@ const MyPige = () => {
     const [listInvitation, setListInvitation] = useState([]);
 
 
+
     console.log(selectedUserPige);
 
     useEffect(() => {
@@ -62,9 +63,7 @@ const MyPige = () => {
         navigate(`/pige/picked`);
     }
 
-    const handleButton4Click = () => {
-        <ModalPseudo />
-    }
+
 
     const handleClickStartPige = () => {
         const minimumUserPige = 3;
@@ -180,9 +179,10 @@ const MyPige = () => {
                             <div className="mt-2">
                                 <button className="liste p-2 rounded"
                                         style={{backgroundColor: '#1C67A1', color: 'white'}}
-                                        onClick={() => handleButton4Click()}> Changer mon pseudo pour la
+                                        onClick={}> Changer mon pseudo pour la
                                     pige {selectedUserPige.pige.pigeName}
                                 </button>
+
                             </div>
                             <div className="mt-2">
                                 <button className="liste p-2 rounded"
