@@ -22,6 +22,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import AddUserToPige from "./pages/AddUserToPige";
 import UpdatePige from "./pages/UpdatePige";
 import Invitations from "./pages/Invitations";
+import ModifPseudoImagePige from "./pages/ModifPseudoImagePige";
 
 
 function App() {
@@ -37,6 +38,10 @@ function App() {
                     <Route path='/features' element={<Features/>}/>
                     <Route path='*' element={<NotFound/>}/>
                     <Route path='/create-account' element={<CreateAccount/>}/>
+
+                    <Route path='/piges/:pigeName/UpdatePseudoImage' element={<PrivateRoute/>}>
+                        <Route path='/piges/:pigeName/UpdatePseudoImage' element={<ModifPseudoImagePige/>}/>
+                    </Route>
 
                     <Route path='/piges' element={<PrivateRoute/>}>
                         <Route path='/piges' element={<Piges/>}/>

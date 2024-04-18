@@ -63,6 +63,9 @@ const MyPige = () => {
         navigate(`/pige/picked`);
     }
 
+    const handleButtonUpdatePseudoImageClick = () => {
+        navigate(`/piges/${selectedUserPige.pige.pigeName}/UpdatePseudoImage`, {state:selectedUserPige});
+    }
 
 
     const handleClickStartPige = () => {
@@ -179,17 +182,12 @@ const MyPige = () => {
                             <div className="mt-2">
                                 <button className="liste p-2 rounded"
                                         style={{backgroundColor: '#1C67A1', color: 'white'}}
-                                        > Changer mon pseudo pour la
+                                        onClick={handleButtonUpdatePseudoImageClick}> Changer mon pseudo ou mon image pour la
                                     pige {selectedUserPige.pige.pigeName}
                                 </button>
 
                             </div>
-                            <div className="mt-2">
-                                <button className="liste p-2 rounded"
-                                        style={{backgroundColor: '#1C67A1', color: 'white'}}
-                                        onClick={() => handleButton2Click()}> Changer ma photo pour la pige {selectedUserPige.pige.pigeName}
-                                </button>
-                            </div>
+
 
                         </div>
 
