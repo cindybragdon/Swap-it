@@ -3,6 +3,7 @@ import {useLocation, useNavigate} from "react-router-dom";
 import ImageBGWish from "../images/BGPiges2.jpg";
 import BackToTopButton from "../components/BackToTopButton";
 import axios from "axios";
+import ModalPseudo from "../components/ModalPseudo";
 
 
 const MyPige = () => {
@@ -55,6 +56,14 @@ const MyPige = () => {
     }
     const handleButton2Click = () => {
         navigate(`/piges`);
+    }
+
+    const handleButton3Click = () => {
+        navigate(`/pige/picked`);
+    }
+
+    const handleButton4Click = () => {
+        <ModalPseudo />
     }
 
     const handleClickStartPige = () => {
@@ -122,7 +131,7 @@ const MyPige = () => {
                                                 style={{backgroundColor: '#FFD801', color: 'white'}}>Lancer la pige!
                                         </button>
                                     </div>
-                                    <div className="d-flex flex-column  justify-content-start align-items-start */}">
+                                    <div className="d-flex flex-column  justify-content-start align-items-start ">
                                         <div className="mt-2 ">
                                             <button className="liste p-2 rounded"
                                                     style={{backgroundColor: '#FFD801', color: 'white'}}
@@ -159,13 +168,26 @@ const MyPige = () => {
                             <div className="mt-2 ">
                                 <button className="liste p-2 rounded"
                                         style={{backgroundColor: '#1C67A1', color: 'white'}}
-                                        onClick={() => handleButton2Click()}> Voir qui j'ai pigé!
+                                        onClick={() => handleButton3Click()}> Voir qui j'ai pigé!
                                 </button>
                             </div>
                             <div className="mt-2">
                                 <button className="liste p-2 rounded"
                                         style={{backgroundColor: '#1C67A1', color: 'white'}}
                                         onClick={() => handleButton2Click()}> Voir toutes mes Piges
+                                </button>
+                            </div>
+                            <div className="mt-2">
+                                <button className="liste p-2 rounded"
+                                        style={{backgroundColor: '#1C67A1', color: 'white'}}
+                                        onClick={() => handleButton4Click()}> Changer mon pseudo pour la
+                                    pige {selectedUserPige.pige.pigeName}
+                                </button>
+                            </div>
+                            <div className="mt-2">
+                                <button className="liste p-2 rounded"
+                                        style={{backgroundColor: '#1C67A1', color: 'white'}}
+                                        onClick={() => handleButton2Click()}> Changer ma photo pour la pige {selectedUserPige.pige.pigeName}
                                 </button>
                             </div>
 
@@ -177,9 +199,9 @@ const MyPige = () => {
                                 <h3>Seront présents : </h3>
                             </div>
                             {listUserPige.map((userPige, index) =>
-                                <div className="card " key={index} >
+                                <div className="card " key={index}>
 
-                                    <div className="container row border border-2 p-2 ">
+                                <div className="container row border border-2 p-2 ">
                                         <img src={selectedUserPige.userPigeImage} alt="User Pige Image"/>
                                         <h6 className="card-title">Nom
                                             : {userPige.user.userFirstName} {userPige.user.userLastName} Pseudo
