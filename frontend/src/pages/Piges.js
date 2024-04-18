@@ -1,5 +1,5 @@
 import React from 'react';
-import {useLocation, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {useState, useEffect} from "react";
 import BackToTopButton from "../components/BackToTopButton";
 import ImagePige from "../images/addPige.jpg"
@@ -80,15 +80,18 @@ function Piges() {
                 </div>
 
                 {listUserPige.map((UserPige, index) => (
+                    UserPige.pige.active === true ?
                     <div className="col pb-3 " key={index} onClick={() => handlePigeClick(UserPige)}>
                         <div className="card" style={{height: '30vh'}}>
-                            <div id="piges-box"className="title-card-piges card-header bg-danger">{UserPige.pige.pigeName}</div>
+                            <div id="piges-box" className="title-card-piges card-header bg-danger">{UserPige.pige.pigeName}</div>
                             <div className="card-body">
                                 <p className="card-text"> Pige organisée par : {UserPige.pige.userAdmin.userFirstName} {UserPige.pige.userAdmin.userLastName}</p>
                                 <p className="card-text">Cette pige se terminera le {UserPige.pige.pigeEndDate}</p>
                             </div>
                         </div>
-                    </div>
+                    </div> : null
+
+
                 ))}
 
             </div>

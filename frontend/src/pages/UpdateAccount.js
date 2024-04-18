@@ -39,27 +39,7 @@ const UpdateAccount = () => {
     }
 
 
-    const msgErrors = {
 
-        nom: {
-            requis: "Vous devez saisir un nom"
-        },
-        prenom: {
-            requis: "Vous devez saisir un prenom"
-        },
-        telephone: {
-            requis: "Vous devez saisir un numero de telephone",
-            logueur: "Le telephone doit avoir au moins 10 caractere"
-        },
-        courriel: {
-            requis: "Vous devez saisir un email",
-            format: "Le email est invalide"
-        },
-        motPasse: {
-            requis: "Vous devez saisir votre mot de passe actuel",
-            format: "Mot de passe invalide.  Doit contenir : 8 caractères, au moins une lettre, un chiffre et un caractère spécial"
-        }
-    }
 
     const togglePasswordVisibility = () => {
         const passwordInput = document.getElementById('typeMotPasse');
