@@ -9,7 +9,6 @@ const FormCreationPige = () => {
     const [pigeEndDate, setPigeEndDate] = useState('');
     const [pigeType, setPigeType] = useState('');
 
-    const [flag,setFlag] = useState(false);
 
     const formsUserWithPige = {
         user:{
@@ -34,69 +33,30 @@ const FormCreationPige = () => {
 
             if(endDate > currentDate) {
                 const response = await axios.post(`http://localhost:9281/api/createUserPigeWithPige`, formsUserWithPige);
-                if (response.data === "ACK-400") {
+                if (response.data !== {}) {
                     alert(`La pige ${nomPige} a été créée!`);
-                    const urlGetPige = `http://localhost:9281/api/getLastlyCreatedPigeFromIdUser?idUser=${JSON.parse(sessionStorage.user).idUser}`;
-                    const responseGetLastCreatedPige = await axios.get(urlGetPige);
-                    if(responseGetLastCreatedPige.data !== null) {
-                        sessionStorage.setItem('pigeToAddPeopleTo', JSON.stringify(responseGetLastCreatedPige.data));
-                        await setFlag(true);
-                        console.log(JSON.parse(sessionStorage.pigeToAddPeopleTo));
-                        alert(JSON.parse(sessionStorage.pigeToAddPeopleTo));
-                        alert(`Vous pouvez maintenant ajouter des utilisateurs à votre pige ${JSON.parse(sessionStorage.user).userFirstName}!`);
-                        navigate('/addPeople');
-                        return true;
-                    } else {
-                        alert("Erreur : Impossible de récupérer la pige");
-                        return false;
-                    }
-
-
-
+                    sessionStorage.setItem('pigeToAddPeopleTo', JSON.stringify(response.data));
+                    alert(JSON.parse(sessionStorage.pigeToAddPeopleTo));
+                    alert(`Vous pouvez maintenant ajouter des utilisateurs à votre pige ${JSON.parse(sessionStorage.user).userFirstName}!`);
+                    await navigate('/addPeople');
 
                 } else {
                     alert("Erreur lors de la création de la pige");
-                    setFlag(false);
-                    return false;
                 }
-
             } else {
                 alert("Erreur : Impossible de créer la pige car la date de fin est plus petite ou égale à aujourd'hui");
-                setFlag(false);
-                return false;
             }
         } catch (e) {
             console.log(e);
         }
     }
 
-    const getPigeData = async () => {
+
+
+     const onSubmit = (e) => {
         try {
-            //await setFlag(false);
-
-        } catch (e) {
-            console.log(e);
-        }
-
-    }
-
-
-     const onSubmit = () => {
-        try {
-            const response =  createPige();
-            response.then(res => setFlag(res));
-            if(flag) {
-                const response2 =  getPigeData();
-                if (response2) {
-                    alert(1)
-
-                } else {
-                    alert(2)
-                }
-            } else {
-                navigate('/piges');
-                alert(3)
-            }
+            createPige();
+            e.preventDefault();
 
         } catch (error) {
             console.error(error);

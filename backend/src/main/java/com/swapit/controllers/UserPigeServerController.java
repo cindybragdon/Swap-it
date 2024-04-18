@@ -46,11 +46,11 @@ public class UserPigeServerController {
 
     //(Verified and tested)
     @PostMapping("/createUserPigeWithPige")
-    public String createUserPigeWithPige(@RequestBody UserPige userPigeToCreate) throws Exception{
-        String messageInvitation = "ACK-401";
+    public Pige createUserPigeWithPige(@RequestBody UserPige userPigeToCreate) throws Exception{
+
 
         try{
-
+            Pige pigeToReturn = new Pige();
             if (userPigeToCreate.getUser() != null
                     && (userPigeToCreate.getPige().getPigeName() != null)
                     && (userPigeToCreate.getPige().getPigeType() != null)
@@ -69,12 +69,12 @@ public class UserPigeServerController {
                 userPigeToCreate.getPige().setNumberPigeOfUser(pigeRepository.countPigesByUserAdmin_IdUser(userPigeToCreate.getUser().getIdUser())+1);
                 pigeRepository.save(userPigeToCreate.getPige());
                 userPigeRepository.save(userPigeToCreate);
-                messageInvitation = "ACK-400";
+                pigeToReturn = pigeRepository.findPigeByNumberPigeOfUser(pigeRepository.countPigesByUserAdmin_IdUser(userPigeToCreate.getPige().getUserAdmin().getIdUser()));
             }
+            return pigeToReturn;
         }catch (Exception e){
-            return messageInvitation + e.getMessage();
+            return new Pige();
         }
-        return messageInvitation;
 
     }
     //Get all the piges from one user (Verified and tested)
