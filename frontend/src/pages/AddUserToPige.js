@@ -12,10 +12,11 @@ const AddUserToPige = () => {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        height: '100vh',
+        minHeight: '85vh',
         justifyContent: 'space-around',
         fontFamily: "Reddit Mono",
-        width: '100vw'
+
+        // border: 'white solid 3px'
     };
 
     const cardStyle = {
@@ -67,7 +68,8 @@ const AddUserToPige = () => {
     };
 
     return (
-        <div className="container mb-4 p-3 d-flex" style={sectionStyle}>
+        <div style={sectionStyle}>
+        <div id="container-test" className="container mb-4 p-3 d-flex" >
             <div className="card text-center" style={cardStyle} id="container-forgot">
                 <div className="card-header h5 text-white bg-info">On ajoute des participants !</div>
                 <div className="card-body ">
@@ -116,7 +118,8 @@ const AddUserToPige = () => {
             </div>
 
 
-</div>
+            </div>
+        </div>
 );
 }
 
