@@ -15,8 +15,7 @@ const AddUserToPige = () => {
         minHeight: '85vh',
         justifyContent: 'space-around',
         fontFamily: "Reddit Mono",
-
-        // border: 'white solid 3px'
+        border: 'white solid 3px'
     };
 
     const cardStyle = {
