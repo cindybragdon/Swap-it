@@ -8,8 +8,6 @@ import {updatePige} from "../axi/AxiPut";
 const UpdatePige = () => {
     var sectionStyle = {
         backgroundImage: `url(${ImagePigeCreate})`,
-        width: '50vw',
-        height: '100%',
         backgroundPosition: 'center',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat'
@@ -46,26 +44,26 @@ const UpdatePige = () => {
     }
 
     return (
-        <div className="bg-white " style={{ marginBottom: '0.5rem', textColor: 'black' }}>
+        <div className="card " id="container-pige-creation" style={sectionStyle}>
             <form className='container' method="post" onSubmit={onSubmit}>
-                <h2 className="title-createpige ">Modifier la pige {nomPige}</h2>
+                <h2 className="card-header title-createpige ">Modifier la pige {nomPige}</h2>
                 <div className="mb-2">
                     <label className="form-label" style={{color: 'black'}}><h5>Nom de la pige</h5></label>
-                    <div className="mb-2" style={{display: 'flex', justifyContent: 'center'}}>
-                        <input type="text" value={nomPige} onChange={e => setNomPige(e.target.value)}
-                               className="form-control" placeholder="Nom de la pige" required style={{width: '50%'}}/>
+                    <div className="mb-2" style={{display: 'flex'}}>
+                    <input type="text" value={nomPige} onChange={e => setNomPige(e.target.value)}
+                               className="form-control m-2" placeholder="Nom de la pige" required style={{width: '50%'}}/>
                     </div>
                 </div>
                 <div className="mb-2">
                     <label className="form-label" style={{color: 'black'}}><h5>Description</h5></label>
-                    <div className="mb-2" style={{display: 'flex', justifyContent: 'center'}}>
-                    <textarea className="form-control" style={{width: '50%'}} value={pigeDescription}
+                    <div className="mb-2" style={{display: 'flex'}}>
+                    <textarea className="form-control" style={{width: '40%'}} value={pigeDescription}
                               onChange={e => setPigeDescription(e.target.value)} rows="3" required></textarea>
                     </div>
                 </div>
 
 
-                <div className="mb-3">
+                <div className="mb-2">
                     <label className="form-label" style={{color: 'black'}}><h5>Type de pige</h5></label>
                     <div className="form-check" style={{color: 'black'}}>
                         <input className="form-check-input" name="pigeType" type="radio" value={pigeType}

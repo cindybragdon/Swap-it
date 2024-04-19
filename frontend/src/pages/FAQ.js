@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import questionsAnswers from "../Data/QuestionsAnswers";
 import BackToTopButton from "../components/BackToTopButton";
-import ImageFAQ from "../images/QuestionMarks.jpg";
+import ImageFAQ from "../images/BGQuestions.jpg";
 
 const FAQ = () => {
 
