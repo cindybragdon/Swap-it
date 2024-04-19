@@ -10,7 +10,8 @@ const UpdatePige = () => {
         backgroundImage: `url(${ImagePigeCreate})`,
         backgroundPosition: 'center',
         backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat'
+        backgroundRepeat: 'no-repeat',
+        minHeight: '85vh',
     }
 
     const navigate = useNavigate();
@@ -44,7 +45,8 @@ const UpdatePige = () => {
     }
 
     return (
-        <div className="card " id="container-pige-creation" style={sectionStyle}>
+        <div style={sectionStyle}>
+        <div className="card " id="container-pige-creation" >
             <form className='container' method="post" onSubmit={onSubmit}>
                 <h2 className="card-header title-createpige ">Modifier la pige {nomPige}</h2>
                 <div className="mb-2">
@@ -99,6 +101,7 @@ const UpdatePige = () => {
 
                 <button type="submit" className="btn " style={{width: '33%', backgroundColor: '#D4025B'}}>Modifier la pige!</button>
             </form>
+        </div>
         </div>
     );
 }
