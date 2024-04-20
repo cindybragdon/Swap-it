@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import ImagePigeCreate from "../images/Chapeau.jpg";
+import ImagePigeCreate from "../images/createAccountBG.jpg";
 import { useForm } from "react-hook-form";
 import {useLocation, useNavigate} from "react-router-dom";
-import { createPige } from "../axi/AxiPost";
 import {updatePige} from "../axi/AxiPut";
 
 const UpdatePige = () => {

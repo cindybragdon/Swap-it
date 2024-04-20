@@ -30,7 +30,7 @@ const NavBar = () => {
                       <li className="nav-item"><a className="nav-link" href="/about">About</a></li>
                       <li className="nav-item"><a className="nav-link" href="/contact">Contact</a></li>
                       <li className="nav-item"><a className="nav-link" href="/faq">FAQ</a></li>
-                      <li className="nav-item"><a className="nav-link" href="/features">Fonctionnalites</a></li>
+                      {/* <li className="nav-item"><a className="nav-link" href="/features">Fonctionnalites</a></li>*/}
                       <li className="nav-item"><a className="nav-link" href="/piges">Mes piges</a></li>
                       <li className="nav-item"><a className="nav-link" href="/inv">Invitations {countInv > 0 ? <span className="invNotif">{countInv}</span> : ''}</a></li>
                       <li className="nav-item"><a className="nav-link" href="/myaccount">Mon

@@ -35,7 +35,7 @@ function App() {
                     <Route path='/about' element={<About/>}/>
                     <Route path='/contact' element={<Contact/>}/>
                     <Route path='/faq' element={<FAQ/>}/>
-                    <Route path='/features' element={<Features/>}/>
+                    {/*<Route path='/features' element={<Features/>}/>*/}
                     <Route path='*' element={<NotFound/>}/>
                     <Route path='/create-account' element={<CreateAccount/>}/>
 
