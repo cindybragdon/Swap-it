@@ -27,8 +27,8 @@ function Home() {
                     </div>
                     <div className="col-md-6">
                         <div className="card " style={{backgroundColor: '#0761D1'}}>
-                            <div className="card-body">
-                                <div className="card-text">
+                            <div className="card-body ">
+                                <div className="card-text ">
                                     <h3 className="text-white m-2" id="welcomeText">Bienvenue sur Swap-<span
                                         className="welcome-span">i</span>t!</h3>
                                     <h6 className="text-white m-2" id="connectText">✨ Connectez vous ✨</h6>

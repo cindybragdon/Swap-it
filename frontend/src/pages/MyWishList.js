@@ -4,6 +4,7 @@ import ImageAdItem from "../images/Listes.jpg";
 import ImageWishedItemBlank from "../images/noWishedItemImage.jpg";
 import { useLocation, useNavigate } from "react-router-dom";
 import BackToTopButton from "../components/BackToTopButton";
+import axios from "axios";
 
 const MyWishList = () => {
     var fullBackgroundStyle = {
@@ -46,6 +47,14 @@ const MyWishList = () => {
         navigate(`/piges/${userPige.pige.pigeName}`, {state: userPige});
     };
 
+    const handleDeleteWishItem = (wishedItem, index) => {
+        listWishedItems.splice(index, 1);
+        setListWishedItems(listWishedItems);
+        axios.put(`http://localhost:9281/api/deleteWishedItem?idWishedItem=${wishedItem.idWishedItem}`)
+            .catch(err => console.log(err));
+        window.location.reload();
+    }
+
     return (
         <div style={fullBackgroundStyle}>
             <div className='container-fluid text-center'>
@@ -55,7 +64,7 @@ const MyWishList = () => {
                         <h5><a className="link-opacity-75" onClick={handleClickBackToPige}>Retour à la pige</a></h5>
                     </h2>
                 </div>
-                <div className="row row-cols-1 row-cols-md-4 g-5"> {/* Augmentation de l'espacement avec g-5 */}
+                <div className="row row-cols-1 row-cols-md-4 g-5">
                     <div className="col pb-5">
                         <div className="card card-custom" onClick={handleClickToAddItem}>
                             <img src={ImageCadeau} className="card-image img-fluid"/>
@@ -66,11 +75,12 @@ const MyWishList = () => {
                         </div>
                     </div>
                     {listWishedItems.map((wishedItem, index) => (
+                        !wishedItem.deleted?
                         <div className="col mb-4"
-                             key={index}> {/* mb-4 ajoute un margin-bottom pour séparer verticalement */}
-                            <div className="card card-custom shadow-sm"> {/* shadow-sm pour un effet subtil d'ombre */}
+                             key={index}>
+                            <div className="card card-custom shadow-sm">
                                 <div id="piges-box"
-                                    className="title-card-piges card-header bg-danger">{wishedItem.wishedItemName}</div>
+                                     className="title-card-piges card-header bg-danger">{wishedItem.wishedItemName}</div>
                                 {wishedItem.wishedItemImage ?
                                     <img src={wishedItem.wishedItemImage} className="card-image img-fluid p-2"/> :
                                     <img src={ImageWishedItemBlank} className="card-image img-fluid p-2"/>
@@ -78,17 +88,27 @@ const MyWishList = () => {
                                 <div className="card-body">
                                     <p className="card-text">{wishedItem.wishedItemDescription}</p>
                                     {wishedItem.wishedItemUrl ?
-                                        <a href={wishedItem.wishedItemUrl} className="stretched-link new-tab"
+                                        <a href={wishedItem.wishedItemUrl}
                                            target='_blank'>Voir cet item en ligne</a> : ''}
                                 </div>
+
+
                                 {userPige.user.idUser !== JSON.parse(sessionStorage.user).idUser ?
                                     <div className="card-body">
                                         <p className="card-text">Ajouté par
                                             : {wishedItem.userWhoAddedTheItem.userFirstName}</p>
                                     </div> : ''}
+                                <div className="container position-relative">
+                                    <button type="button" className="btn  position-absolute bottom-0 end-0" onClick={() => handleDeleteWishItem(wishedItem, index)}>
+                                        <i className="bi bi-trash"></i>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
+
+                        </div>:null
+
                     ))}
+
                 </div>
             </div>
 
