@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import ImageSurprise from "../images/surprise.jpg"
 import {useLocation} from "react-router-dom";
+import axios from "axios";
 
 const QuiJaiPige = () => {
 
@@ -13,13 +14,12 @@ const QuiJaiPige = () => {
     }
 
     const location = useLocation();
-    const selectedUserPige = location.state;
+    const personPicked = location.state;
 
     const [openItemId, setOpenItemId] = useState(null);
 
-    const [personnePigee, setPersonnePigee] = useState("");
 
-
+    console.log(personPicked)
 
 
 
@@ -45,7 +45,7 @@ const QuiJaiPige = () => {
                          width: 'auto',
                          textAlign: 'center',
                      }}>
-                    <div class="d-flex justify-content-center ">
+                    <div className="d-flex justify-content-center ">
                     <div className="card text-center " style={{ backgroundColor: "#bff542"}}>
                         <div className={`card-header ${openItemId === null ? '' : 'collapsed'}` } id="headingTwo"   >
                             <h5 className="mb-0 " >
@@ -68,7 +68,7 @@ const QuiJaiPige = () => {
                              data-parent="#accordion"
                              style={{ backgroundColor: "#42f5ef"}}>
                             <div className="card-body">
-                                QUI JAI PIGE ICI
+                                {personPicked.userPigeWhoIsPickedByTheUserPige.user.userFirstName} {personPicked.userPigeWhoIsPickedByTheUserPige.user.userLastName} ({personPicked.userPigeWhoIsPickedByTheUserPige.userPigePseudo})
                             </div>
                         </div>
                     </div>

@@ -27,6 +27,17 @@ public class UserPigeWithUserPickedServerController {
     @Autowired
     private PigeRepository pigeRepository;
 
+
+    @GetMapping("/getWhoAsBeenPickedByIdUserPige")
+    public UserPigeWithUserPicked getWhoAsBeenPickedByIdUserPige(@RequestParam int idUserPige) throws Exception {
+        try {
+            return userPigeWithUserPickedRepository.findByUserPigeWhoPickedTheOtherUserPige_IdUserPige(idUserPige);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+
+    }
     // (Verified and tested)
     @PostMapping("/createUserPigeWithUserPicked")
     public String createUserPigeWithUserPicked(@RequestBody UserPigeWithUserPicked userPigeWithUserPickedToCreate) throws Exception{
@@ -71,7 +82,7 @@ public class UserPigeWithUserPickedServerController {
         int numberOfTriesOfUserPigePicked = 0;
 
         try {
-            if (!listUserPige.isEmpty() && listUserPige.size() > 3) {
+            if (!listUserPige.isEmpty() && listUserPige.size() >= 3) {
                 while (comptor < listUserPige.size()) {
                     System.out.println(comptor);
                     int randomUserInt = (int) (Math.random() * range) + min;
@@ -115,7 +126,7 @@ public class UserPigeWithUserPickedServerController {
                             numberOfTriesOfUserPigePicked += 1;
                         }
 
-                        if (numberOfTriesOfUserPigePicked >= 10) {
+                        if (numberOfTriesOfUserPigePicked >= 20) {
                             comptor = 0;
                             listUserPigePicked = new ArrayList<>();
                         }
@@ -123,16 +134,15 @@ public class UserPigeWithUserPickedServerController {
 
                 }
 
-                for (UserPigeWithUserPicked userPigeWithUserPicked : listUserPigePicked) {
-                    System.out.println("UserPige1 : "+ userPigeWithUserPicked.getUserPigeWhoPickedTheOtherUserPige().getIdUserPige() + " UserPige 2 : " + userPigeWithUserPicked.getUserPigeWhoIsPickedByTheUserPige().getIdUserPige());
-                    userPigeWithUserPickedRepository.save(userPigeWithUserPicked);
-                }
+                userPigeWithUserPickedRepository.saveAll(listUserPigePicked);
+                pigeToUpdate.setPigeState("STARTED");
+                pigeRepository.save(pigeToUpdate);
+                messageCreate = "ACK-100";
 
             }
 
 
-            pigeToUpdate.setPigeState("STARTED");
-            messageCreate = "ACK-100";
+
 
             return messageCreate;
         } catch (Exception e) {

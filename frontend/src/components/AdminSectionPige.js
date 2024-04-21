@@ -13,7 +13,17 @@ const AdminSectionPige = (props) => {
             if (JSON.parse(sessionStorage.user).idUser === selectedUserPige.pige.userAdmin.idUser) {
                 const minimumUserPige = 3;
                 if (listUserPige.length >= minimumUserPige) {
-                    alert('Pige doit être lancée...')
+                    const urlCreateAllPersonPicked = `http://localhost:9281/api/createAllUserPigeWithUserPickedForPige?idPige=${selectedUserPige.pige.idPige}`
+                    axios.post(urlCreateAllPersonPicked)
+                        .then(response => {
+                            if(response.data === "ACK-100") {
+                                alert('La pige a été lançée!');
+                                window.location.reload();
+                            } else {
+                                alert('Problème en essayant de lançer la pige...');
+                            }
+                        })
+                        .catch(error => console.error(error));
                 } else {
                     alert(`Impossible de lancer la pige : il doit y avoir au moins ${minimumUserPige} utilisateurs qui ont accepté leur invitation.`)
                 }
