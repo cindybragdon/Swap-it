@@ -27,9 +27,13 @@ const Invitations = () => {
     }, []);
 
 
+     //console.log(tabInvitations)
 
-     function onClickInv(inv, isAccepted) {
 
+     function onClickInv(inv, isAccepted, index) {
+         tabInvitations.splice(index, 1);
+         setTabInvitations(tabInvitations);
+         console.log("inv : " + tabInvitations);
          const formsUserWithPige = {
              user: {
                  idUser: JSON.parse(sessionStorage.user).idUser
@@ -39,9 +43,8 @@ const Invitations = () => {
              }
          }
          axios.put(`http://localhost:9281/api/updateInv?idInvToUpdate=${inv.idInvitation}&isAccepted=${isAccepted}`, formsUserWithPige)
-             .then(res => setTabInvitations(res.data))
              .catch(err => console.log(err));
-
+         window.location.reload();
      }
 
      console.log(tabInvitations);
@@ -70,8 +73,8 @@ const Invitations = () => {
                              }}>
                             <p>Vous avez été invité à la pige {inv.pige.pigeName}</p>
                             <p>Par : {inv.pige.userAdmin.userFirstName} {inv.pige.userAdmin.userLastName}</p>
-                            <button className="m-1" onClick={() => onClickInv(inv, true)}>Accepter l'invitation</button>
-                            <button onClick={() => onClickInv(inv, false)}>Refuser L'invitation</button>
+                            <button className="m-1" onClick={() => onClickInv(inv, true, index)}>Accepter l'invitation</button>
+                            <button onClick={() => onClickInv(inv, false, index)}>Refuser L'invitation</button>
                         </div> : null : null
                 )) : <p>Pas d'invitations</p>
             }
