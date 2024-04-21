@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Login from "../components/Login";
-import ImageLogo2 from "../images/Logo2.jpg";
-import ImageParty from "../images/HomeBG.jpg";
+import ImageLogo2 from "../images/homeIcone.jpg";
+import ImageParty from "../images/HOME.jpg";
 import {useLocation, useNavigate} from "react-router-dom";
 
 function Home() {
@@ -26,7 +26,7 @@ function Home() {
                         <img src={ImageLogo2} className="rounded mx-auto d-block img-thumbnail" alt="..."/>
                     </div>
                     <div className="col-md-6">
-                        <div className="card " style={{backgroundColor: 'rebeccapurple'}}>
+                        <div className="card " style={{backgroundColor: '#0761D1'}}>
                             <div className="card-body">
                                 <div className="card-text">
                                     <h3 className="text-white m-2" id="welcomeText">Bienvenue sur Swap-<span
