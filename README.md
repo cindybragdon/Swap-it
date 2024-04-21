@@ -5,13 +5,14 @@ SWAP-IT, CODÉ PAR DES ÉTUDIANTS DE DEUXIÈME ANNÉE DU DEC EN TECHNIQUES DE L'
 
 CÉGEP MARIE-VICTORIN, MONTRÉAL.
 
-VOICI UNE BRÈVE INTRODUCTION DE NOTRE ÉQUIPE SCRUMSHINE:
+# VOICI UNE BRÈVE INTRODUCTION DE NOTRE ÉQUIPE SCRUMSHINE:
+
 ![image](https://github.com/cindybragdon/swap-it/assets/111932725/d53bd58c-0dac-4bcf-af1a-7c0b7f56def1)
 
 
-Cindy Bragdon https://github.com/cindybragdon
-Olivier Poirier https://github.com/olivierpoirier
-Jenna-Lee Lecavalier https://github.com/JennaLeeL
+- **Cindy Bragdon** https://github.com/cindybragdon
+- **Olivier Poirier** https://github.com/olivierpoirier
+- **Jenna-Lee Lecavalier** https://github.com/JennaLeeL
 
 ![image](https://github.com/cindybragdon/swap-it/assets/111932725/b39d7e51-6cea-4a63-abc9-c5565f52e028)
 ---
