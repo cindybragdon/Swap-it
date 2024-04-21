@@ -24,6 +24,7 @@ const AddWish = () => {
     const [wishedItemDescription, setItemDescription] = useState('');
     const [wishedItemUrl, setItemUrl] = useState('');
     const [wishedItemImage, setWishedItemImage] = useState('');
+    const navigate = useNavigate();
 
     const formsWishedItem = {
         userPige : selectedUserPige,
@@ -50,6 +51,10 @@ const AddWish = () => {
 
     }
 
+    const handleButtonMyWishlist = () => {
+        navigate(`/piges/${selectedUserPige.pige.pigeName}/myWishList`, {state: selectedUserPige});
+    }
+
     return (
         <div className='container-fluid row justify-content-center text-center oui min-vh-100 ' style={sectionStyle}>
             <div className="col-sm-5">
@@ -72,7 +77,8 @@ const AddWish = () => {
                                 <label>Description</label>
                             </div>
                             <textarea rows="3" placeholder={"Entrez la description ici"} className="col-sm-6"
-                                      onChange={event => setItemDescription(event.target.value)} required/>
+                                      onChange={event => setItemDescription(event.target.value)} maxLength="255"
+                                      required/>
                         </div>
 
                         <div className="mb-2">
@@ -94,6 +100,12 @@ const AddWish = () => {
                         <button type="submit" className="btn "
                                 style={{backgroundColor: '#012C57', color: 'white'}}>Ajouter à la liste
                         </button>
+                        <div className="mt-2 ">
+                            <button className="btn"
+                                    style={{backgroundColor: '#012C57', color: 'white'}}
+                                    onClick={() => handleButtonMyWishlist()}> Retour à ma liste de souhaits
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>

@@ -166,7 +166,7 @@ const MyPige = () => {
                         </div>
                         <div className=" d-flex border flex-column  border-2 p-3 mt-3 text-start" id='MonEspace'>
                             <h5>Espace de {selectedUserPige.user.userFirstName}</h5>
-                            {/*Bien vefifier les navigate des boutons... ya 2 sortes et je pense que cest important pour le current user*/}
+
                             <div className="mt-2 ">
                                 <button className="liste p-2 rounded"
                                         style={{backgroundColor: '#1C67A1', color: 'white'}}
