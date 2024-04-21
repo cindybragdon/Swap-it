@@ -94,6 +94,9 @@ const Login = () => {
                                     </button>
                                 </a>
                             </div>
+                            <h7 className="text-white m-2 text-center" id="infoText" style={{textAlign: 'center'}}>Laissez-nous
+                                organiser votre pige de cadeaux
+                            </h7>
                         </div>
                     </div>
                 </form>
