@@ -20,7 +20,7 @@ CÉGEP MARIE-VICTORIN, MONTRÉAL.
 # Architecture 
 
 ## Swap-it est une application basée sur le pattern architectural Model-View-Controller (MVC). 
-![image](https://github.com/cindybragdon/swap-it/assets/111932725/86971178-09f2-4ff1-a4ff-6b1324d4609c)
+![image](https://github.com/cindybragdon/swap-it/assets/111932725/8340e8a0-73d9-478d-ae9c-ed417e96c5a2)
 
 ---
 
