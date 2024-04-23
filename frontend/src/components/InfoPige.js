@@ -3,6 +3,8 @@ import React from "react";
 const InfoPige = (props) => {
     const selectedUserPige = props.selectedUserPige;
 
+
+
     return (
         <div className="border border-2 p-2" id="infoPiges">
             <h4 className="text-start">Espace Pige</h4>

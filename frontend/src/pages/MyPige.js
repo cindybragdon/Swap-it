@@ -23,7 +23,11 @@ const MyPige = () => {
         border: 'white solid 3px',
     }
 
-    const currentDate = new Date();
+    const date = new Date();
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+    let currentDate = `${day}-${month}-${year}`;
 
     const location = useLocation();
     const selectedUserPige = location.state;

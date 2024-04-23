@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Login from "../components/Login";
 import ImageLogo2 from "../images/homeIcone.jpg";
-import ImageParty from "../images/HOME.jpg";
+import ImageParty from "../images/newHomeBG.jpg";
 import {useLocation, useNavigate} from "react-router-dom";
 
 function Home() {
