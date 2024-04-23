@@ -47,9 +47,16 @@ const AddUserToPige = () => {
     };
 
     const handleSubmit = (event) => {
-        setListFormInv(listFormInv => [...listFormInv, formInv]);
-        console.log(listFormInv);
         event.preventDefault();
+        const emailExists = listFormInv.some(invite => invite.emailWantedUser === emailToAdd);
+
+        if (!emailExists) {
+            setListFormInv(listFormInv => [...listFormInv, formInv]);
+            console.log('Ajouté:', formInv);
+        } else {
+            alert("Le courriel est déjà présent dans la liste")
+            console.log('Email déjà utilisé:', emailToAdd);
+        }
     };
 
     const onClickCreateInvitations = () => {
@@ -106,9 +113,12 @@ const AddUserToPige = () => {
                 <div className="card-body ">
                     <button className="btn btn-secondary d-flex justify-content-center"
                             style={{margin: "auto"}}>
-                        <img src={ImageChapeauLapin} style={imageStyle}   alt="Account"/>
+                        <img src={ImageChapeauLapin} style={imageStyle} alt="Account"/>
                     </button>
+
                     <p>Les invités sont :</p>
+                    <p>Vous serez automatiquement
+                        ajouté,* {JSON.parse(sessionStorage.user).userFirstName} *</p>
                     {listFormInv.map((inv) => (
                         <p>{inv.firstNameOfWantedUser} {inv.lastNameOfWantedUser}, {inv.emailWantedUser}</p>
                     ))}</div>

@@ -56,7 +56,7 @@ const Invitations = () => {
                     Bonjour, {JSON.parse(sessionStorage.user).userFirstName}, voici vos invitations!
                 </h2>
             </div>
-            {tabInvitations !== null ?
+            {tabInvitations > 0 ?
                 tabInvitations.map((inv, index) => (
                     !inv.asBeenAnswered ?
                         inv.pige.pigeState === "CREATED" ?
@@ -76,7 +76,12 @@ const Invitations = () => {
                             <button className="m-1" onClick={() => onClickInv(inv, true, index)}>Accepter l'invitation</button>
                             <button onClick={() => onClickInv(inv, false, index)}>Refuser L'invitation</button>
                         </div> : null : null
-                )) : <p>Pas d'invitations</p>
+                )) :
+                <div className="pt-3 text-center">
+                    <h2 className="title-piges" style={{color: '#FF3991'}}>
+                        Pas d'invitations!
+                    </h2>
+                </div>
             }
         </div>
     );
@@ -84,17 +89,3 @@ const Invitations = () => {
 }
 
 export default Invitations;
-
-/**
- * let listOfInv = [];
- *       getAllInv()
- *          .then((response) => response.json())
- *          .then((value) => {return value});
- *
- *      const getValueForList = () => {
- *          getAllInv.then((response) => {return response();});
- *
- *      }
- *
- *      listOfInv = getValueForList();
- */
