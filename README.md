@@ -27,7 +27,7 @@ CÉGEP MARIE-VICTORIN, MONTRÉAL.
 # Quelques vues de notre application : 
 
 ## Home
-![image](https://github.com/cindybragdon/swap-it/assets/111932725/1eb0b168-ba9a-4fe4-b6ba-cc9bc368b6a1)
+![image](https://github.com/cindybragdon/swap-it/assets/111932725/a5507657-f6c2-4fd3-9703-b9eb3d8a00f9)
 
 ## Mes piges
 ![image](https://github.com/cindybragdon/swap-it/assets/111932725/2f1aef21-7fad-4251-831f-34218532ede4)
