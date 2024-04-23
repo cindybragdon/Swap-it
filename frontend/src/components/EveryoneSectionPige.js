@@ -37,7 +37,7 @@ const EveryoneSectionPige = (props) => {
     }
     return (
         <div className=" d-flex border flex-column  border-2 p-3 mt-3 text-start">
-            <h5>Espace de {selectedUserPige.user.userFirstName}</h5>
+            <h4>Espace de {selectedUserPige.user.userFirstName}</h4>
             <div className="mt-2 ">
                 <button className="liste p-2 rounded"
                         style={{backgroundColor: '#1C67A1', color: 'white'}}

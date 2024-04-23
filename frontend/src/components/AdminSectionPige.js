@@ -72,8 +72,8 @@ const AdminSectionPige = (props) => {
             {JSON.parse(sessionStorage.user).idUser === selectedUserPige.pige.userAdmin.idUser ?
 
                 <div className=" border border-2 p-3 " id="espaceAdmin">
-                    <h5 className="text-start"> Espace Admin pour l'organisateur de la
-                        pige {selectedUserPige.pige.pigeName} </h5>
+                    <h4 className="text-start"> Espace Admin pour l'organisateur de la
+                        pige {selectedUserPige.pige.pigeName} </h4>
                     {selectedUserPige.pige.pigeState === "CREATED" ?
                         <div className="d-flex flex-column  justify-content-start align-items-start ">
                             <button type="submit" className="liste p-2 rounded" onClick={handleClickStartPige}
