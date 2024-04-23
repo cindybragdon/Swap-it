@@ -23,6 +23,8 @@ const MyPige = () => {
         border: 'white solid 3px',
     }
 
+    const currentDate = new Date();
+
     const location = useLocation();
     const selectedUserPige = location.state;
 
