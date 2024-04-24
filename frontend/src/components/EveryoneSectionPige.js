@@ -5,16 +5,6 @@ import axios from "axios";
 const EveryoneSectionPige = (props) => {
 
     let currentDate = new Date();
-
-    /*
-    let day = date.getDate();
-    let month = date.getMonth() + 1;
-    let year = date.getFullYear();
-    let currentDate = `${year}${month}${day}`;
-    let [endTime, setEndTime] = useState(new Date());
-    let verifyDate = true;
-    */
-
     let mouseDate = new Date();
 
     const selectedUserPige = props.selectedUserPige;
@@ -27,11 +17,7 @@ const EveryoneSectionPige = (props) => {
         axios.get(urlGetWhoThePersonPicked)
             .then(response => {
                 setPersonPicked(response.data)
-                /*
-                let temp = selectedUserPige.pige.pigeEndDate.split("-");
-                let endDate = new Date(parseInt(temp[0]),parseInt(temp[1])-1,parseInt(temp[2]));
-                setEndTime(endDate)
-                */
+
 
             })
             .catch(err => console.log(err));
@@ -57,22 +43,6 @@ const EveryoneSectionPige = (props) => {
     const onClickBackToPiges = () => {
         navigate(`/piges/`);
     }
-
-    /*
-    const testIfEndDateIsMore = () => {
-
-        if(selectedUserPige.pigeEndDate < new Date()) {
-            console.log("1 seconde est passée");
-        } else {
-            console.log("non");
-        }
-        verifyDate = true;
-
-
-
-    }
-    */
-
 
 
     document.onmousemove = () => {
@@ -106,13 +76,14 @@ const EveryoneSectionPige = (props) => {
                 </button>
             </div> : null
             }
-            {currentDate < pigeDate ?
+
             <div className="mt-2">
                 <button className="liste p-2 rounded" id="voirPiges"
                         style={{backgroundColor: '#1C67A1', color: 'white'}}
                         onClick={() => onClickBackToPiges()}> Voir toutes mes Piges
                 </button>
-            </div> : null}
+            </div>
+            {currentDate < pigeDate ?
             <div className="mt-2">
                 <button className="liste p-2 rounded" id="changerPseudo"
                         style={{backgroundColor: '#1C67A1', color: 'white'}}
@@ -120,7 +91,7 @@ const EveryoneSectionPige = (props) => {
                     pige {selectedUserPige.pige.pigeName}
                 </button>
 
-            </div>
+            </div>: null}
         </div>
     );
 }

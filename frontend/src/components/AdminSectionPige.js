@@ -7,6 +7,23 @@ const AdminSectionPige = (props) => {
     const selectedUserPige = props.selectedUserPige;
     const listUserPige = props.listUserPige;
     const navigate = useNavigate();
+    let pigeDate = new Date(selectedUserPige.pige.pigeEndDate);
+
+
+    let currentDate = new Date();
+    let mouseDate = new Date();
+
+    document.onmousemove = () => {
+        currentDate = new Date();
+        if(currentDate.getFullYear() > mouseDate.getFullYear() || currentDate.getMonth() > mouseDate.getMonth() || currentDate.getDay() > mouseDate.getDay()) {
+            window.location.reload();
+        }
+        mouseDate = new Date();
+
+        console.log(currentDate);
+        console.log(pigeDate);
+    }
+
 
     const handleClickStartPige = () => {
         try {
@@ -66,11 +83,13 @@ const AdminSectionPige = (props) => {
         }
     }
 
+
+
     return (
-
-        <div className="mt-3">
+        <div>
+        {currentDate < pigeDate ?
+            <div className="mt-3">
             {JSON.parse(sessionStorage.user).idUser === selectedUserPige.pige.userAdmin.idUser ?
-
                 <div className=" border border-2 p-3 " id="espaceAdmin">
                     <h4 className="text-start"> Espace Admin pour l'organisateur de la
                         pige {selectedUserPige.pige.pigeName} </h4>
@@ -79,8 +98,7 @@ const AdminSectionPige = (props) => {
                             <button type="submit" className="liste p-2 rounded" onClick={handleClickStartPige}
                                     style={{backgroundColor: '#FFD801', color: 'white'}}>Lancer la pige!
                             </button>
-                        </div> : null
-                    }
+                        </div> : null }
                     <div className="d-flex flex-column  justify-content-start align-items-start ">
                         <div className="mt-2 ">
                             <button className="liste p-2 rounded"
@@ -102,9 +120,10 @@ const AdminSectionPige = (props) => {
 
 
                     </div>
-                </div>
-                : null}
-        </div>
-    );
-}
+                </div>  : null }
+            </div> : null }
+            </div>
+                );
+                }
+
 export default AdminSectionPige;
