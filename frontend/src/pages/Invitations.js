@@ -56,7 +56,7 @@ const Invitations = () => {
                     Bonjour, {JSON.parse(sessionStorage.user).userFirstName}, voici vos invitations!
                 </h2>
             </div>
-            {tabInvitations > 0 ?
+            {tabInvitations != null ?
                 tabInvitations.map((inv, index) => (
                     !inv.asBeenAnswered ?
                         inv.pige.pigeState === "CREATED" ?
