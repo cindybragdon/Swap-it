@@ -47,6 +47,9 @@ CÉGEP MARIE-VICTORIN, MONTRÉAL.
 ## Profil Pseudo personnalisé pour chaque pige
 ![image](https://github.com/cindybragdon/swap-it/assets/111932725/bf48a7b0-ebc1-43eb-b442-70edfda4068b)
 
+## FAQ
+![image](https://github.com/cindybragdon/swap-it/assets/111932725/63b76b04-71c9-46e1-8d43-10baf6884cea)
+
 ## Ajouter une suggestion à ma liste de souhaits
 ![image](https://github.com/cindybragdon/swap-it/assets/111932725/2f24e7f3-4e74-4a78-b8d0-b1ba37fe2e46)
 
