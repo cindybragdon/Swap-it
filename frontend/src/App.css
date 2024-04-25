@@ -372,4 +372,16 @@ body {
 }
 
 
-
+#secret-picked{
+  font-family: "Bangers", sans-serif;
+  font-weight: 200;
+  font-size: 35px;
+  letter-spacing: 1px;
+  text-align: center;
+  text-shadow: 3px 0 black, -3px 0 black;
+  padding: 20px;
+  margin: 0px;
+  line-height: 80%;
+  color: #bff542;
+  border: #60b2cc dotted 10px;
+}
