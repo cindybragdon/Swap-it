@@ -70,18 +70,26 @@ const AdminSectionPige = (props) => {
         }
     }
 
+
     const handleClickDeletePige =  () => {
         try {
-            if (JSON.parse(sessionStorage.user).idUser === selectedUserPige.pige.userAdmin.idUser) {
-                const url = `http://localhost:9281/api/deletePige?idPige=${selectedUserPige.pige.idPige}`;
-                axios.put(url)
-                    .catch(err => {console.error(err)});
-                navigate(`/piges`);
+            if (window.confirm('Voulez-vous vraiment annuler la pige?')) {
+                if (JSON.parse(sessionStorage.user).idUser === selectedUserPige.pige.userAdmin.idUser) {
+                    const url = `http://localhost:9281/api/deletePige?idPige=${selectedUserPige.pige.idPige}`;
+                    axios.put(url)
+                        .catch(err => {console.error(err)});
+                    console.log('La pige a bien été annulée.');
+                    navigate(`/piges`);
+                } else {
+                // Do nothing!
+                console.log("Ouf, la pige n'a pas été annulée.");
             }
-        }catch(e) {
-            console.error(e);
+            }
+            }catch(e) {
+                console.error(e);
+            }
+
         }
-    }
 
 
 

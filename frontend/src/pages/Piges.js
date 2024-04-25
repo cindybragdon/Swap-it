@@ -82,19 +82,26 @@ function Piges() {
 
                 {listUserPige.map((UserPige, index) => (
                     UserPige.pige.active === true ?
-                    <div className="col pb-3 " key={index} onClick={() => handlePigeClick(UserPige)}>
-                        <div className="card" style={{height: '30vh'}}>
-                            <div id="piges-box" className="title-card-piges card-header bg-danger">{UserPige.pige.pigeName}</div>
-                            <div className="card-body">
-                                <p className="card-text"> Pige organisée par : {UserPige.pige.userAdmin.userFirstName} {UserPige.pige.userAdmin.userLastName}</p>
-                                <p className="card-text">Cette pige se terminera le :</p>
-                                <p>{UserPige.pige.pigeEndDate}</p>
-                            </div>
+                        <div className="col pb-3 " key={index} onClick={() => handlePigeClick(UserPige)}>
+                            <div className="card" style={{height: '30vh'}}>
+                                {new Date(UserPige.pige.pigeEndDate) > new Date() ?
+                                    <div id="piges-box"
+                                         className="title-card-piges card-header bg-danger">{UserPige.pige.pigeName}</div>
+                                    : <div id="piges-box"
+                                           className="title-card-piges card-header bg-warning">{UserPige.pige.pigeName}</div>}
+                                <div className="card-body">
+                                    <p className="card-text"> Pige organisée par
+                                        : {UserPige.pige.userAdmin.userFirstName} {UserPige.pige.userAdmin.userLastName}</p>
+                                    {new Date(UserPige.pige.pigeEndDate) > new Date() ? <>
+                                        <p className="card-text">Cette pige se terminera le :</p>
+                                        <p>{UserPige.pige.pigeEndDate}</p>
+                                    </> :<p className="card-text">Cette pige est terminée</p>}
                         </div>
+                    </div>
                     </div> : null
 
 
-                ))}
+                    ))}
 
             </div>
 
@@ -102,5 +109,6 @@ function Piges() {
         </div>
     );
 }
-    export default Piges;
+
+export default Piges;
 

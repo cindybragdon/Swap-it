@@ -119,7 +119,7 @@ const AddUserToPige = () => {
 
                     <p>Les invités sont :</p>
                     <p>Vous serez automatiquement
-                        ajouté,* {JSON.parse(sessionStorage.user).userFirstName} *</p>
+                        ajouté, {JSON.parse(sessionStorage.user).userFirstName} </p>
                     {listFormInv.map((inv) => (
                         <p>{inv.firstNameOfWantedUser} {inv.lastNameOfWantedUser}, {inv.emailWantedUser}</p>
                     ))}</div>

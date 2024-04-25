@@ -22,7 +22,8 @@ const InfoPige = (props) => {
             </div>
             <div className="d-flex">
                 <h5 className="text-start">Date de l'échange : </h5>
-                <h5>{selectedUserPige.pige.pigeEndDate}</h5>
+                {new Date(selectedUserPige.pige.pigeEndDate) > new Date() ?
+                    <h5>{selectedUserPige.pige.pigeEndDate}</h5> : <h5 className="text-danger">Cette pige est terminée</h5>}
             </div>
             <div className="d-flex">
                 <h5 className="text-start">Montant suggéré : </h5>
