@@ -67,7 +67,7 @@ const QuiJaiPige = () => {
                              data-parent="#accordion"
                              style={{ backgroundColor: "#60b2cc"}}>
                             <div className="card-body">
-                                {personPicked.userPigeWhoIsPickedByTheUserPige.user.userFirstName} {personPicked.userPigeWhoIsPickedByTheUserPige.user.userLastName} ({personPicked.userPigeWhoIsPickedByTheUserPige.userPigePseudo})
+                                {personPicked.userPigeWhoIsPickedByTheUserPige.user.userFirstName} {personPicked.userPigeWhoIsPickedByTheUserPige.user.userLastName} {personPicked.userPigeWhoIsPickedByTheUserPige.userPigePseudo}
                             </div>
                         </div>
                     </div>
