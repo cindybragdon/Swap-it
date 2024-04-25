@@ -13,10 +13,10 @@ function Piges() {
         backgroundImage: `url(${BGPiges})`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
-        minHeight: '100vh',
+        minHeight: '85vh',
         fontFamily: "Reddit Mono",
         border: 'white solid 3px',
-        minWidth: '100vw'
+        minWidth: '99.5vw'
 
     }
 
@@ -52,7 +52,7 @@ function Piges() {
     }
 
     return (
-        <div className='container bg-primary text-center' style={sectionStyle}>
+        <div id="container-my-piges" className='container bg-primary text-center' style={sectionStyle}>
             <div className="pt-3">
                 <h2 className="title-piges " style={{color: '#FF3991'}}>Bonjour, {currentUser.userFirstName}, voici vos
                     piges!</h2>
