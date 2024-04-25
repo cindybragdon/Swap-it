@@ -56,10 +56,9 @@ const Invitations = () => {
                     Bonjour, {JSON.parse(sessionStorage.user).userFirstName}, voici vos invitations!
                 </h2>
             </div>
-
-            {tabInvitations !==null ?
+            {tabInvitations !== null ?
                 tabInvitations.map((inv, index) => (
-                     !inv.asBeenAnswered ?
+                    !inv.asBeenAnswered ?
                         inv.pige.pigeState === "CREATED" ?
                         <div key={index} className="container-sm text-center  p-5 m-2"
                              style={{
@@ -84,7 +83,6 @@ const Invitations = () => {
                     </h2>
                 </div>
             }
-
         </div>
     );
 

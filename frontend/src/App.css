@@ -178,6 +178,20 @@ body {
   line-height: 80%;
 }
 
+#faqText {
+  font-family: "Bangers", sans-serif;
+  font-weight: 200;
+  font-size: 35px;
+  letter-spacing: 1px;
+  text-align: center;
+  text-shadow: 3px 0 black, -3px 0 black;
+  padding: 0px;
+  margin: 0px;
+  line-height: 80%;
+  color : #ff056b;
+}
+
+
 .welcome-span {
   color: rgb(254, 200, 49);
   font-family: "Lobster", sans-serif;
