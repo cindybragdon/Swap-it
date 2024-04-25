@@ -27,10 +27,10 @@ const FAQ = () => {
 
 
     return (
-        <div className='card  text-center' style={sectionStyle} >
-           <div className="card p-1 w-50" style={{ backgroundColor: "white"}} id="container-faq">
+        <div className='card  text-center p-3' style={sectionStyle} >
+           <div className="card p-2 w-50" style={{ backgroundColor: "white"}} id="container-faq">
             <div className='d-block align-middle'>
-                <h2 id="faqText" className=" p-1" style={{ backgroundColor: "darkgrey"}}>Parce que parfois, tout comprendre seul, c'est pas un cadeau!</h2>
+                <h2 id="faqText" className=" p-2" style={{ backgroundColor: "darkgrey"}}>Parce que parfois, tout comprendre seul, c'est pas un cadeau!</h2>
                 <div className="accordion" id="accordionExample">
                     {questionsAnswers.map((questionAns) => (
                         <div className="card "   key={questionAns.itemId}>

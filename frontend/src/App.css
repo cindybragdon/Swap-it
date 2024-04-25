@@ -88,6 +88,7 @@ body {
   justify-content: center;
   align-items: center;
 
+
 }
 
 .title-piges{
@@ -124,9 +125,18 @@ body {
   margin-bottom: 20px;
   font-family: "Reddit Mono", monospace;
 }
+#account-box-img {
+  margin-top: 10px;
+  background-color: white;
+  padding: 20px;
+}
 
 #account-box {
   margin-top: 10px;
+}
+
+#img-acc {
+  border: white solid 2px;
 }
 
 
@@ -145,7 +155,6 @@ body {
   padding-top: 30px;
 
 }
-
 
 .oui{
   position: relative;
@@ -219,6 +228,11 @@ body {
   margin-top: 20px;
   margin-bottom: 20px;
   font-family: "Reddit Mono", monospace;
+}
+
+#modif-piges {
+  margin-top : 150px !important;
+
 }
 
 #container-create {

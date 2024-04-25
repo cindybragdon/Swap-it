@@ -10,7 +10,7 @@ const ModifPseudoImagePige = () => {
     var sectionStyle = {
         backgroundImage: `url(${ImageModif})`,
         width: '100vw',
-        minHeight: '100vh',
+        minHeight: '85vh',
         backgroundPosition: 'center',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
@@ -45,7 +45,7 @@ const ModifPseudoImagePige = () => {
     return (
 
     <div className="row justify-content-left" style={sectionStyle}>
-        <div className="card text-center card w-25 m-5  " style={{ height: '440px', overflow: 'auto',  fontFamily: "Reddit Mono"}}>
+        <div id="modif-piges" className="card text-center card w-25 m-5  " style={{ height: '440px', overflow: 'auto',  fontFamily: "Reddit Mono"}}>
             <div className="card-header h5 text-white " style={{backgroundColor: "#05521A"}}>Modifiez vos infos pour la pige {selectedUserPige.pige.pigeName}!</div>
             <div className="card-body px-2">
 
