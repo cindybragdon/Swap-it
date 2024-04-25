@@ -39,7 +39,7 @@ CÉGEP MARIE-VICTORIN, MONTRÉAL.
 ![image](https://github.com/cindybragdon/swap-it/assets/111932725/05ecbcf8-16ff-4cd1-8a26-b97d3f09464c)
 
 ## Qui aie-je pigé?
-![Uploading image.png…]()
+![image](https://github.com/cindybragdon/swap-it/assets/111932725/8e28367f-8434-49cb-b432-5af72fb51085)
 
 ## Mes invitations à des piges
 ![image](https://github.com/cindybragdon/swap-it/assets/111932725/5580ed36-cbe3-4711-8366-4f75c63fdea9)
