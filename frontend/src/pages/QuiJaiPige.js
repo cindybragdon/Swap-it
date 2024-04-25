@@ -8,9 +8,8 @@ const QuiJaiPige = () => {
     var sectionStyle = {
         backgroundImage: `url(${ImageSurprise})`,
         position: 'relative',
-        minHeight: '100vh',
-        fontFamily: "Reddit Mono",
-        fontSize: '15px'
+        minHeight: '85vh',
+        fontFamily: "Reddit Mono"
     }
 
     const location = useLocation();
@@ -26,7 +25,7 @@ const QuiJaiPige = () => {
     return (
         <div className='renderingElement' style={sectionStyle}>
             <div className='container '>
-                <h3 style={{backgroundColor: "#D4015F",
+                <h3 id="secret-picked" style={{backgroundColor: "#316B7E",
                     position: 'absolute',
                     top: '60%',
                     left: '50%',
@@ -39,7 +38,7 @@ const QuiJaiPige = () => {
                 <div id="accordion  "
                      style={{backgroundColor: "#D4015F",
                          position: 'absolute',
-                         top: '75%',
+                         top: '80%',
                          left: '50%',
                          transform: 'translateX(-50%)',
                          width: 'auto',

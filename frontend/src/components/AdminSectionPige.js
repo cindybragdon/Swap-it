@@ -114,11 +114,11 @@ const AdminSectionPige = (props) => {
                                     onClick={() => handleButtonUpdatePige()}> Modifier la pige
                             </button>
                         </div>
-
+                        {selectedUserPige.pige.pigeState === "CREATED" ?
                         <button onClick={handleClickAddPeople} className="liste p-2 rounded mt-2"
                                 style={{backgroundColor: '#FFD801', color: 'white'}}>Envoyer des
                             invitations
-                        </button>
+                        </button> : null }
 
 
                         <button type="submit" className="liste p-2 rounded mt-2"
