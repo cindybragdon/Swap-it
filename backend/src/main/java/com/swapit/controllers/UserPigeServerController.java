@@ -56,10 +56,10 @@ public class UserPigeServerController {
                     && (userPigeToCreate.getPige().getPigeName() != null)
                     && (userPigeToCreate.getPige().getPigeType() != null)
                     && (userPigeToCreate.getPige().getPigeEndDate() != null)
-                    && (userPigeToCreate.getPige().getPigeType().equals("THEMED")
+                    && ((userPigeToCreate.getPige().getPigeType().equals("THEMED")
                     || userPigeToCreate.getPige().getPigeType().equals("TARGETED")
                     || userPigeToCreate.getPige().getPigeType().equals("NORMAL")
-                    || userPigeToCreate.getPige().getPigeType().equals("GIFTLIST")
+                    || userPigeToCreate.getPige().getPigeType().equals("GIFTLIST"))
             )) {
                 Date date = new Date();
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -71,7 +71,7 @@ public class UserPigeServerController {
                 userPigeToCreate.getPige().setNumberPigeOfUser(pigeRepository.countPigesByUserAdmin_IdUser(userPigeToCreate.getUser().getIdUser())+1);
                 pigeRepository.save(userPigeToCreate.getPige());
                 userPigeRepository.save(userPigeToCreate);
-                pigeToReturn = pigeRepository.findPigeByNumberPigeOfUser(pigeRepository.countPigesByUserAdmin_IdUser(userPigeToCreate.getPige().getUserAdmin().getIdUser()));
+                pigeToReturn = pigeRepository.findPigeByNumberPigeOfUser(pigeRepository.countPigesByUserAdmin_IdUser(userPigeToCreate.getUser().getIdUser()));
             }
             return pigeToReturn;
         }catch (Exception e){

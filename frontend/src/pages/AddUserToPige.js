@@ -38,6 +38,7 @@ const AddUserToPige = () => {
     const asBeenAnswered = false;
     const navigate = useNavigate();
 
+    console.log(JSON.parse(sessionStorage.pigeToAddPeopleTo));
     const formInv = {
         pige: JSON.parse(sessionStorage.pigeToAddPeopleTo),
         firstNameOfWantedUser: firstNameToAdd,

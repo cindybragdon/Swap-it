@@ -58,7 +58,7 @@ const MyWishList = () => {
     return (
         <div style={fullBackgroundStyle}>
             <div className='container-fluid text-center'>
-                <div className="pt-3">
+                <div className="pt-3 ">
                     <h2 className="title-piges" style={{color: '#FF3991'}}>{userPige.user.userFirstName}, voici votre
                         liste de suggestions de cadeaux pour la pige {userPige.pige.pigeName}
                         <h5><a className="link-opacity-75" onClick={handleClickBackToPige}>Retour à la pige</a></h5>

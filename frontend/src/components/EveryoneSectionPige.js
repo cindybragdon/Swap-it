@@ -52,8 +52,8 @@ const EveryoneSectionPige = (props) => {
         }
         mouseDate = new Date();
 
-        console.log(currentDate);
-        console.log(pigeDate);
+        //console.log(currentDate);
+        //console.log(pigeDate);
     }
 
     return (

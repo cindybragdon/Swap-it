@@ -36,7 +36,7 @@ const FormCreationPige = () => {
                 if (response.data !== {}) {
                     alert(`La pige ${nomPige} a été créée!`);
                     sessionStorage.setItem('pigeToAddPeopleTo', JSON.stringify(response.data));
-                    alert(JSON.parse(sessionStorage.pigeToAddPeopleTo));
+                    console.log(JSON.parse(sessionStorage.pigeToAddPeopleTo));
                     alert(`Vous pouvez maintenant ajouter des utilisateurs à votre pige ${JSON.parse(sessionStorage.user).userFirstName}!`);
                     await navigate('/addPeople');
 
