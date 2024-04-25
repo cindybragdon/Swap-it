@@ -27,7 +27,7 @@ const QuiJaiPige = () => {
             <div className='container '>
                 <h3 id="secret-picked" style={{backgroundColor: "#316B7E",
                     position: 'absolute',
-                    top: '60%',
+                    top: '50%',
                     left: '50%',
                     transform: 'translateX(-50%)',
                     width: 'auto',

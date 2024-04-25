@@ -1,5 +1,5 @@
 import React from 'react';
-import ImageScrumShine from "../images/CinJenOli.jpg";
+import ImageScrumShine from "../images/equipe.jpg";
 import ReseauxSociaux from "../components/ReseauxSociaux";
 import ImageAbout from "../images/AboutUs.jpg";
 
