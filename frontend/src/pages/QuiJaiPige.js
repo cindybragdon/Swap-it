@@ -44,7 +44,7 @@ const QuiJaiPige = () => {
                          width: 'auto',
                          textAlign: 'center',
                      }}>
-                    <div className="d-flex justify-content-center ">
+                    <div id="secret-name"className="d-flex justify-content-center ">
                     <div className="card text-center " style={{ backgroundColor: "#bff542"}}>
                         <div className={`card-header ${openItemId === null ? '' : 'collapsed'}` } id="headingTwo"   >
                             <h5 className="mb-0 " >
@@ -54,18 +54,18 @@ const QuiJaiPige = () => {
                                     onClick={() => openItemId === null ? setOpenItemId(1) : setOpenItemId(null)}
                                     aria-expanded={openItemId === 1}
                                     aria-controls={`collapse${1}`}
-                                    style={{ fontSize: '20px' }}
+                                    style={{ fontSize: '20px', color : '#316B7E' }}
 
                                 >
-                                    <i className="bi bi-arrow-right-square-fill " style={{ paddingRight: '20px'}}></i>
-                                    Le secret se cache ici!
-                                    <i className="bi bi-arrow-left-square-fill" style={{ paddingLeft: '20px'}}></i>
+                                    <i className="bi bi-arrow-right-square-fill " style={{ paddingRight: '5px'}}></i>
+                                     🤐 Le secret se cache ici! 🤐
+                                    <i className="bi bi-arrow-left-square-fill" style={{ paddingLeft: '5px'}}></i>
                                 </button>
                             </h5>
                         </div>
                         <div id="collapseTwo" className={`collapse ${openItemId === 1 ? 'show' : ''}`} aria-labelledby="headingTwo"
                              data-parent="#accordion"
-                             style={{ backgroundColor: "#42f5ef"}}>
+                             style={{ backgroundColor: "#60b2cc"}}>
                             <div className="card-body">
                                 {personPicked.userPigeWhoIsPickedByTheUserPige.user.userFirstName} {personPicked.userPigeWhoIsPickedByTheUserPige.user.userLastName} ({personPicked.userPigeWhoIsPickedByTheUserPige.userPigePseudo})
                             </div>
