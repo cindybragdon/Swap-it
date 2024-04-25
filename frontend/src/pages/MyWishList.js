@@ -54,7 +54,6 @@ const MyWishList = () => {
             .catch(err => console.log(err));
         window.location.reload();
     }
-
     return (
         <div style={fullBackgroundStyle}>
             <div className='container-fluid text-center'>
@@ -75,9 +74,10 @@ const MyWishList = () => {
                         </div>
                     </div>
                     {listWishedItems.map((wishedItem, index) => (
+                        userPige.user.idUser === JSON.parse(sessionStorage.user).idUser ?
                         !wishedItem.deleted?
-                        <div className="col mb-4"
-                             key={index}>
+                            wishedItem.userWhoAddedTheItem.idUser === wishedItem.userPige.user.idUser ?
+                            <div className="col mb-4" key={index}>
                             <div className="card card-custom shadow-sm">
                                 <div id="piges-box"
                                      className="title-card-piges card-header bg-danger">{wishedItem.wishedItemName}</div>
@@ -93,11 +93,6 @@ const MyWishList = () => {
                                 </div>
 
 
-                                {userPige.user.idUser !== JSON.parse(sessionStorage.user).idUser ?
-                                    <div className="card-body">
-                                        <p className="card-text">Ajouté par
-                                            : {wishedItem.userWhoAddedTheItem.userFirstName}</p>
-                                    </div> : ''}
                                 <div className="container position-relative">
                                     <button type="button" className="btn  position-absolute bottom-0 end-0" onClick={() => handleDeleteWishItem(wishedItem, index)}>
                                         <i className="bi bi-trash"></i>
@@ -106,6 +101,37 @@ const MyWishList = () => {
                             </div>
 
                         </div>:null
+                            :null:
+                            !wishedItem.deleted?
+                                <div className="col mb-4"
+                                     key={index}>
+                                    <div className="card card-custom shadow-sm">
+                                        <div id="piges-box"
+                                             className="title-card-piges card-header bg-danger">{wishedItem.wishedItemName}</div>
+                                        {wishedItem.wishedItemImage ?
+                                            <img src={wishedItem.wishedItemImage} className="card-image img-fluid p-2"/> :
+                                            <img src={ImageWishedItemBlank} className="card-image img-fluid p-2"/>
+                                        }
+                                        <div className="card-body">
+                                            <p className="card-text">{wishedItem.wishedItemDescription}</p>
+                                            {wishedItem.wishedItemUrl ?
+                                                <a href={wishedItem.wishedItemUrl}
+                                                   target='_blank'>Voir cet item en ligne</a> : ''}
+                                        </div>
+
+
+                                        {userPige.user.idUser !== JSON.parse(sessionStorage.user).idUser ?
+                                            <div className="card-body">
+                                                <p className="card-text">Ajouté par
+                                                    : {wishedItem.userWhoAddedTheItem.userFirstName}</p>
+                                            </div> : ''}
+                                        <div className="container position-relative">
+                                            <button type="button" className="btn  position-absolute bottom-0 end-0" onClick={() => handleDeleteWishItem(wishedItem, index)}>
+                                                <i className="bi bi-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>:null
 
                     ))}
 
