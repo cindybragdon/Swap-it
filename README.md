@@ -7,7 +7,7 @@ CÉGEP MARIE-VICTORIN, MONTRÉAL.
 
 # VOICI UNE BRÈVE INTRODUCTION DE NOTRE ÉQUIPE SCRUMSHINE:
 
-![image](https://github.com/cindybragdon/swap-it/assets/111932725/d53bd58c-0dac-4bcf-af1a-7c0b7f56def1)
+![image](https://github.com/cindybragdon/swap-it/assets/111932725/c71b87b4-24e9-47ae-8237-0bcb999a7315)
 
 
 - **Cindy Bragdon** https://github.com/cindybragdon
@@ -39,7 +39,7 @@ CÉGEP MARIE-VICTORIN, MONTRÉAL.
 ![image](https://github.com/cindybragdon/swap-it/assets/111932725/05ecbcf8-16ff-4cd1-8a26-b97d3f09464c)
 
 ## Qui aie-je pigé?
-![image](https://github.com/cindybragdon/swap-it/assets/111932725/4a042c65-5bee-4d19-b966-3a3935c78de3)
+![Uploading image.png…]()
 
 ## Mes invitations à des piges
 ![image](https://github.com/cindybragdon/swap-it/assets/111932725/5580ed36-cbe3-4711-8366-4f75c63fdea9)
