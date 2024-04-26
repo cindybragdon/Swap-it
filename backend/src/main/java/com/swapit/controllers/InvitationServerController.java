@@ -87,10 +87,13 @@ public class InvitationServerController {
                 if (userPigeToCreate.getUser() != null && userPigeToCreate.getPige() != null) {
                     Invitations invitations = invitationsRepository.findByIdInvitation(idInvToUpdate);
                     invitations.setAsBeenAnswered(true);
+
                     invitationsRepository.save(invitations);
                     if (isAccepted) {
-                        userPigeRepository.existsUserPigeByUser_IdUserAndPige_IdPige(userPigeToCreate.getUser().getIdUser(), userPigeToCreate.getPige().getIdPige());
-                        userPigeRepository.save(userPigeToCreate);
+                        if(userPigeRepository.findUserPigeByUser_UserEmailAndPige_IdPige(invitations.getEmailWantedUser(), invitations.getPige().getIdPige()) == null) {
+                            userPigeRepository.existsUserPigeByUser_IdUserAndPige_IdPige(userPigeToCreate.getUser().getIdUser(), userPigeToCreate.getPige().getIdPige());
+                            userPigeRepository.save(userPigeToCreate);
+                        }
                     }
                 }
                 messageInvitation = "ACK-400";
