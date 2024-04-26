@@ -30,7 +30,7 @@ const UpdateAccount = () => {
     const formUpdateUserAndPWD = {
         userPassword: nouveauMotPasse,
         user: {
-            idUser:currentUser.idUser,
+            idUser: currentUser.idUser,
             userFirstName: prenom,
             userLastName: nom,
             userEmail: courriel,
@@ -38,8 +38,6 @@ const UpdateAccount = () => {
             userImage: image
         }
     }
-
-
 
 
     const togglePasswordVisibility = () => {
@@ -70,12 +68,9 @@ const UpdateAccount = () => {
     };
 
 
-
     const onSubmit = () => {
         checkIfPasswordCorresponds();
     }
-
-
 
 
     const checkIfPasswordCorresponds = async () => {
@@ -83,7 +78,7 @@ const UpdateAccount = () => {
             const response = await http.get(`getPWDByIdUser?idUser=${currentUser.idUser}`);
             console.log(motPasse);
             console.log(response.data.userPassword);
-            if(response.data.userPassword === motPasse) {
+            if (response.data.userPassword === motPasse) {
                 await updateACC()
             } else {
                 alert("Courriel incorrect ou mot de passe erronné")
@@ -95,7 +90,7 @@ const UpdateAccount = () => {
     const updateACC = async () => {
         try {
             const response = await http.put(`updatePwdAndUser`, formUpdateUserAndPWD);
-            if(response.data === "ACK-210") {
+            if (response.data === "ACK-210") {
                 let response = connectAcc(formUpdateUserAndPWD);
                 if (response) {
                     navigate('/myaccount');
@@ -158,8 +153,9 @@ const UpdateAccount = () => {
                             <label>Image (doit être un lien https vers une image)</label>
                         </div>
                         <div>
-                            <input   name="urlImage" id="typeImage"
-                                   className="form-control my-3" placeholder={"Le lien https vers votre image : "} value={image}
+                            <input name="urlImage" id="typeImage"
+                                   className="form-control my-3" placeholder={"Le lien https vers votre image : "}
+                                   value={image}
                                    onChange={event => setImage(event.target.value)}/>
 
                         </div>
@@ -177,8 +173,9 @@ const UpdateAccount = () => {
 
                         </div>
                         <div className="text-start">
-                            <label>Mot de Passe : <small id="update-pw"> Veuillez écrire votre mot de passe courrant </small>
-                                </label>
+                            <label>Mot de Passe : <small id="update-pw"> Veuillez écrire votre mot de passe
+                                courrant </small>
+                            </label>
                         </div>
 
                         <div className="form-outline ">

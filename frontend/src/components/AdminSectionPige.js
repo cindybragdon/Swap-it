@@ -15,7 +15,7 @@ const AdminSectionPige = (props) => {
 
     document.onmousemove = () => {
         currentDate = new Date();
-        if(currentDate.getFullYear() > mouseDate.getFullYear() || currentDate.getMonth() > mouseDate.getMonth() || currentDate.getDay() > mouseDate.getDay()) {
+        if (currentDate.getFullYear() > mouseDate.getFullYear() || currentDate.getMonth() > mouseDate.getMonth() || currentDate.getDay() > mouseDate.getDay()) {
             window.location.reload();
         }
         mouseDate = new Date();
@@ -33,7 +33,7 @@ const AdminSectionPige = (props) => {
                     const urlCreateAllPersonPicked = `http://localhost:9281/api/createAllUserPigeWithUserPickedForPige?idPige=${selectedUserPige.pige.idPige}`
                     axios.post(urlCreateAllPersonPicked)
                         .then(response => {
-                            if(response.data === "ACK-100") {
+                            if (response.data === "ACK-100") {
                                 alert('La pige a été lançée!');
                                 window.location.reload();
                             } else {
@@ -65,73 +65,74 @@ const AdminSectionPige = (props) => {
             if (JSON.parse(sessionStorage.user).idUser === selectedUserPige.pige.userAdmin.idUser) {
                 navigate(`/piges/${selectedUserPige.pige.pigeName}/UpdatePige`, {state: selectedUserPige});
             }
-        }catch(e) {
+        } catch (e) {
             console.error(e);
         }
     }
 
 
-    const handleClickDeletePige =  () => {
+    const handleClickDeletePige = () => {
         try {
             if (window.confirm('Voulez-vous vraiment annuler la pige?')) {
                 if (JSON.parse(sessionStorage.user).idUser === selectedUserPige.pige.userAdmin.idUser) {
                     const url = `http://localhost:9281/api/deletePige?idPige=${selectedUserPige.pige.idPige}`;
                     axios.put(url)
-                        .catch(err => {console.error(err)});
+                        .catch(err => {
+                            console.error(err)
+                        });
                     console.log('La pige a bien été annulée.');
                     navigate(`/piges`);
                 } else {
-                // Do nothing!
-                console.log("Ouf, la pige n'a pas été annulée.");
+                    // Do nothing!
+                    console.log("Ouf, la pige n'a pas été annulée.");
+                }
             }
-            }
-            }catch(e) {
-                console.error(e);
-            }
-
+        } catch (e) {
+            console.error(e);
         }
 
+    }
 
 
     return (
         <div>
-        {currentDate < pigeDate ?
-            <div className="mt-3">
-            {JSON.parse(sessionStorage.user).idUser === selectedUserPige.pige.userAdmin.idUser ?
-                <div className=" border border-2 p-3 " id="espaceAdmin">
-                    <h4 className="text-start"> Espace Admin pour l'organisateur de la
-                        pige {selectedUserPige.pige.pigeName} </h4>
-                    {selectedUserPige.pige.pigeState === "CREATED" ?
-                        <div className="d-flex flex-column  justify-content-start align-items-start ">
-                            <button type="submit" className="liste p-2 rounded" onClick={handleClickStartPige}
-                                    style={{backgroundColor: '#FFD801', color: 'white'}}>Lancer la pige!
-                            </button>
-                        </div> : null }
-                    <div className="d-flex flex-column  justify-content-start align-items-start ">
-                        <div className="mt-2 ">
-                            <button className="liste p-2 rounded"
-                                    style={{backgroundColor: '#FFD801', color: 'white'}}
-                                    onClick={() => handleButtonUpdatePige()}> Modifier la pige
-                            </button>
-                        </div>
-                        {selectedUserPige.pige.pigeState === "CREATED" ?
-                        <button onClick={handleClickAddPeople} className="liste p-2 rounded mt-2"
-                                style={{backgroundColor: '#FFD801', color: 'white'}}>Envoyer des
-                            invitations
-                        </button> : null }
+            {currentDate < pigeDate ?
+                <div className="mt-3">
+                    {JSON.parse(sessionStorage.user).idUser === selectedUserPige.pige.userAdmin.idUser ?
+                        <div className=" border border-2 p-3 " id="espaceAdmin">
+                            <h4 className="text-start"> Espace Admin pour l'organisateur de la
+                                pige {selectedUserPige.pige.pigeName} </h4>
+                            {selectedUserPige.pige.pigeState === "CREATED" ?
+                                <div className="d-flex flex-column  justify-content-start align-items-start ">
+                                    <button type="submit" className="liste p-2 rounded" onClick={handleClickStartPige}
+                                            style={{backgroundColor: '#FFD801', color: 'white'}}>Lancer la pige!
+                                    </button>
+                                </div> : null}
+                            <div className="d-flex flex-column  justify-content-start align-items-start ">
+                                <div className="mt-2 ">
+                                    <button className="liste p-2 rounded"
+                                            style={{backgroundColor: '#FFD801', color: 'white'}}
+                                            onClick={() => handleButtonUpdatePige()}> Modifier la pige
+                                    </button>
+                                </div>
+                                {selectedUserPige.pige.pigeState === "CREATED" ?
+                                    <button onClick={handleClickAddPeople} className="liste p-2 rounded mt-2"
+                                            style={{backgroundColor: '#FFD801', color: 'white'}}>Envoyer des
+                                        invitations
+                                    </button> : null}
 
 
-                        <button type="submit" className="liste p-2 rounded mt-2"
-                                style={{backgroundColor: '#EB0134', color: 'white'}}
-                                onClick={() => handleClickDeletePige()}>Annuler la pige
-                        </button>
+                                <button type="submit" className="liste p-2 rounded mt-2"
+                                        style={{backgroundColor: '#EB0134', color: 'white'}}
+                                        onClick={() => handleClickDeletePige()}>Annuler la pige
+                                </button>
 
 
-                    </div>
-                </div>  : null }
-            </div> : null }
-            </div>
-                );
-                }
+                            </div>
+                        </div> : null}
+                </div> : null}
+        </div>
+    );
+}
 
 export default AdminSectionPige;

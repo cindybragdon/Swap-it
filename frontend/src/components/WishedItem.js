@@ -33,7 +33,10 @@ const WishedItem = (props) => {
                             : {wishedItem.userWhoAddedTheItem.userFirstName}</p>
 
                     </div> : ''
-                } <div><button onClick={() => handleClickToDeleteItem(wishedItem)}>Supprimer</button></div>
+                }
+                <div>
+                    <button onClick={() => handleClickToDeleteItem(wishedItem)}>Supprimer</button>
+                </div>
             </div>
         </div>
     )

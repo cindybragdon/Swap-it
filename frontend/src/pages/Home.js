@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Login from "../components/Login";
 import ImageLogo2 from "../images/homeIcone.jpg";
 import ImageParty from "../images/newHomeBG.jpg";
-import {useLocation, useNavigate} from "react-router-dom";
+
 
 function Home() {
 
@@ -15,7 +15,6 @@ function Home() {
         fontFamily: "Reddit Mono",
         border: 'white solid 3px'
     }
-
 
 
     return (

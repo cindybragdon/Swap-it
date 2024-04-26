@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import ImageCadeau from '../images/newWishItem.jpg';
 import ImageAdItem from "../images/Listes.jpg";
 import ImageWishedItemBlank from "../images/noWishedItemImage.jpg";
-import { useLocation, useNavigate } from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import BackToTopButton from "../components/BackToTopButton";
 import axios from "axios";
 
@@ -75,41 +75,44 @@ const MyWishList = () => {
                     </div>
                     {listWishedItems.map((wishedItem, index) => (
                         userPige.user.idUser === JSON.parse(sessionStorage.user).idUser ?
-                        !wishedItem.deleted?
-                            wishedItem.userWhoAddedTheItem.idUser === wishedItem.userPige.user.idUser ?
-                            <div className="col mb-4" key={index}>
-                            <div className="card card-custom shadow-sm">
-                                <div id="piges-box"
-                                     className="title-card-piges card-header bg-danger">{wishedItem.wishedItemName}</div>
-                                {wishedItem.wishedItemImage ?
-                                    <img src={wishedItem.wishedItemImage} className="card-image img-fluid p-2"/> :
-                                    <img src={ImageWishedItemBlank} className="card-image img-fluid p-2"/>
-                                }
-                                <div className="card-body">
-                                    <p className="card-text">{wishedItem.wishedItemDescription}</p>
-                                    {wishedItem.wishedItemUrl ?
-                                        <a href={wishedItem.wishedItemUrl}
-                                           target='_blank'>Voir cet item en ligne</a> : ''}
-                                </div>
+                            !wishedItem.deleted ?
+                                wishedItem.userWhoAddedTheItem.idUser === wishedItem.userPige.user.idUser ?
+                                    <div className="col mb-4" key={index}>
+                                        <div className="card card-custom shadow-sm">
+                                            <div id="piges-box"
+                                                 className="title-card-piges card-header bg-danger">{wishedItem.wishedItemName}</div>
+                                            {wishedItem.wishedItemImage ?
+                                                <img src={wishedItem.wishedItemImage}
+                                                     className="card-image img-fluid p-2"/> :
+                                                <img src={ImageWishedItemBlank} className="card-image img-fluid p-2"/>
+                                            }
+                                            <div className="card-body">
+                                                <p className="card-text">{wishedItem.wishedItemDescription}</p>
+                                                {wishedItem.wishedItemUrl ?
+                                                    <a href={wishedItem.wishedItemUrl}
+                                                       target='_blank'>Voir cet item en ligne</a> : ''}
+                                            </div>
 
 
-                                <div className="container position-relative">
-                                    <button type="button" className="btn  position-absolute bottom-0 end-0" onClick={() => handleDeleteWishItem(wishedItem, index)}>
-                                        <i className="bi bi-trash"></i>
-                                    </button>
-                                </div>
-                            </div>
+                                            <div className="container position-relative">
+                                                <button type="button" className="btn  position-absolute bottom-0 end-0"
+                                                        onClick={() => handleDeleteWishItem(wishedItem, index)}>
+                                                    <i className="bi bi-trash"></i>
+                                                </button>
+                                            </div>
+                                        </div>
 
-                        </div>:null
-                            :null:
-                            !wishedItem.deleted?
+                                    </div> : null
+                                : null :
+                            !wishedItem.deleted ?
                                 <div className="col mb-4"
                                      key={index}>
                                     <div className="card card-custom shadow-sm">
                                         <div id="piges-box"
                                              className="title-card-piges card-header bg-danger">{wishedItem.wishedItemName}</div>
                                         {wishedItem.wishedItemImage ?
-                                            <img src={wishedItem.wishedItemImage} className="card-image img-fluid p-2"/> :
+                                            <img src={wishedItem.wishedItemImage}
+                                                 className="card-image img-fluid p-2"/> :
                                             <img src={ImageWishedItemBlank} className="card-image img-fluid p-2"/>
                                         }
                                         <div className="card-body">
@@ -126,12 +129,13 @@ const MyWishList = () => {
                                                     : {wishedItem.userWhoAddedTheItem.userFirstName}</p>
                                             </div> : ''}
                                         <div className="container position-relative">
-                                            <button type="button" className="btn  position-absolute bottom-0 end-0" onClick={() => handleDeleteWishItem(wishedItem, index)}>
+                                            <button type="button" className="btn  position-absolute bottom-0 end-0"
+                                                    onClick={() => handleDeleteWishItem(wishedItem, index)}>
                                                 <i className="bi bi-trash"></i>
                                             </button>
                                         </div>
                                     </div>
-                                </div>:null
+                                </div> : null
 
                     ))}
 

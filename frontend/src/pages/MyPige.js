@@ -45,7 +45,6 @@ const MyPige = () => {
     }, [selectedUserPige.pige.idPige]);
 
 
-
     useEffect(() => {
         const urlGetListUserPige = `http://localhost:9281/api/getListUserPigeFromIdPige?idPige=${selectedUserPige.pige.idPige}`;
         axios.get(urlGetListUserPige)
@@ -65,10 +64,10 @@ const MyPige = () => {
                     </div>
                     <div className="card-body">
                         <InfoPige selectedUserPige={selectedUserPige}/>
-                        <AdminSectionPige selectedUserPige={selectedUserPige}  listUserPige={listUserPige} />
-                        <EveryoneSectionPige selectedUserPige={selectedUserPige} />
-                        <ShowUserPigeSectionPige selectedUserPige={selectedUserPige} listUserPige={listUserPige} />
-                        <ShowInvitationSectionPige listInvitation={listInvitation} />
+                        <AdminSectionPige selectedUserPige={selectedUserPige} listUserPige={listUserPige}/>
+                        <EveryoneSectionPige selectedUserPige={selectedUserPige}/>
+                        <ShowUserPigeSectionPige selectedUserPige={selectedUserPige} listUserPige={listUserPige}/>
+                        <ShowInvitationSectionPige listInvitation={listInvitation}/>
                     </div>
                 </div>
                 <BackToTopButton/>

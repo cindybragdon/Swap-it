@@ -95,13 +95,13 @@ function Piges() {
                                     {new Date(UserPige.pige.pigeEndDate) > new Date() ? <>
                                         <p className="card-text">Cette pige se terminera le :</p>
                                         <p>{UserPige.pige.pigeEndDate}</p>
-                                    </> :<p className="card-text">Cette pige est terminée</p>}
-                        </div>
-                    </div>
-                    </div> : null
+                                    </> : <p className="card-text">Cette pige est terminée</p>}
+                                </div>
+                            </div>
+                        </div> : null
 
 
-                    ))}
+                ))}
 
             </div>
 

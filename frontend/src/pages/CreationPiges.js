@@ -1,10 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import ImagePigeCreate from "../images/nomsPiges.jpg"
 
 import FormCreationPige from "../components/FormCreationPige";
-
-
-
 
 
 const CreationPiges = () => {
@@ -20,14 +17,13 @@ const CreationPiges = () => {
     }
 
 
-
     return (
 
-        <div  style={sectionStyle}>
+        <div style={sectionStyle}>
 
-            <div >
-                <div >
-                    <FormCreationPige />
+            <div>
+                <div>
+                    <FormCreationPige/>
                 </div>
             </div>
 

@@ -4,8 +4,8 @@ import '../CreateAccount.css';
 import TogglePasswordVisibility from "../components/TogglePassVisibility";
 import {Link, useNavigate} from "react-router-dom";
 import ImageBG from "../images/createAccountBG.jpg";
-import { createAcc } from "../axi/AxiPost";
-import { connectAcc } from "../axi/AxiFunc"
+import {createAcc} from "../axi/AxiPost";
+import {connectAcc} from "../axi/AxiFunc"
 
 const CreateAccount = () => {
 
@@ -51,8 +51,6 @@ const CreateAccount = () => {
     const [motPasse, setMotPasse] = useState('');
 
 
-
-
     const formsCreateAccount = {
         userPassword: motPasse,
         user: {
@@ -73,9 +71,6 @@ const CreateAccount = () => {
         }
         reset();
     }
-
-
-
 
 
     return (
