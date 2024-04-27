@@ -33,10 +33,10 @@ CÉGEP MARIE-VICTORIN, MONTRÉAL.
 ![image](https://github.com/cindybragdon/swap-it/assets/111932725/2f1aef21-7fad-4251-831f-34218532ede4)
 
 ## Détails d'une pige en particulier 
-![image](https://github.com/cindybragdon/swap-it/assets/111932725/5eb11ff5-6776-4449-ac3c-6a3f7fa10e99)
-![image](https://github.com/cindybragdon/swap-it/assets/111932725/4ede3a66-3789-45aa-b503-af7855ff1b94)
-![image](https://github.com/cindybragdon/swap-it/assets/111932725/c04d67a3-50c2-43a4-9419-4c4423ee10ea)
-![image](https://github.com/cindybragdon/swap-it/assets/111932725/08b07631-3a11-487e-a5fb-343000ea5d8d)
+![image](https://github.com/cindybragdon/swap-it/assets/111932725/0178ef2d-9c43-4bab-8874-be54308aefbd)
+![image](https://github.com/cindybragdon/swap-it/assets/111932725/a05bb5d0-46ed-4f40-a2a7-0d61a8e07730)
+![image](https://github.com/cindybragdon/swap-it/assets/111932725/fd49a45a-594a-4211-946a-7755f004b4b0)
+![image](https://github.com/cindybragdon/swap-it/assets/111932725/07bea0ce-9a54-4354-99e2-593f8876a541)
 
 ## Ma liste de souhaits, possibilité d'ajouter des items dans la liste d'une autre personne sans qu'elle ne le sache!
 ![image](https://github.com/cindybragdon/swap-it/assets/111932725/2aa03cb1-f9fe-4957-bda9-c742d91806d3)
