@@ -37,7 +37,6 @@ CÉGEP MARIE-VICTORIN, MONTRÉAL.
 ![image](https://github.com/cindybragdon/swap-it/assets/111932725/c04d67a3-50c2-43a4-9419-4c4423ee10ea)
 ![image](https://github.com/cindybragdon/swap-it/assets/111932725/08b07631-3a11-487e-a5fb-343000ea5d8d)
 
-![image](https://github.com/cindybragdon/swap-it/assets/111932725/f60045f8-3d47-4b64-b980-fa8bb1f5a9a0)
 
 ## Ma liste de souhaits
 ![image](https://github.com/cindybragdon/swap-it/assets/111932725/05ecbcf8-16ff-4cd1-8a26-b97d3f09464c)
