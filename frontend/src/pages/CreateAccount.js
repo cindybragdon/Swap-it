@@ -135,7 +135,7 @@ const CreateAccount = () => {
                         <div className="text-start">
                             <label>Mot de Passe : <span id="toto">Doit contenir une minuscule, </span> <span id="tata">une majuscule </span>
                                 <span id="tutu">un chiffre </span>
-                                <span id="titi">et 8 caractères</span></label>
+                                <span id="titi">et 8 au moins caractères</span></label>
                         </div>
                         <div>
                             <p className="password-container-create-account">
