@@ -7,7 +7,6 @@ import NavBar from "./NavBar";
 const Login = () => {
 
     const navigate = useNavigate();
-    const [user, setUser] = useState('');
     const {register, handleSubmit, formState: {errors}, reset} = useForm();
 
 
@@ -27,13 +26,12 @@ const Login = () => {
         fetch(`http://localhost:9281/api/loginByEmailAndPassword?userEmail=${data.email}&password=${data.password}`)
             .then(response => response.json())
             .then(data => {
-                setUser(data);
-                return data;
-            })
-            .then(data => {
                 if (data.user != null) {
                     navigate(`/piges`);
                     sessionStorage.setItem('user', JSON.stringify(data.user));
+                    window.location.reload();
+                } else {
+                    alert('Mot de passe ou adresse courriel incorrect.');
                 }
             })
             .catch(error => console.error(error))

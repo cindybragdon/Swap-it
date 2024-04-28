@@ -50,10 +50,12 @@ const ShowUserPigeSectionPige = (props) => {
                                 de {userPige.user.userFirstName}</button>
                         </div>
                         <div className="" style={{display: "flex", gap: "10px", justifyContent: "center"}}>
+                            {JSON.parse(sessionStorage.user).idUser !== userPige.user.idUser ?
                             <button className="list p-2 rounded" onClick={() => onClickEmailUserPige(userPige)}
                                     style={{backgroundColor: '#34D1D8', color: 'white', fontFamily: "Reddit Mono"}}>
                                 <i className="bi bi-envelope-heart-fill"> Écrire à {userPige.user.userFirstName}</i>
                             </button>
+                                : null}
                             <button className="list p-2 rounded" onClick={() => onClickEmailPickerUserPige(userPige)}
                                     style={{backgroundColor: '#34D1D8', color: 'white', fontFamily: "Reddit Mono"}}>
                                 <i className="bi bi-envelope-heart-fill"> Écrire au participant qui a

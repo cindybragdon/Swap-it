@@ -58,7 +58,7 @@ function Piges() {
                     piges!</h2>
             </div>
             <div className="row row-cols-1 row-cols-md-4 g-4">
-                <div className="col pb-3">
+                <div className="col pb-3 card-pige">
                     <div className="card border border-dark" style={{
                         height: '30vh',
                         display: 'flex',
@@ -82,7 +82,7 @@ function Piges() {
 
                 {listUserPige.map((UserPige, index) => (
                     UserPige.pige.active === true ?
-                        <div className="col pb-3 " key={index} onClick={() => handlePigeClick(UserPige)}>
+                        <div className="col pb-3 card-pige" key={index} onClick={() => handlePigeClick(UserPige)}>
                             <div className="card" style={{height: '30vh'}}>
                                 {new Date(UserPige.pige.pigeEndDate) > new Date() ?
                                     <div id="piges-box"

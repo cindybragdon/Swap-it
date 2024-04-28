@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import ImageLapin from "../images/AddPersonneFleur.jpg";
 import ImageChapeauLapin from "../images/AddPersonneBouquet.jpg";
 import ImageBF from "../images/AddPersonneBG.jpg";
@@ -38,7 +38,7 @@ const AddUserToPige = () => {
     const asBeenAnswered = false;
     const navigate = useNavigate();
 
-    console.log(JSON.parse(sessionStorage.pigeToAddPeopleTo));
+    //console.log(JSON.parse(sessionStorage.pigeToAddPeopleTo));
     const formInv = {
         pige: JSON.parse(sessionStorage.pigeToAddPeopleTo),
         firstNameOfWantedUser: firstNameToAdd,
@@ -54,6 +54,9 @@ const AddUserToPige = () => {
         if (!emailExists) {
             setListFormInv(listFormInv => [...listFormInv, formInv]);
             console.log('Ajouté:', formInv);
+            setFirstNameToAdd('');
+            setLastNameToAdd('');
+            setEmailToAdd('');
         } else {
             alert("Le courriel est déjà présent dans la liste")
             console.log('Email déjà utilisé:', emailToAdd);
@@ -67,6 +70,7 @@ const AddUserToPige = () => {
           //  .catch(err => console.log(err));
         //window.location.reload();
     }
+
 
     const onClickCreateInvitations = () => {
         const url = `http://localhost:9281/api/createInvitation`;
@@ -97,19 +101,22 @@ const AddUserToPige = () => {
                                 <input className="form-control my-3"
                                        placeholder="Prénom du participant"
                                        maxLength="20"
+                                       value={firstNameToAdd}
                                        onChange={event => setFirstNameToAdd(event.target.value)} required/>
                             </div>
                             <div className="form-outline">Nom de famille
                                 <input className="form-control my-3"
                                        placeholder="Nom de famille du participant"
                                        maxLength="20"
+                                       value={lastNameToAdd}
                                        onChange={event => setLastNameToAdd(event.target.value)} required/>
                             </div>
                             <div className="form-outline">Email
                                 <input type="email" id="typeEmailZ" className="form-control my-3"
                                        placeholder="Courriel du participant"
                                        maxLength="40"
-                                       onChange={event => setEmailToAdd(event.target.value)} required/>
+                                       value={emailToAdd}
+                                       onChange={event => setEmailToAdd(event.target.value.toLowerCase())} required/>
                             </div>
                             <div className="form-group row">
                                 <div className="col-sm-20 text-center">
@@ -131,8 +138,8 @@ const AddUserToPige = () => {
                         <p>Les invités sont :</p>
                         <p>Vous serez automatiquement
                             ajouté, {JSON.parse(sessionStorage.user).userFirstName} </p>
-                        {listFormInv.map((inv) => (
-                            <p>{inv.firstNameOfWantedUser} {inv.lastNameOfWantedUser}, {inv.emailWantedUser}
+                        {listFormInv.map((inv, index) => (
+                            <p key={index}>{inv.firstNameOfWantedUser} {inv.lastNameOfWantedUser}, {inv.emailWantedUser}
                                 <div className="container position-relative">
                                     <button type="button" className="btn  position-absolute bottom-0 end-0"
                                             //onClick={() => handleEditPeople(emailWantedUser, index)}

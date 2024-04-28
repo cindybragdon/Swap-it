@@ -36,7 +36,8 @@ const ModifPseudoImagePige = () => {
     const onSubmit = () => {
         try {
             axios.put(`http://localhost:9281/api/updateUserPigePseudoAndImage`, formUpdateUserPige);
-            navigate("/piges")
+            navigate(`/piges/${selectedUserPige.pige.pigeName}`, {state: selectedUserPige});
+            window.location.reload();
 
         } catch (error) {
             console.error(error);

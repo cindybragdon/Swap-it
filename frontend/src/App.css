@@ -174,7 +174,9 @@ body {
 
 
 }
-
+.card-pige {
+  cursor: pointer;
+}
 #welcomeText {
   font-family: "Bangers", sans-serif;
   font-weight: 200;
@@ -186,6 +188,7 @@ body {
   margin: 0px;
   line-height: 80%;
 }
+
 
 #faqText {
   font-family: "Bangers", sans-serif;
