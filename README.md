@@ -33,7 +33,7 @@ CÉGEP MARIE-VICTORIN, MONTRÉAL.
 ![image](https://github.com/cindybragdon/swap-it/assets/111932725/84c38f14-f8e5-41e7-9c0e-f14b6c4d1126)
 
 ## Détails d'une pige en particulier 
-![image](https://github.com/cindybragdon/swap-it/assets/111932725/0178ef2d-9c43-4bab-8874-be54308aefbd)
+![image](https://github.com/cindybragdon/swap-it/assets/111932725/5ccbc3b1-219d-4b3e-b1df-13f26743dde6)
 ![image](https://github.com/cindybragdon/swap-it/assets/111932725/a05bb5d0-46ed-4f40-a2a7-0d61a8e07730)
 ![image](https://github.com/cindybragdon/swap-it/assets/111932725/fd49a45a-594a-4211-946a-7755f004b4b0)
 ![image](https://github.com/cindybragdon/swap-it/assets/111932725/07bea0ce-9a54-4354-99e2-593f8876a541)
