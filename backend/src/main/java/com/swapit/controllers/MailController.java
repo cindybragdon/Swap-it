@@ -1,13 +1,17 @@
 package com.swapit.controllers;
 
-/**
+
+import com.swapit.model.Shadow;
+import com.swapit.model.User;
+import com.swapit.repositories.ShadowRepository;
+import com.swapit.repositories.UserRepository;
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.web.bind.annotation.*;
 
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
 
 @RestController
 @CrossOrigin
@@ -18,25 +22,30 @@ public class MailController {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private ShadowRepository shadowRepository;
 
     @GetMapping("/userPwdRecovery/{id}")
-    public String sendMail(@PathVariable Long id) {
+    public String sendMail(@PathVariable int idUser) {
         MimeMessage message = sender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message);
-        User u = userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException());
+        User u = userRepository.findUserByIdUser(idUser);
+
         try {
 
+            if(u != null) {
+                Shadow shadow = shadowRepository.findByUser_IdUser(u.getIdUser());
+                helper.setTo(u.getUserEmail());
+                helper.setText("Ton PWD: "+ shadow.getUserPassword());
+                helper.setSubject("Password Recovery");
+                sender.send(message);
+            }
 
-            helper.setTo(u.getEmail());
-            helper.setText("Ton PWD: "+ u.getPasswd());
-            helper.setSubject("Password Recovery");
         } catch (MessagingException e) {
             e.printStackTrace();
             return "Error while sending mail ..";
         }
-        sender.send(message);
+
         return "Mail Sent Success!";
     }
 }
- **/
