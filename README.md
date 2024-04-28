@@ -27,13 +27,13 @@ CÉGEP MARIE-VICTORIN, MONTRÉAL.
 # Quelques vues de notre application : 
 
 ## Home
-![image](https://github.com/cindybragdon/swap-it/assets/111932725/a5507657-f6c2-4fd3-9703-b9eb3d8a00f9)
+![image](https://github.com/cindybragdon/swap-it/assets/111932725/724e849a-ff32-4e60-ac52-83cfd429e2f2)
 
 ## Mes piges
-![image](https://github.com/cindybragdon/swap-it/assets/111932725/2f1aef21-7fad-4251-831f-34218532ede4)
+![image](https://github.com/cindybragdon/swap-it/assets/111932725/84c38f14-f8e5-41e7-9c0e-f14b6c4d1126)
 
 ## Détails d'une pige en particulier 
-![image](https://github.com/cindybragdon/swap-it/assets/111932725/0178ef2d-9c43-4bab-8874-be54308aefbd)
+![image](https://github.com/cindybragdon/swap-it/assets/111932725/5ccbc3b1-219d-4b3e-b1df-13f26743dde6)
 ![image](https://github.com/cindybragdon/swap-it/assets/111932725/a05bb5d0-46ed-4f40-a2a7-0d61a8e07730)
 ![image](https://github.com/cindybragdon/swap-it/assets/111932725/fd49a45a-594a-4211-946a-7755f004b4b0)
 ![image](https://github.com/cindybragdon/swap-it/assets/111932725/07bea0ce-9a54-4354-99e2-593f8876a541)
@@ -46,19 +46,19 @@ CÉGEP MARIE-VICTORIN, MONTRÉAL.
 ![image](https://github.com/cindybragdon/swap-it/assets/111932725/8e28367f-8434-49cb-b432-5af72fb51085)
 
 ## Mes invitations à des piges
-![image](https://github.com/cindybragdon/swap-it/assets/111932725/5580ed36-cbe3-4711-8366-4f75c63fdea9)
+![image](https://github.com/cindybragdon/swap-it/assets/111932725/c77c0ede-de5f-4f00-b8f8-a958564ce7d4)
 
 ## Profil Pseudo personnalisé pour chaque pige
-![image](https://github.com/cindybragdon/swap-it/assets/111932725/bf48a7b0-ebc1-43eb-b442-70edfda4068b)
+![image](https://github.com/cindybragdon/swap-it/assets/111932725/9c45cdc6-3885-45c3-a65c-e384e48875d0)
 
 ## FAQ
-![image](https://github.com/cindybragdon/swap-it/assets/111932725/63b76b04-71c9-46e1-8d43-10baf6884cea)
+![image](https://github.com/cindybragdon/swap-it/assets/111932725/23803623-e919-4d99-9579-19874e393b40)
 
 ## Ajouter une suggestion à ma liste de souhaits
-![image](https://github.com/cindybragdon/swap-it/assets/111932725/92ec6846-78c3-4b54-b9dc-4f0dfb38c50b)
+![image](https://github.com/cindybragdon/swap-it/assets/111932725/bc607598-cdbb-4e0d-b1a6-82c7102a80fe)
 
 ## Mon compte
-![image](https://github.com/cindybragdon/swap-it/assets/111932725/b0dd8857-97ba-492f-a027-db4afc37cad4)
+![image](https://github.com/cindybragdon/swap-it/assets/111932725/7c0e32d2-bdab-4ffe-9fea-d16f12c97118)
 
 ## Ajouter des personnes à une pige 
 ![image](https://github.com/cindybragdon/swap-it/assets/111932725/5f5d2409-7c6c-4742-97a3-bebe53ead330)
