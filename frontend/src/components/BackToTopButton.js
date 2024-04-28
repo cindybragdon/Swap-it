@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 
 
 // https://www.w3schools.com/howto/howto_js_scroll_to_top.asp

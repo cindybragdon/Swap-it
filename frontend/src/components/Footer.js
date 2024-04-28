@@ -16,7 +16,8 @@ const Footer = () => {
                             </div>
                             <div className="credits text-white text-center text-md-start mt-6 fs-7">
                                 Built by <a href="/about"
-                                            className="link-danger text-decoration-none">ScrumShine</a> with <i className="bi bi-heart text-danger"></i>
+                                            className="link-danger text-decoration-none">ScrumShine</a> with <i
+                                className="bi bi-heart text-danger"></i>
                             </div>
                         </div>
 

@@ -1,28 +1,22 @@
-import React, {useEffect, useState} from 'react';
-import { useForm } from 'react-hook-form';
-import http from "../http/http";
-import {useLocation, useNavigate} from "react-router-dom";
-
+import React, {useState} from 'react';
+import {useForm} from 'react-hook-form';
+import {useNavigate} from "react-router-dom";
+import NavBar from "./NavBar";
 
 
 const Login = () => {
 
     const navigate = useNavigate();
-
-
     const [user, setUser] = useState('');
-
-
-    const { register, handleSubmit, formState: { errors}, reset } = useForm();
-
+    const {register, handleSubmit, formState: {errors}, reset} = useForm();
 
 
     const msgErrors = {
-        email : {
+        email: {
             requis: "Vous devez saisir un email",
             format: "Le email est invalide"
         },
-        password : {
+        password: {
             requis: "Vous devez saisir un mot de passe",
             format: "Le mot de passe est invalide"
         }
@@ -43,15 +37,13 @@ const Login = () => {
                 }
             })
             .catch(error => console.error(error))
-            //console.log(user.user)
-        };
-
+        //console.log(user.user)
+    };
 
 
     const handleClickCreerCompte = () => {
         navigate('/create-account');
     }
-
 
 
     return (
@@ -94,7 +86,8 @@ const Login = () => {
                                     </button>
                                 </a>
                             </div>
-                            <h7 className="text-white m-2 text-center" id="infoText" style={{textAlign: 'center'}}>Laissez-nous
+                            <h7 className="text-white m-2 text-center" id="infoText"
+                                style={{textAlign: 'center'}}>Laissez-nous
                                 organiser votre pige de cadeaux
                             </h7>
                         </div>

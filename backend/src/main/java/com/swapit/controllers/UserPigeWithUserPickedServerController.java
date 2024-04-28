@@ -138,7 +138,6 @@ public class UserPigeWithUserPickedServerController {
                 pigeToUpdate.setPigeState("STARTED");
                 pigeRepository.save(pigeToUpdate);
                 messageCreate = "ACK-100";
-
             }
 
 

@@ -33,10 +33,14 @@ CÉGEP MARIE-VICTORIN, MONTRÉAL.
 ![image](https://github.com/cindybragdon/swap-it/assets/111932725/2f1aef21-7fad-4251-831f-34218532ede4)
 
 ## Détails d'une pige en particulier 
-![image](https://github.com/cindybragdon/swap-it/assets/111932725/4b75a282-8d75-480c-acab-119f66fdebaa)
+![image](https://github.com/cindybragdon/swap-it/assets/111932725/0178ef2d-9c43-4bab-8874-be54308aefbd)
+![image](https://github.com/cindybragdon/swap-it/assets/111932725/a05bb5d0-46ed-4f40-a2a7-0d61a8e07730)
+![image](https://github.com/cindybragdon/swap-it/assets/111932725/fd49a45a-594a-4211-946a-7755f004b4b0)
+![image](https://github.com/cindybragdon/swap-it/assets/111932725/07bea0ce-9a54-4354-99e2-593f8876a541)
 
-## Ma liste de souhaits
-![image](https://github.com/cindybragdon/swap-it/assets/111932725/05ecbcf8-16ff-4cd1-8a26-b97d3f09464c)
+## Ma liste de souhaits, possibilité d'ajouter des items dans la liste d'une autre personne sans qu'elle ne le sache!
+![image](https://github.com/cindybragdon/swap-it/assets/111932725/2aa03cb1-f9fe-4957-bda9-c742d91806d3)
+![image](https://github.com/cindybragdon/swap-it/assets/111932725/07315fdf-f3f4-41d3-a1e6-d840d5684e80)
 
 ## Qui aie-je pigé?
 ![image](https://github.com/cindybragdon/swap-it/assets/111932725/8e28367f-8434-49cb-b432-5af72fb51085)
@@ -51,7 +55,7 @@ CÉGEP MARIE-VICTORIN, MONTRÉAL.
 ![image](https://github.com/cindybragdon/swap-it/assets/111932725/63b76b04-71c9-46e1-8d43-10baf6884cea)
 
 ## Ajouter une suggestion à ma liste de souhaits
-![image](https://github.com/cindybragdon/swap-it/assets/111932725/2f24e7f3-4e74-4a78-b8d0-b1ba37fe2e46)
+![image](https://github.com/cindybragdon/swap-it/assets/111932725/92ec6846-78c3-4b54-b9dc-4f0dfb38c50b)
 
 ## Mon compte
 ![image](https://github.com/cindybragdon/swap-it/assets/111932725/b0dd8857-97ba-492f-a027-db4afc37cad4)

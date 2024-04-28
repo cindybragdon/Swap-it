@@ -26,13 +26,13 @@ const EveryoneSectionPige = (props) => {
 
 
     const onClickSeePersonPicked = () => {
-        if (selectedUserPige.pige.pigeState !== "CREATED" ) {
+        if (selectedUserPige.pige.pigeState !== "CREATED") {
             navigate(`/pige/picked`, {state: personPicked});
         }
     }
 
     const onClickUpdatePseudoAndImage = () => {
-        navigate(`/piges/${selectedUserPige.pige.pigeName}/UpdatePseudoImage`, {state:selectedUserPige});
+        navigate(`/piges/${selectedUserPige.pige.pigeName}/UpdatePseudoImage`, {state: selectedUserPige});
     }
 
 
@@ -47,7 +47,7 @@ const EveryoneSectionPige = (props) => {
 
     document.onmousemove = () => {
         currentDate = new Date();
-        if(currentDate.getFullYear() > mouseDate.getFullYear() || currentDate.getMonth() > mouseDate.getMonth() || currentDate.getDay() > mouseDate.getDay()) {
+        if (currentDate.getFullYear() > mouseDate.getFullYear() || currentDate.getMonth() > mouseDate.getMonth() || currentDate.getDay() > mouseDate.getDay()) {
             window.location.reload();
         }
         mouseDate = new Date();
@@ -67,14 +67,14 @@ const EveryoneSectionPige = (props) => {
                 </button>
             </div>
             {selectedUserPige.pige.pigeState !== "CREATED" ?
-            <div className="mt-2 ">
-                <button className="liste p-2 rounded" id="btnQuiPige"
-                        style={{backgroundColor: '#1C67A1', color: 'white'}}
-                        onClick={() => onClickSeePersonPicked()}
+                <div className="mt-2 ">
+                    <button className="liste p-2 rounded" id="btnQuiPige"
+                            style={{backgroundColor: '#1C67A1', color: 'white'}}
+                            onClick={() => onClickSeePersonPicked()}
 
                     > Voir qui j'ai pigé!
-                </button>
-            </div> : null
+                    </button>
+                </div> : null
             }
 
             <div className="mt-2">
@@ -84,14 +84,14 @@ const EveryoneSectionPige = (props) => {
                 </button>
             </div>
             {currentDate < pigeDate ?
-            <div className="mt-2">
-                <button className="liste p-2 rounded" id="changerPseudo"
-                        style={{backgroundColor: '#1C67A1', color: 'white'}}
-                        onClick={onClickUpdatePseudoAndImage}> Changer mon pseudo ou mon image pour la
-                    pige {selectedUserPige.pige.pigeName}
-                </button>
+                <div className="mt-2">
+                    <button className="liste p-2 rounded" id="changerPseudo"
+                            style={{backgroundColor: '#1C67A1', color: 'white'}}
+                            onClick={onClickUpdatePseudoAndImage}> Changer mon pseudo ou mon image pour la
+                        pige {selectedUserPige.pige.pigeName}
+                    </button>
 
-            </div>: null}
+                </div> : null}
         </div>
     );
 }

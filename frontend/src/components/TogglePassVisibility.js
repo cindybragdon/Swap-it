@@ -1,6 +1,3 @@
-
-
-
 const TogglePasswordVisibility = () => {
     const passwordInput = document.getElementById('typeMotPasse');
     const toggleIcon = document.getElementById('togglePassword');

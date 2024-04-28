@@ -1,6 +1,6 @@
 import React from 'react';
-import imageData from "../Data/images.js";
 
+//Pas encore implémenté
 
 const Features = () => {
 

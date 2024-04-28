@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import ImageLapin from "../images/AddPersonneFleur.jpg";
 import ImageChapeauLapin from "../images/AddPersonneBouquet.jpg";
 import ImageBF from "../images/AddPersonneBG.jpg";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import axios from "axios";
 
 const AddUserToPige = () => {
@@ -60,6 +60,14 @@ const AddUserToPige = () => {
         }
     };
 
+    const handleEditPeople = (emailWantedUser, index) => {
+        //listWishedItems.splice(index, 1);
+        //setListWishedItems(listWishedItems);
+        //axios.put(`http://localhost:9281/api/deleteWishedItem?idWishedItem=${emailWantedUser.idWantedUser}`)
+          //  .catch(err => console.log(err));
+        //window.location.reload();
+    }
+
     const onClickCreateInvitations = () => {
         const url = `http://localhost:9281/api/createInvitation`;
         axios.post(url, listFormInv)
@@ -76,61 +84,70 @@ const AddUserToPige = () => {
 
     return (
         <div style={sectionStyle}>
-        <div id="container-test" className="container mb-4 p-3 d-flex" >
-            <div className="card text-center" style={cardStyle} id="container-forgot">
-                <div className="card-header h5 text-white bg-info">On ajoute des participants !</div>
-                <div className="card-body ">
-                    <button className="btn btn-secondary d-flex justify-content-center"
-                            style={{margin: "auto"}}>
-                        <img src={ImageLapin} style={imageStyle}   alt="Account"/>
-                    </button>
-                    <form className='container text-start' onSubmit={handleSubmit}>
-                        <div className="form-outline">Prénom
-                            <input className="form-control my-3"
-                                   placeholder="Prénom du participant"
-                                   onChange={event => setFirstNameToAdd(event.target.value)} required/>
-                        </div>
-                        <div className="form-outline">Nom de famille
-                            <input className="form-control my-3"
-                                   placeholder="Nom de famille du participant"
-                                   onChange={event => setLastNameToAdd(event.target.value)} required/>
-                        </div>
-                        <div className="form-outline">Email
-                            <input type="email" id="typeEmailZ" className="form-control my-3"
-                                   placeholder="Courriel du participant"
-                                   onChange={event => setEmailToAdd(event.target.value)} required/>
-                        </div>
-                        <div className="form-group row">
-                            <div className="col-sm-20 text-center">
-                                <button type="submit" className="btn btn-info w-30">Et hop, un de plus!
-                                </button>
+            <div id="container-test" className="container mb-4 p-3 d-flex">
+                <div className="card text-center" style={cardStyle} id="container-forgot">
+                    <div className="card-header h5 text-white bg-info">On ajoute des participants !</div>
+                    <div className="card-body ">
+                        <button className="btn btn-secondary d-flex justify-content-center"
+                                style={{margin: "auto"}}>
+                            <img src={ImageLapin} style={imageStyle} alt="Account"/>
+                        </button>
+                        <form className='container text-start' onSubmit={handleSubmit}>
+                            <div className="form-outline">Prénom
+                                <input className="form-control my-3"
+                                       placeholder="Prénom du participant"
+                                       onChange={event => setFirstNameToAdd(event.target.value)} required/>
                             </div>
-                        </div>
-                    </form>
+                            <div className="form-outline">Nom de famille
+                                <input className="form-control my-3"
+                                       placeholder="Nom de famille du participant"
+                                       onChange={event => setLastNameToAdd(event.target.value)} required/>
+                            </div>
+                            <div className="form-outline">Email
+                                <input type="email" id="typeEmailZ" className="form-control my-3"
+                                       placeholder="Courriel du participant"
+                                       onChange={event => setEmailToAdd(event.target.value)} required/>
+                            </div>
+                            <div className="form-group row">
+                                <div className="col-sm-20 text-center">
+                                    <button type="submit" className="btn btn-info w-30">Et hop, un de plus!
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-            </div>
-            <div className="card text-center" style={cardStyle} id="container-forgot">
-                <div className="card-header h5 text-white bg-info"> Tout le monde est la?!</div>
-                <div className="card-body ">
-                    <button className="btn btn-secondary d-flex justify-content-center"
-                            style={{margin: "auto"}}>
-                        <img src={ImageChapeauLapin} style={imageStyle} alt="Account"/>
-                    </button>
+                <div className="card text-center" style={cardStyle} id="container-forgot">
+                    <div className="card-header h5 text-white bg-info"> Tout le monde est la?!</div>
+                    <div className="card-body ">
+                        <button className="btn btn-secondary d-flex justify-content-center"
+                                style={{margin: "auto"}}>
+                            <img src={ImageChapeauLapin} style={imageStyle} alt="Account"/>
+                        </button>
 
-                    <p>Les invités sont :</p>
-                    <p>Vous serez automatiquement
-                        ajouté, {JSON.parse(sessionStorage.user).userFirstName} </p>
-                    {listFormInv.map((inv) => (
-                        <p>{inv.firstNameOfWantedUser} {inv.lastNameOfWantedUser}, {inv.emailWantedUser}</p>
-                    ))}</div>
-                <button className="btn btn-info d-flex justify-content-center"
-                        style={{margin: "auto"}} onClick={onClickCreateInvitations}>Tout le monde est là!</button>
-            </div>
+                        <p>Les invités sont :</p>
+                        <p>Vous serez automatiquement
+                            ajouté, {JSON.parse(sessionStorage.user).userFirstName} </p>
+                        {listFormInv.map((inv) => (
+                            <p>{inv.firstNameOfWantedUser} {inv.lastNameOfWantedUser}, {inv.emailWantedUser}
+                                <div className="container position-relative">
+                                    <button type="button" className="btn  position-absolute bottom-0 end-0"
+                                            //onClick={() => handleEditPeople(emailWantedUser, index)}
+                                        >
+                                        <i className="bi bi-pencil"></i>
+                                    </button>
+                                </div>
+                            </p>
+                        ))}</div>
+                    <button className="btn btn-info d-flex justify-content-center"
+                            style={{margin: "auto"}} onClick={onClickCreateInvitations}>Tout le monde est là!
+                    </button>
+                </div>
 
 
             </div>
         </div>
-);
+    );
 }
 
 export default AddUserToPige;

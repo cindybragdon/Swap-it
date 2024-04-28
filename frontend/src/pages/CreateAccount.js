@@ -4,8 +4,8 @@ import '../CreateAccount.css';
 import TogglePasswordVisibility from "../components/TogglePassVisibility";
 import {Link, useNavigate} from "react-router-dom";
 import ImageBG from "../images/createAccountBG.jpg";
-import { createAcc } from "../axi/AxiPost";
-import { connectAcc } from "../axi/AxiFunc"
+import {createAcc} from "../axi/AxiPost";
+import {connectAcc} from "../axi/AxiFunc"
 
 const CreateAccount = () => {
 
@@ -37,7 +37,7 @@ const CreateAccount = () => {
         },
         motPasse: {
             requis: "Vous devez saisir un mot de passe",
-            format: "Mot de passe invalide.  Doit contenir : 8 caractères, au moins une lettre, un chiffre et un caractère spécial"
+            format: "Mot de passe invalide.  Doit contenir : 8 caractères, au moins une lettre et un chiffre"
         }
     }
 
@@ -49,8 +49,6 @@ const CreateAccount = () => {
     const [telephone, setTelephone] = useState('');
     const [courriel, setCourriel] = useState('');
     const [motPasse, setMotPasse] = useState('');
-
-
 
 
     const formsCreateAccount = {
@@ -68,14 +66,11 @@ const CreateAccount = () => {
         if (response) {
             response = connectAcc(formsCreateAccount);
             if (response) {
-                navigate('/piges');
+                navigate('/');
             }
         }
         reset();
     }
-
-
-
 
 
     return (
@@ -135,6 +130,7 @@ const CreateAccount = () => {
                         </div>
                         <div className="text-start">
                             <label>Mot de Passe : <span id="toto">Doit contenir une minuscule, </span> <span id="tata">une majuscule </span>
+                                <span id="tutu">un chiffre </span>
                                 <span id="titi">et 8 caractères</span></label>
                         </div>
                         <div>

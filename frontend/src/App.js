@@ -23,6 +23,8 @@ import AddUserToPige from "./pages/AddUserToPige";
 import UpdatePige from "./pages/UpdatePige";
 import Invitations from "./pages/Invitations";
 import ModifPseudoImagePige from "./pages/ModifPseudoImagePige";
+import LogOut from "./components/LogOut";
+import Email from "./pages/Email";
 
 
 function App() {
@@ -83,6 +85,14 @@ function App() {
 
                     <Route path='/pige/myWishList/addWish' element={<PrivateRoute/>}>
                         <Route path='/pige/myWishList/addWish' element={<AddWish/>}/>
+                    </Route>
+
+                    <Route path='/email' element={<PrivateRoute/>}>
+                        <Route path='/email' element={<Email/>}/>
+                    </Route>
+
+                    <Route path='/logOut' element={<PrivateRoute/>}>
+                        <Route path='/logOut' element={<LogOut/>}/>
                     </Route>
 
                     <Route path='/inv' element={<PrivateRoute/>}>
