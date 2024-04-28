@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 
 const NavBar = () => {
@@ -37,6 +38,7 @@ const NavBar = () => {
                             compte {sessionStorage.getItem('user') ? <span
                                     className="navbar-span"> ( {JSON.parse(sessionStorage.user).userFirstName} {JSON.parse(sessionStorage.user).userLastName} )</span> :
                                 <a></a>} </a></li>
+                        <Link to="/logOut">Logout</Link>
 
 
                         {/*{sessionStorage.getItem('user') ? <li className="nav-item"><a className="nav-link">{JSON.parse(sessionStorage.user).userFirstName} {JSON.parse(sessionStorage.user).userLastName}</a></li> : <li></li>}*/}

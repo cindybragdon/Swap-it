@@ -60,6 +60,14 @@ const AddUserToPige = () => {
         }
     };
 
+    const handleEditPeople = (emailWantedUser, index) => {
+        //listWishedItems.splice(index, 1);
+        //setListWishedItems(listWishedItems);
+        //axios.put(`http://localhost:9281/api/deleteWishedItem?idWishedItem=${emailWantedUser.idWantedUser}`)
+          //  .catch(err => console.log(err));
+        //window.location.reload();
+    }
+
     const onClickCreateInvitations = () => {
         const url = `http://localhost:9281/api/createInvitation`;
         axios.post(url, listFormInv)
@@ -121,7 +129,15 @@ const AddUserToPige = () => {
                         <p>Vous serez automatiquement
                             ajouté, {JSON.parse(sessionStorage.user).userFirstName} </p>
                         {listFormInv.map((inv) => (
-                            <p>{inv.firstNameOfWantedUser} {inv.lastNameOfWantedUser}, {inv.emailWantedUser}</p>
+                            <p>{inv.firstNameOfWantedUser} {inv.lastNameOfWantedUser}, {inv.emailWantedUser}
+                                <div className="container position-relative">
+                                    <button type="button" className="btn  position-absolute bottom-0 end-0"
+                                            //onClick={() => handleEditPeople(emailWantedUser, index)}
+                                        >
+                                        <i className="bi bi-pencil"></i>
+                                    </button>
+                                </div>
+                            </p>
                         ))}</div>
                     <button className="btn btn-info d-flex justify-content-center"
                             style={{margin: "auto"}} onClick={onClickCreateInvitations}>Tout le monde est là!

@@ -12,6 +12,13 @@ const ShowUserPigeSectionPige = (props) => {
         navigate(`/piges/${selectedUserPige.pige.pigeName}/myWishList`, {state: userPige});
     }
 
+    const onClickEmailUserPige = (userPige) => {
+        // ecrire un email a userPige
+    }
+
+    const onClickEmailPickerUserPige = (userPige) => {
+    // ecrire un email a userPige.userPigeWhoPickedTheOtherUserPige
+    }
 
     return (
         <div className="border border-2  mt-3 ">
@@ -33,7 +40,7 @@ const ShowUserPigeSectionPige = (props) => {
                                 : {userPige.user.userFirstName} {userPige.user.userLastName} </h6>
                             {userPige.userPigePseudo ?
                                 <h6>Pseudo : {userPige.userPigePseudo}</h6> : null}
-                            <button className="liste p-2 rounded " style={{
+                            <button className="liste p-2 rounded mb-2 " style={{
                                 backgroundColor: '#67A600',
                                 color: 'white',
                                 width: '400px',
@@ -42,6 +49,19 @@ const ShowUserPigeSectionPige = (props) => {
                             }} onClick={() => onClickToWishlist(userPige)}> Liste de souhaits
                                 de {userPige.user.userFirstName}</button>
                         </div>
+                        <div className="" style={{display: "flex", gap: "10px", justifyContent: "center"}}>
+                            <button className="list p-2 rounded" onClick={() => onClickEmailUserPige(userPige)}
+                                    style={{backgroundColor: '#34D1D8', color: 'white', fontFamily: "Reddit Mono"}}>
+                                <i className="bi bi-envelope-heart-fill"> Écrire à {userPige.user.userFirstName}</i>
+                            </button>
+                            <button className="list p-2 rounded" onClick={() => onClickEmailPickerUserPige(userPige)}
+                                    style={{backgroundColor: '#34D1D8', color: 'white', fontFamily: "Reddit Mono"}}>
+                                <i className="bi bi-envelope-heart-fill"> Écrire au participant qui a
+                                    pigé {userPige.user.userFirstName}</i>
+                            </button>
+                        </div>
+
+
                     </div>
                 </div>
             )}

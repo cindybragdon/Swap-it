@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {useForm} from 'react-hook-form';
 import {useNavigate} from "react-router-dom";
+import NavBar from "./NavBar";
 
 
 const Login = () => {
@@ -8,6 +9,7 @@ const Login = () => {
     const navigate = useNavigate();
     const [user, setUser] = useState('');
     const {register, handleSubmit, formState: {errors}, reset} = useForm();
+
 
     const msgErrors = {
         email: {

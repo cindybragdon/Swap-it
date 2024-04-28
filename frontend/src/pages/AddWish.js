@@ -1,5 +1,5 @@
 import React, { useState} from 'react';
-import { useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import ImageAddWish from "../images/Thinking.jpg";
 import axios from "axios";
 
@@ -89,11 +89,13 @@ const AddWish = () => {
                             <div>
                                 <label>Voir cet item en ligne au : </label>
                             </div>
-                            <input type="nom" placeholder={"Entrez un url ici"} className="col-sm-6"
+                            <input type="nom" placeholder={"Entrez un URL ici"} className="col-sm-6"
                                    onChange={event => setItemUrl(event.target.value)}/>
                         </div>
-
-                        <br/>
+                        <div>
+                        <Link to="/FAQ" className="btn mb-2"
+                              style={{backgroundColor: '#34D1D8', color: 'white'}}>Aide FAQ - Comment insérer les URL </Link>
+                        </div>
                         <button type="submit" className="btn "
                                 style={{backgroundColor: '#012C57', color: 'white'}}>Ajouter à la liste
                         </button>

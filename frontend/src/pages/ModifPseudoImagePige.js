@@ -32,6 +32,7 @@ const ModifPseudoImagePige = () => {
     }
 
     console.log(selectedUserPige);
+
     const onSubmit = () => {
         try {
             axios.put(`http://localhost:9281/api/updateUserPigePseudoAndImage`, formUpdateUserPige);
