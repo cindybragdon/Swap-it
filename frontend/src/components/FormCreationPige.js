@@ -72,7 +72,9 @@ const FormCreationPige = () => {
                     <label className="form-label" style={{color: 'black'}}><h5>Nom de la pige</h5></label>
                     <div className="mb-2" style={{display: 'flex'}}>
                         <input type="text" value={nomPige} onChange={e => setNomPige(e.target.value)}
-                               className="form-control mb-2" placeholder="Nom de la pige" required
+                               className="form-control mb-2" placeholder="Nom de la pige"
+                               maxLength="25"
+                               required
                                style={{width: '40%'}}/>
                     </div>
                 </div>
@@ -81,7 +83,8 @@ const FormCreationPige = () => {
                     <label className="form-label" style={{color: 'black'}}><h5>Description</h5></label>
                     <div className="mb-2" style={{display: 'flex'}}>
                     <textarea className="form-control" style={{width: '40%'}} value={pigeDescription}
-                              onChange={e => setPigeDescription(e.target.value)} rows="3" required></textarea>
+                              onChange={e => setPigeDescription(e.target.value)} rows="3" required
+                              maxLength="255"></textarea>
                     </div>
                 </div>
 

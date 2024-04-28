@@ -124,6 +124,7 @@ const UpdateAccount = () => {
                         <div>
                             <input type="text" name="prenom" id="typePrenom" className="form-control my-3"
                                    placeholder={"Votre prenom"} value={prenom}
+                                   maxLength="20"
                                    onChange={event => setPrenom(event.target.value)} required/>
                         </div>
 
@@ -133,6 +134,7 @@ const UpdateAccount = () => {
                         </div>
                         <div>
                             <input type="text" name="nom" id="typeNom" className="form-control my-3"
+                                   maxLength="20"
                                    placeholder={"Votre nom"} value={nom} onChange={event => setNom(event.target.value)}
                                    required/>
 
@@ -168,6 +170,7 @@ const UpdateAccount = () => {
                             <input pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" type="email" name="courriel"
                                    id="typeEmail" className="form-control my-3" placeholder={"Votre courriel"}
                                    value={courriel}
+                                   maxLength="50"
                                    onChange={event => setCourriel(event.target.value)} required/>
 
 

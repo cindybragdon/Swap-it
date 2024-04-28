@@ -66,7 +66,7 @@ const AddWish = () => {
                             <div>
                                 <label>Nom Item</label>
                             </div>
-                            <input type="nom" id="typeNom" className="col-sm-6" placeholder={"Nom Item"}
+                            <input type="nom" id="typeNom" className="col-sm-6" placeholder={"Nom Item"} maxLength="50"
                                    onChange={event => setWishedItemName(event.target.value)} required/>
                         </div>
                         <div className="mb-2">

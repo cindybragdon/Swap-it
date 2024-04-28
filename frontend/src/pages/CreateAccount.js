@@ -89,7 +89,9 @@ const CreateAccount = () => {
                         </div>
                         <div>
                             <input type="text" name="prenom" id="typePrenom" className="form-control my-3"
-                                   placeholder={"Votre prenom"} onChange={event => setPrenom(event.target.value)}
+                                   placeholder={"Votre prenom"}
+                                   maxLength="20"
+                                   onChange={event => setPrenom(event.target.value)}
                                    required/>
                             {errors.prenom && errors.prenom.message}
                         </div>
@@ -100,6 +102,7 @@ const CreateAccount = () => {
                         <div>
                             <input type="text" name="nomFamille" id="typeNom" className="form-control my-3"
                                    placeholder={"Votre nom de famille"}
+                                   maxLength="20"
                                    onChange={event => setNomFamille(event.target.value)} required/>
                             {errors.nom && errors.nom.message}
                         </div>
@@ -123,6 +126,7 @@ const CreateAccount = () => {
                         <div>
                             <input pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" type="email" name="courriel"
                                    id="typeEmail" className="form-control my-3" placeholder={"Votre courriel"}
+                                   maxLength="50"
                                    onChange={event => setCourriel(event.target.value)}/>
                             {errors.courriel && errors.courriel.message}
                             {errors.courriel && errors.courriel.type && errors.courriel.type === "pattern"}

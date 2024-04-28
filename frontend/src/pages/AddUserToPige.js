@@ -96,16 +96,19 @@ const AddUserToPige = () => {
                             <div className="form-outline">Prénom
                                 <input className="form-control my-3"
                                        placeholder="Prénom du participant"
+                                       maxLength="20"
                                        onChange={event => setFirstNameToAdd(event.target.value)} required/>
                             </div>
                             <div className="form-outline">Nom de famille
                                 <input className="form-control my-3"
                                        placeholder="Nom de famille du participant"
+                                       maxLength="20"
                                        onChange={event => setLastNameToAdd(event.target.value)} required/>
                             </div>
                             <div className="form-outline">Email
                                 <input type="email" id="typeEmailZ" className="form-control my-3"
                                        placeholder="Courriel du participant"
+                                       maxLength="40"
                                        onChange={event => setEmailToAdd(event.target.value)} required/>
                             </div>
                             <div className="form-group row">

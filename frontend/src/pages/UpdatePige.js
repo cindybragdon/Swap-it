@@ -53,13 +53,16 @@ const UpdatePige = () => {
                         <div className="mb-2" style={{display: 'flex'}}>
                             <input type="text" value={nomPige} onChange={e => setNomPige(e.target.value)}
                                    className="form-control m-2" placeholder="Nom de la pige" required
-                                   style={{width: '50%'}}/>
+                                   style={{width: '50%'}}
+                                   maxLength="25"/>
+
                         </div>
                     </div>
                     <div className="mb-2">
                         <label className="form-label" style={{color: 'black'}}><h5>Description</h5></label>
                         <div className="mb-2" style={{display: 'flex'}}>
                     <textarea className="form-control" style={{width: '40%'}} value={pigeDescription}
+                              maxLength="255"
                               onChange={e => setPigeDescription(e.target.value)} rows="3" required></textarea>
                         </div>
                     </div>
