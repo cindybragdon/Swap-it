@@ -46,8 +46,8 @@ const FAQ = () => {
                                         id="link-text"
                                         className="btn btn-link text-dark"
                                         type="button"
-                                        onClick={() => toggleItem(1)}
-                                        aria-expanded={openItemId === 1}
+                                        onClick={() => toggleItem(4)}
+                                        aria-expanded={openItemId === 4}
                                         aria-controls="collapseOne">
                                         <i className="bi bi-patch-question-fill "></i> Comment insérer l'URL D'UN
                                         ARTICLE D'UNE BOUTIQUE EN LIGNE(lien internet) <i
@@ -58,7 +58,7 @@ const FAQ = () => {
                             </div>
 
                             <div id="collapseOne"
-                                 className={`collapse ${openItemId === 1 ? 'show' : ''}`}
+                                 className={`collapse ${openItemId === 4 ? 'show' : ''}`}
                                  aria-labelledby="headingOne"
                                  style={{backgroundColor: "lightgrey"}}>
                                 <div className="card-body">
@@ -89,8 +89,8 @@ const FAQ = () => {
                                         id="link-text"
                                         className="btn btn-link text-dark"
                                         type="button"
-                                        onClick={() => toggleItem(1)}
-                                        aria-expanded={openItemId === 1}
+                                        onClick={() => toggleItem(5)}
+                                        aria-expanded={openItemId === 5}
                                         aria-controls="collapseOne">
                                         <i className="bi bi-patch-question-fill "></i> Comment insérer l'URL D'UNE
                                         IMAGE pour votre "Liste de souhaits" ou votre "Pseudo Pige" <i
@@ -100,7 +100,7 @@ const FAQ = () => {
                             </div>
 
                             <div id="collapseOne"
-                                 className={`collapse ${openItemId === 1 ? 'show' : ''}`}
+                                 className={`collapse ${openItemId === 5 ? 'show' : ''}`}
                                  aria-labelledby="headingOne"
                                  style={{backgroundColor: "lightgrey"}}>
                                 <div className="card-body">
