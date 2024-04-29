@@ -71,13 +71,13 @@ const UpdatePige = () => {
                     <div className="mb-2">
                         <label className="form-label" style={{color: 'black'}}><h5>Type de pige</h5></label>
                         <div className="form-check" style={{color: 'black'}}>
-                            <input className="form-check-input" name="pigeType" type="radio" value={pigeType}
+                            <input className="form-check-input" name="pigeType" type="radio" value={pigeType} checked={ pigeType === "NORMAL"}
                                    onChange={e => setPigeType("NORMAL")} id="condition1" required/>
                             <label className="form-check-label">Échange de cadeaux (échange surprise ex : Noël,
                                 bureau...)</label>
                         </div>
                         <div className="form-check" style={{color: 'black'}}>
-                            <input className="form-check-input" name="pigeType" type="radio" value={pigeType}
+                            <input className="form-check-input" name="pigeType" type="radio" value={pigeType} checked={ pigeType === "THEMED"}
                                    onChange={e => setPigeType("THEMED")} id="condition2"/>
                             <label className="form-check-label">Liste de cadeaux pour événements (liste pour babyshower,
                                 mariage...)</label>
