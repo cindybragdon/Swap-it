@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import ImagePigeCreate from "../images/createAccountBG.jpg";
-import {useForm} from "react-hook-form";
 import {useLocation, useNavigate} from "react-router-dom";
 import {updatePige} from "../axi/AxiPut";
 
@@ -18,7 +17,6 @@ const UpdatePige = () => {
     const location = useLocation();
     const selectedUserPige = location.state;
 
-    const {register, handleSubmit, formState: {errors}, reset} = useForm();
     const [nomPige, setNomPige] = useState(selectedUserPige.pige.pigeName);
     const [pigeDescription, setPigeDescription] = useState(selectedUserPige.pige.pigeDescription);
     const [pigeAmount, setPigeAmount] = useState(selectedUserPige.pige.pigeSuggestedMoneyAmount);
@@ -47,7 +45,7 @@ const UpdatePige = () => {
         <div style={sectionStyle}>
             <div className="card " id="container-pige-creation">
                 <form className='container' method="post" onSubmit={onSubmit}>
-                    <h2 className="card-header title-createpige ">Modifier la pige {nomPige}</h2>
+                    <h2 className="card-header title-createpige bg-danger ">Modifier la pige {nomPige}</h2>
                     <div className="mb-2">
                         <label className="form-label" style={{color: 'black'}}><h5>Nom de la pige</h5></label>
                         <div className="mb-2" style={{display: 'flex'}}>
