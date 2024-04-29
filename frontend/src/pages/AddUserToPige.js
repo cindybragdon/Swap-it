@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import ImageLapin from "../images/AddPersonneFleur.jpg";
 import ImageChapeauLapin from "../images/AddPersonneBouquet.jpg";
 import ImageBF from "../images/AddPersonneBG.jpg";
