@@ -139,3 +139,17 @@ DELETED COUPLE
 ACK-020 : Conjoint Deleted
 ACK-021 : Conjoint Not Deleted
 ACK-022 : Conjoint Does Not Exists
+
+===> MessageServerController <=== :
+NEW MESSAGE
+ACK-1000 : MESSAGE Created
+ACK-1001 : MESSAGE  Not Created
+
+UPDATED MESSAGE
+ACK-1010 : MESSAGE  Updated
+ACK-1011 : MESSAGE  Not Updated
+
+DELETED MESSAGE
+ACK-1020 : MESSAGE Deleted
+ACK-1021 : MESSAGE Not Deleted
+ACK-1022 : MESSAGE Does Not Exists
