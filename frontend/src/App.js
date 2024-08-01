@@ -25,6 +25,7 @@ import Invitations from "./pages/Invitations";
 import ModifPseudoImagePige from "./pages/ModifPseudoImagePige";
 import LogOut from "./components/LogOut";
 import Email from "./pages/Email";
+import Convos from "./pages/Convos";
 
 
 function App() {
@@ -98,6 +99,11 @@ function App() {
                     <Route path='/inv' element={<PrivateRoute/>}>
                         <Route path='/inv' element={<Invitations/>}/>
                     </Route>
+
+                    <Route path='/convos' element={<PrivateRoute/>}>
+                        <Route path='/convos' element={<Convos/>}/>
+                    </Route>
+
                 </Routes>
             </div>
             <Footer/>
