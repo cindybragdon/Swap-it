@@ -1,6 +1,5 @@
 package com.swapit.repositories;
 
-import com.swapit.model.UserPige;
 import com.swapit.model.WishedItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 

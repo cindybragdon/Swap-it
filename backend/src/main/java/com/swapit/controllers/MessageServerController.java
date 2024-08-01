@@ -1,9 +1,8 @@
 package com.swapit.controllers;
 
 import com.swapit.model.Message;
-import com.swapit.model.User;
-import com.swapit.model.UserPige;
 import com.swapit.repositories.MessageRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
@@ -17,11 +16,9 @@ import java.util.List;
 
 public class MessageServerController {
 
-    private final MessageRepository messageRepository;
+    @Autowired
+    private MessageRepository messageRepository;
 
-    public MessageServerController(MessageRepository messageRepository) {
-        this.messageRepository = messageRepository;
-    }
 
     //Create user (Verified and tested)
     @PostMapping("/createMessage")

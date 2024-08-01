@@ -1,6 +1,5 @@
 package com.swapit.repositories;
 
-import com.swapit.model.Shadow;
 import com.swapit.model.ShadowToto;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -10,5 +9,7 @@ public interface ShadowTotoRepository extends JpaRepository<ShadowToto, Integer>
     public ShadowToto findShadowTotoByIdShadowTotoAndAndTotoPassword(int idShadowToto, String password);
 
 
-    public ShadowToto findByIdShadowToto(int idShadowToto);
+    public ShadowToto findByToto_IdToto(int idShadowToto);
+
+    public boolean existsByToto_IdToto(int idToto);
 }

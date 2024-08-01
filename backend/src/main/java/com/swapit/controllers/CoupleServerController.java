@@ -24,31 +24,23 @@ public class  CoupleServerController {
     @Autowired
     private UserPigeRepository userPigeRepository;
 
-    // (Verified and tested)
     @PostMapping("/createCouple")
     public String createCoupleByUser(@RequestBody Couple coupleToCreate) throws Exception {
         String messageCreate = "ACK-001";
         try {
-            if (coupleToCreate.getFirstConjoint() != null
-            && coupleToCreate.getSecondConjoint() != null) {
-                Couple coupleInverted = new Couple();
-                coupleInverted.setFirstConjoint(coupleToCreate.getSecondConjoint());
-                coupleInverted.setSecondConjoint(coupleToCreate.getFirstConjoint());
-                UserPige testFirstConjoint = userPigeRepository.findByIdUserPige(coupleToCreate.getFirstConjoint().getIdUserPige());
-                UserPige testSecondConjoint = userPigeRepository.findByIdUserPige(coupleToCreate.getSecondConjoint().getIdUserPige());
-
-                if (testFirstConjoint.getPige().equals(testSecondConjoint.getPige())) {
-                    if (!coupleToCreate.getFirstConjoint().equals(coupleToCreate.getSecondConjoint())) {
-                        if(!coupleRepository.existsBySecondConjoint(testFirstConjoint)){
-                            if(!coupleRepository.existsByFirstConjoint(testSecondConjoint)) {
-                                coupleRepository.save(coupleToCreate);
-                                coupleRepository.save(coupleInverted);
-                                messageCreate = "ACK-000";
-                            }
-                        }
-                    }
+            if(userPigeRepository.existsByIdUserPige(coupleToCreate.getFirstConjoint().getIdUserPige())
+            && userPigeRepository.existsByIdUserPige(coupleToCreate.getSecondConjoint().getIdUserPige())
+            && coupleToCreate.getFirstConjoint().getPige().equals(coupleToCreate.getSecondConjoint().getPige())) {
+                if(
+                    !coupleRepository.existsByFirstConjointOrSecondConjoint(coupleToCreate.getFirstConjoint(),coupleToCreate.getFirstConjoint())
+                    && !coupleRepository.existsByFirstConjointOrSecondConjoint(coupleToCreate.getSecondConjoint(),coupleToCreate.getSecondConjoint())
+                ) {
+                    coupleRepository.save(coupleToCreate);
+                    messageCreate = "ACK-000";
                 }
+
             }
+
 
             return messageCreate;
         } catch (Exception e) {
@@ -56,6 +48,7 @@ public class  CoupleServerController {
         }
     }
 
+    /*
     // (Verified and tested)
     @PutMapping("/updateCoupleByIdCouple")
     public String updateCoupleByUser (@RequestParam int idCouple, @RequestBody Couple coupleUpdated) throws Exception {
@@ -63,7 +56,6 @@ public class  CoupleServerController {
         try{
             if (coupleUpdated.getFirstConjoint() != null && coupleUpdated.getSecondConjoint() != null) {
                 Couple couple = coupleRepository.findByIdCouple(idCouple);
-                Couple coupleInverted = coupleRepository.findCoupleByFirstConjoint(coupleUpdated.getSecondConjoint());
 
                 UserPige testFirstConjoint = userPigeRepository.findByIdUserPige(coupleUpdated.getFirstConjoint().getIdUserPige());
                 UserPige testSecondConjoint = userPigeRepository.findByIdUserPige(coupleUpdated.getSecondConjoint().getIdUserPige());
@@ -88,7 +80,7 @@ public class  CoupleServerController {
             return messageUpdate + e.getMessage();
         }
     }
-
+*/
     // (Verified and tested)
     @GetMapping("/getListAllCoupleFromPige")
     public List<Couple> getListAllCoupleFromPige(@RequestParam int idPige) throws Exception {

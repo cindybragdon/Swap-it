@@ -1,7 +1,6 @@
 package com.swapit.repositories;
 
 import com.swapit.model.Shadow;
-import com.swapit.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ShadowRepository extends JpaRepository<Shadow, Integer> {
@@ -15,5 +14,11 @@ public interface ShadowRepository extends JpaRepository<Shadow, Integer> {
     public Shadow findByUser_UserPhoneAndUserPassword(String phone, String password);
 
     public Shadow findByUser_IdUser(Integer idUser);
+
+    public Shadow findByUser_UserEmail(String userEmail);
+
+    public boolean existsByUser_IdUser(Integer idUser);
+
+
 }
 

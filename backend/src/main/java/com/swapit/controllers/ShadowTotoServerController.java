@@ -1,10 +1,11 @@
 package com.swapit.controllers;
 
 
-import com.swapit.model.Shadow;
+
 import com.swapit.model.ShadowToto;
 import com.swapit.model.Toto;
 import com.swapit.repositories.ShadowTotoRepository;
+import com.swapit.repositories.TotoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,32 +19,65 @@ public class ShadowTotoServerController {
     @Autowired
     private ShadowTotoRepository shadowTotoRepository;
 
+    @Autowired
+    private TotoRepository totoRepository;
+
     // (Verified and tested)
-    @PostMapping("/createShadowToto")
-    public String createShadowToto(@RequestBody ShadowToto shadowTotoToCreate) throws Exception {
-        String messageShadowCreated = "ACK-501";
+    @PostMapping("/createShadowTotoAndToto")
+    public String createShadowTotoAndToto(@RequestBody ShadowToto shadowTotoToCreate) throws Exception {
+        String messageShadowTotoAndTotoCreated = "ACK-501";
         try {
-            if (shadowTotoToCreate.getToto() != null
+            if(shadowTotoToCreate.getToto().getTotoEmail() != null
+                    && shadowTotoToCreate.getToto().getTotoUsername() != null
                     && shadowTotoToCreate.getTotoPassword() != null) {
-                shadowTotoRepository.save(shadowTotoToCreate);
-                messageShadowCreated = "ACK-500";
+
+
+                if (totoRepository.existsByTotoEmail(shadowTotoToCreate.getToto().getTotoEmail())) {
+                    messageShadowTotoAndTotoCreated = "ACK-502";
+                } else {
+                    totoRepository.save(shadowTotoToCreate.getToto());
+                    shadowTotoRepository.save(shadowTotoToCreate);
+                    messageShadowTotoAndTotoCreated = "ACK-500";
+                }
+
             }
-            return messageShadowCreated;
+            return messageShadowTotoAndTotoCreated;
         } catch (Exception e) {
-            return messageShadowCreated + e.getMessage();
+            return messageShadowTotoAndTotoCreated + e.getMessage();
         }
     }
 
     //Update Password
-    @PutMapping("/updateTotoPwdById")
-    public String updateTotoPwdById(@RequestBody ShadowToto shadowTotoUpdated) throws Exception {
+    @PutMapping("/updateShadowTotoAndToto")
+    public String updateShadowTotoAndToto(@RequestBody ShadowToto shadowTotoUpdated) throws Exception {
         String messagePwdUpdated = "ACK-511";
         try {
-            if (shadowTotoUpdated.getTotoPassword() != null && shadowTotoUpdated.getToto() != null) {
-                ShadowToto shadowToto = shadowTotoRepository.findByIdShadowToto((shadowTotoUpdated.getToto().getIdToto()));
-                shadowToto.setTotoPassword(shadowTotoUpdated.getTotoPassword());
-                shadowTotoRepository.save(shadowToto);
-                messagePwdUpdated = "ACK-510";
+            if (
+                shadowTotoUpdated.getToto().getTotoEmail() != null
+                && shadowTotoUpdated.getToto().getTotoUsername() != null
+                && shadowTotoUpdated.getTotoPassword() != null) {
+
+                if(totoRepository.existsByIdToto(shadowTotoUpdated.getToto().getIdToto())
+                && shadowTotoRepository.existsByToto_IdToto(shadowTotoUpdated.getToto().getIdToto())) {
+
+                    ShadowToto shadowToto = shadowTotoRepository.findByToto_IdToto((shadowTotoUpdated.getToto().getIdToto()));
+                    boolean totoEmailExists = totoRepository.existsUserByTotoEmail(shadowTotoUpdated.getToto().getTotoEmail());
+                    boolean totoEmailExistsButIsTheRightToto = totoRepository.existsByIdTotoAndTotoEmail(shadowTotoUpdated.getToto().getIdToto(), shadowTotoUpdated.getToto().getTotoEmail());
+
+                    if (totoRepository.existsByIdToto(shadowTotoUpdated.getToto().getIdToto())) {
+                        if (!totoEmailExists || totoEmailExistsButIsTheRightToto) {
+                            Toto toto = totoRepository.findTotoByIdToto(shadowTotoUpdated.getToto().getIdToto());
+                            toto.setTotoUsername(shadowTotoUpdated.getToto().getTotoUsername());
+                            toto.setTotoEmail(shadowTotoUpdated.getToto().getTotoEmail());
+                            shadowToto.setTotoPassword(shadowTotoUpdated.getTotoPassword());
+                            totoRepository.save(toto);
+                            shadowTotoRepository.save(shadowToto);
+                            messagePwdUpdated = "ACK-510";
+                        }
+                    }
+                }
+
+
             }
             return messagePwdUpdated;
         } catch (Exception e) {

@@ -1,11 +1,11 @@
 package com.swapit.controllers;
 
-import com.swapit.model.Invitations;
+
 import com.swapit.model.Pige;
-import com.swapit.model.ShadowToto;
 import com.swapit.model.UserPige;
 import com.swapit.repositories.PigeRepository;
 import com.swapit.repositories.UserPigeRepository;
+import com.swapit.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +23,9 @@ public class UserPigeServerController {
     private UserPigeRepository userPigeRepository;
 
     @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
     private PigeRepository pigeRepository;
 
     //(Verified and tested)
@@ -30,10 +33,14 @@ public class UserPigeServerController {
     public String createUserPigeWithoutPige(@RequestBody UserPige userPigeToCreate) throws Exception{
         String messageInvitation = "ACK-401";
         try{
-            if (userPigeToCreate.getUser() != null && userPigeToCreate.getPige() != null) {
-                if (!userPigeRepository.existsUserPigeByUser_IdUserAndPige_IdPige(userPigeToCreate.getUser().getIdUser(), userPigeToCreate.getPige().getIdPige())) {
-                    userPigeRepository.save(userPigeToCreate);
-                    messageInvitation = "ACK-400";
+            if (userPigeToCreate.getUser() != null
+            && userPigeToCreate.getPige() != null) {
+                if(userRepository.existsByIdUser(userPigeToCreate.getUser().getIdUser())
+                && pigeRepository.existsById(userPigeToCreate.getPige().getIdPige())) {
+                    if (!userPigeRepository.existsUserPigeByUser_IdUserAndPige_IdPige(userPigeToCreate.getUser().getIdUser(), userPigeToCreate.getPige().getIdPige())) {
+                        userPigeRepository.save(userPigeToCreate);
+                        messageInvitation = "ACK-400";
+                    }
                 }
             }
         }catch (Exception e){
@@ -49,9 +56,12 @@ public class UserPigeServerController {
     @PostMapping("/createUserPigeWithPige")
     public Pige createUserPigeWithPige(@RequestBody UserPige userPigeToCreate) throws Exception{
 
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String currentDateTime = dateFormat.format(date);
 
         try{
-            Pige pigeToReturn = new Pige();
+
             if (userPigeToCreate.getUser() != null
                     && (userPigeToCreate.getPige().getPigeName() != null)
                     && (userPigeToCreate.getPige().getPigeType() != null)
@@ -61,19 +71,18 @@ public class UserPigeServerController {
                     || userPigeToCreate.getPige().getPigeType().equals("NORMAL")
                     || userPigeToCreate.getPige().getPigeType().equals("GIFTLIST"))
             )) {
-                Date date = new Date();
-                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                String currentDateTime = dateFormat.format(date);
-                userPigeToCreate.getPige().setUserAdmin(userPigeToCreate.getUser());
-                userPigeToCreate.getPige().setPigeState("CREATED");
-                userPigeToCreate.getPige().setPigeTimestampCreation(Timestamp.valueOf(currentDateTime));
-                userPigeToCreate.getPige().setActive(true);
-                userPigeToCreate.getPige().setNumberPigeOfUser(pigeRepository.countPigesByUserAdmin_IdUser(userPigeToCreate.getUser().getIdUser())+1);
-                pigeRepository.save(userPigeToCreate.getPige());
-                userPigeRepository.save(userPigeToCreate);
-                pigeToReturn = pigeRepository.findPigeByNumberPigeOfUser(pigeRepository.countPigesByUserAdmin_IdUser(userPigeToCreate.getUser().getIdUser()));
+                if(userRepository.existsByIdUser(userPigeToCreate.getUser().getIdUser())){
+                    userPigeToCreate.getPige().setUserAdmin(userPigeToCreate.getUser());
+                    userPigeToCreate.getPige().setPigeState("CREATED");
+                    userPigeToCreate.getPige().setPigeTimestampCreation(Timestamp.valueOf(currentDateTime));
+                    userPigeToCreate.getPige().setActive(true);
+                    userPigeToCreate.getPige().setNumberPigeOfUser(pigeRepository.countPigesByUserAdmin_IdUser(userPigeToCreate.getUser().getIdUser())+1);
+                    pigeRepository.save(userPigeToCreate.getPige());
+                    userPigeRepository.save(userPigeToCreate);
+                }
+
             }
-            return pigeToReturn;
+            return pigeRepository.findPigeByNumberPigeOfUser(pigeRepository.countPigesByUserAdmin_IdUser(userPigeToCreate.getUser().getIdUser()));
         }catch (Exception e){
             return new Pige();
         }
@@ -107,12 +116,14 @@ public class UserPigeServerController {
     public String updateUserPigePseudoAndImage(@RequestBody UserPige userPigeUpdated) throws Exception {
         String messagePwdUpdated = "ACK-511";
         try {
+            if(userPigeRepository.existsByIdUserPige(userPigeUpdated.getIdUserPige())) {
+                UserPige userPigeToUpdate = userPigeRepository.findByIdUserPige((userPigeUpdated.getIdUserPige()));
+                userPigeToUpdate.setUserPigeImage(userPigeUpdated.getUserPigeImage());
+                userPigeToUpdate.setUserPigePseudo(userPigeUpdated.getUserPigePseudo());
+                userPigeRepository.save(userPigeToUpdate);
+                messagePwdUpdated = "ACK-510";
+            }
 
-            UserPige userPigeToUpdate = userPigeRepository.findByIdUserPige((userPigeUpdated.getIdUserPige()));
-            userPigeToUpdate.setUserPigeImage(userPigeUpdated.getUserPigeImage());
-            userPigeToUpdate.setUserPigePseudo(userPigeUpdated.getUserPigePseudo());
-            userPigeRepository.save(userPigeToUpdate);
-            messagePwdUpdated = "ACK-510";
 
             return messagePwdUpdated;
         } catch (Exception e) {
@@ -121,16 +132,5 @@ public class UserPigeServerController {
 
     }
 
-    /*
-    @GetMapping("/getInfoUserPigeByIdUserAndIdPige")
-    public UserPige getInfoUserPigeByIdUserAndIdPige(int idUser, int idPige) throws Exception {
-        try {
-            return userPigeRepository.findByUser_IdUserAndPige_IdPige(idUser, idPige);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return null;
-        }
-    }
 
-     */
 }

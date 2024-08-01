@@ -1,7 +1,6 @@
 package com.swapit.repositories;
 
-import com.swapit.model.Pige;
-import com.swapit.model.User;
+
 import com.swapit.model.UserPige;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -21,5 +20,7 @@ public interface UserPigeRepository extends JpaRepository<UserPige, Integer> {
     public boolean existsUserPigeByUser_IdUserAndPige_IdPige(int idUser, int idPige);
 
     public UserPige findByIdUserPige(int idUserPige);
+
+    public boolean existsByIdUserPige(int idUserPige);
 
 }

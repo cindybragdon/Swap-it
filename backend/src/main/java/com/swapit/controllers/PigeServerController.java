@@ -1,16 +1,11 @@
 package com.swapit.controllers;
 
 import com.swapit.model.Pige;
-import com.swapit.model.User;
-import com.swapit.model.UserPige;
+
 import com.swapit.repositories.PigeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
 
 
 @RestController
@@ -22,49 +17,6 @@ public class PigeServerController {
 
     @Autowired
     private PigeRepository pigeRepository;
-
-
-    //Create new Pige (Verified and tested)
-
-    //Revoir ici avec Olivier, car doit changer des trucs, sinon front end bug.
-    //Faut mettre le userAdminId, mais cela ne fonctionne pas.
-    // (Verified and tested)
-    //@PostMapping("/createPige")
-    /*
-    public String createPige(@RequestBody Pige pigeToCreate) {
-        String messagePigeCreate = "ACK-301";
-
-        try {
-            if ((pigeToCreate.getPigeName() != null)
-                    && (pigeToCreate.getPigeType() != null)
-                    && (pigeToCreate.getPigeState() != null)
-                    && (pigeToCreate.getPigeEndDate() != null)
-                    && (pigeToCreate.getPigeType().equals("THEMED")
-                        || pigeToCreate.getPigeType().equals("TARGETED")
-                        || pigeToCreate.getPigeType().equals("NORMAL")
-                        || pigeToCreate.getPigeType().equals("GIFTLIST"))
-                    && (pigeToCreate.getPigeState().equals("CREATED")
-                        || pigeToCreate.getPigeState().equals("AVIS LANCEE")
-                        || pigeToCreate.getPigeState().equals("STARTED")
-                        || pigeToCreate.getPigeState().equals("ENDED")
-                    )) {
-
-
-                Date date = new Date();
-                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                String currentDateTime = dateFormat.format(date);
-                pigeToCreate.setPigeTimestampCreation(Timestamp.valueOf(currentDateTime));
-                pigeRepository.save(pigeToCreate);
-                messagePigeCreate = "ACK-300";
-            }
-
-            return messagePigeCreate;
-        } catch (Exception e) {
-            return messagePigeCreate + e.getMessage();
-        }
-    }
-    */
-
 
     //Get les infos pour courriel dans Java (nom pige, pige description, nom admin, date pige,url et QrCode)
     //Update pige
@@ -107,8 +59,8 @@ public class PigeServerController {
     public String deletePige(@RequestParam int idPige) throws Exception {
         String messageDeletePige = "ACK-321";
         try {
-            boolean pigeExists = pigeRepository.existsById(idPige);
-            if (pigeExists) {
+
+            if (pigeRepository.existsById(idPige)) {
                 Pige pigeToUpdate = pigeRepository.findPigeByIdPige(idPige);
                 pigeToUpdate.setActive(false);
                 pigeRepository.save(pigeToUpdate);

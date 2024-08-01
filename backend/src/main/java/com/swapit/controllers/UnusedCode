@@ -1,0 +1,214 @@
+
+    -> ////////PIGE//////// <-
+    //Create new Pige (Verified and tested)
+    // (Verified and tested)
+    //@PostMapping("/createPige")
+    /*
+    public String createPige(@RequestBody Pige pigeToCreate) {
+        String messagePigeCreate = "ACK-301";
+
+        try {
+            if ((pigeToCreate.getPigeName() != null)
+                    && (pigeToCreate.getPigeType() != null)
+                    && (pigeToCreate.getPigeState() != null)
+                    && (pigeToCreate.getPigeEndDate() != null)
+                    && (pigeToCreate.getPigeType().equals("THEMED")
+                        || pigeToCreate.getPigeType().equals("TARGETED")
+                        || pigeToCreate.getPigeType().equals("NORMAL")
+                        || pigeToCreate.getPigeType().equals("GIFTLIST"))
+                    && (pigeToCreate.getPigeState().equals("CREATED")
+                        || pigeToCreate.getPigeState().equals("AVIS LANCEE")
+                        || pigeToCreate.getPigeState().equals("STARTED")
+                        || pigeToCreate.getPigeState().equals("ENDED")
+                    )) {
+
+
+                Date date = new Date();
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                String currentDateTime = dateFormat.format(date);
+                pigeToCreate.setPigeTimestampCreation(Timestamp.valueOf(currentDateTime));
+                pigeRepository.save(pigeToCreate);
+                messagePigeCreate = "ACK-300";
+            }
+
+            return messagePigeCreate;
+        } catch (Exception e) {
+            return messagePigeCreate + e.getMessage();
+        }
+    }
+    */
+
+
+        -> ////////USER//////// <-
+
+
+     //Create user (Verified and tested)
+     @PostMapping("/createUserByEmail")
+     public String createUserByEmail(@RequestBody User userToCreate) throws Exception {
+
+         String messageCreate = "ACK-101";
+         try {
+             if (userToCreate.getUserEmail() != null
+                     && userToCreate.getUserFirstName() != null
+                     && userToCreate.getUserLastName() != null){
+                 if (userRepository.existsByUserEmail(userToCreate.getUserEmail())) {
+                     messageCreate = "ACK-102";
+                 } else {
+                     userRepository.save(userToCreate);
+                     messageCreate = "ACK-100";
+                 }
+             }
+             return messageCreate;
+         } catch (Exception e) {
+             return messageCreate + e.getMessage();
+         }
+     }
+
+
+    //Update user account (update) (Verified and tested)
+    @PutMapping("/updateUserById")
+    public String updateUserById(@RequestBody User userUpdated, @RequestParam int idUser) throws Exception {
+        String messageUpdate = "ACK-111";
+        try {
+            if (userUpdated.getUserEmail() != null
+                    && userUpdated.getUserFirstName() != null
+                    && userUpdated.getUserLastName() != null) {
+                boolean userIdExists = userRepository.existsUserByIdUser(idUser);
+                boolean userEmailExists = userRepository.existsByUserEmail(userUpdated.getUserEmail());
+                boolean userEmailExistsButIsTheRightUser = userRepository.existsUserByIdUserAndUserEmail(idUser, userUpdated.getUserEmail());
+
+                if (userIdExists) {
+                    if (!userEmailExists || userEmailExistsButIsTheRightUser) {
+                        User user = userRepository.findUserByIdUser(idUser);
+                        user.setUserFirstName(userUpdated.getUserFirstName());
+                        user.setUserLastName(userUpdated.getUserLastName());
+                        user.setUserEmail(userUpdated.getUserEmail());
+                        user.setUserPhone(userUpdated.getUserPhone());
+                        user.setUserImage(userUpdated.getUserImage());
+                        userRepository.save(user);
+                        messageUpdate = "ACK-110";
+                    }
+                }
+            }
+        } catch (Exception e) {
+            return messageUpdate + e.getMessage();
+        }
+        return messageUpdate;
+
+
+    }
+
+     -> ////////SHADOW//////// <-
+    // (Verified and tested)
+    @PostMapping("/createShadow")
+    public String createShadow(@RequestBody Shadow shadowToCreate) throws Exception {
+        String messagePwdCreate = "ACK-301";
+        try {
+            if (shadowToCreate.getUserPassword() != null
+            && shadowToCreate.getUser() != null) {
+                shadowRepository.save(shadowToCreate);
+                messagePwdCreate = "ACK-300";
+            }
+            return messagePwdCreate;
+        } catch (Exception e) {
+            return messagePwdCreate + e.getMessage();
+        }
+    }
+
+    -> ////////TOTO//////// <-
+
+    //Update user account (update) (Verified and tested)
+    @PutMapping("/updateTotoById")
+    public String updateTotoById(@RequestBody Toto totoUpdated, @RequestParam int idToto) throws Exception {
+        String messageUpdate = "ACK-611";
+        try {
+            if (totoUpdated.getTotoEmail() != null
+                    && totoUpdated.getTotoUsername() != null) {
+                boolean idTotoExists = totoRepository.existsByIdToto(idToto);
+                boolean totoEmailExists = totoRepository.existsUserByTotoEmail(totoUpdated.getTotoEmail());
+                boolean totoEmailExistsButIsTheRightToto = totoRepository.existsByIdTotoAndTotoEmail(idToto, totoUpdated.getTotoEmail());
+                if (idTotoExists) {
+                    if (!totoEmailExists || totoEmailExistsButIsTheRightToto) {
+                        Toto toto = totoRepository.findTotoByIdToto(idToto);
+                        toto.setTotoUsername(totoUpdated.getTotoUsername());
+                        toto.setTotoEmail(totoUpdated.getTotoEmail());
+                        totoRepository.save(toto);
+                        messageUpdate = "ACK-610";
+                    }
+                }
+            }
+        } catch (Exception e) {
+            return messageUpdate + e.getMessage();
+        }
+        return messageUpdate;
+    }
+
+
+    // (Verified and tested)
+    @PostMapping("/createTotoByEmail")
+    public String createTotoByEmail(@RequestBody Toto totoToCreate) throws Exception {
+
+        String messageCreate = "ACK-601";
+        try {
+            if (totoToCreate.getTotoEmail() != null
+                    && totoToCreate.getTotoUsername() != null){
+                boolean userExists = totoRepository.existsUserByTotoEmail(totoToCreate.getTotoEmail());
+                if (userExists) {
+                    messageCreate = "ACK-602";
+                } else {
+                    totoRepository.save(totoToCreate);
+                    messageCreate = "ACK-600";
+                }
+            }
+            return messageCreate;
+        } catch (Exception e) {
+            return messageCreate + e.getMessage();
+        }
+    }
+
+    -> ////////USERPIGE//////// <-
+
+        /*
+        @GetMapping("/getInfoUserPigeByIdUserAndIdPige")
+        public UserPige getInfoUserPigeByIdUserAndIdPige(int idUser, int idPige) throws Exception {
+            try {
+                return userPigeRepository.findByUser_IdUserAndPige_IdPige(idUser, idPige);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                return null;
+            }
+        }
+
+         */
+
+
+     -> ////////USERPIGEWITHUSERPICKED//////// <-
+     // (Verified and tested)
+     @PostMapping("/createUserPigeWithUserPicked")
+     public String createUserPigeWithUserPicked(@RequestBody UserPigeWithUserPicked userPigeWithUserPickedToCreate) throws Exception{
+         String messageCreate = "ACK-101";
+         try {
+             if (userPigeWithUserPickedToCreate.getUserPigeWhoPickedTheOtherUserPige() != null
+             && userPigeWithUserPickedToCreate.getUserPigeWhoIsPickedByTheUserPige() != null) {
+                 UserPige testFirstUserPicked = userPigeRepository.findByIdUserPige(userPigeWithUserPickedToCreate.getUserPigeWhoPickedTheOtherUserPige().getIdUserPige());
+                 UserPige testSecondUserPicked = userPigeRepository.findByIdUserPige(userPigeWithUserPickedToCreate.getUserPigeWhoIsPickedByTheUserPige().getIdUserPige());
+
+                 if (testFirstUserPicked.getPige().equals(testSecondUserPicked.getPige())) {
+                     if (!userPigeWithUserPickedToCreate.getUserPigeWhoPickedTheOtherUserPige().equals(userPigeWithUserPickedToCreate.getUserPigeWhoIsPickedByTheUserPige())) {
+                         if (!userPigeWithUserPickedRepository.existsByUserPigeWhoIsPickedByTheUserPige(testFirstUserPicked)) {
+                             if (!userPigeWithUserPickedRepository.existsByUserPigeWhoPickedTheOtherUserPige(testSecondUserPicked)) {
+                                 userPigeWithUserPickedRepository.save(userPigeWithUserPickedToCreate);
+                                 messageCreate = "ACK-100";
+                             }
+                         }
+                     }
+                 }
+             }
+             return messageCreate;
+         } catch (Exception e) {
+             return messageCreate + e.getMessage();
+         }
+
+     }
+
+

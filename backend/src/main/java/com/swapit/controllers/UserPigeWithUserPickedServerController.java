@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 @CrossOrigin("http://localhost:5555/")
@@ -24,6 +23,7 @@ public class UserPigeWithUserPickedServerController {
 
     @Autowired
     private CoupleRepository coupleRepository;
+
     @Autowired
     private PigeRepository pigeRepository;
 
@@ -38,34 +38,6 @@ public class UserPigeWithUserPickedServerController {
         }
 
     }
-    // (Verified and tested)
-    @PostMapping("/createUserPigeWithUserPicked")
-    public String createUserPigeWithUserPicked(@RequestBody UserPigeWithUserPicked userPigeWithUserPickedToCreate) throws Exception{
-        String messageCreate = "ACK-101";
-        try {
-            if (userPigeWithUserPickedToCreate.getUserPigeWhoPickedTheOtherUserPige() != null
-            && userPigeWithUserPickedToCreate.getUserPigeWhoIsPickedByTheUserPige() != null) {
-                UserPige testFirstUserPicked = userPigeRepository.findByIdUserPige(userPigeWithUserPickedToCreate.getUserPigeWhoPickedTheOtherUserPige().getIdUserPige());
-                UserPige testSecondUserPicked = userPigeRepository.findByIdUserPige(userPigeWithUserPickedToCreate.getUserPigeWhoIsPickedByTheUserPige().getIdUserPige());
-
-                if (testFirstUserPicked.getPige().equals(testSecondUserPicked.getPige())) {
-                    if (!userPigeWithUserPickedToCreate.getUserPigeWhoPickedTheOtherUserPige().equals(userPigeWithUserPickedToCreate.getUserPigeWhoIsPickedByTheUserPige())) {
-                        if (!userPigeWithUserPickedRepository.existsByUserPigeWhoIsPickedByTheUserPige(testFirstUserPicked)) {
-                            if (!userPigeWithUserPickedRepository.existsByUserPigeWhoPickedTheOtherUserPige(testSecondUserPicked)) {
-                                userPigeWithUserPickedRepository.save(userPigeWithUserPickedToCreate);
-                                messageCreate = "ACK-100";
-                            }
-                        }
-                    }
-                }
-            }
-            return messageCreate;
-        } catch (Exception e) {
-            return messageCreate + e.getMessage();
-        }
-
-    }
-
 
 
     @PostMapping("/createAllUserPigeWithUserPickedForPige")

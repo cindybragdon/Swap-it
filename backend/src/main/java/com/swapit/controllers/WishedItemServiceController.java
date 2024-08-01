@@ -1,9 +1,9 @@
 package com.swapit.controllers;
 
 import com.swapit.model.WishedItem;
+import com.swapit.repositories.UserPigeRepository;
 import com.swapit.repositories.UserRepository;
 import com.swapit.repositories.WishedItemRepository;
-import org.hibernate.sql.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +18,12 @@ public class WishedItemServiceController {
 
     @Autowired
     private WishedItemRepository wishedItemRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private UserPigeRepository userPigeRepository;
 
     @GetMapping("/getOneItem")
     public WishedItem getOneWishedItem(@RequestParam int idWishedItem) throws Exception {
@@ -48,8 +54,12 @@ public class WishedItemServiceController {
             if (wishedItemToCreate.getWishedItemName() != null
                 && wishedItemToCreate.getUserPige() != null
                 && wishedItemToCreate.getUserWhoAddedTheItem() != null){
-                wishedItemRepository.save(wishedItemToCreate);
-                messageWishItemCreated = "ACK-900";
+                if(userRepository.existsByIdUser(wishedItemToCreate.getUserPige().getIdUserPige())
+                && userPigeRepository.existsByIdUserPige(wishedItemToCreate.getUserPige().getIdUserPige())) {
+                    wishedItemRepository.save(wishedItemToCreate);
+                    messageWishItemCreated = "ACK-900";
+                }
+
             }
         } catch (Exception e) {
             return messageWishItemCreated + e.getMessage();
@@ -62,10 +72,10 @@ public class WishedItemServiceController {
     public String updateWishedItem(@RequestBody WishedItem wishedItemToUpdate, @RequestParam int idWishedItem) throws Exception {
         String messageWishedItemUpdated = "ACK-911";
         try {
-            boolean wishedItemExists = wishedItemRepository.existsById(idWishedItem);
-            if (wishedItemExists) {
-                if (wishedItemToUpdate.getWishedItemName() != null
-                        && wishedItemToUpdate.getUserPige() != null) {
+
+            if (wishedItemRepository.existsById(idWishedItem)) {
+                if (wishedItemToUpdate.getWishedItemName() != null) {
+
                     WishedItem wishedItem = wishedItemRepository.findByIdWishedItem(idWishedItem);
                     wishedItem.setWishedItemName(wishedItemToUpdate.getWishedItemName());
                     wishedItem.setWishedItemDescription(wishedItemToUpdate.getWishedItemDescription());
@@ -86,8 +96,8 @@ public class WishedItemServiceController {
     public String deleteWishedItem(@RequestParam int idWishedItem) throws Exception {
         String messageWishedItemUpdated = "ACK-911";
         try {
-            boolean wishedItemExists = wishedItemRepository.existsById(idWishedItem);
-            if (wishedItemExists) {
+
+            if (wishedItemRepository.existsById(idWishedItem)) {
                 WishedItem wishedItem = wishedItemRepository.findByIdWishedItem(idWishedItem);
                 wishedItem.setDeleted(true);
                 wishedItemRepository.save(wishedItem);

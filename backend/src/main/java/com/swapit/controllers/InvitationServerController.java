@@ -5,7 +5,6 @@ import com.swapit.model.*;
 import com.swapit.repositories.InvitationsRepository;
 import com.swapit.repositories.PigeRepository;
 import com.swapit.repositories.UserPigeRepository;
-import com.swapit.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
